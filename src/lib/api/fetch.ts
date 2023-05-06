@@ -1,8 +1,8 @@
 import type Plan from '$lib/api/server/class/Plan';
 import { getCredentials } from '$lib/api/session';
 import { NoCredentialsError } from '$lib/api/server/errors/NoCredentialsError';
-import {PlanNotFoundError} from "$lib/api/server/errors/PlanNotFoundError";
-import {InvalidCredentialsError} from "$lib/api/server/errors/InvalidCredentialsError";
+import { PlanNotFoundError } from '$lib/api/server/errors/PlanNotFoundError';
+import { InvalidCredentialsError } from '$lib/api/server/errors/InvalidCredentialsError';
 
 export async function fetchPlan(date?: Date): Promise<Plan> {
 	const creds = getCredentials();

@@ -1,8 +1,6 @@
-import { fetchPlan, verifyCredentials } from '$lib/api/server/stundenplan24';
-import { fromJson } from '$lib/api/server/class/Plan';
+import { verifyCredentials } from '$lib/api/server/stundenplan24';
 import { json } from '@sveltejs/kit';
 import type { RequestEvent, RequestHandler } from '@sveltejs/kit';
-import { tr } from 'date-fns/locale';
 import { NoCredentialsError } from '$lib/api/server/errors/NoCredentialsError';
 import { InvalidCredentialsError } from '$lib/api/server/errors/InvalidCredentialsError';
 import { PlanNotFoundError } from '$lib/api/server/errors/PlanNotFoundError';

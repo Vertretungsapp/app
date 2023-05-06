@@ -1,13 +1,12 @@
-import type {PageLoad} from './$types';
-import {fetchPlan} from "$lib/api/fetch";
-import {browser} from "$app/environment";
+import type { PageLoad } from './$types';
+import { browser } from '$app/environment';
 export const load = (async ({ params }) => {
-    if (!browser) return {};
+	if (!browser) return {};
 
-    const {date, klass} = params
+	const { date, klass } = params;
 
-    return {
-        klass,
-        date
-    }
+	return {
+		klass,
+		date
+	};
 }) satisfies PageLoad;

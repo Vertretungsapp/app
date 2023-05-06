@@ -1,6 +1,6 @@
 import Class, { fromJson as classParser } from './Class';
-import parseDate from 'date-fns/parse';
-import DELocale from 'date-fns/locale/de';
+import parseDate from 'date-fns/parse/index';
+import DELocale from 'date-fns/locale/de/index';
 
 export default class Plan {
 	created: Date | undefined;
