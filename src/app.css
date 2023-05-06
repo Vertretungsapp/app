@@ -1,0 +1,36 @@
+@import '@fontsource/inter/latin.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply bg-background;
+        @apply text-text;
+    }
+
+    h1 {
+        font-weight: 800;
+        @apply text-[1.7rem] md:text-[3rem] lg:text-[4rem];
+    }
+
+    h2 {
+        font-weight: 700;
+        @apply text-[1.5rem] md:text-[2rem] lg:text-[3rem];
+    }
+
+    h3 {
+        font-weight: 700;
+        @apply text-[1.3rem] md:text-[1.5rem] lg:text-[2.5rem];
+    }
+
+    h4 {
+        font-weight: 600;
+        @apply text-[1.1rem] md:text-[1.3rem] lg:text-[2rem];
+    }
+
+    p,a {
+        @apply text-[0.8rem] md:text-[1.2rem] lg:text-[1.5rem];
+    }
+}
