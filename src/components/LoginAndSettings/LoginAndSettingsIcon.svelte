@@ -10,6 +10,6 @@
   }
 </script>
 
-<div class="border-[3px] border-accent rounded-[7px] p-1 aspect-square" on:click={handleClick}>
+<div class="border-[3px] border-accent rounded-[7px] p-1 aspect-square" on:keypress={()=>{}} on:click={handleClick}>
   <Icon data={icon} scale="1.5"/>
 </div>
