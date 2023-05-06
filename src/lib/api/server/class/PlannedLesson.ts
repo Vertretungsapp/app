@@ -33,6 +33,6 @@ function parseChangeable(changeable: any): Changeable | undefined {
   if (typeof changeable === "string")
     return { name: changeable, changed: false };
   if (typeof changeable === "object")
-    return { name: changeable["$t"] || "", changed: true };
+    return { name: changeable["_"] || "", changed: true };
   return undefined;
 }
