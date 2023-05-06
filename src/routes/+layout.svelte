@@ -4,7 +4,7 @@
 </script>
 
 <SvelteSeo
-  title="Stundenplan24"
+  title="Vertretungsplan42"
   description="Deine Vertretungsplanapp für stundenplan24.de"
 />
 
