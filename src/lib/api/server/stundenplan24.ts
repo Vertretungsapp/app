@@ -31,6 +31,23 @@ export async function fetchPlan(cred: Credentials, date?: Date): Promise<object>
 	return await parseStringPromise(text, { trim: true, explicitArray: false });
 }
 
+export async function verifyCredentials(cred: Credentials): Promise<boolean> {
+	if (!cred) throw new NoCredentialsError();
+
+	const url = `https://${BASE_DOMAIN}/${cred.schoolnumber}/mobil/mobdaten/vpinfok.txt`;
+
+	const headers = {
+		Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}`
+	};
+
+	const res = await fetch(url, { headers });
+
+	if (res.status === 404) throw new PlanNotFoundError();
+	if (res.status === 401) throw new InvalidCredentialsError();
+
+	return true;
+}
+
 function addZero(month: number): string {
 	return month < 10 ? `0${month}` : month.toString();
 }

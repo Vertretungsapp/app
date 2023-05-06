@@ -8,11 +8,17 @@ export type Credentials = {
  * Saves the credentials to the local storage and returns true if the credentials are valid.
  * Validation is done by trying an api endpoint.
  * @param credentials
- * @returns true if the credentials are valid
+ * @returns number Status code of the request (200, 401, 404)
  */
-export function login(credentials: Credentials): boolean {
+export async function login(credentials: Credentials): Promise<number> {
 	localStorage.setItem('credentials', JSON.stringify(credentials));
-	return true;
+
+	const res = await fetch('/api/verifyCredentials', {
+		method: 'POST',
+		body: JSON.stringify({ credentials })
+	});
+
+	return res.status;
 }
 
 /**

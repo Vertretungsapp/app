@@ -33,4 +33,8 @@
     p,a {
         @apply text-[0.8rem] md:text-[1.2rem] lg:text-[1.5rem];
     }
+
+    input {
+        @apply border-2 border-accent rounded-[7px] p-2 bg-background font-bold;
+    }
 }
