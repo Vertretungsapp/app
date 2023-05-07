@@ -23,9 +23,9 @@
 		date: new Date()
 	};
 
-	async function fetchData(d?: Date) {
+	async function fetchData(d?: Date, force?: boolean) {
 		try {
-			const plan = await fetchPlan(d ? new Date(d) : undefined);
+			const plan = await fetchPlan(d ? new Date(d) : undefined, force);
 
 			let klassPlan = plan.classes.find((c) => c.short === klass);
 			if (!klassPlan) return;
@@ -44,7 +44,9 @@
 		}
 	}
 
-	function forceReload() {}
+	function forceReload() {
+		fetchData($date, true);
+	}
 
 	onMount(async () => {
 		await fetchData(initDate).then(() => {
