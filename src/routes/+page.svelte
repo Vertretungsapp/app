@@ -1,25 +1,15 @@
 <script lang="ts">
 	import LoginAndSettings from '../components/LoginAndSettings/LoginAndSettings.svelte';
 	import { onMount } from 'svelte';
-	import { fetchPlan } from '$lib/api/fetch';
-	import type Plan from '$lib/api/server/class/Plan';
-	import { NoCredentialsError } from '$lib/api/server/errors/NoCredentialsError';
-	import { InvalidCredentialsError } from '$lib/api/server/errors/InvalidCredentialsError';
 	import OverviewLinkButton from "../components/Home/OverviewLinkButton.svelte";
 	import {faPeopleGroup} from "@fortawesome/free-solid-svg-icons/faPeopleGroup";
 	import {faDoorOpen} from "@fortawesome/free-solid-svg-icons/faDoorOpen";
-
-	// TODO: TEMPORARY UNTIL OVERVIEW PAGE IS IMPLEMENTED
-	let plan: Plan;
+	import {verifyCredentials} from "$lib/api/session";
 
 	onMount(async () => {
-		await fetchPlan()
-			.then((p) => (plan = p))
-			.catch((e) => {
-				if (e instanceof NoCredentialsError || e instanceof InvalidCredentialsError) {
-					document.querySelector('#loginDialog').showModal();
-				}
-			});
+		if(!await verifyCredentials()) {
+			document.querySelector<HTMLDialogElement>('#loginDialog')?.showModal();
+		}
 	});
 </script>
 

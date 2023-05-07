@@ -31,7 +31,6 @@
 
 	function handleLogout() {
 		logout();
-		location.reload();
 	}
 
 	onMount(() => {

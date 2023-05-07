@@ -26,7 +26,8 @@ export async function login(credentials: Credentials): Promise<number> {
  * @returns void
  */
 export function logout(): void {
-	localStorage.removeItem('credentials');
+	localStorage.removeItem('credentials')
+	location.reload();
 }
 
 /**
@@ -37,4 +38,24 @@ export function getCredentials(): Credentials | null {
 	const credentials = localStorage.getItem('credentials');
 	if (!credentials) return null;
 	return JSON.parse(credentials);
+}
+
+/**
+ * Checks if the credentials are valid by trying an api endpoint.
+ * @returns boolean
+ */
+export async function verifyCredentials(): Promise<boolean> {
+	const credentials = getCredentials();
+
+	if(!credentials) return false;
+
+	const res = await fetch('/api/verifyCredentials', {
+		method: 'POST',
+		body: JSON.stringify({ credentials })
+	});
+
+	if(res.status === 401) logout();
+	if(res.status === 404) logout();
+
+	return res.status === 200;
 }
