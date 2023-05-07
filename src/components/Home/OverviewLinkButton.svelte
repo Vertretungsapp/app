@@ -7,7 +7,9 @@
     export let href: string;
 </script>
 
-<a class="flex flex-col items-center justify-between p-2 border-[3px] border-accent rounded-[13px] aspect-square" href={href}>
-    <Icon data={icon} scale="4" />
-    <p class="text-md">{text}</p>
-</a>
+<div>
+    <a class="flex flex-col items-center justify-center p-2 border-[3px] border-accent rounded-[13px] aspect-square" href={href}>
+        <Icon data={icon} scale="4" />
+    </a>
+    <p class="text-md text-center">{text}</p>
+</div>

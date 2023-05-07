@@ -13,7 +13,7 @@
 	});
 </script>
 
-<div class="w-[90%] m-auto py-20 flex flex-col h-screen justify-between">
+<div class="w-max m-auto py-20 flex flex-col h-screen justify-between">
 	<div>
 		<LoginAndSettings />
 		<h1 class="text-center">Vertretungsplan<span class="text-accent">42</span></h1>
