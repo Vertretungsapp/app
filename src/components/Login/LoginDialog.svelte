@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { getCredentials, login } from '$lib/api/session';
+	import {getCredentials, login, logout} from '$lib/api/session';
+	import type { Credentials } from '$lib/api/session';
 	import { onMount } from 'svelte';
 
 	let message = null;
+	let credentials: Credentials | null = null;
 
 	async function handleSubmit(e) {
 		const formData = new FormData(e.target);
@@ -21,8 +23,17 @@
 		});
 	}
 
+	function closeModal() {
+		document.querySelector('#loginDialog').close();
+	}
+
+	function handleLogout() {
+		logout();
+		location.reload()
+	}
+
 	onMount(() => {
-		const credentials = getCredentials();
+		credentials = getCredentials();
 		if (credentials) {
 			document.querySelector('#loginDialog_schoolnumber').value = credentials.schoolnumber;
 			document.querySelector('#loginDialog_username').value = credentials.username;
@@ -42,8 +53,14 @@
 		/>
 		<input type="text" id="loginDialog_username" name="username" placeholder="Benutzernamen" />
 		<input type="password" id="loginDialog_password" name="password" placeholder="Password" />
-		<div class="grid grid-cols-2 gap-4 mt-4">
-			<input class="input col-start-2" type="submit" value="Speichern" />
+		<div class="grid grid-cols-3 gap-4 mt-4">
+			{#if credentials}
+				<input class="input opacity-60 cursor-pointer" type="button" value="Schließen" on:click={closeModal} />
+			{/if}
+			<input class="input col-start-2 cursor-pointer" type="submit" value="Speichern" />
+			{#if credentials}
+				<input class="input border-error cursor-pointer" type="button" value="Logout" on:click={handleLogout} />
+			{/if}
 		</div>
 	</form>
 	{#if message}

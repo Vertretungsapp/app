@@ -47,7 +47,6 @@
 
 	date.subscribe(async (d) => {
 		await fetchData(d);
-		console.log(d);
 	});
 </script>
 

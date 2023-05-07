@@ -4,6 +4,7 @@
 	import { fetchPlan } from '$lib/api/fetch';
 	import type Plan from '$lib/api/server/class/Plan';
 	import {NoCredentialsError} from "$lib/api/server/errors/NoCredentialsError";
+	import {InvalidCredentialsError} from "$lib/api/server/errors/InvalidCredentialsError";
 
 	// TODO: TEMPORARY UNTIL OVERVIEW PAGE IS IMPLEMENTED
 	let plan: Plan = {
@@ -12,8 +13,8 @@
 
 	onMount(async () => {
 		await fetchPlan().then((p) => plan = p).catch((e) => {
-			if(e instanceof NoCredentialsError) {
-				console.log("no credentials")
+			if(e instanceof NoCredentialsError || e instanceof InvalidCredentialsError) {
+				document.querySelector('#loginDialog').showModal()
 			}
 		});
 	});

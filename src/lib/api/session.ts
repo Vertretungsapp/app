@@ -11,12 +11,12 @@ export type Credentials = {
  * @returns number Status code of the request (200, 401, 404)
  */
 export async function login(credentials: Credentials): Promise<number> {
-	localStorage.setItem('credentials', JSON.stringify(credentials));
-
 	const res = await fetch('/api/verifyCredentials', {
 		method: 'POST',
 		body: JSON.stringify({ credentials })
 	});
+
+	if(res.status === 200) localStorage.setItem('credentials', JSON.stringify(credentials));
 
 	return res.status;
 }
