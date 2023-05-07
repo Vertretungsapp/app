@@ -13,7 +13,7 @@ export async function fetchPlan(date?: Date, force?: boolean): Promise<Plan> {
 
 	const headers = new Headers();
 	headers.set('Authorization', `Basic ${authorization}`);
-	if(force) headers.set('Cache-Control', 'no-cache');
+	if (force) headers.set('Cache-Control', 'no-cache');
 
 	const res = await fetch(`/api/plan${date ? '/' + new Date(date).getTime() : ''}`, {
 		method: 'GET',
