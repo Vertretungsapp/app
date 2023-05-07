@@ -42,17 +42,18 @@
 	}
 
 	onMount(async () => {
-		await fetchData(new Date(initDate));
-	});
-
-	date.subscribe(async (d) => {
-		await fetchData(d);
+		await fetchData(new Date(initDate)).then(() => {
+			$date = data.date;
+			date.subscribe(async (d) => {
+				await fetchData(d);
+			});
+		})
 	});
 </script>
 
 <div class="flex justify-between items-center px-8 py-4">
 	<PlanSwitchArrow />
-	<p>{new Date(data.date).toLocaleDateString()}</p>
+	<p>{new Date($date).toLocaleDateString()}</p>
 	<PlanSwitchArrow turned />
 </div>
 
