@@ -1,7 +1,9 @@
 <script lang="ts">
-	import {getCredentials, login, logout} from '$lib/api/session';
+	import { getCredentials, login, logout } from '$lib/api/session';
 	import type { Credentials } from '$lib/api/session';
 	import { onMount } from 'svelte';
+	import { Icon } from 'svelte-awesome';
+	import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket';
 
 	let message = null;
 	let credentials: Credentials | null = null;
@@ -29,7 +31,7 @@
 
 	function handleLogout() {
 		logout();
-		location.reload()
+		location.reload();
 	}
 
 	onMount(() => {
@@ -53,14 +55,25 @@
 		/>
 		<input type="text" id="loginDialog_username" name="username" placeholder="Benutzernamen" />
 		<input type="password" id="loginDialog_password" name="password" placeholder="Password" />
-		<div class="grid grid-cols-3 gap-4 mt-4">
+		<div class="grid grid-cols-4 gap-4 mt-4">
 			{#if credentials}
-				<input class="input opacity-60 cursor-pointer" type="button" value="Schließen" on:click={closeModal} />
+				<input
+					class="input opacity-60 cursor-pointer col-span-3"
+					type="button"
+					value="Schließen"
+					on:click={closeModal}
+				/>
 			{/if}
-			<input class="input col-start-2 cursor-pointer" type="submit" value="Speichern" />
 			{#if credentials}
-				<input class="input border-error cursor-pointer" type="button" value="Logout" on:click={handleLogout} />
+				<div
+					class="flex items-center justify-center border-[3px] rounded-[7px] border-error cursor-pointer col-span-1"
+					on:keypress={() => {}}
+					on:click={handleLogout}
+				>
+					<Icon data={faRightFromBracket} scale="2" />
+				</div>
 			{/if}
+			<input class="input col-span-4 cursor-pointer" type="submit" value="Speichern" />
 		</div>
 	</form>
 	{#if message}
@@ -70,6 +83,7 @@
 
 <style>
 	dialog::backdrop {
-		background-color: rgba(0, 0, 0, 0.3);
+		background-color: rgba(0, 0, 0, 0.4);
+		backdrop-filter: blur(5px);
 	}
 </style>

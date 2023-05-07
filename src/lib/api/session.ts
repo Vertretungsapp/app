@@ -16,7 +16,7 @@ export async function login(credentials: Credentials): Promise<number> {
 		body: JSON.stringify({ credentials })
 	});
 
-	if(res.status === 200) localStorage.setItem('credentials', JSON.stringify(credentials));
+	if (res.status === 200) localStorage.setItem('credentials', JSON.stringify(credentials));
 
 	return res.status;
 }

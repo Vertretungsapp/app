@@ -15,6 +15,6 @@
 	}
 </script>
 
-<div on:keypress={() => {}} on:click={handleClick}>
+<div class="cursor-pointer" on:keypress={() => {}} on:click={handleClick}>
 	<Icon data={turned ? faChevronRight : faChevronLeft} scale="2" />
 </div>

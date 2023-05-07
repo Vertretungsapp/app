@@ -5,9 +5,26 @@ import type { RequestEvent, RequestHandler } from '@sveltejs/kit';
 import { NoCredentialsError } from '$lib/api/server/errors/NoCredentialsError';
 import { InvalidCredentialsError } from '$lib/api/server/errors/InvalidCredentialsError';
 import { PlanNotFoundError } from '$lib/api/server/errors/PlanNotFoundError';
+import type { Credentials } from '$lib/api/session';
 
-export const POST: RequestHandler = async ({ request }: RequestEvent) => {
-	const { credentials, date } = await request.json();
+export const GET: RequestHandler = async ({ request, params }: RequestEvent) => {
+	const { date: dateParam } = params;
+	const authorization = request.headers.get('authorization');
+
+	const date = dateParam ? new Date(new Date().setTime(parseInt(dateParam))) : undefined;
+	console.log();
+
+	const credentials: Credentials | null = authorization
+		? {
+				schoolnumber: parseInt(
+					Buffer.from(authorization.split(' ')[1], 'base64').toString().split(':')[0]
+				),
+				username: Buffer.from(authorization.split(' ')[1], 'base64').toString().split(':')[1],
+				password: Buffer.from(authorization.split(' ')[1], 'base64').toString().split(':')[2]
+		  }
+		: null;
+
+	if (!credentials) return json({ error: 'No credentials provided' }, { status: 401 });
 
 	const planRaw: object | 401 | 404 = await fetchPlan(
 		credentials,
@@ -22,5 +39,5 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 	if (planRaw === 404) return json({ error: 'Plan not found' }, { status: 404 });
 
 	const plan = fromJson(planRaw as object);
-	return json(plan);
+	return json(plan, { headers: { 'Cache-Control': 'private, max-age=43200' } }); // 12 hours
 };

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import {onMount} from "svelte";
+	import { onMount } from 'svelte';
 
-    onMount(() => {
-        localStorage.setItem('alphaEnabled', 'true')
-        window.location.href = '/'
-    })
+	onMount(() => {
+		localStorage.setItem('alphaEnabled', 'true');
+		window.location.href = '/';
+	});
 </script>

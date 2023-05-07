@@ -9,14 +9,13 @@ export async function fetchPlan(date?: Date): Promise<Plan> {
 
 	if (!creds) throw new NoCredentialsError();
 
-	const body = {
-		credentials: creds,
-		date: date ? date.getTime() : null
-	};
+	const authorization = btoa(`${creds.schoolnumber}:${creds.username}:${creds.password}`);
 
-	const res = await fetch(`/api/plan/`, {
-		method: 'POST',
-		body: JSON.stringify(body)
+	const res = await fetch(`/api/plan${date ? '/' + new Date(date).getTime() : ''}`, {
+		method: 'GET',
+		headers: {
+			Authorization: `Basic ${authorization}`
+		}
 	});
 
 	if (res.status === 401) throw new InvalidCredentialsError();
