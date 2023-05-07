@@ -16,11 +16,9 @@ export const GET: RequestHandler = async ({ request, params }: RequestEvent) => 
 
 	const credentials: Credentials | null = authorization
 		? {
-				schoolnumber: parseInt(
-					Buffer.from(authorization.split(' ')[1], 'base64').toString().split(':')[0]
-				),
-				username: Buffer.from(authorization.split(' ')[1], 'base64').toString().split(':')[1],
-				password: Buffer.from(authorization.split(' ')[1], 'base64').toString().split(':')[2]
+				schoolnumber: parseInt(atob(authorization.split(' ')[1]).split(':')[0]),
+				username: atob(authorization.split(' ')[1]).split(':')[1],
+				password: atob(authorization.split(' ')[1]).split(':')[2]
 		  }
 		: null;
 
