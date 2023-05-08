@@ -26,8 +26,6 @@ export function fromJson(json: any): Plan {
 	})
 	plan.week = json.VpMobil.Kopf.woche;
 
-	console.log(json.VpMobil.Kopf.zeitstempel, plan.created)
-
 	const holidays = json.VpMobil.FreieTage;
 	if (holidays) plan.holidays = parseArrayOrObjectFromJson<Date>(holidays.ft, holidayParser);
 
