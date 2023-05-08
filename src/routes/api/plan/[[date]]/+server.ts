@@ -36,5 +36,6 @@ export const GET: RequestHandler = async ({ request, params }: RequestEvent) => 
 	if (planRaw === 404) return json({ error: 'SchoolPlan not found' }, { status: 404 });
 
 	const plan = fromJson(planRaw as object);
-	return json(plan, { headers: { 'Cache-Control': 'private, max-age=43200' } }); // 12 hours
+
+	return json(plan, { headers: { 'Cache-Control': 'private, max-age=3600' } });
 };

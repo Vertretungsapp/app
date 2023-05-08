@@ -88,7 +88,9 @@
 	<h1 class="text-center mt-20">Klasse <span class="text-accent">{data.short}</span></h1>
 	<div class="flex justify-between items-center px-8">
 		<PlanSwitchArrow />
-		<p on:keypress={() => {}} on:click={resetDate} class="cursor-pointer">{new Date($date).toLocaleDateString()}</p>
+		<p on:keypress={() => {}} on:click={resetDate} class="cursor-pointer">
+			{new Date($date).toLocaleDateString()}
+		</p>
 		<PlanSwitchArrow turned />
 	</div>
 

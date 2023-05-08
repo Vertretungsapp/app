@@ -4,6 +4,11 @@ import { NoCredentialsError } from '$lib/api/server/errors/NoCredentialsError';
 import { PlanNotFoundError } from '$lib/api/server/errors/PlanNotFoundError';
 import { InvalidCredentialsError } from '$lib/api/server/errors/InvalidCredentialsError';
 
+/**
+ * Fetches a SchoolPlan plan from the server
+ * @param date The date to fetch the plan for, if undefined, the latest plan will be fetched
+ * @param force If true, the plan will be fetched from the server, even if it is cached
+ */
 export async function fetchPlan(date?: Date, force?: boolean): Promise<SchoolPlan> {
 	const creds = getCredentials();
 
