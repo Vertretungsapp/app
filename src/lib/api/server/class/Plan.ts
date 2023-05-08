@@ -21,8 +21,12 @@ export function fromJson(json: any): Plan {
 	plan.date = parseDate(json.VpMobil.Kopf.DatumPlan, 'EEEE, dd. MMMM y', new Date(), {
 		locale: DELocale
 	});
-	plan.created = new Date(json.VpMobil.Kopf.zeitstempel);
+	plan.created = parseDate(json.VpMobil.Kopf.zeitstempel, 'dd.MM.y, HH:mm', new Date(), {
+		locale: DELocale
+	})
 	plan.week = json.VpMobil.Kopf.woche;
+
+	console.log(json.VpMobil.Kopf.zeitstempel, plan.created)
 
 	const holidays = json.VpMobil.FreieTage;
 	if (holidays) plan.holidays = parseArrayOrObjectFromJson<Date>(holidays.ft, holidayParser);
