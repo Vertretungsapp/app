@@ -1,5 +1,5 @@
 import { fetchPlan } from '$lib/api/server/stundenplan24';
-import { fromJson } from '$lib/api/server/class/Plan';
+import { fromJson } from '$lib/api/server/class/SchoolPlan';
 import { json } from '@sveltejs/kit';
 import type { RequestEvent, RequestHandler } from '@sveltejs/kit';
 import { NoCredentialsError } from '$lib/api/server/errors/NoCredentialsError';
@@ -12,7 +12,6 @@ export const GET: RequestHandler = async ({ request, params }: RequestEvent) => 
 	const authorization = request.headers.get('authorization');
 
 	const date = dateParam ? new Date(new Date().setTime(parseInt(dateParam))) : undefined;
-	console.log();
 
 	const credentials: Credentials | null = authorization
 		? {
@@ -34,7 +33,7 @@ export const GET: RequestHandler = async ({ request, params }: RequestEvent) => 
 	});
 
 	if (planRaw === 401) return json({ error: 'Invalid credentials' }, { status: 401 });
-	if (planRaw === 404) return json({ error: 'Plan not found' }, { status: 404 });
+	if (planRaw === 404) return json({ error: 'SchoolPlan not found' }, { status: 404 });
 
 	const plan = fromJson(planRaw as object);
 	return json(plan, { headers: { 'Cache-Control': 'private, max-age=43200' } }); // 12 hours

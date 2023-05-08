@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type PlannedLesson from '$lib/api/server/class/PlannedLesson';
+	import type {PlanType} from "$lib/api/server/class/Plan";
 
 	export let lesson: PlannedLesson;
+	export let type: PlanType;
 </script>
 
 <div class="border-[3px] border-accent flex flex-col rounded-[13px] gap-4 px-4 py-2">
@@ -15,7 +17,11 @@
 				<p class={lesson.subject.changed && 'text-error'}>{lesson.subject.name || '---'}</p>
 				<p class={lesson.teacher.changed && 'text-error'}>{lesson.teacher.name || '---'}</p>
 			</div>
-			<h2 class={lesson.room.changed && 'text-error'}>{lesson.room.name || '---'}</h2>
+			{#if type === "class"}
+				<h2 class={lesson.room.changed && 'text-error'}>{lesson.room.name || '---'}</h2>
+			{:else if type === "room"}
+				<h2>{lesson.classShort || '---'}</h2>
+			{/if}
 		</div>
 	</div>
 

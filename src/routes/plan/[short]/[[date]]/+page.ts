@@ -3,10 +3,10 @@ import { browser } from '$app/environment';
 export const load = (async ({ params }) => {
 	if (!browser) return {};
 
-	const { date, klass } = params;
+	const { date, short } = params;
 
 	return {
-		klass,
+		short,
 		date
 	};
 }) satisfies PageLoad;

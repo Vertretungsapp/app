@@ -1,10 +1,10 @@
-import type Plan from '$lib/api/server/class/Plan';
+import type SchoolPlan from '$lib/api/server/class/SchoolPlan';
 import { getCredentials } from '$lib/api/session';
 import { NoCredentialsError } from '$lib/api/server/errors/NoCredentialsError';
 import { PlanNotFoundError } from '$lib/api/server/errors/PlanNotFoundError';
 import { InvalidCredentialsError } from '$lib/api/server/errors/InvalidCredentialsError';
 
-export async function fetchPlan(date?: Date, force?: boolean): Promise<Plan> {
+export async function fetchPlan(date?: Date, force?: boolean): Promise<SchoolPlan> {
 	const creds = getCredentials();
 
 	if (!creds) throw new NoCredentialsError();
@@ -24,5 +24,5 @@ export async function fetchPlan(date?: Date, force?: boolean): Promise<Plan> {
 	if (res.status === 404) throw new PlanNotFoundError();
 
 	const json = await res.json();
-	return json as Plan;
+	return json as SchoolPlan;
 }

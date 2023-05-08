@@ -11,6 +11,7 @@ export default class PlannedLesson {
 	end: Date | undefined;
 	lessonNumber: number | undefined;
 	info: string | undefined;
+	classShort: string | undefined;
 }
 
 /**
