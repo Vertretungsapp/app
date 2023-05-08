@@ -7,7 +7,7 @@ export default {
 				background: '#111111',
 				text: '#EFF1F3',
 				accent: '#0071F5',
-				grayedOut: '#363C45',
+				grayedOut: '#4E5764',
 				error: '#FF1B1C'
 			}
 		},
