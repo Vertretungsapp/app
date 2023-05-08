@@ -3,7 +3,7 @@
 	import { fetchPlan } from '$lib/api/fetch';
 	import { Icon } from 'svelte-awesome';
 	import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
-	import type Room from "$lib/api/server/class/Room";
+	import type Room from '$lib/api/server/class/Room';
 
 	let rooms: Room[] = [];
 

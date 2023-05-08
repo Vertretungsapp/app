@@ -1,7 +1,7 @@
-import PlannedLesson, {fromJson as plannedLessonParser} from './PlannedLesson';
-import Lesson, {fromJson as lessonParser} from './Lesson';
-import {parseArrayOrObjectFromJson} from './SchoolPlan';
-import type {Plan} from "$lib/api/server/class/Plan";
+import PlannedLesson, { fromJson as plannedLessonParser } from './PlannedLesson';
+import Lesson, { fromJson as lessonParser } from './Lesson';
+import { parseArrayOrObjectFromJson } from './SchoolPlan';
+import type { Plan } from '$lib/api/server/class/Plan';
 
 export default class Class implements Plan {
 	schedule: PlannedLesson[] = [];
@@ -21,10 +21,7 @@ export function fromJson(json: any): Class {
 	klass.lessons = parseArrayOrObjectFromJson<Lesson>(lessons, lessonParser);
 
 	const schedule = json.Pl.Std;
-	klass.schedule = parseArrayOrObjectFromJson<PlannedLesson>(
-		schedule,
-		plannedLessonParser
-	);
+	klass.schedule = parseArrayOrObjectFromJson<PlannedLesson>(schedule, plannedLessonParser);
 
 	return klass;
 }

@@ -13,7 +13,8 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 	} catch (e) {
 		if (e instanceof NoCredentialsError || e instanceof InvalidCredentialsError)
 			return json({ error: 'Wrong credentials' }, { status: 401 });
-		if (e instanceof PlanNotFoundError) return json({ error: 'SchoolPlan not found' }, { status: 404 });
+		if (e instanceof PlanNotFoundError)
+			return json({ error: 'SchoolPlan not found' }, { status: 404 });
 	}
 
 	return json({});

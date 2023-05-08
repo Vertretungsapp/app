@@ -1,7 +1,7 @@
 import Class, { fromJson as classParser } from './Class';
 import parseDate from 'date-fns/parse/index';
 import DELocale from 'date-fns/locale/de/index';
-import Room from "$lib/api/server/class/Room";
+import Room from '$lib/api/server/class/Room';
 
 export default class SchoolPlan {
 	created: Date | undefined;
@@ -15,9 +15,9 @@ export default class SchoolPlan {
 	public generateRooms(): void {
 		for (const klass of this.classes) {
 			for (const scheduledLesson of klass.schedule) {
-				if(scheduledLesson.room === undefined || scheduledLesson.room?.name === "") continue;
+				if (scheduledLesson.room === undefined || scheduledLesson.room?.name === '') continue;
 				scheduledLesson.classShort = klass.short;
-				const room = this.rooms.find(room => room.short === scheduledLesson.room?.name);
+				const room = this.rooms.find((room) => room.short === scheduledLesson.room?.name);
 				if (room) {
 					room.addLesson(scheduledLesson);
 				} else {
@@ -27,10 +27,10 @@ export default class SchoolPlan {
 		}
 
 		for (const room of this.rooms) {
-			room.schedule = room.schedule.sort((a, b) => (a.lessonNumber || 0) - (b.lessonNumber || 0))
+			room.schedule = room.schedule.sort((a, b) => (a.lessonNumber || 0) - (b.lessonNumber || 0));
 		}
 
-		this.rooms = this.rooms.sort((a, b) => a.short?.localeCompare(b.short || "") || 0);
+		this.rooms = this.rooms.sort((a, b) => a.short?.localeCompare(b.short || '') || 0);
 	}
 }
 
@@ -46,7 +46,7 @@ export function fromJson(json: any): SchoolPlan {
 	});
 	plan.created = parseDate(json.VpMobil.Kopf.zeitstempel, 'dd.MM.y, HH:mm', new Date(), {
 		locale: DELocale
-	})
+	});
 	plan.week = json.VpMobil.Kopf.woche;
 
 	const holidays = json.VpMobil.FreieTage;

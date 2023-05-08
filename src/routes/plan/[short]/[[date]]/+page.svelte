@@ -1,25 +1,25 @@
 <script lang="ts">
 	import type PlannedLesson from '$lib/api/server/class/PlannedLesson';
-	import {fetchPlan} from '$lib/api/fetch';
-	import {onMount} from 'svelte';
+	import { fetchPlan } from '$lib/api/fetch';
+	import { onMount } from 'svelte';
 	import type SchoolPlan from '$lib/api/server/class/SchoolPlan';
-	import {Icon} from 'svelte-awesome';
-	import {faRefresh} from '@fortawesome/free-solid-svg-icons/faRefresh';
-	import {faHome} from '@fortawesome/free-solid-svg-icons/faHome';
-	import {date} from '../../../../components/Plan/stores';
+	import { Icon } from 'svelte-awesome';
+	import { faRefresh } from '@fortawesome/free-solid-svg-icons/faRefresh';
+	import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
+	import { date } from '../../../../components/Plan/stores';
 	import PlanSwitchArrow from '../../../../components/Plan/PlanSwitchArrow.svelte';
 	import PlanItem from '../../../../components/Plan/PlanItem.svelte';
-	import type {Plan} from "$lib/api/server/class/Plan";
-	import {PlanType} from "$lib/api/server/class/Plan";
+	import type { Plan } from '$lib/api/server/class/Plan';
+	import { PlanType } from '$lib/api/server/class/Plan';
 
-	export let data: { short: string, date: string | undefined };
+	export let data: { short: string; date: string | undefined };
 
 	type PlanData = {
 		plan: SchoolPlan;
 		schedule: PlannedLesson[];
 		date: Date;
-		type: PlanType
-	}
+		type: PlanType;
+	};
 
 	const templatePlanData: PlanData = {
 		plan: {} as SchoolPlan,
@@ -30,27 +30,32 @@
 
 	let planData: PlanData = templatePlanData;
 
-	function getPlanFromSchoolPlan(short: string, schoolPlan: SchoolPlan): { plan: Plan, type: PlanType } | null {
+	function getPlanFromSchoolPlan(
+		short: string,
+		schoolPlan: SchoolPlan
+	): { plan: Plan; type: PlanType } | null {
 		const klass = schoolPlan.classes.find((c) => c.short === short);
-		if(klass) return {
-			plan: klass,
-			type: PlanType.CLASS
-		}
+		if (klass)
+			return {
+				plan: klass,
+				type: PlanType.CLASS
+			};
 
 		const room = schoolPlan.rooms.find((r) => r.short === short);
-		if(room) return {
-			plan: room,
-			type: PlanType.ROOM
-		}
+		if (room)
+			return {
+				plan: room,
+				type: PlanType.ROOM
+			};
 
-		return null
+		return null;
 	}
 
 	async function fetchData(d?: Date, force?: boolean) {
 		try {
 			const schoolPlan = await fetchPlan(d ? new Date(d) : undefined, force);
-			let plan = getPlanFromSchoolPlan(data.short, schoolPlan)
-			if (!plan) return planData = templatePlanData;
+			let plan = getPlanFromSchoolPlan(data.short, schoolPlan);
+			if (!plan) return (planData = templatePlanData);
 
 			planData = {
 				plan: schoolPlan,
@@ -59,7 +64,7 @@
 				type: plan.type
 			};
 		} catch (e) {
-			planData = templatePlanData
+			planData = templatePlanData;
 		}
 	}
 
