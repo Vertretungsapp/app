@@ -72,21 +72,23 @@
 		fetchData($date, true);
 	}
 
-	onMount(async () => {
+	async function resetDate() {
 		await fetchData(data.date ? new Date(data.date) : undefined).then(() => {
 			$date = planData.date;
 			date.subscribe(async (d) => {
 				await fetchData(d);
 			});
 		});
-	});
+	}
+
+	onMount(() => resetDate());
 </script>
 
 <div class="flex flex-col gap-4 h-screen max-h-screen">
 	<h1 class="text-center mt-20">Klasse <span class="text-accent">{data.short}</span></h1>
 	<div class="flex justify-between items-center px-8">
 		<PlanSwitchArrow />
-		<p>{new Date($date).toLocaleDateString()}</p>
+		<p on:keypress={() => {}} on:click={resetDate} class="cursor-pointer">{new Date($date).toLocaleDateString()}</p>
 		<PlanSwitchArrow turned />
 	</div>
 
