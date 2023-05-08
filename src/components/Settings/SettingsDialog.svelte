@@ -6,7 +6,7 @@
 	}
 
 	function refreshCache() {
-		fetchPlan(undefined, true);
+		fetchPlan(undefined, true).then(() => location.reload());
 	}
 </script>
 
