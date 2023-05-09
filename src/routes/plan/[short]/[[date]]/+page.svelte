@@ -111,14 +111,14 @@
 	</div>
 
 	<div class="w-full h-20 px-8 pb-4 bg-background flex justify-between items-center">
-		<div class="cursor-pointer" on:keypress={() => {}} on:click={() => (location.href = '/')}>
+		<a class="cursor-pointer" href="/">
 			<Icon data={faHome} scale="2" />
-		</div>
+		</a>
 		<p class="text-grayedOut">
 			{planData.plan.created ? new Date(planData.plan.created).toLocaleString() : ''}
 		</p>
-		<div class="cursor-pointer" on:keypress={() => {}} on:click={forceReload}>
+		<button class="cursor-pointer" on:click={forceReload}>
 			<Icon data={faRefresh} scale="2" />
-		</div>
+		</button>
 	</div>
 </div>

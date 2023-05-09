@@ -5,7 +5,6 @@
 	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
 	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons/faDoorOpen';
 	import { verifyCredentials } from '$lib/api/session';
-	import FavButton from '../components/Home/Favorites/FavButton.svelte';
 	import FavoriteButtons from '../components/Home/Favorites/FavoriteButtons.svelte';
 
 	onMount(async () => {
