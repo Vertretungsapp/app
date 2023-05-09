@@ -5,7 +5,10 @@ import { PlanType } from '$lib/api/server/class/Plan';
 import { fetchPlan } from '$lib/api/fetch';
 
 export const load = (async ({ params }) => {
-	if (!browser) return {};
+	if (!browser) return {
+		plans: [],
+		planType: PlanType.CLASS
+	};
 
 	const planType = params.type as PlanType;
 	let plans: Plan[] = [];
