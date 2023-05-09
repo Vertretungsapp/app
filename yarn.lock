@@ -992,10 +992,10 @@ eslint-config-prettier@^8.5.0:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.8.0.tgz#bfda738d412adc917fd7b038857110efe98c9348"
   integrity sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==
 
-eslint-plugin-svelte@^2.26.0:
-  version "2.27.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-svelte/-/eslint-plugin-svelte-2.27.3.tgz#978446cdae7e1340f8304d00ae2d0410bb955f1e"
-  integrity sha512-LPri23kkKeeh+TkYr9FndQEy2Q5BhOrIwatnLdXx6hUtTIolohzrTJhWMK3k8BwitVBnJGl5CDVWNkV80tmdkQ==
+eslint-plugin-svelte@^2.27.4:
+  version "2.27.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-svelte/-/eslint-plugin-svelte-2.27.4.tgz#840c87c3b5785be9b259f0f5a057cd35294df929"
+  integrity sha512-P1VPNgM0a6AGWU/qlk3Jf/55B4TIF6V0vlkRrZsqe+Um3SeCbH8dSakI/WJ4kwupYr7lMzHIbnjFXpzemXqzVw==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
