@@ -15,7 +15,7 @@
 	 */
 	function isDateIncluded(d: Date, dArray: Date[]): boolean {
 		return dArray.some((date) => {
-			return date.toLocaleDateString() === d.toLocaleDateString();
+			return new Date(date).toLocaleDateString() === d.toLocaleDateString();
 		});
 	}
 
