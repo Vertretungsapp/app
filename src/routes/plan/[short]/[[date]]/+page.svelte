@@ -22,7 +22,13 @@
 	};
 
 	const templatePlanData: PlanData = {
-		plan: {} as SchoolPlan,
+		plan: {
+			classes: [],
+			rooms: [],
+			holidays: [],
+			created: undefined,
+			date: undefined
+		} as SchoolPlan,
 		schedule: [],
 		date: new Date(),
 		type: PlanType.CLASS
@@ -87,11 +93,11 @@
 <div class="flex flex-col gap-4 h-screen max-h-screen">
 	<h1 class="text-center mt-20">Klasse <span class="text-accent">{data.short}</span></h1>
 	<div class="flex justify-between items-center px-8">
-		<PlanSwitchArrow />
+		<PlanSwitchArrow holidays={planData.plan.holidays} />
 		<p on:keypress={() => {}} on:click={resetDate} class="cursor-pointer">
 			{new Date($date).toLocaleDateString()}
 		</p>
-		<PlanSwitchArrow turned />
+		<PlanSwitchArrow holidays={planData.plan.holidays} turned />
 	</div>
 
 	<div class="flex flex-col gap-2 w-[90%] h-full m-auto overflow-y-scroll">
