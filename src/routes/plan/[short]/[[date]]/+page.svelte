@@ -78,6 +78,10 @@
 		fetchData($date, true);
 	}
 
+	function changeHome() {
+		location.href = '/';
+	}
+
 	async function resetDate() {
 		await fetchData(data.date ? new Date(data.date) : undefined).then(() => {
 			$date = planData.date;
@@ -111,9 +115,9 @@
 	</div>
 
 	<div class="w-full h-20 px-8 pb-4 bg-background flex justify-between items-center">
-		<a class="cursor-pointer" href="/">
+		<button class="cursor-pointer" on:click={changeHome}>
 			<Icon data={faHome} scale="2" />
-		</a>
+		</button>
 		<p class="text-grayedOut">
 			{planData.plan.created ? new Date(planData.plan.created).toLocaleString() : ''}
 		</p>
