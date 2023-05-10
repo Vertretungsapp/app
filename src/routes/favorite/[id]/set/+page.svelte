@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Plan, PlanType } from '$lib/api/server/class/Plan';
+	import type { PlanType } from '$lib/api/server/class/Plan';
 	import OverviewLinkButton from '../../../../components/Home/OverviewLinkButton.svelte';
 	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
 	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons/faDoorOpen';
