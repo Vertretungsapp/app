@@ -3,7 +3,7 @@
 </script>
 
 <div class="flex flex-col gap-4">
-	<FavButton number="1" />
-	<FavButton number="2" />
-	<FavButton number="3" />
+	<FavButton id="1" />
+	<FavButton id="2" />
+	<FavButton id="3" />
 </div>

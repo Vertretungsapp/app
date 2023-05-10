@@ -4,6 +4,12 @@ import type { Plan } from '$lib/api/server/class/Plan';
 import { PlanType } from '$lib/api/server/class/Plan';
 import { fetchPlan } from '$lib/api/fetch';
 
+export type PageData = {
+	id: number;
+	classes: Plan[];
+	rooms: Plan[];
+};
+
 export const load = (async ({ params }) => {
 	if (!browser)
 		return {
@@ -11,16 +17,20 @@ export const load = (async ({ params }) => {
 			planType: PlanType.CLASS
 		};
 
-	const planType = params.type as PlanType;
-	let plans: Plan[] = [];
+	let data: PageData;
 
 	try {
 		const schoolPlan = await fetchPlan();
 
-		if (planType === PlanType.CLASS) plans = schoolPlan.classes;
-		else if (planType === PlanType.ROOM) plans = schoolPlan.rooms;
+		data = {
+			id: parseInt(params.id),
+			classes: schoolPlan.classes,
+			rooms: schoolPlan.rooms
+		};
 
-		return { plans, planType };
+		console.log(data);
+
+		return data;
 	} catch (e) {
 		window.location.href = '/';
 		return;

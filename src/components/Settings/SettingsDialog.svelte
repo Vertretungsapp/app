@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { fetchPlan } from '$lib/api/fetch';
-	import {getTheme, setTheme, Theme} from "$lib/themeSwitcher";
-	import {browser} from "$app/environment";
+	import { getTheme, setTheme, Theme } from '$lib/themeSwitcher';
+	import { browser } from '$app/environment';
 
 	let selectedTheme = Theme.LIGHT;
-	if(browser) selectedTheme =	getTheme();
+	if (browser) selectedTheme = getTheme();
 
 	function closeModal() {
 		document.querySelector('#settingsDialog').close();
@@ -26,7 +26,11 @@
 >
 	<h1 class="my-4 text-center">Einstellungen</h1>
 	<div class="flex flex-col gap-2 items-center my-8">
-		<input type="button" value="Cache leeren" on:click={refreshCache} /><!-- TODO: probably only for early versions -->
+		<input
+			type="button"
+			value="Cache leeren"
+			on:click={refreshCache}
+		/><!-- TODO: probably only for early versions -->
 		<div class="w-full">
 			<p>Farbschema</p>
 			<select class="input w-full" on:change={changeTheme}>

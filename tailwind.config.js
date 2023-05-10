@@ -31,7 +31,7 @@ export default {
 							grayedOut: '#4E5764',
 							error: '#FF1B1C'
 						}
-					},
+					}
 				},
 				{
 					name: 'orange',
@@ -116,7 +116,7 @@ export default {
 							error: '#FF1B1C'
 						}
 					}
-				},
+				}
 			]
 		})
 	]
