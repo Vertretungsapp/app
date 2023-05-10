@@ -4,8 +4,8 @@
 	import { onMount } from 'svelte';
 	import type SchoolPlan from '$lib/api/server/class/SchoolPlan';
 	import { Icon } from 'svelte-awesome';
-	import { faRefresh } from '@fortawesome/free-solid-svg-icons/faRefresh';
-	import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
+	import { faRefresh } from '@fortawesome/free-solid-svg-icons';
+	import { faHouse } from '@fortawesome/free-solid-svg-icons';
 	import { date } from '../../../../components/Plan/stores';
 	import PlanSwitchArrow from '../../../../components/Plan/PlanSwitchArrow.svelte';
 	import PlanItem from '../../../../components/Plan/PlanItem.svelte';
@@ -116,7 +116,7 @@
 
 	<div class="w-full h-20 px-8 pb-4 bg-background flex justify-between items-center">
 		<button class="cursor-pointer" on:click={changeHome}>
-			<Icon data={faHome} scale="2" />
+			<Icon data={faHouse} scale="2" />
 		</button>
 		<p class="text-grayedOut">
 			{planData.plan.created ? new Date(planData.plan.created).toLocaleString() : ''}

@@ -1,7 +1,7 @@
 <script>
 	import LoginAndSettingsIcon from './LoginAndSettingsIcon.svelte';
-	import { faKey } from '@fortawesome/free-solid-svg-icons/faKey';
-	import { faGear } from '@fortawesome/free-solid-svg-icons/faGear';
+	import { faKey } from '@fortawesome/free-solid-svg-icons';
+	import { faGear } from '@fortawesome/free-solid-svg-icons';
 	import LoginDialog from '../Login/LoginDialog.svelte';
 	import SettingsDialog from '../Settings/SettingsDialog.svelte';
 </script>

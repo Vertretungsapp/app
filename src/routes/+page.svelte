@@ -2,8 +2,8 @@
 	import LoginAndSettings from '../components/LoginAndSettings/LoginAndSettings.svelte';
 	import { onMount } from 'svelte';
 	import OverviewLinkButton from '../components/Home/OverviewLinkButton.svelte';
-	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
-	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons/faDoorOpen';
+	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
+	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 	import { verifyCredentials } from '$lib/api/session';
 	import FavoriteButtons from '../components/Home/Favorites/FavoriteButtons.svelte';
 

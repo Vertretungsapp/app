@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Icon } from 'svelte-awesome';
-	import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
-	import { faStar as faStarLine } from '@fortawesome/free-regular-svg-icons/faStar';
+	import { faStar } from '@fortawesome/free-solid-svg-icons';
+	import { faStar as faStarLine } from '@fortawesome/free-regular-svg-icons';
 	import { onMount } from 'svelte';
-	import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+	import { faTrash } from '@fortawesome/free-solid-svg-icons';
 	import { getFavorite, removeFavorite } from '$lib/favorites';
 
 	export let id: number;

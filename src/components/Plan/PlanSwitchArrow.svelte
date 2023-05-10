@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Icon } from 'svelte-awesome';
-	import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
-	import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight';
+	import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import { date } from './stores';
 	import addBusinessDays from 'date-fns/addBusinessDays';
 

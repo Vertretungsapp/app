@@ -1,16 +1,15 @@
 <script lang="ts">
 	import type { PlanType } from '$lib/api/server/class/Plan';
 	import OverviewLinkButton from '../../../../components/Home/OverviewLinkButton.svelte';
-	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
-	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons/faDoorOpen';
+	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
+	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 	import type { PageData } from './+page';
 	import Overview from '../../../../components/Overview.svelte';
-	import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
+	import { faHouse } from '@fortawesome/free-solid-svg-icons';
 	import { Icon } from 'svelte-awesome';
 	import { onMount } from 'svelte';
 
 	let type: PlanType;
-	let short: string;
 
 	export let data: PageData;
 
@@ -43,7 +42,7 @@
 
 	<div class="w-full h-20 px-8 pb-4 bg-background flex justify-center items-center">
 		<a class="cursor-pointer" href="/">
-			<Icon data={faHome} scale="2" />
+			<Icon data={faHouse} scale="2" />
 		</a>
 	</div>
 </div>
