@@ -1,38 +1,20 @@
-# create-svelte
+# Vertretungsplan42
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8b4cbfd5-2af7-4815-849e-d5bba9ebafec/deploy-status)](https://app.netlify.com/sites/vertretungsplan42/deploys)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+![Logo Vertretungsplan42](https://github.com/SachsenspieltCoding/vertretungsplan42/blob/master/static/logo/icon.png)
 
-## Creating a project
+Deine Vertretungsplanapp für Indiware!
+Indiware ist eine Stundenplanungssoftware, welche primär an Sächsischen Schulen zum Einsatz kommt.
+Diese App ersetzt somit die offizielle App VpMobil24.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
+- Abrufen von Vertretungsplänen
+- Filtern von Stunden
+- Favoriten
+- Raumpläne
+- Anzeige für nächste Stunde
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Das funktioniert (noch) nicht
+- Eigene Indiware Instanzen (nur stundenplan24.de möglich)
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Das Projekt ist Open-Source und offen für Contributions!
