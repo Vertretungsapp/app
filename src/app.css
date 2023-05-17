@@ -5,9 +5,14 @@
 @tailwind utilities;
 
 @layer base {
+	* {
+		touch-action: pan-x pan-y;
+	}
+
 	html {
 		@apply bg-background;
 		@apply text-text;
+		@apply overflow-hidden;
 	}
 
 	h1 {
