@@ -1,11 +1,10 @@
 <script lang="ts">
-	import LoginAndSettings from '../components/LoginAndSettings/LoginAndSettings.svelte';
-	import { onMount } from 'svelte';
-	import OverviewLinkButton from '../components/Home/OverviewLinkButton.svelte';
-	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
-	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
-	import { verifyCredentials } from '$lib/api/session';
-	import FavoriteButtons from '../components/Home/Favorites/FavoriteButtons.svelte';
+	import LoginAndSettings from "../components/LoginAndSettings/LoginAndSettings.svelte";
+	import { onMount } from "svelte";
+	import OverviewLinkButton from "../components/Home/OverviewLinkButton.svelte";
+	import { faDoorOpen, faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
+	import { verifyCredentials } from "$lib/api/session";
+	import FavoriteButtons from "../components/Home/Favorites/FavoriteButtons.svelte";
 
 	onMount(async () => {
 		if (!(await verifyCredentials())) {
@@ -14,8 +13,8 @@
 	});
 </script>
 
-<div class="w-max m-auto py-20 flex flex-col h-screen justify-between">
-	<div>
+<div class="w-[80%] md:w-1/2 items-center m-auto py-20 flex flex-col h-screen justify-between">
+	<div class="w-max">
 		<LoginAndSettings />
 		<h1 class="text-center">Vertretungsplan<span class="text-accent">42</span></h1>
 	</div>

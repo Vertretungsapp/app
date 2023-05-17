@@ -1,11 +1,14 @@
 export enum Theme {
 	DEFAULT = 'default',
-	LIGHT = 'light',
+	DARK = 'dark',
 	ORANGE = 'orange',
 	DARKORANGE = 'darkOrange',
 	GREEN = 'green',
 	DARKGREEN = 'darkGreen',
 	PINKY = 'pinky',
+	DARKPINKY = 'darkPinky',
+	YELLOW = 'yellow',
+	DARKYELLOW = 'darkYellow',
 	BLACKANDWHITE = 'blackAndWhite'
 }
 

@@ -12,8 +12,8 @@ export default {
 			defaultTheme: {
 				extend: {
 					colors: {
-						background: '#111111',
-						text: '#EFF1F3',
+						background: '#EFF1F3',
+						text: '#111111',
 						accent: '#0071F5',
 						grayedOut: '#4E5764',
 						error: '#FF1B1C'
@@ -22,11 +22,11 @@ export default {
 			},
 			themes: [
 				{
-					name: 'light',
+					name: 'dark',
 					extend: {
 						colors: {
-							background: '#EFF1F3',
-							text: '#111111',
+							background: '#111111',
+							text: '#EFF1F3',
 							accent: '#0071F5',
 							grayedOut: '#4E5764',
 							error: '#FF1B1C'
@@ -112,6 +112,30 @@ export default {
 							background: '#111111',
 							text: '#EFF1F3',
 							accent: '#b8b8b8',
+							grayedOut: '#4E5764',
+							error: '#FF1B1C'
+						}
+					}
+				},
+				{
+					name: 'yellow',
+					extend: {
+						colors: {
+							background: '#EFF1F3',
+							text: '#111111',
+							accent: '#f2e500ff',
+							grayedOut: '#4E5764',
+							error: '#FF1B1C'
+						}
+					}
+				},
+				{
+					name: 'darkYellow',
+					extend: {
+						colors: {
+							background: '#111111',
+							text: '#EFF1F3',
+							accent: '#f2e500ff',
 							grayedOut: '#4E5764',
 							error: '#FF1B1C'
 						}

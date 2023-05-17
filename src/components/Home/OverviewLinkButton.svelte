@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { IconData } from 'svelte-awesome/components/Icon.svelte';
-	import { Icon } from 'svelte-awesome';
+	import type { IconData } from "svelte-awesome/components/Icon.svelte";
+	import { Icon } from "svelte-awesome";
 
 	export let text: string;
 	export let icon: IconData;
@@ -9,7 +9,7 @@
 
 <div>
 	<a
-		class="flex flex-col items-center justify-center p-2 border-[3px] border-accent rounded-[13px] aspect-square"
+		class="flex flex-col items-center justify-center max-w-[10rem] m-auto p-2 border-[3px] border-accent rounded-[13px] aspect-square"
 		{href}
 	>
 		<Icon data={icon} scale="4" />
