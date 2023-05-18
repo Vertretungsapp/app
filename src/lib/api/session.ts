@@ -1,8 +1,10 @@
 export type Credentials = {
 	schoolnumber: number;
-	username: string;
+	username: Username;
 	password: string;
 };
+
+export type Username = "schueler" | "lehrer";
 
 /**
  * Saves the credentials to the local storage and returns true if the credentials are valid.

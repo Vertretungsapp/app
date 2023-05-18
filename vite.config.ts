@@ -3,6 +3,6 @@ import { defineConfig } from 'vite';
 import mkCert from 'vite-plugin-mkcert';
 
 export default defineConfig({
-	server: { https: false },
+	server: { https: true },
 	plugins: [sveltekit(), mkCert()]
 });
