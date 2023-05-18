@@ -10,7 +10,7 @@
 	import type { Plan } from '$lib/api/server/class/Plan';
 	import { PlanType } from '$lib/api/server/class/Plan';
 	import BackMenu from '../../../../components/BackMenu.svelte';
-	import {faInfoCircle, faRefresh} from '@fortawesome/free-solid-svg-icons';
+	import { faInfoCircle, faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 	export let data: { short: string; date: string | undefined };
 

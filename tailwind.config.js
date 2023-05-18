@@ -12,10 +12,6 @@ export default {
 			defaultTheme: {
 				extend: {
 					colors: {
-						background: '#EFF1F3',
-						secondaryBackground: '#e6e6e6',
-						text: '#111111',
-						accent: '#0071F5',
 						grayedOut: '#4E5764',
 						error: '#FF1B1C'
 					}
@@ -28,7 +24,25 @@ export default {
 						colors: {
 							background: '#111111',
 							secondaryBackground: '#181818',
-							text: '#EFF1F3',
+							text: '#EFF1F3'
+						}
+					}
+				},
+				{
+					name: 'light',
+					extend: {
+						colors: {
+							background: '#EFF1F3',
+							secondaryBackground: '#e6e6e6',
+							text: '#111111'
+						}
+					}
+				},
+				{
+					name: 'default',
+					extend: {
+						colors: {
+							accent: '#0071F5'
 						}
 					}
 				},
@@ -36,17 +50,6 @@ export default {
 					name: 'orange',
 					extend: {
 						colors: {
-							accent: '#FF6A00',
-						}
-					}
-				},
-				{
-					name: 'darkOrange',
-					extend: {
-						colors: {
-							background: '#111111',
-							secondaryBackground: '#181818',
-							text: '#EFF1F3',
 							accent: '#FF6A00'
 						}
 					}
@@ -55,18 +58,7 @@ export default {
 					name: 'green',
 					extend: {
 						colors: {
-							accent: '#00B300',
-						}
-					}
-				},
-				{
-					name: 'darkGreen',
-					extend: {
-						colors: {
-							background: '#111111',
-							secondaryBackground: '#181818',
-							text: '#EFF1F3',
-							accent: '#00B300',
+							accent: '#00B300'
 						}
 					}
 				},
@@ -74,18 +66,7 @@ export default {
 					name: 'pinky',
 					extend: {
 						colors: {
-							accent: '#FF00FF',
-						}
-					}
-				},
-				{
-					name: 'darkPinky',
-					extend: {
-						colors: {
-							background: '#111111',
-							secondaryBackground: '#181818',
-							text: '#EFF1F3',
-							accent: '#FF00FF',
+							accent: '#FF00FF'
 						}
 					}
 				},
@@ -93,7 +74,7 @@ export default {
 					name: 'blackAndWhite',
 					extend: {
 						colors: {
-							accent: '#b8b8b8',
+							accent: '#b8b8b8'
 						}
 					}
 				},
@@ -101,18 +82,7 @@ export default {
 					name: 'yellow',
 					extend: {
 						colors: {
-							accent: '#f2e500ff',
-						}
-					}
-				},
-				{
-					name: 'darkYellow',
-					extend: {
-						colors: {
-							background: '#111111',
-							secondaryBackground: '#181818',
-							text: '#EFF1F3',
-							accent: '#f2e500ff',
+							accent: '#f2e500ff'
 						}
 					}
 				}

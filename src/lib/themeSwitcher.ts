@@ -1,27 +1,27 @@
-export enum Theme {
+export enum ThemeAccent {
 	DEFAULT = 'default',
-	DARK = 'dark',
 	ORANGE = 'orange',
-	DARKORANGE = 'darkOrange',
 	GREEN = 'green',
-	DARKGREEN = 'darkGreen',
 	PINKY = 'pinky',
-	DARKPINKY = 'darkPinky',
 	YELLOW = 'yellow',
-	DARKYELLOW = 'darkYellow',
 	BLACKANDWHITE = 'blackAndWhite'
 }
+
+export type Theme = {
+	accent: ThemeAccent;
+	dark: boolean;
+};
 
 /**
  * Set the theme in local storage and apply it to the root element
  * @param theme The theme to set
  * @return {void}
  */
-export function setTheme(theme: Theme) {
-	if (theme === 'default') return clearTheme();
-	localStorage.setItem('theme', theme);
-	document.querySelector(':root')?.classList.remove(...Object.values(Theme));
-	document.querySelector(':root')?.classList.add(theme);
+export function setTheme(theme: Theme): Theme {
+	localStorage.setItem('theme', JSON.stringify(theme));
+	document.querySelector(':root')?.classList.remove(...Object.values(ThemeAccent), 'dark', 'light');
+	document.querySelector(':root')?.classList.add(theme.accent, theme.dark ? 'dark' : 'light');
+	return theme;
 }
 
 /**
@@ -29,9 +29,9 @@ export function setTheme(theme: Theme) {
  * @return {void}
  */
 export function loadTheme() {
-	const theme = localStorage.getItem('theme');
+	const theme = getTheme();
 	if (theme) {
-		setTheme(theme as Theme);
+		setTheme(theme);
 	}
 }
 
@@ -41,9 +41,10 @@ export function loadTheme() {
  */
 export function clearTheme() {
 	localStorage.removeItem('theme');
-	document.querySelector(':root')?.classList.remove(...Object.values(Theme));
+	document.querySelector(':root')?.classList.remove(...Object.values(ThemeAccent), 'dark');
 }
 
 export function getTheme() {
-	return localStorage.getItem('theme') as Theme;
+	const theme = localStorage.getItem('theme');
+	return theme ? (JSON.parse(theme) as Theme) : undefined;
 }

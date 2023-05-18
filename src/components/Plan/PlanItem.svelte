@@ -6,7 +6,7 @@
 	export let type: PlanType;
 
 	function hasChanged() {
-		if(!lesson.subject || !lesson.teacher || !lesson.room) return false;
+		if (!lesson.subject || !lesson.teacher || !lesson.room) return false;
 		return lesson.subject.changed || lesson.teacher.changed || lesson.room.changed;
 	}
 </script>
@@ -15,7 +15,7 @@
 	<div class="flex items-center gap-4 w-full">
 		<div class="flex items-center justify-between gap-4 w-[4.5rem]">
 			<h1 class="text-center m-0 w-full {hasChanged() && 'text-error'}">{lesson.lessonNumber}</h1>
-			<div class="w-[3px] h-12 rounded-[7px] bg-accent"/>
+			<div class="w-[3px] h-12 rounded-[7px] bg-accent" />
 		</div>
 		<div class="flex justify-between w-full items-center">
 			<div class="leading-tight">
