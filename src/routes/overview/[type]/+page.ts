@@ -11,7 +11,21 @@ export const load = (async ({ params }) => {
 			planType: PlanType.CLASS
 		};
 
-	const planType = params.type as PlanType;
+	let planType;
+
+	switch (params.type) {
+		case 'class':
+			planType = PlanType.CLASS;
+			break;
+		case 'room':
+			planType = PlanType.ROOM;
+			break;
+		default:
+			planType = PlanType.CLASS;
+			break;
+	}
+
+
 	let plans: Plan[] = [];
 
 	try {

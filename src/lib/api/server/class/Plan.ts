@@ -6,6 +6,6 @@ export interface Plan {
 }
 
 export enum PlanType {
-	CLASS = 'class',
-	ROOM = 'room'
+	CLASS = 'Klasse',
+	ROOM = 'Raum'
 }

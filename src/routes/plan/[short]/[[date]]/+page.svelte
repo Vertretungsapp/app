@@ -103,7 +103,7 @@
 </div>
 
 <div class="flex flex-col gap-4 pt-20 pb-10 h-screen max-h-screen">
-	<h1 class="text-center">Klasse <span class="text-accent">{data.short}</span></h1>
+	<h1 class="text-center">{planData.type} <span class="text-accent">{data.short}</span></h1>
 	<div class="flex justify-between items-center px-8">
 		<PlanSwitchArrow holidays={planData.plan.holidays} />
 		<p on:keypress={() => {}} on:click={resetDate} class="cursor-pointer">

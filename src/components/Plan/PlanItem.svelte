@@ -14,13 +14,13 @@
 		</div>
 		<div class="flex justify-between w-full items-center">
 			<div class="leading-tight">
-				<p class={lesson.subject.changed && 'text-error'}>{lesson.subject.name || '---'}</p>
-				<p class={lesson.teacher.changed && 'text-error'}>{lesson.teacher.name || '---'}</p>
+				<p class={lesson.subject.changed && 'text-error'}>{lesson.subject.name || ''}</p>
+				<p class={lesson.teacher.changed && 'text-error'}>{lesson.teacher.name || ''}</p>
 			</div>
-			{#if type === 'class'}
-				<h2 class={lesson.room.changed && 'text-error'}>{lesson.room.name || '---'}</h2>
-			{:else if type === 'room'}
-				<h2>{lesson.classShort || '---'}</h2>
+			{#if type === 'Klasse'}
+				<h2 class={lesson.room.changed && 'text-error'}>{lesson.room.name || ''}</h2>
+			{:else if type === 'Raum'}
+				<h2>{lesson.classShort || ''}</h2>
 			{/if}
 		</div>
 	</div>
