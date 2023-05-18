@@ -16,7 +16,7 @@
 <div class="w-[80%] md:w-1/2 items-center m-auto py-20 flex flex-col h-screen justify-between">
 	<div class="w-max">
 		<LoginAndSettings />
-		<h1 class="text-center">Vertretungsplan<span class="text-accent">42</span></h1>
+		<h1 class="text-center">Vertretungsapp<span class="text-accent">.</span></h1>
 	</div>
 
 	<FavoriteButtons />
