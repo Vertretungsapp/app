@@ -1,5 +1,5 @@
 <script>
-	import FavButton from "./FavButton.svelte";
+	import FavButton from './FavButton.svelte';
 </script>
 
 <div class="flex flex-col gap-4 w-full">

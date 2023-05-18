@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { IconData } from "svelte-awesome/components/Icon.svelte";
-	import { Icon } from "svelte-awesome";
+	import type { IconData } from 'svelte-awesome/components/Icon.svelte';
+	import { Icon } from 'svelte-awesome';
 
 	export let text: string;
 	export let icon: IconData;

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import "../app.css";
-	import { onMount } from "svelte";
+	import '../app.css';
+	import { onMount } from 'svelte';
 
 	onMount(() => {
 		if (window.location.pathname === '/alpha' || window.location.pathname === '/unlock') return;

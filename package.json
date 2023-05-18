@@ -1,8 +1,7 @@
 {
-	"name": "vertretungsplan42",
-	"version": "0.0.1",
+	"name": "vertretungsapp",
+	"version": "0.1.0",
 	"author": "Sachsenspielt",
-	"private": true,
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",

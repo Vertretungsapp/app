@@ -1,10 +1,10 @@
 <script lang="ts">
-	import LoginAndSettings from "../components/LoginAndSettings/LoginAndSettings.svelte";
-	import { onMount } from "svelte";
-	import OverviewLinkButton from "../components/Home/OverviewLinkButton.svelte";
-	import { faDoorOpen, faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
-	import { verifyCredentials } from "$lib/api/session";
-	import FavoriteButtons from "../components/Home/Favorites/FavoriteButtons.svelte";
+	import LoginAndSettings from '../components/LoginAndSettings/LoginAndSettings.svelte';
+	import { onMount } from 'svelte';
+	import OverviewLinkButton from '../components/Home/OverviewLinkButton.svelte';
+	import { faDoorOpen, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
+	import { verifyCredentials } from '$lib/api/session';
+	import FavoriteButtons from '../components/Home/Favorites/FavoriteButtons.svelte';
 
 	onMount(async () => {
 		if (!(await verifyCredentials())) {
