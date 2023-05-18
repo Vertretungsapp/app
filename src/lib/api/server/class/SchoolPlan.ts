@@ -56,7 +56,7 @@ export function fromJson(json: any): SchoolPlan {
 	if (classes) plan.classes = parseArrayOrObjectFromJson<Class>(classes.Kl, classParser);
 
 	const info = json.VpMobil.ZusatzInfo;
-	if (info) plan.info = parseArrayOrObjectFromJson<string>(info.ZiZeile, (s: string) => s);
+	if (info) plan.info = parseArrayOrObjectFromJson<string>(info, (s: any) => s.ZiZeile);
 
 	plan.generateRooms();
 
