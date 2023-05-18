@@ -15,5 +15,6 @@
 	],
 	"theme_color": "#111111",
 	"background_color": "#111111",
+	"start_url": "https://app.vertretungsapp.de",
 	"display": "standalone"
 }
