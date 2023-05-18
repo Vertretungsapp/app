@@ -1,14 +1,14 @@
 <script lang="ts">
 	import type { PlanType } from '$lib/api/server/class/Plan';
-	import OverviewLinkButton from '../../../../components/Home/OverviewLinkButton.svelte';
+	import OverviewLinkButton from '../../../../../components/Home/OverviewLinkButton.svelte';
 	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 	import type { PageData } from './+page';
-	import Overview from '../../../../components/Overview.svelte';
+	import Overview from '../../../../../components/Overview.svelte';
 	import { faHouse } from '@fortawesome/free-solid-svg-icons';
 	import { Icon } from 'svelte-awesome';
 	import { onMount } from 'svelte';
-	import BackMenu from '../../../../components/BackMenu.svelte';
+	import BackMenu from '../../../../../components/BackMenu.svelte';
 
 	let type: PlanType;
 
@@ -17,7 +17,7 @@
 	let overwriteHref = '';
 
 	onMount(() => {
-		overwriteHref = `/favorite/${data.id}/set/{short}`;
+		overwriteHref = `/favorite/${data.schoolnumber}/${data.id}/set/{short}`;
 	});
 </script>
 

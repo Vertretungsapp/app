@@ -1,4 +1,5 @@
 export type Favorite = {
+	schoolnumber: string;
 	id: number;
 	short: string;
 };
@@ -9,16 +10,17 @@ export type Favorite = {
  * @returns {void}
  */
 export function setFavorite(favorite: Favorite) {
-	localStorage.setItem(`fav.${favorite.id}`, JSON.stringify(favorite));
+	localStorage.setItem(`fav.${favorite.schoolnumber}.${favorite.id}`, JSON.stringify(favorite));
 }
 
 /**
  * Get a favorite from the local storage
+ * @param schoolnumber
  * @param id
  * @returns {Favorite | null}
  */
-export function getFavorite(id: number): Favorite | null {
-	const fav = localStorage.getItem(`fav.${id}`);
+export function getFavorite(schoolnumber: string, id: number): Favorite | null {
+	const fav = localStorage.getItem(`fav.${schoolnumber}.${id}`);
 	return fav ? JSON.parse(fav) : null;
 }
 
@@ -27,8 +29,8 @@ export function getFavorite(id: number): Favorite | null {
  * @param id
  * @returns {void}
  */
-export function removeFavorite(id: number) {
-	localStorage.removeItem(`fav.${id}`);
+export function removeFavorite(schoolnumber: string, id: number) {
+	localStorage.removeItem(`fav.${schoolnumber}.${id}`);
 }
 
 /**

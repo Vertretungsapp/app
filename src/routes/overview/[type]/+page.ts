@@ -25,7 +25,6 @@ export const load = (async ({ params }) => {
 			break;
 	}
 
-
 	let plans: Plan[] = [];
 
 	try {

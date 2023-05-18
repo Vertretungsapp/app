@@ -1,5 +1,5 @@
 export type Credentials = {
-	schoolnumber: number;
+	schoolnumber: string;
 	username: Username;
 	password: string;
 };

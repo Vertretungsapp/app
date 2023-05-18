@@ -12,7 +12,7 @@
 		const formData = new FormData(e.target);
 
 		const data = {
-			schoolnumber: parseInt(formData.get('schoolnumber').toString()) || 0,
+			schoolnumber: formData.get('schoolnumber').toString(),
 			username: formData.get('username') as 'schueler' | 'lehrer',
 			password: formData.get('password').toString()
 		};
@@ -54,7 +54,7 @@
 		/>
 		<select class="input" id="loginDialog_username" name="username">
 			<option value="schueler" selected>Schüler</option>
-			<!--			<option value="lehrer">Lehrer</option>-->
+			<option value="lehrer">Lehrer</option>
 		</select>
 		<input type="password" id="loginDialog_password" name="password" placeholder="Password" />
 		<div class="grid grid-cols-4 gap-4 mt-4">

@@ -7,6 +7,7 @@
 
 	onMount(() => {
 		setFavorite({
+			schoolnumber: data.schoolnumber,
 			id: data.id,
 			short: data.short
 		});

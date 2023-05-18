@@ -5,14 +5,17 @@
 	import { onMount } from 'svelte';
 	import { faTrash } from '@fortawesome/free-solid-svg-icons';
 	import { getFavorite, removeFavorite } from '$lib/favorites';
+	import { getCredentials } from '$lib/api/session';
 
 	export let id: number;
 
 	let isFavorite: boolean;
 	let short: string;
+	let schoolnumber: string;
 
 	onMount(() => {
-		const fav = getFavorite(id);
+		schoolnumber = getCredentials()?.schoolnumber ?? '';
+		const fav = getFavorite(schoolnumber, id);
 		isFavorite = fav !== null;
 		short = fav?.short ?? '';
 	});
@@ -20,7 +23,7 @@
 	function clear() {
 		isFavorite = false;
 		short = '';
-		removeFavorite(id);
+		removeFavorite(schoolnumber, id);
 	}
 </script>
 
@@ -30,7 +33,7 @@
 	</div>
 
 	<a
-		href={isFavorite ? `/plan/${short}` : `/favorite/${id}/set`}
+		href={isFavorite ? `/plan/${short}` : `/favorite/${schoolnumber}/${id}/set`}
 		class={`w-full p-1 border-[3px] border-accent rounded-[7px] flex items-center justify-center ${
 			!isFavorite && 'text-grayedOut'
 		}`}
