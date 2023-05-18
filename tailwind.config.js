@@ -13,6 +13,7 @@ export default {
 				extend: {
 					colors: {
 						background: '#EFF1F3',
+						secondaryBackground: '#e6e6e6',
 						text: '#111111',
 						accent: '#0071F5',
 						grayedOut: '#4E5764',
@@ -26,10 +27,8 @@ export default {
 					extend: {
 						colors: {
 							background: '#111111',
+							secondaryBackground: '#181818',
 							text: '#EFF1F3',
-							accent: '#0071F5',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
 						}
 					}
 				},
@@ -37,11 +36,7 @@ export default {
 					name: 'orange',
 					extend: {
 						colors: {
-							background: '#EFF1F3',
-							text: '#111111',
 							accent: '#FF6A00',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
 						}
 					}
 				},
@@ -50,10 +45,9 @@ export default {
 					extend: {
 						colors: {
 							background: '#111111',
+							secondaryBackground: '#181818',
 							text: '#EFF1F3',
-							accent: '#FF6A00',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
+							accent: '#FF6A00'
 						}
 					}
 				},
@@ -61,11 +55,7 @@ export default {
 					name: 'green',
 					extend: {
 						colors: {
-							background: '#EFF1F3',
-							text: '#111111',
 							accent: '#00B300',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
 						}
 					}
 				},
@@ -74,10 +64,9 @@ export default {
 					extend: {
 						colors: {
 							background: '#111111',
+							secondaryBackground: '#181818',
 							text: '#EFF1F3',
 							accent: '#00B300',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
 						}
 					}
 				},
@@ -85,11 +74,7 @@ export default {
 					name: 'pinky',
 					extend: {
 						colors: {
-							background: '#EFF1F3',
-							text: '#111111',
 							accent: '#FF00FF',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
 						}
 					}
 				},
@@ -98,10 +83,9 @@ export default {
 					extend: {
 						colors: {
 							background: '#111111',
+							secondaryBackground: '#181818',
 							text: '#EFF1F3',
 							accent: '#FF00FF',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
 						}
 					}
 				},
@@ -109,11 +93,7 @@ export default {
 					name: 'blackAndWhite',
 					extend: {
 						colors: {
-							background: '#111111',
-							text: '#EFF1F3',
 							accent: '#b8b8b8',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
 						}
 					}
 				},
@@ -121,11 +101,7 @@ export default {
 					name: 'yellow',
 					extend: {
 						colors: {
-							background: '#EFF1F3',
-							text: '#111111',
 							accent: '#f2e500ff',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
 						}
 					}
 				},
@@ -134,10 +110,9 @@ export default {
 					extend: {
 						colors: {
 							background: '#111111',
+							secondaryBackground: '#181818',
 							text: '#EFF1F3',
 							accent: '#f2e500ff',
-							grayedOut: '#4E5764',
-							error: '#FF1B1C'
 						}
 					}
 				}

@@ -4,13 +4,18 @@
 
 	export let lesson: PlannedLesson;
 	export let type: PlanType;
+
+	function hasChanged() {
+		if(!lesson.subject || !lesson.teacher || !lesson.room) return false;
+		return lesson.subject.changed || lesson.teacher.changed || lesson.room.changed;
+	}
 </script>
 
-<div class="border-[3px] border-accent flex flex-col rounded-[13px] gap-4 px-4 py-2">
+<div class="bg-secondaryBackground flex flex-col rounded-[13px] gap-4 px-4 py-2">
 	<div class="flex items-center gap-4 w-full">
 		<div class="flex items-center justify-between gap-4 w-[4.5rem]">
-			<h1 class="text-center m-0">{lesson.lessonNumber}</h1>
-			<div class="w-[1px] h-12 rounded-[7px] bg-accent" />
+			<h1 class="text-center m-0 w-full {hasChanged() && 'text-error'}">{lesson.lessonNumber}</h1>
+			<div class="w-[3px] h-12 rounded-[7px] bg-accent"/>
 		</div>
 		<div class="flex justify-between w-full items-center">
 			<div class="leading-tight">

@@ -4,14 +4,13 @@
 	import { onMount } from 'svelte';
 	import type SchoolPlan from '$lib/api/server/class/SchoolPlan';
 	import { Icon } from 'svelte-awesome';
-	import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 	import { date } from '../../../../components/Plan/stores';
 	import PlanSwitchArrow from '../../../../components/Plan/PlanSwitchArrow.svelte';
 	import PlanItem from '../../../../components/Plan/PlanItem.svelte';
 	import type { Plan } from '$lib/api/server/class/Plan';
 	import { PlanType } from '$lib/api/server/class/Plan';
 	import BackMenu from '../../../../components/BackMenu.svelte';
-	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
+	import {faInfoCircle, faRefresh} from '@fortawesome/free-solid-svg-icons';
 
 	export let data: { short: string; date: string | undefined };
 
