@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {getCredentials, login, logout} from '$lib/api/session';
+	import { getCredentials, login, logout } from '$lib/api/session';
 	import type { Credentials } from '$lib/api/session';
 	import { onMount } from 'svelte';
 	import { Icon } from 'svelte-awesome';
@@ -13,7 +13,7 @@
 
 		const data = {
 			schoolnumber: parseInt(formData.get('schoolnumber').toString()) || 0,
-			username: formData.get('username') as "schueler" | "lehrer",
+			username: formData.get('username') as 'schueler' | 'lehrer',
 			password: formData.get('password').toString()
 		};
 
@@ -54,7 +54,7 @@
 		/>
 		<select class="input" id="loginDialog_username" name="username">
 			<option value="schueler" selected>Schüler</option>
-<!--			<option value="lehrer">Lehrer</option>-->
+			<!--			<option value="lehrer">Lehrer</option>-->
 		</select>
 		<input type="password" id="loginDialog_password" name="password" placeholder="Password" />
 		<div class="grid grid-cols-4 gap-4 mt-4">

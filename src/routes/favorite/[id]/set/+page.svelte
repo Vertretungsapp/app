@@ -8,6 +8,7 @@
 	import { faHouse } from '@fortawesome/free-solid-svg-icons';
 	import { Icon } from 'svelte-awesome';
 	import { onMount } from 'svelte';
+	import BackMenu from '../../../../components/BackMenu.svelte';
 
 	let type: PlanType;
 
@@ -20,11 +21,17 @@
 	});
 </script>
 
-<div class="flex flex-col gap-4 h-screen max-h-screen w-max m-auto">
-	<h1 class="text-center mt-20">Favoritenauswahl</h1>
-	<div class="h-full flex items-center justify-center overflow-y-scroll">
-		{#if !type}
-			<div class="w-full grid grid-cols-3 gap-4">
+<BackMenu />
+
+<div class="flex flex-col gap-4 h-screen py-20 max-h-screen w-full">
+	<h1 class="text-center">Favoritenauswahl</h1>
+	{#if type === 'class'}
+		<Overview plans={data.classes} {overwriteHref} />
+	{:else if type === 'room'}
+		<Overview plans={data.rooms} {overwriteHref} />
+	{:else}
+		<div class="h-full w-full flex items-center justify-center overflow-y-scroll">
+			<div class="w-[80%] grid grid-cols-3 gap-4">
 				<button on:click={() => (type = 'class')}>
 					<OverviewLinkButton text="Klassen" href="#" icon={faPeopleGroup} />
 				</button>
@@ -33,16 +40,6 @@
 					<OverviewLinkButton text="Räume" href="#" icon={faDoorOpen} />
 				</button>
 			</div>
-		{:else if type === 'class'}
-			<Overview plans={data.classes} {overwriteHref} />
-		{:else if type === 'room'}
-			<Overview plans={data.rooms} {overwriteHref} />
-		{/if}
-	</div>
-
-	<div class="w-full h-20 px-8 pb-4 bg-background flex justify-center items-center">
-		<a class="cursor-pointer" href="/">
-			<Icon data={faHouse} scale="2" />
-		</a>
-	</div>
+		</div>
+	{/if}
 </div>

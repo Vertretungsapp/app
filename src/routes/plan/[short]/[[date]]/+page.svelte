@@ -11,6 +11,7 @@
 	import PlanItem from '../../../../components/Plan/PlanItem.svelte';
 	import type { Plan } from '$lib/api/server/class/Plan';
 	import { PlanType } from '$lib/api/server/class/Plan';
+	import BackMenu from '../../../../components/BackMenu.svelte';
 
 	export let data: { short: string; date: string | undefined };
 
@@ -35,6 +36,7 @@
 	};
 
 	let planData: PlanData = templatePlanData;
+	let isRefreshing = false;
 
 	function getPlanFromSchoolPlan(
 		short: string,
@@ -58,6 +60,7 @@
 	}
 
 	async function fetchData(d?: Date, force?: boolean) {
+		isRefreshing = true;
 		try {
 			const schoolPlan = await fetchPlan(d ? new Date(d) : undefined, force);
 			let plan = getPlanFromSchoolPlan(data.short, schoolPlan);
@@ -72,14 +75,11 @@
 		} catch (e) {
 			planData = templatePlanData;
 		}
+		isRefreshing = false;
 	}
 
 	function forceReload() {
 		fetchData($date, true);
-	}
-
-	function changeHome() {
-		location.href = '/';
 	}
 
 	async function resetDate() {
@@ -94,8 +94,16 @@
 	onMount(() => resetDate());
 </script>
 
-<div class="flex flex-col gap-4 h-screen max-h-screen">
-	<h1 class="text-center mt-20">Klasse <span class="text-accent">{data.short}</span></h1>
+<BackMenu />
+
+<div class="fixed top-0 right-0 h-20 w-20 flex items-center justify-center">
+	<button class="cursor-pointer" on:click={forceReload}>
+		<Icon data={faRefresh} scale="2" />
+	</button>
+</div>
+
+<div class="flex flex-col gap-4 pt-20 pb-10 h-screen max-h-screen">
+	<h1 class="text-center">Klasse <span class="text-accent">{data.short}</span></h1>
 	<div class="flex justify-between items-center px-8">
 		<PlanSwitchArrow holidays={planData.plan.holidays} />
 		<p on:keypress={() => {}} on:click={resetDate} class="cursor-pointer">
@@ -103,6 +111,14 @@
 		</p>
 		<PlanSwitchArrow holidays={planData.plan.holidays} turned />
 	</div>
+
+	<p class="text-grayedOut w-full text-center">
+		{#if isRefreshing}
+			Lade...
+		{:else}
+			{planData.plan.created ? new Date(planData.plan.created).toLocaleString() : ''}
+		{/if}
+	</p>
 
 	<div class="flex flex-col gap-2 w-[90%] h-full m-auto overflow-y-scroll">
 		{#if planData.schedule.length === 0}
@@ -112,17 +128,5 @@
 		{#each planData.schedule as lesson}
 			<PlanItem {lesson} type={planData.type} />
 		{/each}
-	</div>
-
-	<div class="w-full h-20 px-8 pb-4 bg-background flex justify-between items-center">
-		<button class="cursor-pointer" on:click={changeHome}>
-			<Icon data={faHouse} scale="2" />
-		</button>
-		<p class="text-grayedOut">
-			{planData.plan.created ? new Date(planData.plan.created).toLocaleString() : ''}
-		</p>
-		<button class="cursor-pointer" on:click={forceReload}>
-			<Icon data={faRefresh} scale="2" />
-		</button>
 	</div>
 </div>
