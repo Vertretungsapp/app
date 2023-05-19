@@ -1,12 +1,18 @@
-import PlannedLesson, { fromJson as plannedLessonParser } from './PlannedLesson';
+import type { Plan } from '$lib/api/stundenplan42/class/Plan';
+import { PlanType } from '$lib/api/stundenplan42/class/Plan';
 import Lesson, { fromJson as lessonParser } from './Lesson';
+import PlannedLesson, { fromJson as plannedLessonParser } from './PlannedLesson';
 import { parseArrayOrObjectFromJson } from './SchoolPlan';
-import type { Plan } from '$lib/api/server/class/Plan';
 
 export default class Class implements Plan {
+	type: PlanType = PlanType.CLASS;
 	schedule: PlannedLesson[] = [];
-	short: string | undefined;
+	short: string;
 	lessons: Lesson[] = [];
+
+	constructor(short: string) {
+		this.short = short;
+	}
 }
 
 /**
@@ -14,8 +20,7 @@ export default class Class implements Plan {
  * @param json JSON response
  */
 export function fromJson(json: any): Class {
-	const klass = new Class();
-	klass.short = json.Kurz;
+	const klass = new Class(json.Kurz);
 
 	const lessons = json.Unterricht.Ue;
 	klass.lessons = parseArrayOrObjectFromJson<Lesson>(lessons, lessonParser);

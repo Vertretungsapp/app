@@ -13,7 +13,7 @@
 	});
 </script>
 
-<div class="w-[80%] md:w-1/2 items-center m-auto py-20 flex flex-col h-screen justify-between">
+<div class="m-auto flex h-screen w-[80%] flex-col items-center justify-between py-20 md:w-1/2">
 	<div class="w-max">
 		<LoginAndSettings />
 		<h1 class="text-center">Vertretungsapp<span class="text-accent">.</span></h1>
@@ -21,7 +21,7 @@
 
 	<FavoriteButtons />
 
-	<div class="bottom-4 w-full grid grid-cols-3 gap-4">
+	<div class="bottom-4 grid w-full grid-cols-3 gap-4">
 		<OverviewLinkButton text="Klassen" href="/overview/class" icon={faPeopleGroup} />
 		<div />
 		<!--		<OverviewLinkButton text="Lehrer" href="/overview/teacher" icon={faPeopleGroup} />-->

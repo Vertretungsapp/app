@@ -1,3 +1,6 @@
+import {NoCredentialsError} from '$lib/api/stundenplan42/errors/NoCredentialsError';
+import {testCredentials} from "$lib/api/stundenplan42/stundenplan24";
+
 export type Credentials = {
 	schoolnumber: string;
 	username: Username;
@@ -13,14 +16,9 @@ export type Username = 'schueler' | 'lehrer';
  * @returns number Status code of the request (200, 401, 404)
  */
 export async function login(credentials: Credentials): Promise<number> {
-	const res = await fetch('/api/verifyCredentials', {
-		method: 'POST',
-		body: JSON.stringify({ credentials })
-	});
-
-	if (res.status === 200) localStorage.setItem('credentials', JSON.stringify(credentials));
-
-	return res.status;
+	const verify = await testCredentials(credentials)
+	if (verify === 200) localStorage.setItem('credentials', JSON.stringify(credentials));
+	return verify;
 }
 
 /**
@@ -48,16 +46,16 @@ export function getCredentials(): Credentials | null {
  */
 export async function verifyCredentials(): Promise<boolean> {
 	const credentials = getCredentials();
-
 	if (!credentials) return false;
+	return await testCredentials(credentials) === 200;
+}
 
-	const res = await fetch('/api/verifyCredentials', {
-		method: 'POST',
-		body: JSON.stringify({ credentials })
-	});
-
-	if (res.status === 401) logout();
-	if (res.status === 404) logout();
-
-	return res.status === 200;
+/**
+ * Get schoolnumber from credentials
+ * @returns string
+ */
+export function getSchoolnumber(): string {
+	const credentials = getCredentials();
+	if (!credentials) throw new NoCredentialsError();
+	return credentials.schoolnumber;
 }

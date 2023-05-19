@@ -27,23 +27,20 @@
 	}
 </script>
 
-<div class="flex items-center gap-2 w-full">
-	<div class="h-full aspect-square flex items-center justify-center text-accent">
+<div class="flex w-full items-center gap-2">
+	<div class="flex aspect-square h-full items-center justify-center text-accent">
 		<Icon data={isFavorite ? faStar : faStarLine} scale="2" />
 	</div>
 
 	<a
 		href={isFavorite ? `/plan/${short}` : `/favorite/${schoolnumber}/${id}/set`}
-		class={`w-full p-1 dynborder rounded-[7px] flex items-center justify-center ${
+		class={`dynborder flex w-full items-center justify-center rounded-[7px] p-1 ${
 			!isFavorite && 'text-grayedOut'
 		}`}
 		>{isFavorite ? short : `Favorit ${id}`}
 	</a>
 	{#if isFavorite}
-		<button
-			on:click={clear}
-			class="dynborder rounded-[7px] p-1 h-full aspect-square"
-		>
+		<button on:click={clear} class="dynborder aspect-square h-full rounded-[7px] p-1">
 			<Icon data={faTrash} scale="1.5" />
 		</button>
 	{/if}

@@ -20,8 +20,16 @@ export type Theme = {
  */
 export function setTheme(theme: Theme): Theme {
 	localStorage.setItem('theme', JSON.stringify(theme));
-	document.querySelector(':root')?.classList.remove(...Object.values(ThemeAccent), 'dark', 'light', 'borderMode');
-	document.querySelector(':root')?.classList.add(theme.accent, theme.dark ? 'dark' : 'light', theme.borderMode ? 'borderMode' : 'bgMode');
+	document
+		.querySelector(':root')
+		?.classList.remove(...Object.values(ThemeAccent), 'dark', 'light', 'borderMode');
+	document
+		.querySelector(':root')
+		?.classList.add(
+			theme.accent,
+			theme.dark ? 'dark' : 'light',
+			theme.borderMode ? 'borderMode' : 'bgMode'
+		);
 	return theme;
 }
 
@@ -42,7 +50,9 @@ export function loadTheme() {
  */
 export function clearTheme() {
 	localStorage.removeItem('theme');
-	document.querySelector(':root')?.classList.remove(...Object.values(ThemeAccent), 'dark', 'light', 'borderMode', 'bgMode')
+	document
+		.querySelector(':root')
+		?.classList.remove(...Object.values(ThemeAccent), 'dark', 'light', 'borderMode', 'bgMode');
 }
 
 export function getTheme() {

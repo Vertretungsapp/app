@@ -1,8 +1,9 @@
-import type PlannedLesson from '$lib/api/server/class/PlannedLesson';
+import type PlannedLesson from '$lib/api/stundenplan42/class/PlannedLesson';
 
 export interface Plan {
-	short: string | undefined;
+	short: string;
 	schedule: PlannedLesson[];
+	type: PlanType;
 }
 
 export enum PlanType {

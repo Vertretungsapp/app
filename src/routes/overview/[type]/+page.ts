@@ -1,8 +1,8 @@
-import type { PageLoad } from './$types';
 import { browser } from '$app/environment';
-import type { Plan } from '$lib/api/server/class/Plan';
-import { PlanType } from '$lib/api/server/class/Plan';
-import { fetchPlan } from '$lib/api/fetch';
+import { getPlan } from '$lib/api/api';
+import type { Plan } from '$lib/api/stundenplan42/class/Plan';
+import { PlanType } from '$lib/api/stundenplan42/class/Plan';
+import type { PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	if (!browser)
@@ -28,7 +28,7 @@ export const load = (async ({ params }) => {
 	let plans: Plan[] = [];
 
 	try {
-		const schoolPlan = await fetchPlan();
+		const schoolPlan = await getPlan();
 
 		if (planType === PlanType.CLASS) plans = schoolPlan.classes;
 		else if (planType === PlanType.ROOM) plans = schoolPlan.rooms;
