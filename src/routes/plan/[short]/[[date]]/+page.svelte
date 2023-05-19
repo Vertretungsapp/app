@@ -10,7 +10,16 @@
 	import type { Plan } from '$lib/api/server/class/Plan';
 	import { PlanType } from '$lib/api/server/class/Plan';
 	import BackMenu from '../../../../components/BackMenu.svelte';
-	import { faInfoCircle, faRefresh } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faFilter,
+		faInfoCircle,
+		faRefresh
+	} from '@fortawesome/free-solid-svg-icons';
+	import FilterDialog from "../../../../components/Plan/FilterDialog.svelte";
+	import Klass from "$lib/api/server/class/Class";
+	import SchoolPlan from "$lib/api/server/class/SchoolPlan";
+	import type {Filter} from "$lib/filter";
+	import {createFilter, getFilter, isLessonEnabled} from "$lib/filter";
 
 	export let data: { short: string; date: string | undefined };
 
@@ -19,22 +28,19 @@
 		schedule: PlannedLesson[];
 		date: Date;
 		type: PlanType;
+		klass: Klass;
 	};
 
 	const templatePlanData: PlanData = {
-		plan: {
-			classes: [],
-			rooms: [],
-			holidays: [],
-			created: undefined,
-			date: undefined
-		} as SchoolPlan,
+		plan: new SchoolPlan(),
 		schedule: [],
 		date: new Date(),
-		type: PlanType.CLASS
+		type: PlanType.CLASS,
+		klass: new Klass()
 	};
 
 	let planData: PlanData = templatePlanData;
+	let filter: Filter;
 	let isRefreshing = false;
 
 	function getPlanFromSchoolPlan(
@@ -69,8 +75,13 @@
 				plan: schoolPlan,
 				schedule: plan.plan.schedule,
 				date: new Date(schoolPlan.date || Date.now()),
-				type: plan.type
+				type: plan.type,
+				klass: schoolPlan.classes.find(c => c.short === data.short) || new Klass()
 			};
+
+			if(plan.type === PlanType.CLASS) {
+				filter = getFilter(planData.klass.short || "") || createFilter(planData.klass.short || "", planData.klass.lessons)
+			}
 		} catch (e) {
 			planData = templatePlanData;
 		}
@@ -95,7 +106,17 @@
 
 <BackMenu />
 
-<div class="fixed top-0 right-0 h-20 w-20 flex items-center justify-center">
+{#if planData.type === "Klasse"}
+	<FilterDialog bind:lessons={planData.klass.lessons} bind:filter={filter} />
+{/if}
+
+<div class="fixed top-0 right-0 h-20 w-20 flex items-center justify-end gap-4 pr-4">
+	{#if planData.type === "Klasse"}
+		<button class="cursor-pointer" on:click={() => document.querySelector('#filterDialog').showModal()}>
+			<Icon data={faFilter} scale="2" />
+		</button>
+	{/if}
+
 	<button class="cursor-pointer" on:click={forceReload}>
 		<Icon data={faRefresh} scale="2" />
 	</button>
@@ -134,7 +155,9 @@
 		{/if}
 
 		{#each planData.schedule as lesson}
-			<PlanItem {lesson} type={planData.type} />
+			{#if filter ? isLessonEnabled(filter, lesson) : true}
+				<PlanItem {lesson} type={planData.type} />
+			{/if}
 		{/each}
 	</div>
 </div>

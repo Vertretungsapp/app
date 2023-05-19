@@ -4,6 +4,7 @@ type Changeable = {
 };
 
 export default class PlannedLesson {
+	id: string | undefined;
 	room: Changeable | undefined;
 	teacher: Changeable | undefined;
 	subject: Changeable | undefined;
@@ -20,6 +21,7 @@ export default class PlannedLesson {
  */
 export function fromJson(json: any): PlannedLesson {
 	const plannedLesson = new PlannedLesson();
+	plannedLesson.id = json.Nr;
 	plannedLesson.lessonNumber = json.St;
 	plannedLesson.start = json.Beginn;
 	plannedLesson.end = json.Ende;
