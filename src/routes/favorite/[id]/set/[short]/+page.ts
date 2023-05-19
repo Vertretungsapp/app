@@ -1,4 +1,5 @@
-import type { PageLoad } from '../../../../../../.svelte-kit/types/src/routes';
+import type { PageLoad } from './$types';
+import {getSchoolnumber} from "$lib/api/session";
 export type PageData = {
 	schoolnumber: string;
 	id: number;
@@ -6,5 +7,5 @@ export type PageData = {
 };
 
 export const load = (async ({ params }) => {
-	return { schoolnumber: params.schoolnumber, id: parseInt(params.id), short: params.short };
+	return { schoolnumber: getSchoolnumber(), id: parseInt(params.id), short: params.short };
 }) satisfies PageLoad;

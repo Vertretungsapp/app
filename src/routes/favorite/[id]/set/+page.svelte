@@ -15,7 +15,7 @@
 	let overwriteHref = '';
 
 	onMount(() => {
-		overwriteHref = `/favorite/${data.schoolnumber}/${data.id}/set/{short}`;
+		overwriteHref = `/favorite/${data.id}/set/{short}`;
 	});
 </script>
 
