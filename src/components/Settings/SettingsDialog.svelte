@@ -3,6 +3,7 @@
 	import { getTheme, setTheme, ThemeAccent } from '$lib/themeSwitcher';
 	import type { Theme } from '$lib/themeSwitcher';
 	import { browser } from '$app/environment';
+	import Dialog from "../Dialog.svelte";
 
 	let selectedTheme: Theme | undefined = { accent: ThemeAccent.DEFAULT, dark: false };
 
@@ -39,10 +40,7 @@
 	}
 </script>
 
-<dialog
-	id="settingsDialog"
-	class="bg-background text-text border-accent border-2 rounded-[7px] p-8"
->
+<Dialog id="settingsDialog">
 	<h1 class="my-4 text-center">Einstellungen</h1>
 	<div class="flex flex-col gap-2 items-center my-8">
 		<input
@@ -69,7 +67,7 @@
 		</div>
 	</div>
 	<input type="button" value="Schließen" on:click={closeModal} />
-</dialog>
+</Dialog>
 
 <style>
 	dialog::backdrop {

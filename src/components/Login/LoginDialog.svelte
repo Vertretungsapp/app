@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { Icon } from 'svelte-awesome';
 	import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+	import Dialog from "../Dialog.svelte";
 
 	let message = null;
 	let credentials: Credentials | null = null;
@@ -43,7 +44,7 @@
 	});
 </script>
 
-<dialog id="loginDialog" class="bg-background text-text border-accent border-2 rounded-[7px] p-8">
+<Dialog id="loginDialog">
 	<h1 class="my-4 text-center">Zugangsdaten</h1>
 	<form class="flex flex-col gap-2" on:submit|preventDefault={handleSubmit}>
 		<input
@@ -81,7 +82,7 @@
 	{#if message}
 		<p class="text-error text-center text-lg font-bold mt-4">{message}</p>
 	{/if}
-</dialog>
+</Dialog>
 
 <style>
 	dialog::backdrop {

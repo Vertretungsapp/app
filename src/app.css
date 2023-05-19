@@ -7,7 +7,6 @@
 @layer base {
 	* {
 		touch-action: pan-x pan-y;
-		@apply transition-colors duration-300 ease-in-out;
 	}
 
 	html {
