@@ -1,5 +1,5 @@
-import {NoCredentialsError} from '$lib/api/stundenplan42/errors/NoCredentialsError';
-import {testCredentials} from "$lib/api/stundenplan42/stundenplan24";
+import { NoCredentialsError } from '$lib/api/stundenplan42/errors/NoCredentialsError';
+import { testCredentials } from '$lib/api/stundenplan42/stundenplan24';
 
 export type Credentials = {
 	schoolnumber: string;
@@ -16,7 +16,7 @@ export type Username = 'schueler' | 'lehrer';
  * @returns number Status code of the request (200, 401, 404)
  */
 export async function login(credentials: Credentials): Promise<number> {
-	const verify = await testCredentials(credentials)
+	const verify = await testCredentials(credentials);
 	if (verify === 200) localStorage.setItem('credentials', JSON.stringify(credentials));
 	return verify;
 }
@@ -47,7 +47,7 @@ export function getCredentials(): Credentials | null {
 export async function verifyCredentials(): Promise<boolean> {
 	const credentials = getCredentials();
 	if (!credentials) return false;
-	return await testCredentials(credentials) === 200;
+	return (await testCredentials(credentials)) === 200;
 }
 
 /**

@@ -17,12 +17,14 @@ export async function testCredentials(cred: Credentials): Promise<number> {
 
 	const url = `https://${BASE_DOMAIN}/${cred.schoolnumber}/mobil/mobdaten/vpinfok.txt`;
 
-	const res = await axios.post('/api/proxy', {
-		url,
-		headers: {
-			Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}`
-		}
-	}).catch(err => err.response);
+	const res = await axios
+		.post('/api/proxy', {
+			url,
+			headers: {
+				Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}`
+			}
+		})
+		.catch((err) => err.response);
 
 	return res.status;
 }
@@ -38,12 +40,14 @@ export async function testCredentials(cred: Credentials): Promise<number> {
 export async function fetch(cred: Credentials, date?: Date): Promise<object> {
 	const url = `https://${BASE_DOMAIN}/${cred.schoolnumber}/mobil/mobdaten/${getFileName(date)}`;
 
-	const res = await axios.post('/api/proxy', {
-		url,
-		headers: {
-			Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}`
-		}
-	}).catch(err => err.response);
+	const res = await axios
+		.post('/api/proxy', {
+			url,
+			headers: {
+				Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}`
+			}
+		})
+		.catch((err) => err.response);
 
 	if (res.status === 404) throw new PlanNotFoundError();
 	if (res.status === 401) throw new InvalidCredentialsError();

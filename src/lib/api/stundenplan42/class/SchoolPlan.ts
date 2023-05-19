@@ -1,8 +1,8 @@
+import { getAllRooms } from '$lib/api/rooms';
 import Room from '$lib/api/stundenplan42/class/Room';
 import DELocale from 'date-fns/locale/de/index';
 import parseDate from 'date-fns/parse/index';
 import Class, { fromJson as classParser } from './Class';
-import {getAllRooms} from "$lib/api/rooms";
 
 export default class SchoolPlan {
 	schoolnumber: string;

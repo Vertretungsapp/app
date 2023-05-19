@@ -5,9 +5,11 @@ import axios from 'axios';
 export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 	const { url, headers } = await request.json();
 
-	const req = await axios.get(url, {
-		headers
-	}).catch(err => err.response);
+	const req = await axios
+		.get(url, {
+			headers
+		})
+		.catch((err) => err.response);
 
 	if (req.status === 404) return json({}, { status: 404 });
 	if (req.status === 401) return json({}, { status: 401 });

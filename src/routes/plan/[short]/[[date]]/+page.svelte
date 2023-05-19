@@ -11,7 +11,7 @@
 	import { isLessonEnabled } from '$lib/filter';
 	import type { PageData, PlanData } from './+page';
 	import { _fetchPlanData } from './+page';
-	import {PlanNotFoundError} from "$lib/api/stundenplan42/errors/PlanNotFoundError";
+	import { PlanNotFoundError } from '$lib/api/stundenplan42/errors/PlanNotFoundError';
 
 	export let data: PageData;
 

@@ -79,7 +79,7 @@ export function addPlan(schoolnumber: string, plan: SchoolPlan) {
 		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 	);
 
-	saveCache(cache)
+	saveCache(cache);
 	cleanupCache();
 }
 
