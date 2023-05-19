@@ -1,16 +1,27 @@
-import Class, { fromJson as classParser } from './Class';
-import parseDate from 'date-fns/parse/index';
+import Room from '$lib/api/stundenplan42/class/Room';
 import DELocale from 'date-fns/locale/de/index';
-import Room from '$lib/api/server/class/Room';
+import parseDate from 'date-fns/parse/index';
+import Class, { fromJson as classParser } from './Class';
+import {getAllRooms} from "$lib/api/rooms";
 
 export default class SchoolPlan {
-	created: Date | undefined;
-	date: Date | undefined;
-	week: number | undefined;
+	schoolnumber: string;
+	created: Date;
+	date: Date;
+	week: number;
 	holidays: Date[] = [];
 	classes: Class[] = [];
 	rooms: Room[] = [];
-	info: string[] | undefined;
+	info: string[] = [];
+
+	constructor(schoolnumber: string, created: Date, date: Date, week: number) {
+		this.schoolnumber = schoolnumber;
+		this.created = created;
+		this.date = date;
+		this.week = week;
+
+		this.rooms = getAllRooms(schoolnumber).map((room) => new Room(room));
+	}
 
 	public generateRooms(): void {
 		for (const klass of this.classes) {
@@ -36,18 +47,21 @@ export default class SchoolPlan {
 
 /**
  * Parses a plan from the JSON response
+ * @param schoolnumber Schoolnumber of the plan
  * @param json JSON response
  */
-export function fromJson(json: any): SchoolPlan {
-	const plan = new SchoolPlan();
+export function fromJson(schoolnumber: string, json: any): SchoolPlan {
+	const date = parseDate(json.VpMobil.Kopf.DatumPlan, 'EEEE, dd. MMMM y', new Date(), {
+		locale: DELocale
+	});
 
-	plan.date = parseDate(json.VpMobil.Kopf.DatumPlan, 'EEEE, dd. MMMM y', new Date(), {
+	const created = parseDate(json.VpMobil.Kopf.zeitstempel, 'dd.MM.y, HH:mm', new Date(), {
 		locale: DELocale
 	});
-	plan.created = parseDate(json.VpMobil.Kopf.zeitstempel, 'dd.MM.y, HH:mm', new Date(), {
-		locale: DELocale
-	});
-	plan.week = json.VpMobil.Kopf.woche;
+
+	const week = json.VpMobil.Kopf.woche;
+
+	const plan = new SchoolPlan(schoolnumber, created, date, week);
 
 	const holidays = json.VpMobil.FreieTage;
 	if (holidays) plan.holidays = parseArrayOrObjectFromJson<Date>(holidays.ft, holidayParser);

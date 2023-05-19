@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 </script>
 
-<div class="w-full h-screen flex flex-col gap-2 items-center justify-center">
+<div class="flex h-screen w-full flex-col items-center justify-center gap-2">
 	<h1 class="text-center">Vertretungsapp<span class="text-accent">.</span></h1>
 	<h1 class=""><span class="text-error">{$page.status}</span> - {$page.error.message}</h1>
 	<a href="/">zurück zur Startseite</a>

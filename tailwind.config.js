@@ -39,7 +39,7 @@ export default {
 					}
 				},
 				{
-					name: 'borderMode',
+					name: 'borderMode'
 				},
 				{
 					name: 'default',

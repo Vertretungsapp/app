@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { Icon } from 'svelte-awesome';
 	import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-	import Dialog from "../Dialog.svelte";
+	import Dialog from '../Dialog.svelte';
 
 	let message = null;
 	let credentials: Credentials | null = null;
@@ -58,10 +58,10 @@
 			<option value="lehrer">Lehrer</option>
 		</select>
 		<input type="password" id="loginDialog_password" name="password" placeholder="Password" />
-		<div class="grid grid-cols-4 gap-4 mt-4">
+		<div class="mt-4 grid grid-cols-4 gap-4">
 			{#if credentials}
 				<input
-					class="input opacity-60 cursor-pointer col-span-3"
+					class="input col-span-3 cursor-pointer opacity-60"
 					type="button"
 					value="Schließen"
 					on:click={closeModal}
@@ -69,7 +69,7 @@
 			{/if}
 			{#if credentials}
 				<div
-					class="flex items-center justify-center border-[3px] rounded-[7px] border-error cursor-pointer col-span-1"
+					class="col-span-1 flex cursor-pointer items-center justify-center rounded-[7px] border-[3px] border-error"
 					on:keypress={() => {}}
 					on:click={handleLogout}
 				>
@@ -80,6 +80,6 @@
 		</div>
 	</form>
 	{#if message}
-		<p class="text-error text-center text-lg font-bold mt-4">{message}</p>
+		<p class="mt-4 text-center text-lg font-bold text-error">{message}</p>
 	{/if}
 </Dialog>

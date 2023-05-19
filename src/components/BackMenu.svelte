@@ -3,7 +3,7 @@
 	import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons/faArrowCircleLeft';
 </script>
 
-<div class="fixed top-0 left-0 h-20 w-20 flex items-center justify-center">
+<div class="fixed left-0 top-0 flex h-20 w-20 items-center justify-center">
 	<a href="/">
 		<Icon data={faArrowCircleLeft} scale="2" />
 	</a>

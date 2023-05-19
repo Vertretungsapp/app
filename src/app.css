@@ -46,7 +46,7 @@
 	}
 
 	.input {
-		@apply staticBorder rounded-[7px] p-2 bg-background font-bold;
+		@apply staticBorder rounded-[7px] bg-background p-2 font-bold;
 	}
 
 	.staticBorder {
@@ -54,6 +54,6 @@
 	}
 
 	.dynborder {
-		@apply bg-secondaryBackground borderMode:bg-background borderMode:staticBorder;
+		@apply borderMode:staticBorder bg-secondaryBackground borderMode:bg-background;
 	}
 }

@@ -2,7 +2,7 @@
 	export let id: string;
 </script>
 
-<dialog {id} class="dynborder text-text rounded-[7px] p-8">
+<dialog {id} class="dynborder rounded-[7px] p-8 text-text">
 	<slot />
 </dialog>
 

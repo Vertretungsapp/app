@@ -1,8 +1,8 @@
-import type { PageLoad } from './$types';
 import { browser } from '$app/environment';
-import type { Plan } from '$lib/api/server/class/Plan';
-import { PlanType } from '$lib/api/server/class/Plan';
-import { fetchPlan } from '$lib/api/fetch';
+import { getPlan } from '$lib/api/api';
+import type { Plan } from '$lib/api/stundenplan42/class/Plan';
+import { PlanType } from '$lib/api/stundenplan42/class/Plan';
+import type { PageLoad } from './$types';
 
 export type PageData = {
 	schoolnumber: string;
@@ -21,10 +21,10 @@ export const load = (async ({ params }) => {
 	let data: PageData;
 
 	try {
-		const schoolPlan = await fetchPlan();
+		const schoolPlan = await getPlan();
 
 		data = {
-			schoolnumber: params.schoolnumber,
+			schoolnumber: schoolPlan.schoolnumber,
 			id: parseInt(params.id),
 			classes: schoolPlan.classes,
 			rooms: schoolPlan.rooms

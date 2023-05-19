@@ -1,12 +1,62 @@
-import type { PageLoad } from './$types';
 import { browser } from '$app/environment';
+import { getPlan } from '$lib/api/api';
+import { getPlanFromSchoolPlan } from '$lib/api/commonTools';
+import type Class from '$lib/api/stundenplan42/class/Class';
+import type { Plan, PlanType } from '$lib/api/stundenplan42/class/Plan';
+import type PlannedLesson from '$lib/api/stundenplan42/class/PlannedLesson';
+import type SchoolPlan from '$lib/api/stundenplan42/class/SchoolPlan';
+import { PlanNotFoundError } from '$lib/api/stundenplan42/errors/PlanNotFoundError';
+import type { Filter } from '$lib/filter';
+import { createFilter, getFilter } from '$lib/filter';
+import type { PageLoad } from './$types';
+
+export type PageData = {
+	short: string;
+	date: string | undefined;
+	planData: PlanData;
+	filter: Filter | undefined;
+};
+
+export type PlanData = {
+	schoolPlan: SchoolPlan;
+	plan: Plan;
+	schedule: PlannedLesson[];
+	date: Date;
+	type: PlanType;
+};
+
 export const load = (async ({ params }) => {
 	if (!browser) return {};
 
 	const { date, short } = params;
 
+	const planData = await _fetchPlanData(short, false, date ? new Date(date) : undefined);
+
 	return {
 		short,
-		date
+		date: date ? new Date(date) : undefined,
+		planData,
+		filter:
+			planData.type === 'Klasse'
+				? getFilter(short) || createFilter(short, (planData.plan as Class).lessons)
+				: undefined
 	};
 }) satisfies PageLoad;
+
+export async function _fetchPlanData(
+	short: string,
+	force: boolean,
+	date?: Date
+): Promise<PlanData> {
+	const schoolPlan = await getPlan(force, date);
+	const plan = getPlanFromSchoolPlan(short, schoolPlan);
+	if (!plan) throw new PlanNotFoundError();
+
+	return {
+		schoolPlan,
+		plan: plan,
+		schedule: plan.schedule,
+		date: new Date(schoolPlan.date),
+		type: plan.type
+	};
+}

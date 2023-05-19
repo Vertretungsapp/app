@@ -1,24 +1,18 @@
 <script lang="ts">
-	import type PlannedLesson from '$lib/api/server/class/PlannedLesson';
-	import type {PlanType} from '$lib/api/server/class/Plan';
-	import {getTheme} from "$lib/themeSwitcher";
+	import type PlannedLesson from '$lib/api/stundenplan42/class/PlannedLesson';
+	import type { PlanType } from '$lib/api/stundenplan42/class/Plan';
 
 	export let lesson: PlannedLesson;
 	export let type: PlanType;
-
-	function hasChanged() {
-		if (!lesson.subject || !lesson.teacher || !lesson.room) return false;
-		return lesson.subject.changed || lesson.teacher.changed || lesson.room.changed;
-	}
 </script>
 
-<div class="dynborder flex flex-col rounded-[13px] gap-4 px-4 py-2">
-	<div class="flex items-center gap-4 w-full">
-		<div class="flex items-center justify-between gap-4 w-[4.5rem]">
-			<h1 class="text-center m-0 w-full {hasChanged() && 'text-error'}">{lesson.lessonNumber}</h1>
-			<div class="w-[3px] h-12 rounded-[7px] bg-accent" />
+<div class="dynborder flex flex-col gap-4 rounded-[13px] px-4 py-2">
+	<div class="flex w-full items-center gap-4">
+		<div class="flex w-[4.5rem] items-center justify-between gap-4">
+			<h1 class="m-0 w-full text-center">{lesson.lessonNumber}</h1>
+			<div class="h-12 w-[3px] rounded-[7px] bg-accent" />
 		</div>
-		<div class="flex justify-between w-full items-center">
+		<div class="flex w-full items-center justify-between">
 			<div class="leading-tight">
 				<p class={lesson.subject.changed && 'text-error'}>{lesson.subject.name || ''}</p>
 				<p class={lesson.teacher.changed && 'text-error'}>{lesson.teacher.name || ''}</p>

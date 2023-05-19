@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Plan } from '$lib/api/server/class/Plan';
+	import type { Plan } from '$lib/api/stundenplan42/class/Plan';
 
 	export let plans: Plan[] = [];
 	export let overwriteHref: string;
@@ -9,10 +9,10 @@
 	}
 </script>
 
-<div class="grid grid-cols-3 items-center gap-4 p-4 h-full overflow-y-scroll">
+<div class="grid h-full grid-cols-3 items-center gap-4 overflow-y-scroll p-4">
 	{#each plans as plan}
 		<a
-			class="w-full p-4 dynborder rounded-[7px] text-center"
+			class="dynborder w-full rounded-[7px] p-4 text-center"
 			href={!overwriteHref ? `/plan/${plan.short}` : generateOverwriteHref(plan.short)}
 			>{plan.short}</a
 		>

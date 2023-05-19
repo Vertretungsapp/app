@@ -1,11 +1,14 @@
 <script lang="ts">
-	import {fetchPlan} from '$lib/api/fetch';
-	import type {Theme} from '$lib/themeSwitcher';
-	import {getTheme, setTheme, ThemeAccent} from '$lib/themeSwitcher';
-	import {browser} from '$app/environment';
-	import Dialog from "../Dialog.svelte";
+	import type { Theme } from '$lib/themeSwitcher';
+	import { getTheme, setTheme, ThemeAccent } from '$lib/themeSwitcher';
+	import { browser } from '$app/environment';
+	import Dialog from '../Dialog.svelte';
 
-	let selectedTheme: Theme | undefined = { accent: ThemeAccent.DEFAULT, dark: false, borderMode: false };
+	let selectedTheme: Theme | undefined = {
+		accent: ThemeAccent.DEFAULT,
+		dark: false,
+		borderMode: false
+	};
 
 	let selectedAccent: ThemeAccent = ThemeAccent.DEFAULT;
 	let darkMode = false;
@@ -27,7 +30,7 @@
 	}
 
 	function refreshCache() {
-		fetchPlan(undefined, true).then(() => location.reload());
+		// ToDo: ClearCache
 	}
 
 	function changeAccent(event: Event) {
@@ -48,13 +51,13 @@
 
 <Dialog id="settingsDialog">
 	<h1 class="mt-4 text-center">Einstellungen</h1>
-	<div class="flex flex-col gap-2 items-center my-4">
+	<div class="my-4 flex flex-col items-center gap-2">
 		<input
 			type="button"
 			value="Cache leeren"
 			on:click={refreshCache}
 		/><!-- TODO: probably only for early versions -->
-		<div class="w-full mt-5">
+		<div class="mt-5 w-full">
 			<h2 class="text-center">Theming</h2>
 
 			<div class="grid grid-cols-2 items-center justify-between gap-4">
