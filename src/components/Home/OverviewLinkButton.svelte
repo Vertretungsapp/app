@@ -9,7 +9,7 @@
 
 <div>
 	<a
-		class="flex flex-col items-center justify-center max-w-[10rem] m-auto p-2 border-[2px] border-accent rounded-[13px] aspect-square"
+		class="flex flex-col items-center justify-center max-w-[10rem] m-auto p-2 dynborder rounded-[13px] aspect-square"
 		{href}
 	>
 		<Icon data={icon} scale="4" />

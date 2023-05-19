@@ -83,10 +83,3 @@
 		<p class="text-error text-center text-lg font-bold mt-4">{message}</p>
 	{/if}
 </Dialog>
-
-<style>
-	dialog::backdrop {
-		background-color: rgba(0, 0, 0, 0.4);
-		backdrop-filter: blur(5px);
-	}
-</style>

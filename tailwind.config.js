@@ -39,6 +39,9 @@ export default {
 					}
 				},
 				{
+					name: 'borderMode',
+				},
+				{
 					name: 'default',
 					extend: {
 						colors: {

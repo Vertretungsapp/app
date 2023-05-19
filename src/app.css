@@ -46,6 +46,14 @@
 	}
 
 	.input {
-		@apply border-2 border-accent rounded-[7px] p-2 bg-background font-bold;
+		@apply staticBorder rounded-[7px] p-2 bg-background font-bold;
+	}
+
+	.staticBorder {
+		@apply border-[2px] border-accent;
+	}
+
+	.dynborder {
+		@apply bg-secondaryBackground borderMode:bg-background borderMode:staticBorder;
 	}
 }

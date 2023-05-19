@@ -34,7 +34,7 @@
 
 	<a
 		href={isFavorite ? `/plan/${short}` : `/favorite/${schoolnumber}/${id}/set`}
-		class={`w-full p-1 border-[2px] border-accent rounded-[7px] flex items-center justify-center ${
+		class={`w-full p-1 dynborder rounded-[7px] flex items-center justify-center ${
 			!isFavorite && 'text-grayedOut'
 		}`}
 		>{isFavorite ? short : `Favorit ${id}`}
@@ -42,7 +42,7 @@
 	{#if isFavorite}
 		<button
 			on:click={clear}
-			class="border-[2px] border-accent rounded-[7px] p-1 h-full aspect-square"
+			class="dynborder rounded-[7px] p-1 h-full aspect-square"
 		>
 			<Icon data={faTrash} scale="1.5" />
 		</button>

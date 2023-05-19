@@ -11,7 +11,7 @@
 </script>
 
 <div
-	class="border-[2px] border-accent rounded-[7px] p-1 aspect-square cursor-pointer"
+	class="staticBorder rounded-[7px] p-1 aspect-square cursor-pointer"
 	on:keypress={() => {}}
 	on:click={handleClick}
 >

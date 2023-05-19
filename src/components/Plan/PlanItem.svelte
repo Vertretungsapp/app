@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type PlannedLesson from '$lib/api/server/class/PlannedLesson';
-	import type { PlanType } from '$lib/api/server/class/Plan';
+	import type {PlanType} from '$lib/api/server/class/Plan';
+	import {getTheme} from "$lib/themeSwitcher";
 
 	export let lesson: PlannedLesson;
 	export let type: PlanType;
@@ -11,7 +12,7 @@
 	}
 </script>
 
-<div class="bg-secondaryBackground flex flex-col rounded-[13px] gap-4 px-4 py-2">
+<div class="dynborder flex flex-col rounded-[13px] gap-4 px-4 py-2">
 	<div class="flex items-center gap-4 w-full">
 		<div class="flex items-center justify-between gap-4 w-[4.5rem]">
 			<h1 class="text-center m-0 w-full {hasChanged() && 'text-error'}">{lesson.lessonNumber}</h1>
