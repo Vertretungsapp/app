@@ -2,7 +2,6 @@ import type { Credentials } from '$lib/api/session';
 import { InvalidCredentialsError } from '$lib/api/stundenplan42/errors/InvalidCredentialsError';
 import { NoCredentialsError } from '$lib/api/stundenplan42/errors/NoCredentialsError';
 import { PlanNotFoundError } from '$lib/api/stundenplan42/errors/PlanNotFoundError';
-import axios from 'axios';
 import { parseStringPromise } from 'xml2js';
 
 const BASE_DOMAIN = 'stundenplan24.de';
@@ -17,14 +16,13 @@ export async function testCredentials(cred: Credentials): Promise<number> {
 
 	const url = `https://${BASE_DOMAIN}/${cred.schoolnumber}/mobil/mobdaten/vpinfok.txt`;
 
-	const res = await axios
-		.post('/api/proxy', {
+	const res = await fetch('/api/proxy', {
+		method: 'POST',
+		body: JSON.stringify({
 			url,
-			headers: {
-				Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}`
-			}
+			headers: { Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}` }
 		})
-		.catch((err) => err.response);
+	});
 
 	return res.status;
 }
@@ -37,22 +35,21 @@ export async function testCredentials(cred: Credentials): Promise<number> {
  * @throws InvalidCredentialsError
  * @returns object | null
  */
-export async function fetch(cred: Credentials, date?: Date): Promise<object> {
+export async function fetchFromStundenplan24(cred: Credentials, date?: Date): Promise<object> {
 	const url = `https://${BASE_DOMAIN}/${cred.schoolnumber}/mobil/mobdaten/${getFileName(date)}`;
 
-	const res = await axios
-		.post('/api/proxy', {
+	const res = await fetch('/api/proxy', {
+		method: 'POST',
+		body: JSON.stringify({
 			url,
-			headers: {
-				Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}`
-			}
+			headers: { Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}` }
 		})
-		.catch((err) => err.response);
+	});
 
 	if (res.status === 404) throw new PlanNotFoundError();
 	if (res.status === 401) throw new InvalidCredentialsError();
 
-	return await parseStringPromise(res.data, { trim: true, explicitArray: false });
+	return await parseStringPromise(await res.text(), { trim: true, explicitArray: false });
 }
 
 function addZero(month: number): string {
