@@ -10,10 +10,9 @@
 	}
 </script>
 
-<div
-	class="staticBorder aspect-square cursor-pointer rounded-[7px] p-1"
-	on:keypress={() => {}}
+<button
+	class="staticBorder aspect-square cursor-pointer rounded-[7px] p-1 flex items-center justify-center"
 	on:click={handleClick}
 >
 	<Icon data={icon} scale="1.5" />
-</div>
+</button>
