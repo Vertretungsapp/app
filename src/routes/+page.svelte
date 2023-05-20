@@ -16,7 +16,7 @@
 <div class="m-auto flex h-screen w-[80%] flex-col items-center justify-between py-20 md:w-1/2">
 	<div class="w-max">
 		<LoginAndSettings />
-		<h1 class="text-center">Hello World<span class="text-accent">.</span></h1>
+		<h1 class="text-center">Vertretungsapp<span class="text-accent">.</span></h1>
 	</div>
 
 	<FavoriteButtons />
