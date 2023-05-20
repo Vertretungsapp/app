@@ -14,7 +14,8 @@ jobs:
       # Point release branch at the latest tag so Netlify can deploy it
       - name: Point live branch at tag
         run: |
-          echo "Setting 'live' branch to 'tags/$'"
+          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo "Setting 'live' branch to '$latest_tag'"
           git checkout live
-          git reset --hard tags/$
+          git reset --hard $latest_tag
           git push -f
