@@ -11,7 +11,7 @@
 </script>
 
 <button
-	class="staticBorder aspect-square cursor-pointer rounded-[7px] p-1 flex items-center justify-center"
+	class="dynborder aspect-square cursor-pointer rounded-[7px] p-[0.35rem] flex items-center justify-center"
 	on:click={handleClick}
 >
 	<Icon data={icon} scale="1.5" />
