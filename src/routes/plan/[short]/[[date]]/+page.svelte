@@ -73,9 +73,9 @@
 		<h1 class="text-center">{planData.type} <span class="text-accent">{data.short}</span></h1>
 		<div class="flex items-center justify-between px-8">
 			<PlanSwitchArrow holidays={planData.schoolPlan.holidays} />
-			<div class="text-center leading-tight">
+			<div class="text-center leading-tight cursor-pointer" on:keypress={() => undefined} on:click={resetDate}>
 				<p class="text-sm">{format(new Date($date), 'EEEE', { locale: de })}</p>
-				<p on:keypress={() => undefined} on:click={resetDate} class="text-md cursor-pointer">
+				<p class="text-md">
 					{new Date($date).toLocaleDateString()}
 				</p>
 			</div>
