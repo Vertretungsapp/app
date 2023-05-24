@@ -6,7 +6,7 @@ import Class, { fromJson as classParser } from './Class';
 
 export default class SchoolPlan {
 	schoolnumber: string;
-	created: Date;
+	created: Date | undefined;
 	date: Date;
 	week: number;
 	holidays: Date[] = [];

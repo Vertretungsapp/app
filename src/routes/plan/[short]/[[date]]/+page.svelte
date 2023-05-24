@@ -28,6 +28,8 @@
 			planData = await _fetchPlanData(data.short, force, $date);
 		} catch (e) {
 			planData.schedule = [];
+			planData.schoolPlan.info = [];
+			planData.schoolPlan.created = undefined;
 		}
 		isRefreshing = false;
 	}
@@ -69,26 +71,29 @@
 		</button>
 	</div>
 
-	<div class="flex h-screen max-h-screen flex-col gap-4 pb-10 pt-20">
+	<div class="flex h-screen max-h-screen flex-col gap-3 pb-10 pt-20">
 		<h1 class="text-center">{planData.type} <span class="text-accent">{data.short}</span></h1>
-		<div class="flex items-center justify-between px-8">
-			<PlanSwitchArrow holidays={planData.schoolPlan.holidays} />
-			<div class="text-center leading-tight cursor-pointer" on:keypress={() => undefined} on:click={resetDate}>
-				<p class="text-sm">{format(new Date($date), 'EEEE', { locale: de })}</p>
-				<p class="text-md">
-					{new Date($date).toLocaleDateString()}
-				</p>
-			</div>
-			<PlanSwitchArrow holidays={planData.schoolPlan.holidays} turned />
-		</div>
 
-		<p class="w-full text-center text-grayedOut">
-			{#if isRefreshing}
-				Lade...
-			{:else}
-				{planData.schoolPlan.created ? new Date(planData.schoolPlan.created).toLocaleString() : ''}
-			{/if}
-		</p>
+		<div>
+			<div class="flex items-center justify-between px-8">
+				<PlanSwitchArrow holidays={planData.schoolPlan.holidays} />
+				<div class="text-center leading-tight cursor-pointer" on:keypress={() => undefined} on:click={resetDate}>
+					<p class="text-md">{format(new Date($date), 'EEEE', { locale: de })}</p>
+					<p class="text-sm">
+						{new Date($date).toLocaleDateString()}
+					</p>
+				</div>
+				<PlanSwitchArrow holidays={planData.schoolPlan.holidays} turned />
+			</div>
+
+			<p class="w-full text-center text-grayedOut text-sm mt-1">
+				{#if isRefreshing}
+					Lade...
+				{:else}
+					{planData.schoolPlan.created ? new Date(planData.schoolPlan.created).toLocaleString() : ''}
+				{/if}
+			</p>
+		</div>
 
 		<div class="m-auto flex h-full w-[90%] flex-col gap-2 overflow-y-scroll">
 			{#if planData.schoolPlan.info && planData.schoolPlan.info.length > 0}
