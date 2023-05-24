@@ -4,7 +4,6 @@
 [![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue)](LICENSE)
 [![Releases](https://img.shields.io/github/v/release/SachsenspieltCoding/vertretungsapp?display_name=tag)](https://github.com/SachsenspieltCoding/vertretungsapp/releases/latest)
 
-
 ![Logo Vertretungsapp](https://github.com/SachsenspieltCoding/vertretungsapp/blob/master/static/logo/logo.png)
 
 Deine Vertretungsplanapp für Indiware!

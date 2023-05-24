@@ -11,7 +11,8 @@
 	import { isLessonEnabled } from '$lib/filter';
 	import type { PageData, PlanData } from './+page';
 	import { _fetchPlanData } from './+page';
-	import { PlanNotFoundError } from '$lib/api/stundenplan42/errors/PlanNotFoundError';
+	import { format } from 'date-fns';
+	import { de } from 'date-fns/locale';
 
 	export let data: PageData;
 
@@ -72,9 +73,12 @@
 		<h1 class="text-center">{planData.type} <span class="text-accent">{data.short}</span></h1>
 		<div class="flex items-center justify-between px-8">
 			<PlanSwitchArrow holidays={planData.schoolPlan.holidays} />
-			<p on:keypress={() => undefined} on:click={resetDate} class="cursor-pointer">
-				{new Date($date).toLocaleDateString()}
-			</p>
+			<div class="text-center leading-tight">
+				<p class="text-sm">{format(new Date($date), 'EEEE', { locale: de })}</p>
+				<p on:keypress={() => undefined} on:click={resetDate} class="text-md cursor-pointer">
+					{new Date($date).toLocaleDateString()}
+				</p>
+			</div>
 			<PlanSwitchArrow holidays={planData.schoolPlan.holidays} turned />
 		</div>
 
