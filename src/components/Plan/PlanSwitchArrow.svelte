@@ -3,7 +3,7 @@
 	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import { date } from './stores';
 	import addBusinessDays from 'date-fns/addBusinessDays';
-	import Icon from "../Icon.svelte";
+	import Icon from '../Icon.svelte';
 
 	export let holidays: Date[];
 	export let turned: boolean;

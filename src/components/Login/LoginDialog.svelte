@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 	import Dialog from '../Dialog.svelte';
-	import Icon from "../Icon.svelte";
+	import Icon from '../Icon.svelte';
 
 	let message = null;
 	let credentials: Credentials | null = null;

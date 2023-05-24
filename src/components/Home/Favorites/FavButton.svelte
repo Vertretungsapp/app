@@ -5,7 +5,7 @@
 	import { faTrash } from '@fortawesome/free-solid-svg-icons';
 	import { getFavorite, removeFavorite } from '$lib/favorites';
 	import { getCredentials } from '$lib/api/session';
-	import Icon from "../../Icon.svelte";
+	import Icon from '../../Icon.svelte';
 
 	export let id: number;
 
@@ -40,7 +40,10 @@
 		>{isFavorite ? short : `Favorit ${id}`}
 	</a>
 	{#if isFavorite}
-		<button on:click={clear} class="dynborder aspect-square h-full rounded-[7px] p-1 flex items-center justify-center">
+		<button
+			on:click={clear}
+			class="dynborder flex aspect-square h-full items-center justify-center rounded-[7px] p-1"
+		>
 			<Icon icon={faTrash} size="1.3x" />
 		</button>
 	{/if}

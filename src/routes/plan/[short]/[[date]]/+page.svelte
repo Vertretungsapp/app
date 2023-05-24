@@ -12,7 +12,7 @@
 	import { _fetchPlanData } from './+page';
 	import { de } from 'date-fns/locale';
 	import { format } from 'date-fns';
-	import Icon from "../../../../components/Icon.svelte";
+	import Icon from '../../../../components/Icon.svelte';
 
 	export let data: PageData;
 
@@ -77,7 +77,11 @@
 		<div>
 			<div class="flex items-center justify-between px-8">
 				<PlanSwitchArrow holidays={planData.schoolPlan.holidays} />
-				<div class="text-center leading-tight cursor-pointer" on:keypress={() => undefined} on:click={resetDate}>
+				<div
+					class="cursor-pointer text-center leading-tight"
+					on:keypress={() => undefined}
+					on:click={resetDate}
+				>
 					<p class="text-md">{format(new Date($date), 'EEEE', { locale: de })}</p>
 					<p class="text-sm">
 						{new Date($date).toLocaleDateString()}
@@ -86,11 +90,13 @@
 				<PlanSwitchArrow holidays={planData.schoolPlan.holidays} turned />
 			</div>
 
-			<p class="w-full text-center text-grayedOut text-sm mt-1">
+			<p class="mt-1 w-full text-center text-sm text-grayedOut">
 				{#if isRefreshing}
 					Lade...
 				{:else}
-					{planData.schoolPlan.created ? new Date(planData.schoolPlan.created).toLocaleString() : ''}
+					{planData.schoolPlan.created
+						? new Date(planData.schoolPlan.created).toLocaleString()
+						: ''}
 				{/if}
 			</p>
 		</div>
