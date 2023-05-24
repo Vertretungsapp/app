@@ -6,7 +6,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 
 	const req = await fetch(url, {
 		headers
-	})
+	});
 
 	if (req.status === 404) return json({}, { status: 404 });
 	if (req.status === 401) return json({}, { status: 401 });

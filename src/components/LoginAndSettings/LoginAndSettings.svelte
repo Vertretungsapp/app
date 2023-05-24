@@ -1,9 +1,9 @@
 <script>
 	import LoginAndSettingsIcon from './LoginAndSettingsIcon.svelte';
-	import {faGear, faInfoCircle, faKey} from '@fortawesome/free-solid-svg-icons';
+	import { faGear, faInfoCircle, faKey } from '@fortawesome/free-solid-svg-icons';
 	import LoginDialog from '../Login/LoginDialog.svelte';
 	import SettingsDialog from '../Settings/SettingsDialog.svelte';
-	import InfoDialog from "../Home/InfoDialog.svelte";
+	import InfoDialog from '../Home/InfoDialog.svelte';
 </script>
 
 <LoginDialog />
@@ -20,7 +20,7 @@
 		onClick={() => document.querySelector('#settingsDialog').showModal()}
 	/>
 	<LoginAndSettingsIcon
-			icon={faInfoCircle}
-			onClick={() => document.querySelector('#infoDialog').showModal()}
+		icon={faInfoCircle}
+		onClick={() => document.querySelector('#infoDialog').showModal()}
 	/>
 </div>
