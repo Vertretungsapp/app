@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Icon } from 'svelte-awesome';
 	import { date } from '../../../../components/Plan/stores';
 	import PlanSwitchArrow from '../../../../components/Plan/PlanSwitchArrow.svelte';
 	import PlanItem from '../../../../components/Plan/PlanItem.svelte';
@@ -11,8 +10,9 @@
 	import { isLessonEnabled } from '$lib/filter';
 	import type { PageData, PlanData } from './+page';
 	import { _fetchPlanData } from './+page';
-	import { format } from 'date-fns';
 	import { de } from 'date-fns/locale';
+	import { format } from 'date-fns';
+	import Icon from "../../../../components/Icon.svelte";
 
 	export let data: PageData;
 
@@ -60,12 +60,12 @@
 				class="cursor-pointer"
 				on:click={() => document.querySelector('#filterDialog').showModal()}
 			>
-				<Icon data={faFilter} scale="2" />
+				<Icon icon={faFilter} size="2x" />
 			</button>
 		{/if}
 
 		<button class="cursor-pointer" on:click={() => refreshData(true)}>
-			<Icon data={faRefresh} scale="2" />
+			<Icon icon={faRefresh} size="2x" />
 		</button>
 	</div>
 
@@ -93,7 +93,7 @@
 		<div class="m-auto flex h-full w-[90%] flex-col gap-2 overflow-y-scroll">
 			{#if planData.schoolPlan.info && planData.schoolPlan.info.length > 0}
 				<div class="grid w-full grid-cols-5 justify-between gap-4 py-4">
-					<Icon data={faInfoCircle} scale="2" class="h-5 w-5" />
+					<Icon icon={faInfoCircle} size="lg" />
 					{#each planData.schoolPlan.info as info}
 						<p class="col-span-4 text-right text-sm leading-tight">{info}</p>
 					{/each}

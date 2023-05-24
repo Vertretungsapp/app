@@ -2,9 +2,9 @@
 	import { getCredentials, login, logout } from '$lib/api/session';
 	import type { Credentials } from '$lib/api/session';
 	import { onMount } from 'svelte';
-	import { Icon } from 'svelte-awesome';
 	import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 	import Dialog from '../Dialog.svelte';
+	import Icon from "../Icon.svelte";
 
 	let message = null;
 	let credentials: Credentials | null = null;
@@ -73,7 +73,7 @@
 					on:keypress={() => {}}
 					on:click={handleLogout}
 				>
-					<Icon data={faRightFromBracket} scale="2" />
+					<Icon icon={faRightFromBracket} size="1.5x" />
 				</div>
 			{/if}
 			<input class="input col-span-4 cursor-pointer" type="submit" value="Speichern" />
