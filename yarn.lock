@@ -2126,11 +2126,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-svelte-awesome@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/svelte-awesome/-/svelte-awesome-3.2.0.tgz#3589891086516015f321b9635a750f67bade9511"
-  integrity sha512-A9gqgRDs/6EjUgMHIBHz88vJIiY4fVI7e2X9uu43O7J2EYqdVVSnHHH49TxMnNinbq6K9Z/1kMD9LCZhX7ysUQ==
-
 svelte-check@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/svelte-check/-/svelte-check-3.3.2.tgz#11831428531cf7c61a91c38929eda11c37b7dcb1"
@@ -2153,6 +2148,11 @@ svelte-eslint-parser@^0.29.0:
     eslint-scope "^7.0.0"
     eslint-visitor-keys "^3.0.0"
     espree "^9.0.0"
+
+svelte-fa@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/svelte-fa/-/svelte-fa-3.0.3.tgz#49aa8627725b2533fb4d109b39cd8e64f7e54b7c"
+  integrity sha512-GIikJjcVCD+5Y/x9hZc2R4gvuA0gVftacuWu1a+zVQWSFjFYZ+hhU825x+QNs2slsppfrgmFiUyU9Sz9gj4Rdw==
 
 svelte-hmr@^0.15.1:
   version "0.15.1"

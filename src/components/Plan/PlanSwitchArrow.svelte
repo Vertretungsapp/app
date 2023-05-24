@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Icon } from 'svelte-awesome';
 	import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import { date } from './stores';
 	import addBusinessDays from 'date-fns/addBusinessDays';
+	import Icon from "../Icon.svelte";
 
 	export let holidays: Date[];
 	export let turned: boolean;
@@ -30,6 +30,6 @@
 	}
 </script>
 
-<div class="cursor-pointer" on:keypress={() => {}} on:click={handleClick}>
-	<Icon data={turned ? faChevronRight : faChevronLeft} scale="2" />
+<div class="cursor-pointer" on:keypress={() => undefined} on:click={handleClick}>
+	<Icon icon={turned ? faChevronRight : faChevronLeft} size="2x" />
 </div>
