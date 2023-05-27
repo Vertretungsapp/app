@@ -1,4 +1,5 @@
 import { NoCredentialsError } from '$lib/api/stundenplan42/errors/NoCredentialsError';
+import { NoInternetConnectionError } from '$lib/api/stundenplan42/errors/NoInternetConnectionError';
 import { testCredentials } from '$lib/api/stundenplan42/stundenplan24';
 
 export type Credentials = {
@@ -47,7 +48,13 @@ export function getCredentials(): Credentials | null {
 export async function verifyCredentials(): Promise<boolean> {
 	const credentials = getCredentials();
 	if (!credentials) return false;
-	return (await testCredentials(credentials)) === 200;
+	return (
+		(await testCredentials(credentials).catch((e) => {
+			if (e instanceof NoInternetConnectionError) {
+				return 200;
+			}
+		})) === 200
+	);
 }
 
 /**

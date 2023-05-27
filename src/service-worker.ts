@@ -15,5 +15,7 @@ setDefaultHandler(
 );
 
 self.addEventListener('install', (event) => {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
 	event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
 });
