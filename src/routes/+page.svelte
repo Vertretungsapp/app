@@ -22,9 +22,8 @@
 	<FavoriteButtons />
 
 	<div class="bottom-4 grid w-full grid-cols-3 gap-4">
-		<OverviewLinkButton text="Klassen" href="/overview/class" icon={faPeopleGroup} />
+		<OverviewLinkButton text="Klassen" href="/overview?type=class" icon={faPeopleGroup} />
 		<div />
-		<!--		<OverviewLinkButton text="Lehrer" href="/overview/teacher" icon={faPeopleGroup} />-->
-		<OverviewLinkButton text="Räume" href="/overview/room" icon={faDoorOpen} />
+		<OverviewLinkButton text="Räume" href="/overview?type=room" icon={faDoorOpen} />
 	</div>
 </div>

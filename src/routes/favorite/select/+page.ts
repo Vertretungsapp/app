@@ -11,7 +11,7 @@ export type PageData = {
 	rooms: Plan[];
 };
 
-export const load = (async ({ params }) => {
+export const load = (async ({ url }) => {
 	if (!browser)
 		return {
 			plans: [],
@@ -25,7 +25,7 @@ export const load = (async ({ params }) => {
 
 		data = {
 			schoolnumber: schoolPlan.schoolnumber,
-			id: parseInt(params.id),
+			id: parseInt(url.searchParams.get("id") as string),
 			classes: schoolPlan.classes,
 			rooms: schoolPlan.rooms
 		};

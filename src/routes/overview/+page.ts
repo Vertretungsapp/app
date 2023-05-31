@@ -4,7 +4,7 @@ import type { Plan } from '$lib/api/stundenplan42/class/Plan';
 import { PlanType } from '$lib/api/stundenplan42/class/Plan';
 import type { PageLoad } from './$types';
 
-export const load = (async ({ params }) => {
+export const load = (async ({ url }) => {
 	if (!browser)
 		return {
 			plans: [],
@@ -13,7 +13,7 @@ export const load = (async ({ params }) => {
 
 	let planType;
 
-	switch (params.type) {
+	switch (url.searchParams.get('type')) {
 		case 'class':
 			planType = PlanType.CLASS;
 			break;

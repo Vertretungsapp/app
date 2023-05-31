@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Plan } from '$lib/api/stundenplan42/class/Plan';
 	import { PlanType } from '$lib/api/stundenplan42/class/Plan';
-	import Overview from '../../../components/Overview.svelte';
-	import BackMenu from '../../../components/BackMenu.svelte';
+	import Overview from '../../components/Overview.svelte';
+	import BackMenu from '../../components/BackMenu.svelte';
 
 	export let data: { plans: Plan[]; planType: PlanType };
 </script>

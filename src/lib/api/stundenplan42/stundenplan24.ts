@@ -19,7 +19,7 @@ export async function testCredentials(cred: Credentials): Promise<number> {
 
 	if (!navigator.onLine) throw new NoInternetConnectionError();
 
-	const res = await fetch('/api/proxy', {
+	const res = await fetch('https://proxy.vertretungsapp.de', {
 		method: 'POST',
 		body: JSON.stringify({
 			url,
@@ -43,7 +43,7 @@ export async function fetchFromStundenplan24(cred: Credentials, date?: Date): Pr
 
 	if (!navigator.onLine) throw new NoInternetConnectionError();
 
-	const res = await fetch('/api/proxy', {
+	const res = await fetch('https://proxy.vertretungsapp.de', {
 		method: 'POST',
 		body: JSON.stringify({
 			url,

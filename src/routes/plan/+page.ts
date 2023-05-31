@@ -25,16 +25,17 @@ export type PlanData = {
 	type: PlanType;
 };
 
-export const load = (async ({ params }) => {
+export const load = (async ({ url }) => {
 	if (!browser) return {};
 
-	const { date, short } = params;
+	const date = url.searchParams.get('date') ? new Date(url.searchParams.get('date') as string) : undefined;
+	const short = url.searchParams.get('short') as string;
 
 	const planData = await _fetchPlanData(short, false, date ? new Date(date) : undefined);
 
 	return {
 		short,
-		date: date ? new Date(date) : undefined,
+		date: date || undefined,
 		planData,
 		filter:
 			planData.type === 'Klasse'

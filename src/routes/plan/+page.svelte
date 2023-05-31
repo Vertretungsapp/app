@@ -1,18 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { date } from '../../../../components/Plan/stores';
-	import PlanSwitchArrow from '../../../../components/Plan/PlanSwitchArrow.svelte';
-	import PlanItem from '../../../../components/Plan/PlanItem.svelte';
-	import BackMenu from '../../../../components/BackMenu.svelte';
 	import { faFilter, faInfoCircle, faRefresh } from '@fortawesome/free-solid-svg-icons';
-	import FilterDialog from '../../../../components/Plan/FilterDialog.svelte';
 	import type { Filter } from '$lib/filter';
 	import { isLessonEnabled } from '$lib/filter';
 	import type { PageData, PlanData } from './+page';
 	import { _fetchPlanData } from './+page';
 	import { de } from 'date-fns/locale';
 	import { format } from 'date-fns';
-	import Icon from '../../../../components/Icon.svelte';
+	import {date} from "../../components/Plan/stores";
+	import BackMenu from "../../components/BackMenu.svelte";
+	import FilterDialog from "../../components/Plan/FilterDialog.svelte";
+	import Icon from "../../components/Icon.svelte";
+	import PlanSwitchArrow from "../../components/Plan/PlanSwitchArrow.svelte";
+	import PlanItem from "../../components/Plan/PlanItem.svelte";
 
 	export let data: PageData;
 

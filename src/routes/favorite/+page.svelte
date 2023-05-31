@@ -8,6 +8,6 @@
 	onMount(() => {
 		const favorite = getFavorite(data.schoolnumber, data.id);
 		if (!favorite) return (location.href = '/');
-		location.href = `/plan/${favorite.short}`;
+		location.href = `/plan?short=${favorite.short}`;
 	});
 </script>
