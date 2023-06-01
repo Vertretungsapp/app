@@ -97,3 +97,11 @@ export function removePlan(schoolnumber: string, date: Date) {
 	saveCache(cache);
 	cleanupCache();
 }
+
+/**
+ * Clears the cache
+ * @return {void}
+ */
+export function clearCache() {
+	localStorage.removeItem('cache');
+}
