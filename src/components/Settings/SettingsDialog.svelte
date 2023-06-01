@@ -3,6 +3,7 @@
 	import { getTheme, setTheme, ThemeAccent } from '$lib/themeSwitcher';
 	import { browser } from '$app/environment';
 	import Dialog from '../Dialog.svelte';
+	import { clearCache } from '$lib/api/cache';
 
 	let selectedTheme: Theme | undefined = {
 		accent: ThemeAccent.DEFAULT,
@@ -29,10 +30,6 @@
 		document.querySelector<HTMLDialogElement>('#settingsDialog').close();
 	}
 
-	function refreshCache() {
-		// ToDo: ClearCache
-	}
-
 	function changeAccent(event: Event) {
 		selectedAccent = (event.target as HTMLSelectElement).value as ThemeAccent;
 		selectedTheme = setTheme({ accent: selectedAccent, dark: darkMode, borderMode: borderMode });
@@ -55,8 +52,11 @@
 		<input
 			type="button"
 			value="Cache leeren"
-			on:click={refreshCache}
-		/><!-- TODO: probably only for early versions -->
+			on:click={() => {
+				clearCache();
+				location.reload();
+			}}
+		/>
 		<div class="mt-5 w-full">
 			<h2 class="text-center">Theming</h2>
 
