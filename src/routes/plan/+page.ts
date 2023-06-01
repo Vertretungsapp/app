@@ -28,7 +28,9 @@ export type PlanData = {
 export const load = (async ({ url }) => {
 	if (!browser) return {};
 
-	const date = url.searchParams.get('date') ? new Date(url.searchParams.get('date') as string) : undefined;
+	const date = url.searchParams.get('date')
+		? new Date(url.searchParams.get('date') as string)
+		: undefined;
 	const short = url.searchParams.get('short') as string;
 
 	const planData = await _fetchPlanData(short, false, date ? new Date(date) : undefined);

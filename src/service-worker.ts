@@ -9,16 +9,16 @@ const CACHE = `cache-${version}`;
 const ASSETS = [...build, ...files, ...prerendered];
 
 setDefaultHandler(
-    new StaleWhileRevalidate({
-        cacheName: CACHE,
-        matchOptions: {
-            ignoreSearch: true
-        }
-    })
+	new StaleWhileRevalidate({
+		cacheName: CACHE,
+		matchOptions: {
+			ignoreSearch: true
+		}
+	})
 );
 
 self.addEventListener('install', (event) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
 });

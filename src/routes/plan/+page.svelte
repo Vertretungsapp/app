@@ -7,12 +7,12 @@
 	import { _fetchPlanData } from './+page';
 	import { de } from 'date-fns/locale';
 	import { format } from 'date-fns';
-	import {date} from "../../components/Plan/stores";
-	import BackMenu from "../../components/BackMenu.svelte";
-	import FilterDialog from "../../components/Plan/FilterDialog.svelte";
-	import Icon from "../../components/Icon.svelte";
-	import PlanSwitchArrow from "../../components/Plan/PlanSwitchArrow.svelte";
-	import PlanItem from "../../components/Plan/PlanItem.svelte";
+	import { date } from '../../components/Plan/stores';
+	import BackMenu from '../../components/BackMenu.svelte';
+	import FilterDialog from '../../components/Plan/FilterDialog.svelte';
+	import Icon from '../../components/Icon.svelte';
+	import PlanSwitchArrow from '../../components/Plan/PlanSwitchArrow.svelte';
+	import PlanItem from '../../components/Plan/PlanItem.svelte';
 
 	export let data: PageData;
 

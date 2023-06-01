@@ -25,7 +25,7 @@ export const load = (async ({ url }) => {
 
 		data = {
 			schoolnumber: schoolPlan.schoolnumber,
-			id: parseInt(url.searchParams.get("id") as string),
+			id: parseInt(url.searchParams.get('id') as string),
 			classes: schoolPlan.classes,
 			rooms: schoolPlan.rooms
 		};
