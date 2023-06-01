@@ -25,7 +25,7 @@ export async function testCredentials(cred: Credentials): Promise<number> {
 			url,
 			headers: { Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}` }
 		})
-	}).catch(() => ({ status: 404 }));
+	}).catch(() => ({ status: 500 }));
 
 	return res.status;
 }

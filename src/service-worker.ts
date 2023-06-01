@@ -11,6 +11,9 @@ const ASSETS = [...build, ...files, ...prerendered];
 setDefaultHandler(
     new StaleWhileRevalidate({
         cacheName: CACHE,
+        matchOptions: {
+            ignoreSearch: true
+        }
     })
 );
 

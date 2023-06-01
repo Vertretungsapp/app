@@ -1,16 +1,8 @@
 <script lang="ts">
 	import LoginAndSettings from '../components/LoginAndSettings/LoginAndSettings.svelte';
-	import { onMount } from 'svelte';
 	import OverviewLinkButton from '../components/Home/OverviewLinkButton.svelte';
 	import { faDoorOpen, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
-	import { verifyCredentials } from '$lib/api/session';
 	import FavoriteButtons from '../components/Home/Favorites/FavoriteButtons.svelte';
-
-	onMount(async () => {
-		if (!(await verifyCredentials())) {
-			document.querySelector<HTMLDialogElement>('#loginDialog')?.showModal();
-		}
-	});
 </script>
 
 <div class="m-auto flex h-screen w-[80%] flex-col items-center justify-between py-20 md:w-1/2">
