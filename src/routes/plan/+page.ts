@@ -37,10 +37,12 @@ export const load = (async ({ url }) => {
 
 	let filter = getFilter(short);
 
-	if (filter) {
-		updateFilter(filter, (planData.plan as Class).lessons);
-	} else {
-		filter = createFilter(short, (planData.plan as Class).lessons);
+	if(planData.type === "Klasse") {
+		if (filter) {
+			updateFilter(filter, (planData.plan as Class).lessons);
+		} else {
+			filter = createFilter(short, (planData.plan as Class).lessons);
+		}
 	}
 
 	return {
