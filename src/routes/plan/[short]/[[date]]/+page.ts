@@ -7,7 +7,7 @@ import type PlannedLesson from '$lib/api/stundenplan42/class/PlannedLesson';
 import type SchoolPlan from '$lib/api/stundenplan42/class/SchoolPlan';
 import { PlanNotFoundError } from '$lib/api/stundenplan42/errors/PlanNotFoundError';
 import type { Filter } from '$lib/filter';
-import { createFilter, getFilter } from '$lib/filter';
+import { createFilter, getFilter, updateFilter } from '$lib/filter';
 import type { PageLoad } from './$types';
 
 export type PageData = {
@@ -32,14 +32,19 @@ export const load = (async ({ params }) => {
 
 	const planData = await _fetchPlanData(short, false, date ? new Date(date) : undefined);
 
+	let filter = getFilter(short);
+	
+	if (filter) {
+		updateFilter(filter, (planData.plan as Class).lessons);
+	} else {
+		filter = createFilter(short, (planData.plan as Class).lessons);
+	}
+
 	return {
 		short,
 		date: date ? new Date(date) : undefined,
 		planData,
-		filter:
-			planData.type === 'Klasse'
-				? getFilter(short) || createFilter(short, (planData.plan as Class).lessons)
-				: undefined
+		filter: planData.type === 'Klasse' ? filter : undefined
 	};
 }) satisfies PageLoad;
 

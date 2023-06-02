@@ -47,7 +47,7 @@
 </script>
 
 <Dialog id="settingsDialog">
-	<h1 class="mt-4 text-center">Einstellungen</h1>
+	<h1 class="text-center">Einstellungen</h1>
 	<div class="my-4 flex flex-col items-center gap-2">
 		<input
 			type="button"

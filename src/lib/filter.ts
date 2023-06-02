@@ -34,6 +34,40 @@ export function getFilter(classShort: string): Filter | null {
 	return null;
 }
 
+/**
+ * Updates the lessons in the filter
+ * @param filter Filter to update
+ * @param lessons Lessons to update
+ */
+export function updateFilter(filter: Filter, lessons: Lesson[]): Filter {
+	const lessonsToAdd = lessons.filter((lesson) => {
+		return !filter.lessons.find((l) => l.lesson.id === lesson.id);
+	});
+
+	const lessonsToRemove = filter.lessons.filter((lesson) => {
+		return !lessons.find((l) => l.id === lesson.lesson.id);
+	});
+
+	const lessonsToUpdate = filter.lessons.filter((lesson) => {
+		return lessons.find((l) => l.id === lesson.lesson.id);
+	});
+
+	lessonsToAdd.forEach((lesson) => {
+		filter.lessons.push({ enabled: true, lesson });
+	});
+
+	lessonsToRemove.forEach((lesson) => {
+		filter.lessons.splice(filter.lessons.indexOf(lesson), 1);
+	});
+
+	lessonsToUpdate.forEach((lesson) => {
+		lesson.lesson = lessons.find((l) => l.id === lesson.lesson.id) as Lesson;
+	});
+
+	saveFilter(filter);
+	return filter;
+}
+
 export function saveFilter(filter: Filter) {
 	localStorage.setItem(
 		`filter.${filter.schoolnumber}.${filter.classShort}`,
