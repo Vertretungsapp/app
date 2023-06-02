@@ -33,6 +33,7 @@ export const load = (async ({ params }) => {
 	const planData = await _fetchPlanData(short, false, date ? new Date(date) : undefined);
 
 	let filter = getFilter(short);
+	
 	if (filter) {
 		updateFilter(filter, (planData.plan as Class).lessons);
 	} else {
