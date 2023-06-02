@@ -13,7 +13,7 @@
 	{#each plans as plan}
 		<a
 			class="dynborder w-full rounded-[7px] p-4 text-center"
-			href={!overwriteHref ? `/plan/${plan.short}` : generateOverwriteHref(plan.short)}
+			href={!overwriteHref ? `/plan?short=${plan.short}` : generateOverwriteHref(plan.short)}
 			>{plan.short}</a
 		>
 	{/each}

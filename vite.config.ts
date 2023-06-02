@@ -12,6 +12,7 @@ export default defineConfig({
 	server: { https: true },
 	plugins: [sveltekit(), mkCert()],
 	define: {
-		VERSION: JSON.stringify(pkg.version)
+		VERSION: JSON.stringify(pkg.version),
+		'process.env.NODE_ENV': process.env.NODE_ENV === 'production' ? '"production"' : '"development"'
 	}
 });

@@ -1,6 +1,7 @@
 import type { Credentials } from '$lib/api/session';
 import { InvalidCredentialsError } from '$lib/api/stundenplan42/errors/InvalidCredentialsError';
 import { NoCredentialsError } from '$lib/api/stundenplan42/errors/NoCredentialsError';
+import { NoInternetConnectionError } from '$lib/api/stundenplan42/errors/NoInternetConnectionError';
 import { PlanNotFoundError } from '$lib/api/stundenplan42/errors/PlanNotFoundError';
 import { parseStringPromise } from 'xml2js';
 
@@ -16,13 +17,15 @@ export async function testCredentials(cred: Credentials): Promise<number> {
 
 	const url = `https://${BASE_DOMAIN}/${cred.schoolnumber}/mobil/mobdaten/vpinfok.txt`;
 
-	const res = await fetch('/api/proxy', {
+	if (!navigator.onLine) throw new NoInternetConnectionError();
+
+	const res = await fetch('https://proxy.vertretungsapp.de', {
 		method: 'POST',
 		body: JSON.stringify({
 			url,
 			headers: { Authorization: `Basic ${btoa(`${cred.username}:${cred.password}`)}` }
 		})
-	});
+	}).catch(() => ({ status: 500 }));
 
 	return res.status;
 }
@@ -38,7 +41,9 @@ export async function testCredentials(cred: Credentials): Promise<number> {
 export async function fetchFromStundenplan24(cred: Credentials, date?: Date): Promise<object> {
 	const url = `https://${BASE_DOMAIN}/${cred.schoolnumber}/mobil/mobdaten/${getFileName(date)}`;
 
-	const res = await fetch('/api/proxy', {
+	if (!navigator.onLine) throw new NoInternetConnectionError();
+
+	const res = await fetch('https://proxy.vertretungsapp.de', {
 		method: 'POST',
 		body: JSON.stringify({
 			url,
