@@ -16,18 +16,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Android APK
+      - name: Build Svelte app
+        run: npm run build
+
+      - name: Copy files to Android project
+        run: npx cap sync android
+
+      - name: Build and package APK
         run: |
-          npm run build # Replace with your build command
-          npx cap sync
+          cd android
+          ./gradlew assembleRelease
 
       - name: Archive and upload APK
         uses: actions/upload-artifact@v3
         with:
-          name: "Android APK"
+          name: 'Android APK'
           path: android/app/build/outputs/apk/release/app-release-unsigned.apk
