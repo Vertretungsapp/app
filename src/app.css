@@ -46,7 +46,7 @@
 	}
 
 	.input {
-		@apply staticBorder rounded-[7px] bg-background p-2 font-bold;
+		@apply staticBorder cursor-pointer rounded-[7px] bg-background p-2 font-bold;
 	}
 
 	.staticBorder {

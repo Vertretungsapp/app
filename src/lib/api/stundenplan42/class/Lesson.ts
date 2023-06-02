@@ -11,7 +11,7 @@ export default class Lesson {
 export function fromJson(json: any): Lesson {
 	const lesson = new Lesson();
 	lesson.id = json.UeNr['_'];
-	lesson.subject = json.UeNr.$.UeFa;
+	lesson.subject = json.UeNr.$.UeGr || json.UeNr.$.UeFa;
 	lesson.teacher = json.UeNr.$.UeLe;
 	return lesson;
 }

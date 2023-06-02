@@ -45,8 +45,8 @@
 </script>
 
 <Dialog id="loginDialog">
-	<h1 class="my-4 text-center">Zugangsdaten</h1>
-	<form class="flex flex-col gap-2" on:submit|preventDefault={handleSubmit}>
+	<h1 class="text-center">Zugangsdaten</h1>
+	<form class="mt-4 flex flex-col gap-2" on:submit|preventDefault={handleSubmit}>
 		<input
 			type="text"
 			id="loginDialog_schoolnumber"
