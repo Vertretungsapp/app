@@ -19,10 +19,10 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
 
       - name: Build Svelte app
-        run: npm run build
+        run: yarn build
 
       - name: Copy files to Android project
         run: npx cap sync android
