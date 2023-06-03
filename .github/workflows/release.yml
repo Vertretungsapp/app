@@ -39,7 +39,7 @@ jobs:
           ./gradlew assembleRelease
 
       - uses: r0adkll/sign-android-release@v1
-        name: Sign app APK
+        name: Sign APK
         id: sign_app_apk
         with:
           releaseDirectory: android/app/build/outputs/apk/release
@@ -50,17 +50,17 @@ jobs:
         env:
           BUILD_TOOLS_VERSION: "30.0.2"
 
-      - name: Upload signed APK
-        uses: actions/upload-artifact@v3
-        with:
-          name: release.apk
-          path: ${{steps.sign_app_apk.outputs.signedReleaseFile}}
+      - name: Rename Files
+        run: |
+          mv android/app/build/outputs/apk/release/app-release-unsigned.apk android/app/build/outputs/apk/release/vertretungsapp-release-unsigned.apk
+          mv ${{steps.sign_app_apk.outputs.signedReleaseFile}} android/app/build/outputs/apk/release/vertretungsapp-release.apk
 
-      - name: Upload Artifact
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: release-unsigned.apk
-          path: android/app/build/outputs/apk/release/app-release-unsigned.apk
+          path: |
+            - android/app/build/outputs/apk/release/vertretungsapp-release-unsigned.apk
+            - android/app/build/outputs/apk/release/vertretungsapp-release.apk
 
   release:
     needs: build-android
@@ -81,4 +81,5 @@ jobs:
           draft: true
           generate_release_notes: true
           files: |
-            app-release-unsigned.apk
+            vertretungsapp-release-unsigned.apk
+            vertretungsapp-release.apk
