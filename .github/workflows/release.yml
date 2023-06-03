@@ -52,15 +52,13 @@ jobs:
 
       - name: Rename Files
         run: |
-          mv android/app/build/outputs/apk/release/app-release-unsigned.apk android/app/build/outputs/apk/release/vertretungsapp-release-unsigned.apk
           mv ${{steps.sign_app_apk.outputs.signedReleaseFile}} android/app/build/outputs/apk/release/vertretungsapp-release.apk
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          path: |
-            - android/app/build/outputs/apk/release/vertretungsapp-release-unsigned.apk
-            - android/app/build/outputs/apk/release/vertretungsapp-release.apk
+          name: apk-artifacts
+          path: android/app/build/outputs/apk/release/
 
   release:
     needs: build-android
@@ -72,7 +70,10 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
-          name: app-release-unsigned.apk
+          name: apk-artifacts
+
+      - name: Unzip Artifact
+        run: unzip apk-artifacts.zip
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -81,5 +82,4 @@ jobs:
           draft: true
           generate_release_notes: true
           files: |
-            vertretungsapp-release-unsigned.apk
             vertretungsapp-release.apk
