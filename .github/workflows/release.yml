@@ -72,9 +72,6 @@ jobs:
         with:
           name: apk-artifacts
 
-      - name: Unzip Artifact
-        run: unzip apk-artifacts.zip
-
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
