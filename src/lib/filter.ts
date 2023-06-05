@@ -88,6 +88,7 @@ export function toggleLesson(filter: Filter, lesson: Lesson): boolean {
 
 export function isLessonEnabled(filter: Filter, lesson: Lesson | PlannedLesson): boolean {
 	const lessonFilter = filter.lessons.find((l) => l.lesson.id === lesson.id);
+	if(!filter.lessons.find((l) => l.lesson.id === lesson.id)) return true;
 	return lessonFilter?.enabled ?? false;
 }
 
