@@ -128,6 +128,7 @@ jobs:
         uses: nwtgck/actions-netlify@v2.0
         with:
           publish-dir: 'build/'
+          production-deploy: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
