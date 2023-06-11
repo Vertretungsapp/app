@@ -120,11 +120,14 @@ jobs:
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v3
+        with:
+          name: web-artifacts
+          path: build/
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
-          publish-dir: 'web-artifacts/build'
+          publish-dir: 'build/'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
