@@ -1,4 +1,4 @@
-name: Build Native Apps
+name: Release Pipeline
 
 on:
   release:
@@ -57,6 +57,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: web-artifacts
+          path: build/
+
+      - name: LS
+        run: ls -la build
 
       - name: Copy files to Android project
         run: npx cap sync android
