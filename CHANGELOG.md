@@ -1,3 +1,7 @@
+
+
+### [0.2.3-beta.2](https://github.com/SachsenspieltCoding/vertretungsapp/compare/v0.2.3-beta.1...v0.2.3-beta.2) (2023-06-11)
+
 ### [0.2.3-beta.1](https://github.com/SachsenspieltCoding/vertretungsapp/compare/v0.2.3-beta.0...v0.2.3-beta.1) (2023-06-11)
 
 ### [0.2.3-beta.0](https://github.com/SachsenspieltCoding/vertretungsapp/compare/v0.2.2...v0.2.3-beta.0) (2023-06-11)
