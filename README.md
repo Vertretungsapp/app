@@ -1,7 +1,6 @@
 # 📱 Vertretungsapp.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8b4cbfd5-2af7-4815-849e-d5bba9ebafec/deploy-status)](https://app.netlify.com/sites/vertretungsapp/deploys)
-[![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue)](LICENSE)
+[![Release Pipeline](https://github.com/SachsenspieltCoding/vertretungsapp/actions/workflows/release.yml/badge.svg)](https://github.com/SachsenspieltCoding/vertretungsapp/actions/workflows/release.yml)[![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue)](LICENSE)
 [![Releases](https://img.shields.io/github/v/release/SachsenspieltCoding/vertretungsapp?display_name=tag)](https://github.com/SachsenspieltCoding/vertretungsapp/releases/latest)
 
 ![Logo Vertretungsapp](https://github.com/SachsenspieltCoding/vertretungsapp/blob/master/static/logo/logo.png)
