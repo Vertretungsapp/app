@@ -33,7 +33,7 @@
 	</div>
 
 	<a
-		href={isFavorite ? `/favorite?id=${id}` : `/favorite/select?id=${id}`}
+		href={isFavorite ? `/plan?short=${short}` : `/favorite/select?id=${id}`}
 		class={`dynborder flex w-full items-center justify-center rounded-[7px] p-1 ${
 			!isFavorite && 'text-grayedOut'
 		}`}
