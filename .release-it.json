@@ -1,29 +1,32 @@
 {
-  "git": {
-    "commitMessage": "chore: release v${version}"
-  },
-  "github": {
-    "release": true,
-    "releaseName": "v${version}",
-    "draft": true
-  },
-    "npm": {
-        "publish": false
-    },
-    "plugins": {
-        "@release-it/conventional-changelog": {
-            "infile": "CHANGELOG.md",
-            "preset": {
-            "name": "conventionalcommits",
-            "types": [
-                { "type": "feat", "section": "Features" },
-                { "type": "fix", "section": "Bug Fixes" },
-                { "type": "docs", "section": "Documentation" },
-                { "type": "style", "section": "Styles" },
-                { "type": "refactor", "section": "Code Refactoring" },
-                { "type": "chore(deps-dev)", "section":  "Dependencies" }
-            ]
-          }
-        }
-    }
+	"git": {
+		"commitMessage": "chore: release v${version}"
+	},
+	"hooks": {
+		"before:init": ["npm run format", "npm run lint", "npm run test"]
+	},
+	"github": {
+		"release": true,
+		"releaseName": "v${version}",
+		"draft": true
+	},
+	"npm": {
+		"publish": false
+	},
+	"plugins": {
+		"@release-it/conventional-changelog": {
+			"infile": "CHANGELOG.md",
+			"preset": {
+				"name": "conventionalcommits",
+				"types": [
+					{ "type": "feat", "section": "\uD83C\uDD95 Features" },
+					{ "type": "fix", "section": "\uD83E\uDEB2 Bug Fixes" },
+					{ "type": "docs", "section": "\uD83D\uDCD2 Documentation" },
+					{ "type": "style", "section": "\uD83D\uDD8C\uFE0F Styles" },
+					{ "type": "refactor", "section": "\uD83D\uDCBB Code Refactoring" },
+					{ "type": "chore(deps-dev)", "section": "⚙\uFE0F Dependencies" }
+				]
+			}
+		}
+	}
 }

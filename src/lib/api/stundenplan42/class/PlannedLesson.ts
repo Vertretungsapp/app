@@ -19,6 +19,7 @@ export default class PlannedLesson {
  * Parses a planned lesson from the JSON response
  * @param json JSON response
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function fromJson(json: any): PlannedLesson {
 	const plannedLesson = new PlannedLesson();
 	plannedLesson.id = json.Nr;
@@ -32,6 +33,7 @@ export function fromJson(json: any): PlannedLesson {
 	return plannedLesson;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function parseChangeable(changeable: any): Changeable | undefined {
 	if (typeof changeable === 'string') return { name: changeable, changed: false };
 	if (typeof changeable === 'object') return { name: changeable['_'] || '', changed: true };

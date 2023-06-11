@@ -19,6 +19,7 @@ export default class Class implements Plan {
  * Parses a class from the JSON response
  * @param json JSON response
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function fromJson(json: any): Class {
 	const klass = new Class(json.Kurz);
 

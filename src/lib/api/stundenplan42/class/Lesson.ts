@@ -8,6 +8,7 @@ export default class Lesson {
  * Parses a lesson from the JSON response
  * @param json JSON response
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function fromJson(json: any): Lesson {
 	const lesson = new Lesson();
 	lesson.id = json.UeNr['_'];

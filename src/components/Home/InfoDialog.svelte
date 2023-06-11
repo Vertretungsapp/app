@@ -14,6 +14,7 @@
 				target="_blank">GNU GPLv3</a
 			>
 		</p>
+		<!-- eslint-disable-next-line no-undef -->
 		<p>Version: {VERSION}</p>
 	</div>
 

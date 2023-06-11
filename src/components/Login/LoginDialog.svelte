@@ -70,7 +70,7 @@
 			{#if credentials}
 				<div
 					class="col-span-1 flex cursor-pointer items-center justify-center rounded-[7px] border-[3px] border-error"
-					on:keypress={() => {}}
+					on:keypress={() => undefined}
 					on:click={handleLogout}
 				>
 					<Icon icon={faRightFromBracket} size="1.5x" />

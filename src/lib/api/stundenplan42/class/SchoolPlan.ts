@@ -50,6 +50,7 @@ export default class SchoolPlan {
  * @param schoolnumber Schoolnumber of the plan
  * @param json JSON response
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function fromJson(schoolnumber: string, json: any): SchoolPlan {
 	const date = parseDate(json.VpMobil.Kopf.DatumPlan, 'EEEE, dd. MMMM y', new Date(), {
 		locale: DELocale
@@ -70,6 +71,7 @@ export function fromJson(schoolnumber: string, json: any): SchoolPlan {
 	if (classes) plan.classes = parseArrayOrObjectFromJson<Class>(classes.Kl, classParser);
 
 	const info = json.VpMobil.ZusatzInfo;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	if (info) plan.info = parseArrayOrObjectFromJson<string>(info, (s: any) => s.ZiZeile);
 
 	plan.generateRooms();
@@ -88,6 +90,7 @@ function holidayParser(s: string): Date {
  * @param json JSON response
  * @param parseMethod Method to parse the JSON object
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function parseArrayOrObjectFromJson<T>(json: any, parseMethod: (json: any) => T): T[] {
 	if (Array.isArray(json)) return json.map(parseMethod);
 	if (typeof json === 'object') return [parseMethod(json)];

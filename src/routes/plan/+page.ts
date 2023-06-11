@@ -37,7 +37,7 @@ export const load = (async ({ url }) => {
 
 	let filter = getFilter(short);
 
-	if(planData.type === "Klasse") {
+	if (planData.type === 'Klasse') {
 		if (filter) {
 			updateFilter(filter, (planData.plan as Class).lessons);
 		} else {

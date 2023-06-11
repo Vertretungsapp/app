@@ -11,7 +11,7 @@ declare global {
 				COUNTER: DurableObjectNamespace;
 			};
 			context: {
-				waitUntil(promise: Promise<any>): void;
+				waitUntil(promise: Promise<never>): void;
 			};
 			caches: CacheStorage & { default: Cache };
 		}
