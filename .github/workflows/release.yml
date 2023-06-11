@@ -45,6 +45,14 @@ jobs:
           distribution: 'adopt'
           cache: 'gradle'
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: yarn install
+
       - name: Download Web Files
         uses: actions/download-artifact@v3
         with:
