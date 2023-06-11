@@ -21,7 +21,7 @@
                 { "type": "docs", "section": "Documentation" },
                 { "type": "style", "section": "Styles" },
                 { "type": "refactor", "section": "Code Refactoring" },
-                {"type": "chore(deps-dev)", "section":  "Dependencies"}
+                { "type": "chore(deps-dev)", "section":  "Dependencies" }
             ]
           }
         }
