@@ -80,7 +80,7 @@ jobs:
           BUILD_TOOLS_VERSION: '30.0.2'
 
       - name: Move APK
-        run: ${{steps.sign_app_apk.outputs.signedReleaseFile}} vertretungsapp-release.apk
+        run: mv ${{steps.sign_app_apk.outputs.signedReleaseFile}} vertretungsapp-release.apk
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
