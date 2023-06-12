@@ -1,11 +1,8 @@
-
-
 ### [0.2.4](https://github.com/SachsenspieltCoding/vertretungsapp/compare/v0.2.3...v0.2.4) (2023-06-11)
-
 
 ### 🪲 Bug Fixes
 
-* favorite button redirects now directly to plan (caused white flash) ([51cb371](https://github.com/SachsenspieltCoding/vertretungsapp/commit/51cb3710959c15e44c40fafa34547d4ce653943a))
+- favorite button redirects now directly to plan (caused white flash) ([51cb371](https://github.com/SachsenspieltCoding/vertretungsapp/commit/51cb3710959c15e44c40fafa34547d4ce653943a))
 
 ### [0.2.3](https://github.com/SachsenspieltCoding/vertretungsapp/compare/v0.2.3-beta.5...v0.2.3) (2023-06-11)
 
