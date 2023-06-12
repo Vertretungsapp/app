@@ -24,7 +24,7 @@
 					{ "type": "docs", "section": "\uD83D\uDCD2 Documentation" },
 					{ "type": "style", "section": "\uD83D\uDD8C\uFE0F Styles" },
 					{ "type": "refactor", "section": "\uD83D\uDCBB Code Refactoring" },
-					{ "type": "chore(deps-dev)", "section": "⚙\uFE0F Dependencies" }
+					{ "type": "deps", "section": "⚙\uFE0F Dependencies" }
 				]
 			}
 		}
