@@ -27,7 +27,7 @@
 		try {
 			planData = await _fetchPlanData(data.short, force, $date);
 		} catch (e) {
-			if(!force) {
+			if (!force) {
 				planData.schedule = [];
 				planData.schoolPlan.info = [];
 				planData.schoolPlan.created = undefined;
