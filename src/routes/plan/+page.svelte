@@ -44,7 +44,6 @@
 		planData = data.planData;
 		startDate = new Date(planData.date);
 		filter = data.filter;
-		$date = planData.date;
 		date.subscribe(() => {
 			refreshData(false);
 		});
