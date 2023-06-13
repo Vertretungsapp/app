@@ -106,9 +106,11 @@
 			{#if planData.schoolPlan.info && planData.schoolPlan.info.length > 0}
 				<div class="grid w-full grid-cols-5 justify-between gap-4 py-4">
 					<Icon icon={faInfoCircle} size="lg" />
-					{#each planData.schoolPlan.info as info}
-						<p class="col-span-4 text-right text-sm leading-tight">{info}</p>
-					{/each}
+					<div class="col-span-4 text-right text-sm leading-tight">
+						{#each planData.schoolPlan.info as info}
+							<p>{info}</p>
+						{/each}
+					</div>
 				</div>
 			{/if}
 
