@@ -27,9 +27,11 @@
 		try {
 			planData = await _fetchPlanData(data.short, force, $date);
 		} catch (e) {
-			planData.schedule = [];
-			planData.schoolPlan.info = [];
-			planData.schoolPlan.created = undefined;
+			if(!force) {
+				planData.schedule = [];
+				planData.schoolPlan.info = [];
+				planData.schoolPlan.created = undefined;
+			}
 		}
 		isRefreshing = false;
 	}
