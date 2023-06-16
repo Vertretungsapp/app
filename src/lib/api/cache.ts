@@ -55,7 +55,7 @@ export function getSchoolPlan(schoolnumber: string, date?: Date): SchoolPlan | u
 	const entry = getCacheEntry(schoolnumber);
 	if (!entry) return undefined;
 	if (!date) return entry[0];
-	return entry.find((plan) => new Date(plan.date).getTime() === date.getTime());
+	return entry.find((plan) => new Date(plan.date).toDateString() === date.toDateString());
 }
 
 /**
@@ -68,10 +68,10 @@ export function addPlan(schoolnumber: string, plan: SchoolPlan) {
 	if (!cache[schoolnumber]) cache[schoolnumber] = [];
 
 	if (
-		cache[schoolnumber].find((p) => new Date(p.date).getTime() === new Date(plan.date).getTime())
+		cache[schoolnumber].find((p) => new Date(p.date).toDateString() === new Date(plan.date).toDateString())
 	) {
 		cache[schoolnumber] = cache[schoolnumber].map((p) =>
-			new Date(p.date).getTime() === new Date(plan.date).getTime() ? plan : p
+			new Date(p.date).toDateString() === new Date(plan.date).toDateString() ? plan : p
 		);
 	} else cache[schoolnumber].push(plan);
 
@@ -92,7 +92,7 @@ export function removePlan(schoolnumber: string, date: Date) {
 	const cache = getCache();
 	if (!cache[schoolnumber]) return;
 	cache[schoolnumber] = cache[schoolnumber].filter(
-		(plan) => new Date(plan.date).getTime() !== date.getTime()
+		(plan) => new Date(plan.date).toDateString() !== date.toDateString()
 	);
 	saveCache(cache);
 	cleanupCache();
