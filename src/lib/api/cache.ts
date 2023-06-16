@@ -31,7 +31,7 @@ export function cleanupCache() {
 	const now = new Date();
 	for (const schoolnumber in cache) {
 		cache[schoolnumber] = cache[schoolnumber].filter(
-			(plan) => now.getTime() - new Date(plan.date).getTime() < 1000 * 60 * 60 * 24 * 30
+			(plan) => now.getTime() - new Date(plan.date).getTime() < 1000 * 60 * 60 * 24 * 14
 		);
 	}
 	saveCache(cache);
