@@ -8,8 +8,8 @@ import type SchoolPlan from '$lib/api/stundenplan42/class/SchoolPlan';
 import { PlanNotFoundError } from '$lib/api/stundenplan42/errors/PlanNotFoundError';
 import type { Filter } from '$lib/filter';
 import { createFilter, getFilter, updateFilter } from '$lib/filter';
+import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import {error} from "@sveltejs/kit";
 
 export type PageData = {
 	short: string;
@@ -34,9 +34,11 @@ export const load = (async ({ url }) => {
 		: undefined;
 	const short = url.searchParams.get('short') as string;
 
-	const planData = await _fetchPlanData(short, false, date ? new Date(date) : undefined).catch(() => {
-		throw error(404, "Plan nicht gefunden");
-	});
+	const planData = await _fetchPlanData(short, false, date ? new Date(date) : undefined).catch(
+		() => {
+			throw error(404, 'Plan nicht gefunden');
+		}
+	);
 
 	let filter = getFilter(short);
 
