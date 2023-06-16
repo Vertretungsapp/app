@@ -21,6 +21,7 @@
 				"name": "conventionalcommits",
 				"types": [
 					{ "type": "feat", "section": "\uD83C\uDD95 Features" },
+					{ "type": "change", "section": "\uD83D\uDD04 Changes" },
 					{ "type": "fix", "section": "\uD83E\uDEB2 Bug Fixes" },
 					{ "type": "hotfix", "section": "\uD83D\uDD25 Hotfixes" },
 					{ "type": "docs", "section": "\uD83D\uDCD2 Documentation" },
