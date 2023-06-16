@@ -4,7 +4,7 @@
 	},
 	"hooks": {
 		"before:init": ["npm run format", "npm run lint", "npm run test"],
-		"after:bump": "npm run format"
+		"after:release": ["npm run format", "git add .", "git commit -m 'chore: format CHANGELOG.md'", "git push origin master"]
 	},
 	"github": {
 		"release": true,
