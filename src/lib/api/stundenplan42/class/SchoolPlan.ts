@@ -71,8 +71,9 @@ export function fromJson(schoolnumber: string, json: any): SchoolPlan {
 	if (classes) plan.classes = parseArrayOrObjectFromJson<Class>(classes.Kl, classParser);
 
 	const info = json.VpMobil.ZusatzInfo;
+	if(typeof info.ZiZeile == "string") plan.info = [info.ZiZeile];
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	if (info) plan.info = parseArrayOrObjectFromJson<string>(info.ZiZeile, (s: any) => s);
+	else if (info) plan.info = parseArrayOrObjectFromJson<string>(info.ZiZeile, (s: any) => s);
 
 	plan.generateRooms();
 
