@@ -1,11 +1,8 @@
-
-
 ### [0.2.6](https://github.com/SachsenspieltCoding/vertretungsapp/compare/v0.2.5...v0.2.6) (2023-06-16)
-
 
 ### 🔥 Hotfixes
 
-* one-liner-planinfo was ignored by parser ([56f6bdc](https://github.com/SachsenspieltCoding/vertretungsapp/commit/56f6bdc1701d7fe4d83d4d2228b805a35e00aa01))
+- one-liner-planinfo was ignored by parser ([56f6bdc](https://github.com/SachsenspieltCoding/vertretungsapp/commit/56f6bdc1701d7fe4d83d4d2228b805a35e00aa01))
 
 ### [0.2.5](https://github.com/SachsenspieltCoding/vertretungsapp/compare/v0.2.4...v0.2.5) (2023-06-16)
 
