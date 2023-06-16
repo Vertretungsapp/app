@@ -3,7 +3,8 @@
 		"commitMessage": "chore: release v${version}"
 	},
 	"hooks": {
-		"before:init": ["npm run format", "npm run lint", "npm run test"]
+		"before:init": ["npm run format", "npm run lint", "npm run test"],
+		"after:bump": "npm run format"
 	},
 	"github": {
 		"release": true,
@@ -21,6 +22,7 @@
 				"types": [
 					{ "type": "feat", "section": "\uD83C\uDD95 Features" },
 					{ "type": "fix", "section": "\uD83E\uDEB2 Bug Fixes" },
+					{ "type": "hotfix", "section": "\uD83D\uDD25 Hotfixes" },
 					{ "type": "docs", "section": "\uD83D\uDCD2 Documentation" },
 					{ "type": "style", "section": "\uD83D\uDD8C\uFE0F Styles" },
 					{ "type": "refactor", "section": "\uD83D\uDCBB Code Refactoring" },
