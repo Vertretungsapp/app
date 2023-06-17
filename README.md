@@ -7,7 +7,7 @@
 ![Logo Vertretungsapp](https://github.com/SachsenspieltCoding/vertretungsapp/blob/master/static/logo/logo.png)
 
 Deine Vertretungsplanapp für Indiware!
-Indiware ist eine Stundenplanungssoftware, welche primär an Sächsischen Schulen zum Einsatz kommt.
+Indiware ist eine Stundenplanungssoftware, welche primär an Sächsischen Gymnasien zum Einsatz kommt.
 Diese App ersetzt somit die offizielle App VpMobil24.
 
 ## Features
