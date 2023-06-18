@@ -68,7 +68,9 @@ export function addPlan(schoolnumber: string, plan: SchoolPlan) {
 	if (!cache[schoolnumber]) cache[schoolnumber] = [];
 
 	if (
-		cache[schoolnumber].find((p) => new Date(p.date).toDateString() === new Date(plan.date).toDateString())
+		cache[schoolnumber].find(
+			(p) => new Date(p.date).toDateString() === new Date(plan.date).toDateString()
+		)
 	) {
 		cache[schoolnumber] = cache[schoolnumber].map((p) =>
 			new Date(p.date).toDateString() === new Date(plan.date).toDateString() ? plan : p
