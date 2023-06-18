@@ -13,6 +13,8 @@
 	import Icon from '../../components/Icon.svelte';
 	import PlanSwitchArrow from '../../components/Plan/PlanSwitchArrow.svelte';
 	import PlanItem from '../../components/Plan/PlanItem.svelte';
+	import { swipe } from 'svelte-gestures';
+	import { addDays } from '$lib/day';
 
 	export let data: PageData;
 
@@ -48,6 +50,14 @@
 			refreshData(false);
 		});
 	});
+
+	function handleSwipe(e) {
+		if (e.detail.direction === 'left') {
+			date.set(addDays($date, 1, planData.schoolPlan.holidays));
+		} else if (e.detail.direction === 'right') {
+			date.set(addDays($date, -1, planData.schoolPlan.holidays));
+		}
+	}
 </script>
 
 <BackMenu />
@@ -102,7 +112,11 @@
 			</p>
 		</div>
 
-		<div class="m-auto flex h-full w-[90%] flex-col gap-2 overflow-y-scroll">
+		<div
+			class="m-auto flex h-full w-[90%] flex-col gap-2 overflow-y-scroll"
+			use:swipe={{ timeframe: 300, minSwipeDistance: 60, touchAction: 'pan-y' }}
+			on:swipe={handleSwipe}
+		>
 			{#if planData.schoolPlan.info && planData.schoolPlan.info.length > 0}
 				<div class="grid w-full grid-cols-5 justify-between gap-4 py-4">
 					<Icon icon={faInfoCircle} size="lg" />
