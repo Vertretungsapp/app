@@ -1,10 +1,10 @@
 # 📱 Vertretungsapp.
 
-[![Release Pipeline](https://github.com/SachsenspieltCoding/vertretungsapp/actions/workflows/release.yml/badge.svg)](https://github.com/SachsenspieltCoding/vertretungsapp/actions/workflows/release.yml)
+[![Release Pipeline](https://github.com/Vertretungsapp/app/actions/workflows/release.yml/badge.svg)](https://github.com/Vertretungsapp/app/actions/workflows/release.yml)
 [![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue)](LICENSE)
-[![Releases](https://img.shields.io/github/v/release/SachsenspieltCoding/vertretungsapp?display_name=tag)](https://github.com/SachsenspieltCoding/vertretungsapp/releases/latest)
+[![Releases](https://img.shields.io/github/v/release/Vertretungsapp/app?display_name=tag)](https://github.com/Vertretungsapp/app/releases/latest)
 
-![Logo Vertretungsapp](https://github.com/SachsenspieltCoding/vertretungsapp/blob/master/static/logo/logo.png)
+![Logo Vertretungsapp](https://github.com/Vertretungsapp/app/blob/master/static/logo/logo.png)
 
 Deine Vertretungsplanapp für Indiware!
 Indiware ist eine Stundenplanungssoftware, welche primär an Sächsischen Gymnasien zum Einsatz kommt.
