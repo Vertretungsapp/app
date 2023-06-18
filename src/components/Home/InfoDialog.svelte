@@ -10,7 +10,7 @@
 		<p>
 			Lizenziert unter <a
 				class="underline"
-				href="https://github.com/SachsenspieltCoding/vertretungsapp/blob/master/LICENSE"
+				href="https://github.com/Vertretungsapp/app/blob/master/LICENSE"
 				target="_blank">GNU GPLv3</a
 			>
 		</p>
@@ -19,17 +19,17 @@
 	</div>
 
 	<div class="my-4 flex justify-center gap-2">
-		<a href="https://github.com/SachsenspieltCoding/vertretungsapp" target="_blank">GitHub</a>
+		<a href="https://github.com/Vertretungsapp/app" target="_blank">GitHub</a>
 		<p class="text-accent">・</p>
-		<a href="https://vertretungsapp.de/discord" target="_blank">Discord</a>
+		<a href="https://www.vertretungsapp.de/discord" target="_blank">Discord</a>
 		<p class="text-accent">・</p>
-		<a href="https://vertretungsapp.de" target="_blank">Website</a>
+		<a href="https://www.vertretungsapp.de" target="_blank">Website</a>
 	</div>
 
 	<div class="my-4 flex justify-center gap-2 text-grayedOut">
-		<a href="https://vertretungsapp.de/imprint" target="_blank">Impressum</a>
+		<a href="https://www.vertretungsapp.de/imprint" target="_blank">Impressum</a>
 		<p>・</p>
-		<a href="https://vertretungsapp.de/privacy" target="_blank">Datenschutz</a>
+		<a href="https://www.vertretungsapp.de/privacy" target="_blank">Datenschutz</a>
 	</div>
 
 	<input
