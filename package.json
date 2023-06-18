@@ -1,7 +1,7 @@
 {
 	"name": "vertretungsapp",
 	"version": "0.2.6",
-	"author": "Sachsenspielt",
+	"author": "Vertretungsapp Development",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
