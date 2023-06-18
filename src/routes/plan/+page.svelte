@@ -45,6 +45,7 @@
 	onMount(() => {
 		planData = data.planData;
 		startDate = new Date(planData.date);
+		resetDate(); // set date store to start date
 		filter = data.filter;
 		date.subscribe(() => {
 			refreshData(false);
