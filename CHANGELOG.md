@@ -1,3 +1,7 @@
+
+
+### [0.3.1](https://github.com/Vertretungsapp/app/compare/v0.3.1-beta.0...v0.3.1) (2023-06-19)
+
 ### [0.3.1-beta.0](https://github.com/Vertretungsapp/app/compare/v0.3.0...v0.3.1-beta.0) (2023-06-19)
 
 ### 🪲 Bug Fixes
