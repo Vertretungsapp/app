@@ -1,11 +1,8 @@
-
-
 ### [0.3.1-beta.0](https://github.com/Vertretungsapp/app/compare/v0.3.0...v0.3.1-beta.0) (2023-06-19)
-
 
 ### 🪲 Bug Fixes
 
-* CI not working correctly (outside of app) ([9cf5a49](https://github.com/Vertretungsapp/app/commit/9cf5a496b1f5b972eff67e54e92d2d547ec8b6dc))
+- CI not working correctly (outside of app) ([9cf5a49](https://github.com/Vertretungsapp/app/commit/9cf5a496b1f5b972eff67e54e92d2d547ec8b6dc))
 
 ## [0.3.0](https://github.com/Vertretungsapp/app/compare/v0.2.6...v0.3.0) (2023-06-19)
 
