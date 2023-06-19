@@ -106,10 +106,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy-production:
-    name: Deploy to Production
+  deploy-netlify:
+    name: Deploy to Netlify
     if: github.event.release.prerelease == false
-    needs: upload-artifacts
+    needs: build-web
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifacts
@@ -126,5 +126,3 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      # Soon: Deploy Google Play
