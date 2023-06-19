@@ -7,8 +7,7 @@
 		"after:release": [
 			"npm run format",
 			"git add .",
-			"git commit -m 'chore: format CHANGELOG.md'",
-			"git push origin master"
+			"git commit -m 'chore: format CHANGELOG.md'"
 		]
 	},
 	"github": {
