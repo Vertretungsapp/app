@@ -1,35 +1,28 @@
-
-
 ## [0.3.0](https://github.com/Vertretungsapp/app/compare/v0.2.6...v0.3.0) (2023-06-19)
-
 
 ### 🔄 Changes
 
-* plan now cached only for last 14 days ([bdfb53c](https://github.com/Vertretungsapp/app/commit/bdfb53c247219dd249f2babd0660a63a3c153576))
-* updated links in info dialog ([ac4b737](https://github.com/Vertretungsapp/app/commit/ac4b737cabdba37e7804c1e7e746e2e2b8ff1447))
-
+- plan now cached only for last 14 days ([bdfb53c](https://github.com/Vertretungsapp/app/commit/bdfb53c247219dd249f2babd0660a63a3c153576))
+- updated links in info dialog ([ac4b737](https://github.com/Vertretungsapp/app/commit/ac4b737cabdba37e7804c1e7e746e2e2b8ff1447))
 
 ### ⚙️ Dependencies
 
-* bump @sveltejs/kit from 1.20.2 to 1.20.4 ([#71](https://github.com/Vertretungsapp/app/issues/71)) ([3337a3f](https://github.com/Vertretungsapp/app/commit/3337a3f1612e55c7f5053424cd95750f28d78fa3))
-* bump @typescript-eslint/parser from 5.59.9 to 5.59.11 ([#73](https://github.com/Vertretungsapp/app/issues/73)) ([f208f51](https://github.com/Vertretungsapp/app/commit/f208f513320d22112dcbeeaf497febea148fc812))
-* bump eslint from 8.42.0 to 8.43.0 ([#74](https://github.com/Vertretungsapp/app/issues/74)) ([7faaa52](https://github.com/Vertretungsapp/app/commit/7faaa52892b4197ac98a1a3831e586324cd27699))
-
+- bump @sveltejs/kit from 1.20.2 to 1.20.4 ([#71](https://github.com/Vertretungsapp/app/issues/71)) ([3337a3f](https://github.com/Vertretungsapp/app/commit/3337a3f1612e55c7f5053424cd95750f28d78fa3))
+- bump @typescript-eslint/parser from 5.59.9 to 5.59.11 ([#73](https://github.com/Vertretungsapp/app/issues/73)) ([f208f51](https://github.com/Vertretungsapp/app/commit/f208f513320d22112dcbeeaf497febea148fc812))
+- bump eslint from 8.42.0 to 8.43.0 ([#74](https://github.com/Vertretungsapp/app/issues/74)) ([7faaa52](https://github.com/Vertretungsapp/app/commit/7faaa52892b4197ac98a1a3831e586324cd27699))
 
 ### 🆕 Features
 
-* added gesture control in planview ([#76](https://github.com/Vertretungsapp/app/issues/76)) ([d7cf3f5](https://github.com/Vertretungsapp/app/commit/d7cf3f5bebcabccb7000650b8f49491e9a13cd17))
-
+- added gesture control in planview ([#76](https://github.com/Vertretungsapp/app/issues/76)) ([d7cf3f5](https://github.com/Vertretungsapp/app/commit/d7cf3f5bebcabccb7000650b8f49491e9a13cd17))
 
 ### 🪲 Bug Fixes
 
-* cache not working due to bad searching ([2a7b74c](https://github.com/Vertretungsapp/app/commit/2a7b74c546187c70ba8b54f7ff818c27a2bac0a0))
-* planview opens in wrong day (weekday, holiday) ([#77](https://github.com/Vertretungsapp/app/issues/77)) ([53d06b9](https://github.com/Vertretungsapp/app/commit/53d06b93af5e81a806cd5764ac001bb5ccc1ef51))
-
+- cache not working due to bad searching ([2a7b74c](https://github.com/Vertretungsapp/app/commit/2a7b74c546187c70ba8b54f7ff818c27a2bac0a0))
+- planview opens in wrong day (weekday, holiday) ([#77](https://github.com/Vertretungsapp/app/issues/77)) ([53d06b9](https://github.com/Vertretungsapp/app/commit/53d06b93af5e81a806cd5764ac001bb5ccc1ef51))
 
 ### 🔥 Hotfixes
 
-* plan getting not working due to bad if statement in parsing ([e991d2b](https://github.com/Vertretungsapp/app/commit/e991d2b5efbf1a84f6e32704419959fdbba769a8))
+- plan getting not working due to bad if statement in parsing ([e991d2b](https://github.com/Vertretungsapp/app/commit/e991d2b5efbf1a84f6e32704419959fdbba769a8))
 
 ### [0.2.6](https://github.com/SachsenspieltCoding/vertretungsapp/compare/v0.2.5...v0.2.6) (2023-06-16)
 
