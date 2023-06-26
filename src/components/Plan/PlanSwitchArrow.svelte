@@ -13,6 +13,6 @@
 	}
 </script>
 
-<div class="cursor-pointer" on:keypress={() => undefined} on:click={handleClick}>
+<button class="cursor-pointer" on:keypress={() => undefined} on:click={handleClick}>
 	<Icon icon={turned ? faChevronRight : faChevronLeft} size="2x" />
-</div>
+</button>
