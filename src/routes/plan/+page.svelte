@@ -89,7 +89,7 @@
 		<div>
 			<div class="flex items-center justify-between px-8">
 				<PlanSwitchArrow holidays={planData.schoolPlan.holidays} />
-				<div
+				<button
 					class="cursor-pointer text-center leading-tight"
 					on:keypress={() => undefined}
 					on:click={resetDate}
@@ -98,7 +98,7 @@
 					<p class="text-sm">
 						{new Date($date).toLocaleDateString()}
 					</p>
-				</div>
+				</button>
 				<PlanSwitchArrow holidays={planData.schoolPlan.holidays} turned />
 			</div>
 

@@ -68,13 +68,12 @@
 				/>
 			{/if}
 			{#if credentials}
-				<div
+				<button
 					class="col-span-1 flex cursor-pointer items-center justify-center rounded-[7px] border-[3px] border-error"
-					on:keypress={() => undefined}
 					on:click={handleLogout}
 				>
 					<Icon icon={faRightFromBracket} size="1.5x" />
-				</div>
+				</button>
 			{/if}
 			<input class="input col-span-4 cursor-pointer" type="submit" value="Speichern" />
 		</div>

@@ -15,7 +15,7 @@
 			>
 		</p>
 		<!-- eslint-disable-next-line no-undef -->
-		<p>Version: {VERSION}</p>
+		<p>Version: {PROJECT_VERSION}</p>
 	</div>
 
 	<div class="my-4 flex justify-center gap-2">
