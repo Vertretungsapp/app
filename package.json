@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"build:icons:android": "npx @capacitor/assets generate --iconBackgroundColor '#000000' --splashBackgroundColor '#000000' --android",
+		"build:icons:android": "npx @capacitor/assets generate --iconBackgroundColor '#000000' --splashBackgroundColor '#EFF1F3' --splashBackgroundColorDark '#111111' --android",
+		"build:icons:pwa": "pwa-asset-generator ./static/logo/logo.png ./static/ -i ./src/app.html -m ./static/site.webmanifest --background '#111111' --icon-only --path-override '%sveltekit.assets%' && pwa-asset-generator ./assets/splash-dark.png ./static/ -i ./src/app.html -m ./static/site.webmanifest --background '#111111' -p '0px' --splash-only --path-override '%sveltekit.assets%' --darkMode && pwa-asset-generator ./assets/splash.png ./static/ -i ./src/app.html -m ./static/site.webmanifest --background '#EFF1F3' -p '0px' --splash-only --path-override '%sveltekit.assets%' && sed -i 's/%sveltekit.assets%//g' ./static/site.webmanifest",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -30,6 +31,7 @@
 		"prettier-plugin-organize-imports": "^3.2.2",
 		"prettier-plugin-svelte": "^2.10.1",
 		"prettier-plugin-tailwindcss": "^0.3.0",
+		"pwa-asset-generator": "^6.3.1",
 		"release-it": "^15.11.0",
 		"svelte": "^4.0.0",
 		"svelte-check": "^3.4.4",
