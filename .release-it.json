@@ -26,6 +26,10 @@
           { "type": "deps", "section": "⚙\uFE0F Dependencies" }
         ]
       }
+    },
+    "@release-it/bumper": {
+      "in": "pubspec.yaml",
+      "out": "pubspec.yaml"
     }
   }
 }
