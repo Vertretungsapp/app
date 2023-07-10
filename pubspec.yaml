@@ -1,0 +1,28 @@
+name: vertretungsapp
+description: Deine Vertretungsplanapp für Indiware
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  english_words: ^4.0.0
+  provider: ^6.0.0
+  google_fonts: ^5.1.0
+  intl: ^0.18.1
+  date_format: ^2.0.7
+  http: ^1.1.0
+  xml2json: ^6.1.0
+  dart_date: ^1.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
