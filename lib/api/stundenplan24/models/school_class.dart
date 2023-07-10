@@ -1,7 +1,7 @@
-import 'package:vertretungsapp_flutter/api/stundenplan24/models/lesson.dart';
-import 'package:vertretungsapp_flutter/api/stundenplan24/models/schedule.dart';
-import 'package:vertretungsapp_flutter/api/stundenplan24/models/scheduled_lesson.dart';
-import 'package:vertretungsapp_flutter/api/stundenplan24/parsing_tools.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/lesson.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/schedule.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/scheduled_lesson.dart';
+import 'package:vertretungsapp/api/stundenplan24/parsing_tools.dart';
 
 class SchoolClass extends Schedule {
   List<Lesson> lessons = [];

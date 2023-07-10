@@ -1,4 +1,4 @@
-import 'package:vertretungsapp_flutter/api/stundenplan24/models/changeable.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/changeable.dart';
 
 class ScheduledLesson {
   final String id;

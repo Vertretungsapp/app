@@ -1,4 +1,4 @@
-import 'package:vertretungsapp_flutter/api/stundenplan24/models/scheduled_lesson.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/scheduled_lesson.dart';
 
 enum ScheduleType { schoolClass, room }
 

@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:vertretungsapp_flutter/api/fetch.dart';
-import 'package:vertretungsapp_flutter/api/session.dart';
+import 'package:vertretungsapp/api/fetch.dart';
+import 'package:vertretungsapp/api/session.dart';
 import 'package:xml2json/xml2json.dart';
 
 const baseDomain = 'stundenplan24.de';

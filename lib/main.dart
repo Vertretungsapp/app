@@ -1,9 +1,9 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vertretungsapp_flutter/api/session.dart';
-import 'package:vertretungsapp_flutter/api/stundenplan24/stundenplan24.dart';
-import 'package:vertretungsapp_flutter/theme.dart';
+import 'package:vertretungsapp/api/session.dart';
+import 'package:vertretungsapp/api/stundenplan24/stundenplan24.dart';
+import 'package:vertretungsapp/theme.dart';
 
 import 'api/stundenplan24/models/plan.dart';
 
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     plan = fetchStundenplan24(
-        Credentials("10161728", Username.schueler, "S2223hy"),
+        Credentials("10000000", Username.schueler, "password"),
         DateTime(2023, 6, 30));
   }
 
@@ -52,8 +52,7 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.hasData) {
               var parsedPlan =
                   Plan.fromJson("10161728", snapshot.data!["VpMobil"]);
-              return Text(
-                  "Plan: ${parsedPlan.classes[19].schedule.map((e) => e.subject.value)}");
+              return Text("Plan: ${parsedPlan.classes.map((e) => e.short)}");
             } else if (snapshot.hasError) {
               return Text("Error: ${snapshot.error}");
             } else {

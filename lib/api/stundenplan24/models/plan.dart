@@ -1,7 +1,7 @@
 import 'dart:core';
 import 'package:dart_date/dart_date.dart';
-import 'package:vertretungsapp_flutter/api/stundenplan24/models/school_class.dart';
-import 'package:vertretungsapp_flutter/api/stundenplan24/parsing_tools.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/school_class.dart';
+import 'package:vertretungsapp/api/stundenplan24/parsing_tools.dart';
 
 class Plan {
   final String schoolnumber;
@@ -25,7 +25,9 @@ class Plan {
             pattern: "EEEE, dd. MMMM y", locale: "de_DE"),
         holidays = _parseHolidays(json['FreieTage']['ft']),
         week = int.parse(json['Kopf']['woche']),
-        info = parseStringOrListToList(json['ZusatzInfo']['ZiZeile']),
+        info = json['ZusatzInfo'] != null
+            ? parseStringOrListToList(json['ZusatzInfo']['ZiZeile'])
+            : [],
         classes = parseArrayOrObjectFromJson<SchoolClass>(
             json['Klassen']['Kl'], SchoolClass.fromJson);
 }
