@@ -1,0 +1,10 @@
+- Error Handling
+- User Settings
+- HomePage
+    - Favorites
+    - NextLessonWidget
+- SelectionPage
+- RoomPlans
+- Caching
+
+- Unit Tests?
