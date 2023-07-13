@@ -1,5 +1,7 @@
 (- Error Handling) -> Finished, till no more errors
 - User Settings
+    - Login
+    - Custom Theme -> Color Picker?
 - HomePage
     - Favorites
     - NextLessonWidget
