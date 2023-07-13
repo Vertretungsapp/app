@@ -89,7 +89,7 @@ class _PlanPageState extends State<PlanPage> {
 
   @override
   Widget build(BuildContext context) {
-    final headline = ["Klasse", "Raum"][widget.type.index];
+    final headline = ["Klasse", "Raum", "Lehrer"][widget.type.index];
 
     return Scaffold(
       body: Padding(
@@ -133,7 +133,7 @@ class _PlanPageState extends State<PlanPage> {
                             ),
                           );
                         } else {
-                          return const CircularProgressIndicator();
+                          return const CircularProgressIndicator.adaptive();
                         }
                       })
                 ],

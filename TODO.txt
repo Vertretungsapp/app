@@ -3,6 +3,5 @@
 - HomePage
     - Favorites
     - NextLessonWidget
-- SelectionPage
 
 - Unit Tests?
