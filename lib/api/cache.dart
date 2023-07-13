@@ -29,6 +29,7 @@ class Cache {
   }
 
   Cache writeToDisk() {
+    cache.forEach((key, value) => value.sort((a, b) => b.date.compareTo(a.date)));
     cacheBox.put("cache", jsonEncode(cache));
     return this;
   }

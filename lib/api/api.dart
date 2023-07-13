@@ -7,13 +7,11 @@ Future<Plan> getPlan([bool ignoreCache = false, DateTime? date]) {
   return getCredentials().then((value) async {
     final cachedPlan = cache.getPlan(value.schoolnumber, date);
     if (cachedPlan != null && !ignoreCache) {
-      print("From Cache!");
       return cachedPlan;
     }
 
     final plan = Plan.parseXMLJson(value.schoolnumber, (await fetchStundenplan24(value, date))['VpMobil']);
     cache.addPlan(plan);
-    print("From API!");
     return plan;
   });
 }
