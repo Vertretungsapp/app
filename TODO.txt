@@ -1,10 +1,8 @@
-- Error Handling
+(- Error Handling) -> Finished, till no more errors
 - User Settings
 - HomePage
     - Favorites
     - NextLessonWidget
 - SelectionPage
-- RoomPlans
-- Caching
 
 - Unit Tests?

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/schedule.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/scheduled_lesson.dart';
 
 class VPPlanListItem extends StatelessWidget {
   final ScheduledLesson lesson;
+  final ScheduleType type;
 
   const VPPlanListItem({
     super.key,
     required this.lesson,
+    required this.type,
   });
 
   @override
@@ -69,7 +72,8 @@ class VPPlanListItem extends StatelessWidget {
                                       : Container(),
                                 ],
                               ),
-                              Text(lesson.room.value, style: Theme.of(context).textTheme.displaySmall),
+                              Text(type == ScheduleType.schoolClass ? lesson.room.value : (lesson.classShort ?? ""),
+                                  style: Theme.of(context).textTheme.displaySmall),
                             ],
                           ),
                         ),

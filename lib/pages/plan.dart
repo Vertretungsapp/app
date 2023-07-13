@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vertretungsapp/api/api.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/plan.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/schedule.dart';
 import 'package:vertretungsapp/components/back_button.dart';
 import 'package:vertretungsapp/components/icon_button.dart';
 import 'package:vertretungsapp/components/plan/filter_button.dart';
@@ -10,9 +11,10 @@ import 'package:vertretungsapp/components/plan/plan_list_item.dart';
 import 'package:vertretungsapp/components/plan/reload_button.dart';
 
 class PlanPage extends StatefulWidget {
-  final String schoolClass;
+  final String short;
+  final ScheduleType type;
 
-  const PlanPage({Key? key, required this.schoolClass}) : super(key: key);
+  const PlanPage({Key? key, required this.short, required this.type}) : super(key: key);
 
   @override
   State<PlanPage> createState() => _PlanPageState();
@@ -20,6 +22,7 @@ class PlanPage extends StatefulWidget {
 
 class _PlanPageState extends State<PlanPage> {
   late Future<Plan> plan;
+  bool isReloading = false;
 
   DateTime date = DateTime.now();
   DateTime initDate = DateTime.now();
@@ -86,6 +89,8 @@ class _PlanPageState extends State<PlanPage> {
 
   @override
   Widget build(BuildContext context) {
+    final headline = ["Klasse", "Raum"][widget.type.index];
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(30),
@@ -98,10 +103,10 @@ class _PlanPageState extends State<PlanPage> {
                 children: [
                   RichText(
                     text: TextSpan(
-                      text: 'Klasse ',
+                      text: '$headline ',
                       style: Theme.of(context).textTheme.displayMedium,
                       children: <TextSpan>[
-                        TextSpan(text: widget.schoolClass, style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                        TextSpan(text: widget.short, style: TextStyle(color: Theme.of(context).colorScheme.primary)),
                       ],
                     ),
                   ),
@@ -111,8 +116,12 @@ class _PlanPageState extends State<PlanPage> {
                   FutureBuilder(
                       future: plan,
                       builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return _PlanDisplay(short: widget.schoolClass, plan: snapshot.data!);
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          isReloading = false;
+                        }
+
+                        if (snapshot.hasData && !isReloading) {
+                          return _PlanDisplay(short: widget.short, plan: snapshot.data!, type: widget.type);
                         } else if (snapshot.hasError) {
                           return Expanded(
                             child: Column(
@@ -150,8 +159,11 @@ class _TopBar extends StatelessWidget {
         const Spacer(),
         Row(
           children: [
-            const VPFilterButton(),
-            VPReloadButton(onPressed: () => planPage.refreshPlan(true)),
+            planPage.widget.type != ScheduleType.room ? const VPFilterButton() : Container(),
+            VPReloadButton(onPressed: () {
+              planPage.isReloading = true;
+              planPage.refreshPlan(true, planPage.date);
+            }),
           ],
         )
       ],
@@ -204,11 +216,23 @@ String intToWeekday(int weekday) {
 class _PlanDisplay extends StatelessWidget {
   final String short;
   final Plan plan;
+  final ScheduleType type;
 
-  const _PlanDisplay({Key? key, required this.short, required this.plan}) : super(key: key);
+  const _PlanDisplay({Key? key, required this.short, required this.plan, required this.type}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final scheduledLessons = [];
+
+    switch (type) {
+      case ScheduleType.schoolClass:
+        scheduledLessons.addAll(plan.classes.firstWhere((element) => element.short == short).schedule);
+        break;
+      case ScheduleType.room:
+        scheduledLessons.addAll(plan.rooms.firstWhere((element) => element.short == short).schedule);
+        break;
+    }
+
     return Expanded(
       child: Column(
         children: [
@@ -217,7 +241,7 @@ class _PlanDisplay extends StatelessWidget {
           const SizedBox(height: 5),
           Expanded(
             child: ListView(
-              children: plan.classes.firstWhere((element) => element.short == short).schedule.map((e) => VPPlanListItem(lesson: e)).toList(),
+              children: scheduledLessons.map((e) => VPPlanListItem(lesson: e, type: type)).toList(),
             ),
           )
         ],

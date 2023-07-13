@@ -4,6 +4,7 @@ import 'package:vertretungsapp/api/api.dart';
 import 'package:vertretungsapp/api/cache.dart';
 import 'package:vertretungsapp/api/session.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/plan.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/schedule.dart';
 import 'package:vertretungsapp/components/button.dart';
 import 'package:vertretungsapp/pages/plan.dart';
 import 'package:vertretungsapp/theme.dart';
@@ -53,16 +54,26 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.hasData) {
               return Expanded(
                 child: ListView(
-                  children: snapshot.data!.classes
-                      .map((e) => VPButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => PlanPage(schoolClass: e.short)),
-                            );
-                          },
-                          text: e.short))
-                      .toList(),
+                  children: (snapshot.data!.rooms
+                          .map((e) => VPButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => PlanPage(short: e.short, type: ScheduleType.room)),
+                                );
+                              },
+                              text: e.short))
+                          .toList() +
+                      snapshot.data!.classes
+                          .map((e) => VPButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => PlanPage(short: e.short, type: ScheduleType.schoolClass)),
+                                );
+                              },
+                              text: e.short))
+                          .toList()),
                 ),
               );
             } else if (snapshot.hasError) {
