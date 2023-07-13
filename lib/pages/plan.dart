@@ -26,9 +26,15 @@ class _PlanPageState extends State<PlanPage> {
 
   List<DateTime> holidays = [];
 
-  void setDate(DateTime d) {
+  void refreshPlan([bool ignoreCache = false, DateTime? date]) {
     setState(() {
-      plan = getPlan(false, d);
+      plan = getPlan(ignoreCache, date);
+    });
+  }
+
+  void setDate(DateTime d) {
+    refreshPlan(false, d);
+    setState(() {
       date = d;
     });
   }
@@ -85,7 +91,7 @@ class _PlanPageState extends State<PlanPage> {
         padding: const EdgeInsets.all(30),
         child: Column(
           children: [
-            const _TopBar(),
+            _TopBar(planPage: this),
             const SizedBox(height: 10),
             Expanded(
               child: Column(
@@ -134,18 +140,20 @@ class _PlanPageState extends State<PlanPage> {
 }
 
 class _TopBar extends StatelessWidget {
-  const _TopBar({super.key});
+  final _PlanPageState planPage;
+
+  const _TopBar({Key? key, required this.planPage}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        VPBackButton(),
-        Spacer(),
+        const VPBackButton(),
+        const Spacer(),
         Row(
           children: [
-            VPFilterButton(),
-            VPReloadButton(),
+            const VPFilterButton(),
+            VPReloadButton(onPressed: () => planPage.refreshPlan(true)),
           ],
         )
       ],
