@@ -8,4 +8,11 @@ class Schedule {
   final ScheduleType type;
 
   Schedule(this.short, this.schedule, this.type);
+
+  Schedule.fromJson(dynamic json)
+      : short = json['short'],
+        schedule = json['schedule'],
+        type = ScheduleType.values.firstWhere((element) => element.name == json['type']);
+
+  Map<String, dynamic> toJson() => {'short': short, 'schedule': schedule, 'type': type.name};
 }

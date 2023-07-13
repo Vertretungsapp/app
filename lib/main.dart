@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:vertretungsapp/api/api.dart';
+import 'package:vertretungsapp/api/cache.dart';
 import 'package:vertretungsapp/api/session.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/plan.dart';
-import 'package:vertretungsapp/api/stundenplan24/stundenplan24.dart';
 import 'package:vertretungsapp/components/button.dart';
 import 'package:vertretungsapp/pages/plan.dart';
 import 'package:vertretungsapp/theme.dart';
 
 void main() async {
+  await Hive.initFlutter();
+  await cache.initCache();
   runApp(const Main());
 }
 
@@ -27,12 +31,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<Map<String, dynamic>> plan;
+  late Future<Plan> plan;
 
   @override
   void initState() {
     super.initState();
-    plan = fetchStundenplan24(Credentials("10000000", Username.schueler, "password"));
+    login(Credentials("10000000", Username.schueler, "password"));
+    plan = getPlan();
   }
 
   @override
@@ -46,10 +51,9 @@ class _HomePageState extends State<HomePage> {
           future: plan,
           builder: ((context, snapshot) {
             if (snapshot.hasData) {
-              var parsedPlan = Plan.fromJson("10161728", snapshot.data!["VpMobil"]);
               return Expanded(
                 child: ListView(
-                  children: parsedPlan.classes
+                  children: snapshot.data!.classes
                       .map((e) => VPButton(
                           onPressed: () {
                             Navigator.push(
