@@ -111,9 +111,7 @@ class _PlanPageState extends State<PlanPage> {
                   FutureBuilder(
                       future: plan,
                       builder: (context, snapshot) {
-                        if (snapshot.connectionState != ConnectionState.done) {
-                          return const CircularProgressIndicator();
-                        } else if (snapshot.hasData) {
+                        if (snapshot.hasData) {
                           return _PlanDisplay(short: widget.schoolClass, plan: snapshot.data!);
                         } else if (snapshot.hasError) {
                           return Expanded(
