@@ -14,7 +14,8 @@ class PlanPage extends StatefulWidget {
   final String short;
   final ScheduleType type;
 
-  const PlanPage({Key? key, required this.short, required this.type}) : super(key: key);
+  const PlanPage({Key? key, required this.short, required this.type})
+      : super(key: key);
 
   @override
   State<PlanPage> createState() => _PlanPageState();
@@ -49,26 +50,29 @@ class _PlanPageState extends State<PlanPage> {
       return [6, 7].contains(weekDay);
     }
 
-    // If the date is a holiday, keep adding 1 day until it is not a holiday
-    while (holidays.contains(date)) {
-      if (reverse) {
-        date = date.subtract(const Duration(days: 1));
-      } else {
-        date = date.add(const Duration(days: 1));
-      }
+    bool isHoliday(DateTime d) {
+      return holidays
+          .map((e) => "${e.year}-${e.month}-${e.getDate}")
+          .contains("${d.year}-${d.month}-${d.getDate}");
     }
 
-    // Add/Subtract 1 day to/from the date and skip weekends
+    DateTime addDays(DateTime d, int count) {
+      if (count == 0) return d;
+      var sign = count < 0 ? -1 : 1;
+      while (count != 0) {
+        d = d.add(Duration(days: sign));
+        if (!isWeekend(d.weekday) && !isHoliday(d)) {
+          count -= sign;
+        }
+      }
+      return d;
+    }
+
+    // Add/Subtract 1 day to/from the date and skip weekends as well as holidays
     if (reverse) {
-      date = date.subtract(const Duration(days: 1));
-      while (isWeekend(date.weekday)) {
-        date = date.subtract(const Duration(days: 1));
-      }
+      date = addDays(date, -1);
     } else {
-      date = date.add(const Duration(days: 1));
-      while (isWeekend(date.weekday)) {
-        date = date.add(const Duration(days: 1));
-      }
+      date = addDays(date, 1);
     }
 
     setDate(date);
@@ -106,7 +110,10 @@ class _PlanPageState extends State<PlanPage> {
                       text: '$headline ',
                       style: Theme.of(context).textTheme.displayMedium,
                       children: <TextSpan>[
-                        TextSpan(text: widget.short, style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                        TextSpan(
+                            text: widget.short,
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary)),
                       ],
                     ),
                   ),
@@ -121,14 +128,23 @@ class _PlanPageState extends State<PlanPage> {
                         }
 
                         if (snapshot.hasData && !isReloading) {
-                          return _PlanDisplay(short: widget.short, plan: snapshot.data!, type: widget.type);
+                          return _PlanDisplay(
+                              short: widget.short,
+                              plan: snapshot.data!,
+                              type: widget.type);
                         } else if (snapshot.hasError) {
                           return Expanded(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text("Kein Plan verfügbar!",
-                                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.tertiary)),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .tertiary)),
                               ],
                             ),
                           );
@@ -159,7 +175,9 @@ class _TopBar extends StatelessWidget {
         const Spacer(),
         Row(
           children: [
-            planPage.widget.type != ScheduleType.room ? const VPFilterButton() : Container(),
+            planPage.widget.type != ScheduleType.room
+                ? const VPFilterButton()
+                : Container(),
             VPReloadButton(onPressed: () {
               planPage.isReloading = true;
               planPage.refreshPlan(true, planPage.date);
@@ -175,14 +193,17 @@ class _PlanSwitcher extends StatelessWidget {
   final DateTime date;
   final _PlanPageState planPage;
 
-  const _PlanSwitcher({Key? key, required this.date, required this.planPage}) : super(key: key);
+  const _PlanSwitcher({Key? key, required this.date, required this.planPage})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        VPIconButton(onPressed: () => planPage.addDate(true), icon: const FaIcon(FontAwesomeIcons.chevronLeft, size: 30)),
+        VPIconButton(
+            onPressed: () => planPage.addDate(true),
+            icon: const FaIcon(FontAwesomeIcons.chevronLeft, size: 30)),
         TextButton(
           onPressed: () {
             planPage.setDate(planPage.initDate);
@@ -198,18 +219,29 @@ class _PlanSwitcher extends StatelessWidget {
           child: Column(
             children: [
               Text(intToWeekday(date.weekday)),
-              Text(date.format("dd.MM.yyyy"), style: Theme.of(context).textTheme.labelMedium),
+              Text(date.format("dd.MM.yyyy"),
+                  style: Theme.of(context).textTheme.labelMedium),
             ],
           ),
         ),
-        VPIconButton(onPressed: () => planPage.addDate(false), icon: const FaIcon(FontAwesomeIcons.chevronRight, size: 30)),
+        VPIconButton(
+            onPressed: () => planPage.addDate(false),
+            icon: const FaIcon(FontAwesomeIcons.chevronRight, size: 30)),
       ],
     );
   }
 }
 
 String intToWeekday(int weekday) {
-  List<String> weekdays = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+  List<String> weekdays = [
+    "Montag",
+    "Dienstag",
+    "Mittwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
+    "Sonntag"
+  ];
   return weekdays[weekday - 1];
 }
 
@@ -218,7 +250,9 @@ class _PlanDisplay extends StatelessWidget {
   final Plan plan;
   final ScheduleType type;
 
-  const _PlanDisplay({Key? key, required this.short, required this.plan, required this.type}) : super(key: key);
+  const _PlanDisplay(
+      {Key? key, required this.short, required this.plan, required this.type})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -226,10 +260,14 @@ class _PlanDisplay extends StatelessWidget {
 
     switch (type) {
       case ScheduleType.schoolClass:
-        scheduledLessons.addAll(plan.classes.firstWhere((element) => element.short == short).schedule);
+        scheduledLessons.addAll(plan.classes
+            .firstWhere((element) => element.short == short)
+            .schedule);
         break;
       case ScheduleType.room:
-        scheduledLessons.addAll(plan.rooms.firstWhere((element) => element.short == short).schedule);
+        scheduledLessons.addAll(plan.rooms
+            .firstWhere((element) => element.short == short)
+            .schedule);
         break;
     }
 
@@ -237,11 +275,16 @@ class _PlanDisplay extends StatelessWidget {
       child: Column(
         children: [
           Text(plan.lastUpdated.format("dd.MM.yyyy HH:mm"),
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.tertiary)),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.copyWith(color: Theme.of(context).colorScheme.tertiary)),
           const SizedBox(height: 5),
           Expanded(
             child: ListView(
-              children: scheduledLessons.map((e) => VPPlanListItem(lesson: e, type: type)).toList(),
+              children: scheduledLessons
+                  .map((e) => VPPlanListItem(lesson: e, type: type))
+                  .toList(),
             ),
           )
         ],
