@@ -269,6 +269,8 @@ class _PlanDisplay extends StatelessWidget {
             .firstWhere((element) => element.short == short)
             .schedule);
         break;
+      case ScheduleType.teacher:
+        break;
     }
 
     return Expanded(

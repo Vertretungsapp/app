@@ -1,6 +1,6 @@
 import 'package:vertretungsapp/api/stundenplan24/models/scheduled_lesson.dart';
 
-enum ScheduleType { schoolClass, room }
+enum ScheduleType { schoolClass, room, teacher }
 
 class Schedule {
   final String short;
@@ -12,7 +12,9 @@ class Schedule {
   Schedule.fromJson(dynamic json)
       : short = json['short'],
         schedule = json['schedule'],
-        type = ScheduleType.values.firstWhere((element) => element.name == json['type']);
+        type = ScheduleType.values
+            .firstWhere((element) => element.name == json['type']);
 
-  Map<String, dynamic> toJson() => {'short': short, 'schedule': schedule, 'type': type.name};
+  Map<String, dynamic> toJson() =>
+      {'short': short, 'schedule': schedule, 'type': type.name};
 }
