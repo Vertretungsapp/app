@@ -119,7 +119,6 @@ class _PlanPageState extends State<PlanPage> {
                   ),
                   const SizedBox(height: 10),
                   _PlanSwitcher(date: date, planPage: this),
-                  const SizedBox(height: 5),
                   FutureBuilder(
                       future: plan,
                       builder: (context, snapshot) {
