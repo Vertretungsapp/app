@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vertretungsapp/api/api.dart';
+import 'package:vertretungsapp/api/cache.dart';
 import 'package:vertretungsapp/api/session.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/plan.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/schedule.dart';
@@ -16,11 +17,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late Future<Plan> plan;
 
+  void initPlan() async {
+    await login(Credentials("10000000", Username.schueler, "password"));
+    plan = getPlan();
+  }
+
   @override
   void initState() {
     super.initState();
-    login(Credentials("10000000", Username.schueler, "password"));
-    plan = getPlan();
+    cache.clear();
+    initPlan();
   }
 
   @override
@@ -37,8 +43,12 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _OverviewButton(icon: FaIcon(FontAwesomeIcons.peopleGroup, size: 50), type: ScheduleType.schoolClass),
-                _OverviewButton(icon: FaIcon(FontAwesomeIcons.doorOpen, size: 50), type: ScheduleType.room),
+                _OverviewButton(
+                    icon: FaIcon(FontAwesomeIcons.peopleGroup, size: 50),
+                    type: ScheduleType.schoolClass),
+                _OverviewButton(
+                    icon: FaIcon(FontAwesomeIcons.doorOpen, size: 50),
+                    type: ScheduleType.room),
               ],
             )
           ],
@@ -55,10 +65,14 @@ class _Headline extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: RichText(
-            text: TextSpan(style: Theme.of(context).textTheme.displayLarge, children: [
-      const TextSpan(text: "Vertretungsapp"),
-      TextSpan(text: ".", style: TextStyle(color: Theme.of(context).colorScheme.primary))
-    ])));
+            text: TextSpan(
+                style: Theme.of(context).textTheme.displayLarge,
+                children: [
+          const TextSpan(text: "Vertretungsapp"),
+          TextSpan(
+              text: ".",
+              style: TextStyle(color: Theme.of(context).colorScheme.primary))
+        ])));
   }
 }
 
@@ -66,7 +80,8 @@ class _OverviewButton extends StatelessWidget {
   final FaIcon icon;
   final ScheduleType type;
 
-  const _OverviewButton({Key? key, required this.icon, required this.type}) : super(key: key);
+  const _OverviewButton({Key? key, required this.icon, required this.type})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,19 +94,22 @@ class _OverviewButton extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => OverviewPage(type: type)),
+                MaterialPageRoute(
+                    builder: (context) => OverviewPage(type: type)),
               );
             },
             color: Theme.of(context).colorScheme.surface,
             padding: const EdgeInsets.all(20),
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             child: icon,
           ),
         ),
         const SizedBox(height: 10),
-        Text(["Klassen", "Räume", "Lehrer"][type.index], style: Theme.of(context).textTheme.bodyLarge)
+        Text(["Klassen", "Räume", "Lehrer"][type.index],
+            style: Theme.of(context).textTheme.bodyLarge)
       ],
     );
   }

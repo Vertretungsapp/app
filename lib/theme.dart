@@ -21,8 +21,10 @@ ThemeData darkTheme = ThemeData(
         fontSize: 32,
         fontWeight: FontWeight.w900,
       ),
-      displayMedium: GoogleFonts.inter(fontSize: 32, fontWeight: FontWeight.w800),
-      displaySmall: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w700),
+      displayMedium:
+          GoogleFonts.inter(fontSize: 32, fontWeight: FontWeight.w800),
+      displaySmall:
+          GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w700),
       bodyLarge: GoogleFonts.inter(
         fontSize: 18,
         fontWeight: FontWeight.bold,

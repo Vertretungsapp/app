@@ -11,9 +11,12 @@ class Cache {
 
   Cache();
 
-  Cache.fromJson(Map<String, dynamic> json) : cache = json.map((key, value) => MapEntry(key, List<Plan>.from(value.map((x) => Plan.fromJson(x)))));
+  Cache.fromJson(Map<String, dynamic> json)
+      : cache = json.map((key, value) =>
+            MapEntry(key, List<Plan>.from(value.map((x) => Plan.fromJson(x)))));
 
-  Map<String, dynamic> toJson() => cache.map((key, value) => MapEntry(key, List<dynamic>.from(value.map((x) => x.toJson()))));
+  Map<String, dynamic> toJson() => cache.map((key, value) =>
+      MapEntry(key, List<dynamic>.from(value.map((x) => x.toJson()))));
 
   Future<void> initCache() async {
     cacheBox = await Hive.openBox<String>("cache");
@@ -24,19 +27,23 @@ class Cache {
 
   Cache readFromDisk() {
     final json = cacheBox.get("cache");
-    cache = json != null && json != "{}" ? Cache.fromJson(jsonDecode(json)).cache : Cache().cache;
+    cache = json != null && json != "{}"
+        ? Cache.fromJson(jsonDecode(json)).cache
+        : Cache().cache;
     return this;
   }
 
   Cache writeToDisk() {
-    cache.forEach((key, value) => value.sort((a, b) => b.date.compareTo(a.date)));
+    cache.forEach(
+        (key, value) => value.sort((a, b) => b.date.compareTo(a.date)));
     cacheBox.put("cache", jsonEncode(cache));
     return this;
   }
 
   Cache cleanup() {
     final now = DateTime.now().subtract(const Duration(days: 14));
-    cache.forEach((key, value) => cache[key] = value.where((element) => element.date.isAfter(now)).toList());
+    cache.forEach((key, value) => cache[key] =
+        value.where((element) => element.date.isAfter(now)).toList());
     return writeToDisk();
   }
 
@@ -50,7 +57,9 @@ class Cache {
       return plans.isNotEmpty ? plans.first : null;
     }
 
-    var cached = getPlans(schoolnumber).firstWhere((element) => element.date == date, orElse: () => Plan.empty());
+    var cached = getPlans(schoolnumber).firstWhere(
+        (element) => element.date == date,
+        orElse: () => Plan.empty());
     if (cached.isEmpty()) {
       return null;
     }
@@ -59,14 +68,16 @@ class Cache {
 
   Cache addPlan(Plan plan) {
     if (cache[plan.schoolnumber] == null) cache[plan.schoolnumber] = [];
-    cache[plan.schoolnumber]!.removeWhere((element) => element.date == plan.date);
+    cache[plan.schoolnumber]!
+        .removeWhere((element) => element.date == plan.date);
     cache[plan.schoolnumber]!.add(plan);
     return writeToDisk();
   }
 
   Cache removePlan(Plan plan) {
     if (cache[plan.schoolnumber] == null) return this;
-    cache[plan.schoolnumber]!.removeWhere((element) => element.date == plan.date);
+    cache[plan.schoolnumber]!
+        .removeWhere((element) => element.date == plan.date);
     return writeToDisk();
   }
 

@@ -10,7 +10,8 @@ Future<Plan> getPlan([bool ignoreCache = false, DateTime? date]) {
       return cachedPlan;
     }
 
-    final plan = Plan.parseXMLJson(value.schoolnumber, (await fetchStundenplan24(value, date))['VpMobil']);
+    final plan = Plan.parseXMLJson(
+        value.schoolnumber, (await fetchStundenplan24(value, date))['VpMobil']);
     cache.addPlan(plan);
     return plan;
   });

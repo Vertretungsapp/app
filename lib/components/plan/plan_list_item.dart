@@ -23,14 +23,16 @@ class VPPlanListItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+                    padding: const EdgeInsets.only(
+                        left: 10, right: 10, top: 5, bottom: 5),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           width: 40,
                           alignment: Alignment.center,
-                          child: Text(lesson.lessonNumber.toString(), style: Theme.of(context).textTheme.displayLarge),
+                          child: Text(lesson.lessonNumber.toString(),
+                              style: Theme.of(context).textTheme.displayLarge),
                         ),
                         const SizedBox(width: 10),
                         Container(
@@ -58,7 +60,13 @@ class VPPlanListItem extends StatelessWidget {
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyLarge
-                                              ?.copyWith(height: 1.2, color: (lesson.subject.changed ? Theme.of(context).colorScheme.error : null)),
+                                              ?.copyWith(
+                                                  height: 1.2,
+                                                  color: (lesson.subject.changed
+                                                      ? Theme.of(context)
+                                                          .colorScheme
+                                                          .error
+                                                      : null)),
                                         )
                                       : Container(),
                                   lesson.teacher.value != ""
@@ -67,13 +75,23 @@ class VPPlanListItem extends StatelessWidget {
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyLarge
-                                              ?.copyWith(height: 1.2, color: (lesson.teacher.changed ? Theme.of(context).colorScheme.error : null)),
+                                              ?.copyWith(
+                                                  height: 1.2,
+                                                  color: (lesson.teacher.changed
+                                                      ? Theme.of(context)
+                                                          .colorScheme
+                                                          .error
+                                                      : null)),
                                         )
                                       : Container(),
                                 ],
                               ),
-                              Text(type == ScheduleType.schoolClass ? lesson.room.value : (lesson.classShort ?? ""),
-                                  style: Theme.of(context).textTheme.displaySmall),
+                              Text(
+                                  type == ScheduleType.schoolClass
+                                      ? lesson.room.value
+                                      : (lesson.classShort ?? ""),
+                                  style:
+                                      Theme.of(context).textTheme.displaySmall),
                             ],
                           ),
                         ),
@@ -85,12 +103,22 @@ class VPPlanListItem extends StatelessWidget {
             ),
             lesson.info != ""
                 ? Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                    padding: const EdgeInsets.only(
+                        left: 10, right: 10, top: 10, bottom: 5),
                     child: Row(
                       children: [
-                        Text(lesson.info,
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.tertiary),
-                            textAlign: TextAlign.left),
+                        Flexible(
+                          child: Text(
+                            lesson.info,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.tertiary),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
                       ],
                     ),
                   )
