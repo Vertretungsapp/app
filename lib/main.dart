@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vertretungsapp/api/cache.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/schedule.dart';
 import 'package:vertretungsapp/pages/overview.dart';
+import 'package:vertretungsapp/pages/settings.dart';
 import 'package:vertretungsapp/themes/dark_theme.dart';
 
 import 'pages/home.dart';
@@ -31,7 +32,7 @@ class _MainState extends State<Main> {
     const OverviewPage(type: ScheduleType.schoolClass),
     const OverviewPage(type: ScheduleType.room),
     const OverviewPage(type: ScheduleType.teacher),
-    const HomePage(),
+    const SettingsPage(),
   ];
 
   @override

@@ -28,54 +28,57 @@ class _OverviewPageState extends State<OverviewPage> {
     final headline = ["Klassen", "Raum", "Lehrer"][widget.type.index];
 
     return Scaffold(
-      body: Column(
-        children: [
-          RichText(
-            text: TextSpan(
-              text: '',
-              style: Theme.of(context).textTheme.displayMedium,
-              children: <TextSpan>[
-                TextSpan(
-                    text: headline,
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary)),
-                const TextSpan(text: '-Übersicht'),
-              ],
+      body: Center(
+        child: Column(
+          children: [
+            RichText(
+              text: TextSpan(
+                text: '',
+                style: Theme.of(context).textTheme.displayMedium,
+                children: <TextSpan>[
+                  TextSpan(
+                      text: headline,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary)),
+                  const TextSpan(text: '-Übersicht'),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          FutureBuilder(
-              future: plan,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final List<Schedule> items = [];
+            const SizedBox(height: 10),
+            FutureBuilder(
+                future: plan,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final List<Schedule> items = [];
 
-                  switch (widget.type) {
-                    case ScheduleType.schoolClass:
-                      items.addAll(snapshot.data!.classes);
-                      break;
-                    case ScheduleType.room:
-                      items.addAll(snapshot.data!.rooms);
-                      break;
-                    case ScheduleType.teacher:
-                      break;
+                    switch (widget.type) {
+                      case ScheduleType.schoolClass:
+                        items.addAll(snapshot.data!.classes);
+                        break;
+                      case ScheduleType.room:
+                        items.addAll(snapshot.data!.rooms);
+                        break;
+                      case ScheduleType.teacher:
+                        break;
+                    }
+                    return Expanded(
+                        child: GridView.count(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 16,
+                            childAspectRatio: 2,
+                            children: items
+                                .map((e) =>
+                                    _Item(type: widget.type, schedule: e))
+                                .toList()));
+                  } else if (snapshot.hasError) {
+                    return const Text("Error");
+                  } else {
+                    return const CircularProgressIndicator.adaptive();
                   }
-                  return Expanded(
-                      child: GridView.count(
-                          crossAxisCount: 3,
-                          mainAxisSpacing: 16,
-                          crossAxisSpacing: 16,
-                          childAspectRatio: 2,
-                          children: items
-                              .map((e) => _Item(type: widget.type, schedule: e))
-                              .toList()));
-                } else if (snapshot.hasError) {
-                  return const Text("Error");
-                } else {
-                  return const CircularProgressIndicator.adaptive();
-                }
-              })
-        ],
+                })
+          ],
+        ),
       ),
     );
   }
