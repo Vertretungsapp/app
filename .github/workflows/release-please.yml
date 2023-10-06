@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - flutter
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: Release Please
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: dart
+          package-name: vertretungsapp
+          token: ${{ secrets.RELEASEPLEASE_TOKEN }}
+          changelog-types: '[{ "type": "feat", "section": "📕 Features" },{ "type": "change", "section": "🔄 Changes" },{ "type": "fix", "section": "🪲 Bug Fixes" },{ "type": "hotfix", "section": "🔥 Hotfixes" },{ "type": "style", "section": "📌️ Style" },{ "type": "refactor", "section": "🔧 Code Refactoring" },{ "type": "deps", "section": "⚙️ Dependencies" },{ "type": "chore", "section": "🔧 Sonstiges" }]'
+          pull-request-header: 'New Release PR - Please merge to publish 🚀'
+          draft-pull-request: true
