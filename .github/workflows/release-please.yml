@@ -18,6 +18,6 @@ jobs:
           release-type: dart
           package-name: vertretungsapp
           token: ${{ secrets.RELEASEPLEASE_TOKEN }}
-          changelog-types: '[{ "type": "feat", "section": "📕 Features" },{ "type": "change", "section": "🔄 Changes" },{ "type": "fix", "section": "🪲 Bug Fixes" },{ "type": "hotfix", "section": "🔥 Hotfixes" },{ "type": "style", "section": "📌️ Style" },{ "type": "refactor", "section": "🔧 Code Refactoring" },{ "type": "deps", "section": "⚙️ Dependencies" },{ "type": "chore", "section": "🔧 Sonstiges" }]'
+          changelog-types: '[{ "type": "feat", "section": "📕 Features" },{ "type": "change", "section": "🔄 Changes" },{ "type": "fix", "section": "🪲 Bug Fixes" },{ "type": "hotfix", "section": "🔥 Hotfixes" },{ "type": "style", "section": "📌️ Style" },{ "type": "refactor", "section": "🔧 Code Refactoring" },{ "type": "deps", "section": "⚙️ Dependencies" },{ "type": "chore", "section": "🔧 Sonstiges" }, { "type": "docs", "section": "📚 Documentation" }, { "type": "test", "section": "🧪 Tests" }]'
           pull-request-header: 'New Release PR - Please merge to publish 🚀'
           draft-pull-request: true
