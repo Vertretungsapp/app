@@ -1,6 +1,7 @@
 import 'package:dart_date/dart_date.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 import 'package:vertretungsapp/api/api.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/plan.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/schedule.dart';
@@ -119,38 +120,56 @@ class _PlanPageState extends State<PlanPage> {
                   ),
                   const SizedBox(height: 10),
                   _PlanSwitcher(date: date, planPage: this),
-                  FutureBuilder(
-                      future: plan,
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          isReloading = false;
+                  Expanded(
+                    child: SimpleGestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onHorizontalSwipe: (SwipeDirection direction) {
+                        if (direction == SwipeDirection.left) {
+                          addDate(false);
+                        } else if (direction == SwipeDirection.right) {
+                          addDate(true);
                         }
+                      },
+                      child: FutureBuilder(
+                          future: plan,
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              isReloading = false;
+                            }
 
-                        if (snapshot.hasData && !isReloading) {
-                          return _PlanDisplay(
-                              short: widget.short,
-                              plan: snapshot.data!,
-                              type: widget.type);
-                        } else if (snapshot.hasError) {
-                          return Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Kein Plan verfügbar!",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .tertiary)),
-                              ],
-                            ),
-                          );
-                        } else {
-                          return const CircularProgressIndicator.adaptive();
-                        }
-                      })
+                            if (snapshot.hasData && !isReloading) {
+                              return _PlanDisplay(
+                                  short: widget.short,
+                                  plan: snapshot.data!,
+                                  type: widget.type);
+                            } else if (snapshot.hasError) {
+                              return Column(
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text("Kein Plan verfügbar!",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .tertiary)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return const CircularProgressIndicator.adaptive();
+                            }
+                          }),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -272,24 +291,24 @@ class _PlanDisplay extends StatelessWidget {
         break;
     }
 
-    return Expanded(
-      child: Column(
-        children: [
-          Text(plan.lastUpdated.format("dd.MM.yyyy HH:mm"),
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall
-                  ?.copyWith(color: Theme.of(context).colorScheme.tertiary)),
-          const SizedBox(height: 5),
-          Expanded(
-            child: ListView(
-              children: scheduledLessons
-                  .map((e) => VPPlanListItem(lesson: e, type: type))
-                  .toList(),
-            ),
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        Text(plan.lastUpdated.format("dd.MM.yyyy HH:mm"),
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(color: Theme.of(context).colorScheme.tertiary)),
+        const SizedBox(height: 5),
+        Expanded(
+          child: ListView.builder(
+            itemCount: scheduledLessons.length,
+            itemBuilder: (context, index) {
+              return VPPlanListItem(
+                  lesson: scheduledLessons[index], type: type);
+            },
+          ),
+        )
+      ],
     );
   }
 }
