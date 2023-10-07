@@ -26,6 +26,7 @@ dependencies:
   package_info_plus: ^4.1.0
   url_launcher: ^6.1.14
   simple_gesture_detector: ^0.2.0
+  readmore: ^2.2.0
 
 dev_dependencies:
   flutter_test:

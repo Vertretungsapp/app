@@ -1,6 +1,7 @@
 import 'package:dart_date/dart_date.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:readmore/readmore.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 import 'package:vertretungsapp/api/api.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/plan.dart';
@@ -299,6 +300,30 @@ class _PlanDisplay extends StatelessWidget {
                 .bodySmall
                 ?.copyWith(color: Theme.of(context).colorScheme.tertiary)),
         const SizedBox(height: 5),
+        plan.info.isNotEmpty
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Icon(FontAwesomeIcons.circleInfo, size: 20),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ReadMoreText(plan.info.join("\n"),
+                          trimLines: 3,
+                          textAlign: TextAlign.right,
+                          colorClickableText:
+                              Theme.of(context).colorScheme.primary,
+                          trimMode: TrimMode.Line,
+                          trimCollapsedText: 'Mehr anzeigen',
+                          trimExpandedText: '\nWeniger anzeigen',
+                          delimiter: '... ',
+                          style: Theme.of(context).textTheme.bodySmall),
+                    ),
+                  ),
+                ],
+              )
+            : Container(),
         Expanded(
           child: ListView.builder(
             itemCount: scheduledLessons.length,
