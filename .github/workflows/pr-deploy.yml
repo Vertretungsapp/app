@@ -1,7 +1,7 @@
 name: Deploy Branch to Netlify
 
 on:
-  push:
+  pull_request:
 
 jobs:
   build-web:
@@ -26,12 +26,11 @@ jobs:
         uses: nwtgck/actions-netlify@v2.0
         with:
           publish-dir: build/web
-          production-branch: ${{ github.ref_name }}
-          deploy-message: 'GH-ACTIONS: Deploy of branch ${{ github.ref_name }}'
+          production-branch: ${{ github.head_ref }} + "-" + ${{ github.sha }}
+          deploy-message: 'GH-ACTIONS: Deploy of PR from ${{ github.head_ref }}'
           enable-commit-status: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           production-deploy: false
-          enable-pull-request-comment: false
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
