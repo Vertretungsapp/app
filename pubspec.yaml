@@ -1,7 +1,7 @@
 name: vertretungsapp
 description: Deine Vertretungsplanapp für Indiware
 publish_to: 'none'
-version: 0.0.0
+version: 0.4.0
 
 environment:
   sdk: '>=3.1.3 <4.0.0'
