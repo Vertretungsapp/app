@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vertretungsapp/api/cache.dart';
+import 'package:vertretungsapp/api/filter.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/schedule.dart';
 import 'package:vertretungsapp/pages/overview.dart';
 import 'package:vertretungsapp/pages/settings.dart';
@@ -13,6 +14,7 @@ import 'pages/home.dart';
 void main() async {
   await Hive.initFlutter();
   await cache.initCache();
+  await filterManager.initFilterManager();
   runApp(const Main());
 }
 

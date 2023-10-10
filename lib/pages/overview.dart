@@ -62,15 +62,17 @@ class _OverviewPageState extends State<OverviewPage> {
                         break;
                     }
                     return Expanded(
-                        child: GridView.count(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 16,
-                            crossAxisSpacing: 16,
-                            childAspectRatio: 2,
-                            children: items
-                                .map((e) =>
-                                    _Item(type: widget.type, schedule: e))
-                                .toList()));
+                        child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
+                      child: GridView.count(
+                          crossAxisCount: 3,
+                          mainAxisSpacing: 16,
+                          crossAxisSpacing: 16,
+                          childAspectRatio: 2,
+                          children: items
+                              .map((e) => _Item(type: widget.type, schedule: e))
+                              .toList()),
+                    ));
                   } else if (snapshot.hasError) {
                     return const Text("Error");
                   } else {

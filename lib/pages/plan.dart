@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:readmore/readmore.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 import 'package:vertretungsapp/api/api.dart';
+import 'package:vertretungsapp/api/filter.dart';
+import 'package:vertretungsapp/api/stundenplan24/models/lesson.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/plan.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/schedule.dart';
 import 'package:vertretungsapp/components/back_button.dart';
@@ -11,6 +13,7 @@ import 'package:vertretungsapp/components/icon_button.dart';
 import 'package:vertretungsapp/components/plan/filter_button.dart';
 import 'package:vertretungsapp/components/plan/plan_list_item.dart';
 import 'package:vertretungsapp/components/plan/reload_button.dart';
+import 'package:vertretungsapp/pages/filter.dart';
 
 class PlanPage extends StatefulWidget {
   final String short;
@@ -27,15 +30,27 @@ class _PlanPageState extends State<PlanPage> {
   late Future<Plan> plan;
   bool isReloading = false;
 
+  late Filter filter;
+
   DateTime date = DateTime.now();
   DateTime initDate = DateTime.now();
 
   List<DateTime> holidays = [];
 
-  void refreshPlan([bool ignoreCache = false, DateTime? date]) {
+  void refreshPlan([bool ignoreCache = false, DateTime? date]) async {
     setState(() {
       plan = getPlan(ignoreCache, date);
     });
+
+    Filter f;
+
+    if (widget.type == ScheduleType.schoolClass ||
+        widget.type == ScheduleType.teacher) {
+      f = filterManager.getFilter((await plan).schoolnumber, widget.short);
+      setState(() {
+        filter = f;
+      });
+    }
   }
 
   void setDate(DateTime d) {
@@ -87,6 +102,7 @@ class _PlanPageState extends State<PlanPage> {
         date = value.date;
         initDate = value.date;
         holidays = value.holidays;
+        filter = filterManager.getFilter(value.schoolnumber, widget.short);
       });
       return value;
     });
@@ -99,7 +115,7 @@ class _PlanPageState extends State<PlanPage> {
 
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.fromLTRB(8, 30, 8, 0),
         child: Column(
           children: [
             _TopBar(planPage: this),
@@ -143,7 +159,8 @@ class _PlanPageState extends State<PlanPage> {
                               return _PlanDisplay(
                                   short: widget.short,
                                   plan: snapshot.data!,
-                                  type: widget.type);
+                                  type: widget.type,
+                                  planPage: this);
                             } else if (snapshot.hasError) {
                               return Column(
                                 children: [
@@ -195,7 +212,44 @@ class _TopBar extends StatelessWidget {
         Row(
           children: [
             planPage.widget.type != ScheduleType.room
-                ? const VPFilterButton()
+                ? FutureBuilder(
+                    future: planPage.plan,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        final List<Lesson> lessons = [];
+
+                        if (planPage.widget.type == ScheduleType.schoolClass) {
+                          lessons.addAll(snapshot.requireData.classes
+                              .firstWhere((element) =>
+                                  element.short == planPage.widget.short)
+                              .lessons);
+                        }
+                        // else if (planPage.widget.type ==
+                        //     ScheduleType.teacher) {
+                        //   lessons.addAll(snapshot.requireData.teachers
+                        //       .firstWhere((element) =>
+                        //           element.short == planPage.widget.short)
+                        //       .lessons);
+                        // }
+
+                        lessons.sort((a, b) => a.subject.compareTo(b.subject));
+
+                        return VPFilterButton(
+                          data: FilterPageData(
+                            plan: snapshot.requireData,
+                            short: planPage.widget.short,
+                            lessons: lessons,
+                            filter: planPage.filter,
+                            onSave: (filter) => {
+                              filterManager.add(filter),
+                              planPage.refreshPlan(false, planPage.date)
+                            },
+                          ),
+                        );
+                      }
+
+                      return const CircularProgressIndicator.adaptive();
+                    })
                 : Container(),
             VPReloadButton(onPressed: () {
               planPage.isReloading = true;
@@ -265,12 +319,17 @@ String intToWeekday(int weekday) {
 }
 
 class _PlanDisplay extends StatelessWidget {
+  final _PlanPageState planPage;
   final String short;
   final Plan plan;
   final ScheduleType type;
 
   const _PlanDisplay(
-      {Key? key, required this.short, required this.plan, required this.type})
+      {Key? key,
+      required this.short,
+      required this.plan,
+      required this.type,
+      required this.planPage})
       : super(key: key);
 
   @override
@@ -281,12 +340,14 @@ class _PlanDisplay extends StatelessWidget {
       case ScheduleType.schoolClass:
         scheduledLessons.addAll(plan.classes
             .firstWhere((element) => element.short == short)
-            .schedule);
+            .schedule
+            .where((element) => !planPage.filter.containsLesson(element.id)));
         break;
       case ScheduleType.room:
         scheduledLessons.addAll(plan.rooms
             .firstWhere((element) => element.short == short)
-            .schedule);
+            .schedule
+            .where((element) => !planPage.filter.containsLesson(element.id)));
         break;
       case ScheduleType.teacher:
         break;
