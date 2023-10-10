@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-web:
-    name: Build Web
+    name: Deploy Branch to Netlify
     runs-on: ubuntu-latest
     steps:
       - name: Code Checkout
@@ -26,12 +26,9 @@ jobs:
         uses: nwtgck/actions-netlify@v2.0
         with:
           publish-dir: build/web
-          production-branch: ${{ github.ref_name }}
           deploy-message: 'GH-ACTIONS: Deploy of branch ${{ github.ref_name }}'
-          enable-commit-status: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           production-deploy: false
-          enable-pull-request-comment: false
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
