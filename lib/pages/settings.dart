@@ -81,7 +81,7 @@ class _ExternalLink extends StatelessWidget {
   final String url;
   final IconData icon;
 
-  const _ExternalLink({super.key, required this.url, required this.icon});
+  const _ExternalLink({required this.url, required this.icon});
 
   @override
   Widget build(BuildContext context) {

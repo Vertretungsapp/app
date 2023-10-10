@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:vertretungsapp/api/filter.dart';
 import 'package:vertretungsapp/api/stundenplan24/models/lesson.dart';
