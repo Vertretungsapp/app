@@ -25,6 +25,7 @@ jobs:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
+          alias: ${{ github.ref_name }}
           publish-dir: build/web
           deploy-message: 'GH-ACTIONS: Deploy of branch ${{ github.ref_name }}'
           github-token: ${{ secrets.GITHUB_TOKEN }}
