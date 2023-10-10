@@ -1,0 +1,37 @@
+name: Deploy Branch to Netlify
+
+on:
+  push:
+
+jobs:
+  build-web:
+    name: Build Web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Get Packages
+        run: flutter pub get
+
+      - name: Build Web
+        run: flutter build web
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: build/web
+          production-branch: ${{ github.ref }}
+          deploy-message: 'GH-ACTIONS: Deploy of branch ${{ github.ref }}'
+          enable-commit-status: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          production-deploy: false
+          enable-pull-request-comment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
