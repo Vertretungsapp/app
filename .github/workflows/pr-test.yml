@@ -1,4 +1,4 @@
-name: Test PR
+name: Test Code and Build
 
 on:
   pull_request:
@@ -31,6 +31,7 @@ jobs:
   build-android:
     name: Build Android
     runs-on: ubuntu-latest
+    if: github.event_name != 'push'
     needs: analyze
     steps:
       - name: Code Checkout
