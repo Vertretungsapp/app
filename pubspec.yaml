@@ -18,7 +18,7 @@ dependencies:
   http: ^1.1.0
   xml2json: ^6.1.0
   dart_date: ^1.2.2
-  font_awesome_flutter: ^10.5.0
+  font_awesome_flutter: ^10.6.0
   flutter_secure_storage: ^9.0.0
   flutter_launcher_icons: ^0.13.1
   hive: ^2.2.3
