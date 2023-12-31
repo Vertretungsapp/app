@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-	import Fa from 'svelte-fa';
+	import Icon from 'svelte-awesome';
 
 	export let icon: IconDefinition;
-	export let size: string;
+	export let size: number = 1;
 </script>
 
-<Fa {icon} {size} />
+<Icon data={icon} scale={size} />

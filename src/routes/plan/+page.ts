@@ -36,7 +36,7 @@ export const load = (async ({ url }) => {
 
 	const planData = await _fetchPlanData(short, false, date ? new Date(date) : undefined).catch(
 		() => {
-			throw error(404, 'Plan nicht gefunden');
+			error(404, 'Plan nicht gefunden');
 		}
 	);
 

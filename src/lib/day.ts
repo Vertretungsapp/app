@@ -1,4 +1,4 @@
-import addBusinessDays from 'date-fns/addBusinessDays';
+import {addBusinessDays} from 'date-fns';
 
 /**
  * Check if a date is included in an array of dates (ignoring time)

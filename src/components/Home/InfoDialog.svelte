@@ -2,7 +2,7 @@
 	import Dialog from '../Dialog.svelte';
 </script>
 
-<Dialog id="infoDialog">
+<Dialog id="infoDialog" let:element>
 	<h1 class="text-center">Vertretungsapp<span class="text-accent">.</span></h1>
 	<h4 class="text-center">Deine Vertretungsapp für Indiware!</h4>
 
@@ -15,6 +15,7 @@
 			>
 		</p>
 		<!-- eslint-disable-next-line no-undef -->
+		<!-- svelte-ignore missing-declaration -->
 		<p>Version: {PROJECT_VERSION}</p>
 	</div>
 
@@ -36,7 +37,7 @@
 		class="w-full cursor-pointer"
 		type="button"
 		value="Schließen"
-		on:click={() => document.querySelector('#infoDialog').close()}
+		on:click={() => element.close()}
 	/>
 </Dialog>
 

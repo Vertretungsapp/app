@@ -1,7 +1,7 @@
 import { getAllRooms } from '$lib/api/rooms';
 import Room from '$lib/api/stundenplan42/class/Room';
-import DELocale from 'date-fns/locale/de/index';
-import parseDate from 'date-fns/parse/index';
+import  {de} from 'date-fns/locale';
+import { parse as parseDate } from 'date-fns';
 import Class, { fromJson as classParser } from './Class';
 
 export default class SchoolPlan {
@@ -53,11 +53,11 @@ export default class SchoolPlan {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function fromJson(schoolnumber: string, json: any): SchoolPlan {
 	const date = parseDate(json.VpMobil.Kopf.DatumPlan, 'EEEE, dd. MMMM y', new Date(), {
-		locale: DELocale
+		locale: de
 	});
 
 	const created = parseDate(json.VpMobil.Kopf.zeitstempel, 'dd.MM.y, HH:mm', new Date(), {
-		locale: DELocale
+		locale: de
 	});
 
 	const week = json.VpMobil.Kopf.woche;

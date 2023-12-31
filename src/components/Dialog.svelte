@@ -1,9 +1,15 @@
 <script lang="ts">
 	export let id: string;
+
+	function getDialog(): HTMLDialogElement {
+		const dialog = document.querySelector(`#${id}`);
+		if (!dialog) throw new Error(`Dialog with id ${id} not found`);
+		return dialog as HTMLDialogElement;
+	}
 </script>
 
 <dialog {id} class="dynborder rounded-[7px] p-8 text-text">
-	<slot />
+	<slot element={getDialog()} />
 </dialog>
 
 <style>

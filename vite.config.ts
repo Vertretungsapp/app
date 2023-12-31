@@ -9,7 +9,9 @@ const json = readFileSync(file, 'utf8');
 const pkg = JSON.parse(json);
 
 export default defineConfig({
-	server: { https: true },
+	server: { https: {
+		
+	} },
 	plugins: [sveltekit(), mkCert()],
 	define: {
 		PROJECT_VERSION: JSON.stringify(pkg.version),

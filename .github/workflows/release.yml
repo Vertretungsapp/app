@@ -30,81 +30,23 @@ jobs:
           name: web-artifacts
           path: build/
 
-  build-android:
-    name: Build Android
-    needs: build-web
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  # upload-artifacts:
+  #   name: Upload Artifacts to Release
+  #   needs: build-android
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Download Artifact
+  #       uses: actions/download-artifact@v3
 
-      - name: Setup JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'adopt'
-          cache: 'gradle'
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Download Web Files
-        uses: actions/download-artifact@v3
-        with:
-          name: web-artifacts
-          path: build/
-
-      - name: Copy files to Android project
-        run: npx cap sync android
-
-      - name: Build and package APK
-        run: |
-          cd android
-          ./gradlew assembleRelease
-
-      - uses: r0adkll/sign-android-release@v1
-        name: Sign APK
-        id: sign_app_apk
-        with:
-          releaseDirectory: android/app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-          alias: ${{ secrets.ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
-        env:
-          BUILD_TOOLS_VERSION: '30.0.2'
-
-      - name: Move APK
-        run: mv ${{steps.sign_app_apk.outputs.signedReleaseFile}} vertretungsapp-release.apk
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: signed-apk
-          path: vertretungsapp-release.apk
-
-  upload-artifacts:
-    name: Upload Artifacts to Release
-    needs: build-android
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v3
-
-      - name: Upload APK to Release
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: signed-apk/vertretungsapp-release.apk
-          asset_name: vertretungsapp-release.apk
-          asset_content_type: application/vnd.android.package-archive
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Upload APK to Release
+  #       uses: actions/upload-release-asset@v1
+  #       with:
+  #         upload_url: ${{ github.event.release.upload_url }}
+  #         asset_path: signed-apk/vertretungsapp-release.apk
+  #         asset_name: vertretungsapp-release.apk
+  #         asset_content_type: application/vnd.android.package-archive
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy-netlify:
     name: Deploy to Netlify

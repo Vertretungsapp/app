@@ -5,17 +5,27 @@
 	import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 	import Dialog from '../Dialog.svelte';
 	import Icon from '../Icon.svelte';
+	import type { EventHandler } from 'svelte/elements';
 
-	let message = null;
+	let message: string | null = null;
 	let credentials: Credentials | null = null;
 
-	async function handleSubmit(e) {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	async function handleSubmit(e: any) {
 		const formData = new FormData(e.target);
 
+		const schoolnumber = formData.get('schoolnumber');
+		const username = formData.get('username');
+		const password = formData.get('password');
+
+		if (!schoolnumber || !username || !password) {
+			return (message = 'Bitte fülle alle Felder aus.');
+		}
+
 		const data = {
-			schoolnumber: formData.get('schoolnumber').toString(),
-			username: formData.get('username') as 'schueler' | 'lehrer',
-			password: formData.get('password').toString()
+			schoolnumber: schoolnumber.toString(),
+			username: username as 'schueler' | 'lehrer',
+			password: password.toString()
 		};
 
 		login(data).then((res) => {
@@ -26,25 +36,21 @@
 		});
 	}
 
-	function closeModal() {
-		document.querySelector('#loginDialog').close();
-	}
-
 	function handleLogout() {
 		logout();
 	}
 
 	onMount(() => {
 		credentials = getCredentials();
-		if (credentials) {
-			document.querySelector('#loginDialog_schoolnumber').value = credentials.schoolnumber;
-			document.querySelector('#loginDialog_username').value = credentials.username;
-			document.querySelector('#loginDialog_password').value = credentials.password;
-		}
+		// if (credentials) {
+		// 	document.querySelector('#loginDialog_schoolnumber').value = credentials.schoolnumber;
+		// 	document.querySelector('#loginDialog_username').value = credentials.username;
+		// 	document.querySelector('#loginDialog_password').value = credentials.password;
+		// }
 	});
 </script>
 
-<Dialog id="loginDialog">
+<Dialog id="loginDialog" let:element>
 	<h1 class="text-center">Zugangsdaten</h1>
 	<form class="mt-4 flex flex-col gap-2" on:submit|preventDefault={handleSubmit}>
 		<input
@@ -52,19 +58,24 @@
 			id="loginDialog_schoolnumber"
 			name="schoolnumber"
 			placeholder="Schulnummer"
+			value={credentials && credentials.schoolnumber}
 		/>
-		<select class="input" id="loginDialog_username" name="username">
+		<select class="input" id="loginDialog_username" name="username" 
+			value={credentials && credentials.username}
+		>
 			<option value="schueler" selected>Schüler</option>
 			<option value="lehrer">Lehrer</option>
 		</select>
-		<input type="password" id="loginDialog_password" name="password" placeholder="Password" />
+		<input type="password" id="loginDialog_password" name="password" placeholder="Password" 
+			value={credentials && credentials.password}
+		/>
 		<div class="mt-4 grid grid-cols-4 gap-4">
 			{#if credentials}
 				<input
 					class="input col-span-3 cursor-pointer opacity-60"
 					type="button"
 					value="Schließen"
-					on:click={closeModal}
+					on:click={() => element.close()}
 				/>
 			{/if}
 			{#if credentials}
@@ -72,7 +83,7 @@
 					class="col-span-1 flex cursor-pointer items-center justify-center rounded-[7px] border-[3px] border-error"
 					on:click={handleLogout}
 				>
-					<Icon icon={faRightFromBracket} size="1.5x" />
+					<Icon icon={faRightFromBracket} size={1.5} />
 				</button>
 			{/if}
 			<input class="input col-span-4 cursor-pointer" type="submit" value="Speichern" />
