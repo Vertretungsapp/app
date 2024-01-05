@@ -45,7 +45,8 @@
 		"@fortawesome/free-brands-svg-icons": "^6.5.1",
 		"@fortawesome/free-regular-svg-icons": "^6.5.1",
 		"@fortawesome/free-solid-svg-icons": "^6.5.1",
-		"indiware-api": "^1.0.9",
-		"svelte-awesome": "^3.3.0"
+		"indiware-api": "^1.1.0",
+		"svelte-awesome": "^3.3.0",
+		"tslog": "^4.9.2"
 	}
 }
