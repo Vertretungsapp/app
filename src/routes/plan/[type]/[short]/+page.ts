@@ -4,10 +4,17 @@ import { error } from '@sveltejs/kit';
 import type { Room, SchoolClass, Teacher } from 'indiware-api';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ fetch, params, parent }) => {
+export const load: PageLoad = async ({ params, parent }) => {
 	const { substitutionPlan, type } = await parent();
 
 	const short = hexadecimalToString(params.short);
+
+	if (!substitutionPlan) {
+		return {
+			planNotFound: true,
+			short
+		};
+	}
 
 	const plan = substitutionPlan[pluralizePlanType(type)].find((p) => p.name === short) as
 		| SchoolClass

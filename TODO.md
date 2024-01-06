@@ -11,7 +11,6 @@
 - [ ] make PWA
   - [ ] Implement offline mode
 - [ ] Implement search
-- [ ] Make branding
 
 # V1.1.0
 
