@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import MobileNavigatorItem from './MobileNavigatorItem.svelte';
 	import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
 	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
@@ -7,12 +7,12 @@
 	import { faGear } from '@fortawesome/free-solid-svg-icons/faGear';
 </script>
 
-<nav class="absolute bottom-0 w-full bg-background">
+<nav class="w-full bg-background">
 	<ul class="flex w-full items-center justify-between p-2">
-		<MobileNavigatorItem href="/" icon={faHome} text="Home" />
-		<MobileNavigatorItem href="/classes" icon={faPeopleGroup} text="Klassen" />
-		<MobileNavigatorItem href="/rooms" icon={faDoorOpen} text="Räume" />
-		<MobileNavigatorItem href="/teachers" icon={faUser} text="Lehrer" />
-		<MobileNavigatorItem href="/options" icon={faGear} text="Optionen" />
+		<MobileNavigatorItem href="/" icon={faHome} text="Home" id={0} />
+		<MobileNavigatorItem href="/plan/schoolClass" icon={faPeopleGroup} text="Klassen" id={1} />
+		<MobileNavigatorItem href="/plan/room" icon={faDoorOpen} text="Räume" id={2} />
+		<MobileNavigatorItem href="/plan/teacher" icon={faUser} text="Lehrer" id={3} />
+		<MobileNavigatorItem href="/options" icon={faGear} text="Optionen" id={4} />
 	</ul>
 </nav>

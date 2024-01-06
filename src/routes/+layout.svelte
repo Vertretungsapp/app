@@ -5,8 +5,10 @@
 	import '@fontsource/poppins/latin.css';
 </script>
 
-<main class="px-4 py-8">
-	<slot />
-</main>
+<div class="flex h-screen max-h-screen w-full flex-col justify-between">
+	<main class="grow overflow-auto px-4 pt-8">
+		<slot />
+	</main>
 
-<MobileNavigator />
+	<MobileNavigator />
+</div>
