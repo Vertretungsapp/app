@@ -21,14 +21,14 @@
 				lesson.info ? 'rounded-tr-lg' : 'rounded-r-lg'
 			)}
 		>
-			<div class="flex w-full items-center justify-between h-full">
-				<div class="flex flex-col justify-center h-full">
-						<p class={twMerge('leading-tight', lesson.subject.changed && 'text-red-600')}>
-							{lesson.subject.value || ""}
-						</p>
-						<p class={twMerge('leading-tight', lesson.teacher.changed && 'text-red-600')}>
-							{lesson.teacher.value || ""}
-						</p>
+			<div class="flex h-full w-full items-center justify-between">
+				<div class="flex h-full flex-col justify-center">
+					<p class={twMerge('leading-tight', lesson.subject.changed && 'text-red-600')}>
+						{lesson.subject.value || ''}
+					</p>
+					<p class={twMerge('leading-tight', lesson.teacher.changed && 'text-red-600')}>
+						{lesson.teacher.value || ''}
+					</p>
 				</div>
 
 				<div>

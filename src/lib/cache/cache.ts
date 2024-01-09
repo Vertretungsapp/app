@@ -63,9 +63,15 @@ export function getPlans(schoolnumber: string): ISubstitutionPlan[] {
  */
 export function getPlan(schoolnumber: string, date?: Date): ISubstitutionPlan | undefined {
 	const plans = getPlans(schoolnumber).sort(
-		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+		(a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
 	);
-	if (!date) return plans[plans.length - 1];
+	if (!date) {
+		const planOfToday = plans.find(
+			(plan) => new Date(plan.date).toDateString() === new Date().toDateString()
+		);
+		if (planOfToday) return planOfToday;
+		return plans[plans.length - 1];
+	}
 	return plans.find((plan) => new Date(plan.date).toDateString() === date.toDateString());
 }
 

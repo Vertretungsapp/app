@@ -4,6 +4,7 @@
 	import { de } from 'date-fns/locale';
 	import PlanNavigation from './PlanNavigation.svelte';
 	import { planStore } from '$lib/stores/planStore';
+	import { page } from '$app/stores';
 
 	export let plan: ISubstitutionPlan | undefined;
 </script>
@@ -13,16 +14,20 @@
 		<p class="text-xs text-secondary-600">
 			Letzte Aktualisierung: {new Date(plan.lastUpdated).toLocaleString()}
 		</p>
+	{:else}
+		<p class="text-xs text-secondary-600">Kein Plan verfügbar</p>
 	{/if}
 
 	<PlanNavigation>
-		<h2 class="text-xl font-bold">
-			<span class=" text-primary">
-				{format($planStore.currentDate, 'EEEE', {
-					locale: de
-				})}</span
-			>,
-			<span>{format($planStore.currentDate, 'dd.MM.yyyy')}</span>
-		</h2>
+		<a href={$page.url.pathname}>
+			<h2 class="text-xl font-bold">
+				<span class=" text-primary">
+					{format($planStore.currentDate, 'EEEE', {
+						locale: de
+					})}</span
+				>,
+				<span>{format($planStore.currentDate, 'dd.MM.yyyy')}</span>
+			</h2>
+		</a>
 	</PlanNavigation>
 </div>
