@@ -12,6 +12,12 @@
   - [ ] Implement offline mode
 - [ ] Implement search
 
+## Bug fixes
+
+- [ ] Better error handling on plan page
+- [x] Fix back button always going to home screen
+- [ ] Insure that always the newest plan is shown, or the current day
+
 # V1.1.0
 
 - [ ] Implement desktop mode
