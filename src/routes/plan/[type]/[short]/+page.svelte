@@ -33,7 +33,10 @@
 	{/key}
 
 	{#if data.plan && data.substitutionPlan}
-		<PlanLessonDisplay lessons={data.plan.plannedLessons} />
+		<PlanLessonDisplay
+			lessons={data.plan.plannedLessons.sort((a, b) => a.order - b.order)}
+			type={data.type}
+		/>
 	{:else}
 		<p class="flex items-center justify-center gap-2 font-bold text-secondary-600">
 			<Icon icon={faFaceFrown} />Kein Plan verfügbar

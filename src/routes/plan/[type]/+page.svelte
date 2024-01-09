@@ -8,7 +8,7 @@
 <div class="grid grid-cols-3 gap-2">
 	{#each data.names as name}
 		<a
-			class="flex items-center justify-center rounded-lg bg-secondary-950 p-4"
+			class="flex items-center justify-center rounded-lg bg-secondary-950 p-4 text-center"
 			href={`/plan/${data.type}/${stringToHexadecimal(name)}`}>{name}</a
 		>
 	{/each}
