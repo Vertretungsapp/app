@@ -10,7 +10,7 @@ bonus:
 
 - [ ] Implement Cache cleanup
 - [ ] Implement Plan filter
-- [ ] Implement Plan refresh
+- [x] Implement Plan refresh
 - [ ] Implement favorites
 - [ ] Implement settings
   - [ ] Implement credentials
