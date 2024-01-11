@@ -27,7 +27,7 @@
 		}
 	}
 
-	function handleSwipe(e: any) {
+	function handleSwipe(e: CustomEvent) {
 		console.log(e);
 
 		if (e.detail.direction === 'right') {

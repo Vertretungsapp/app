@@ -15,8 +15,8 @@ export enum PlanTypePlural {
  * @param value The value to check.
  * @returns Whether the given value is a valid PlanType.
  */
-export function isPlanType(value: any): value is PlanType {
-	return Object.values(PlanType).includes(value);
+export function isPlanType(value: string): boolean {
+	return Object.values(PlanType).includes(value as PlanType);
 }
 
 /**

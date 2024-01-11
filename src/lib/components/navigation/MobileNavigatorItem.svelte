@@ -2,7 +2,6 @@
 	import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
 	import Icon from '../common/Icon.svelte';
 	import { twMerge } from 'tailwind-merge';
-	import { page } from '$app/stores';
 	import { navigationStore } from '$lib/stores/navigationStore';
 
 	export let icon: IconDefinition;

@@ -23,7 +23,7 @@ export async function verifyCredentials(credentials: Credentials): Promise<boole
 		log.error(
 			`There was an error while verifying the credentials for schoolnumber ${
 				credentials.schoolnumber
-			} (${credentials.username}): ${(error as any).message}`
+			} (${credentials.username}): ${(error as Error).message}`
 		);
 		log.trace(error);
 	}
