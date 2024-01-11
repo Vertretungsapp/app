@@ -7,21 +7,24 @@ export interface FetchPlanOptions {
 	date?: Date;
 	customFetch?: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>;
 	customCredentials?: Credentials;
+	noCache?: boolean;
 }
 
 export async function fetchPlan({
 	date,
 	customFetch,
-	customCredentials
+	customCredentials,
+	noCache
 }: FetchPlanOptions = {}): Promise<ISubstitutionPlan | null> {
 	const fetch = customFetch || window.fetch;
 	const credentials = customCredentials || getCredentials();
 
 	if (!credentials) throw new Error('Not logged in');
 
-	const cachedPlan = getPlan(credentials.schoolnumber, date);
-
-	if (cachedPlan) return cachedPlan;
+	if (!noCache) {
+		const cachedPlan = getPlan(credentials.schoolnumber, date);
+		if (cachedPlan) return cachedPlan;
+	}
 
 	function getAuthorizationHeader(credentials: Credentials) {
 		return `Basic ${btoa(

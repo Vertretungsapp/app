@@ -12,9 +12,11 @@
 	export let href: string | undefined = undefined;
 
 	export let anchorClass: string | undefined = undefined;
-	export let iconClass: string | undefined = undefined;
+	let iconClass: string | undefined = undefined;
 
 	export let square: boolean = false;
+
+	export { iconClass as class };
 </script>
 
 <a

@@ -1,3 +1,11 @@
+NEXT TIME:
+
+- implement filter
+
+bonus:
+
+- implement login
+
 ## V1.0.0
 
 - [ ] Implement Cache cleanup
