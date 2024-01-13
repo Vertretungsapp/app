@@ -13,6 +13,12 @@
 			href={`/plan/${data.type}/${stringToHexadecimal(name)}`}>{name}</a
 		>
 	{/each}
+
+	{#if data.error}
+		<p class="col-span-3 text-center text-secondary-500">
+			Es konnte kein Plan abgerufen werden, bitte überprüfe deine Zugangsdaten!
+		</p>
+	{/if}
 </div>
 
 {#if data.type === PlanType.TEACHER || data.type === PlanType.ROOM}
