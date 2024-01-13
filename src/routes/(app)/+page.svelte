@@ -5,7 +5,7 @@
 	import Icon from '$lib/components/common/Icon.svelte';
 	import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 	import { faPlus } from '@fortawesome/free-solid-svg-icons';
-	import {onMount} from 'svelte';
+	import { onMount } from 'svelte';
 	import { navigationStore } from '$lib/stores/navigationStore';
 
 	const time = new Date();

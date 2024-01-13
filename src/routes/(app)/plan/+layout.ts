@@ -1,9 +1,14 @@
 import { goto } from '$app/navigation';
 import { fetchPlan } from '$lib/api/clientHelpers';
+import { getCredentials } from '$lib/api/session';
 import { planStore } from '$lib/stores/planStore';
+import { error } from '@sveltejs/kit';
 import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async ({ fetch, url }) => {
+	const credentials = getCredentials();
+	if (!credentials) error(401, 'Bitte melde dich zunächst in den Einstellungen an.');
+
 	const date = url.searchParams.get('date');
 	const forceReload = url.searchParams.get('forceReload');
 

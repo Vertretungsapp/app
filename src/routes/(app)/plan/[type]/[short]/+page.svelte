@@ -56,7 +56,7 @@
 		<PlanInformation plan={data.substitutionPlan || undefined} />
 	{/key}
 
-	{#key $planStore.currentDate}
+	{#key new Date($planStore.currentDate).toString() + $page.url.toString()}
 		{#if data.plan && data.substitutionPlan}
 			<PlanLessonDisplay
 				lessons={data.plan.plannedLessons.sort((a, b) => a.order - b.order)}

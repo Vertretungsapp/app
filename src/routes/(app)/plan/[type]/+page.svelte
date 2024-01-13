@@ -16,5 +16,8 @@
 </div>
 
 {#if data.type === PlanType.TEACHER || data.type === PlanType.ROOM}
-	 <p class="text-center text-secondary-500 leading-tight mt-4 text-sm">Hinweis: Die Daten werden anhand der gespeicherten Pläne erstellt, und können daher unvollständig sein.</p>
+	<p class="mt-4 text-center text-sm leading-tight text-secondary-500">
+		Hinweis: Die Daten werden anhand der gespeicherten Pläne erstellt, und können daher
+		unvollständig sein.
+	</p>
 {/if}

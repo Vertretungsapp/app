@@ -1,5 +1,28 @@
 <script lang="ts">
-    import { settingsStore } from '$lib/stores/settingsStore';
+	import { goto } from '$app/navigation';
+	import { settingsStore } from '$lib/stores/settingsStore';
+
+	let schoolnumber = '';
+	let username = '';
+	let password = '';
+
+	if ($settingsStore.credentials) {
+		schoolnumber = $settingsStore.credentials.schoolnumber;
+		username = $settingsStore.credentials.username;
+		password = $settingsStore.credentials.password;
+	}
+
+	function save(e: Event) {
+        e.preventDefault();
+
+		$settingsStore.credentials = {
+			schoolnumber,
+			username,
+			password
+		};
+
+		goto('/');
+	}
 </script>
 
 <h1>Zugangsdaten</h1>
@@ -8,38 +31,45 @@
 	normalen VpMobil App benötigt werden.
 </p>
 
-<form class="grid grid-cols-3 py-8 items-center gap-y-2">
-    <label>
-        <span>Server</span>
-    </label>
+<form class="grid grid-cols-3 items-center gap-y-2 py-8" on:submit={save}>
+	<label>
+		<span>Server</span>
+	</label>
 
-    <input type="text" class="col-span-2" value="stundenplan24.de" disabled />
+	<input type="text" class="col-span-2" value="stundenplan24.de" disabled />
 
-    <label>
-        <span>Schulnummer</span>
-    </label>
+	<label>
+		<span>Schulnummer</span>
+	</label>
 
-    <input type="text" class="col-span-2" bind:value={$settingsStore.credentials.schoolnumber} />
+	<input
+		type="text"
+		class="col-span-2"
+		maxlength="8"
+		pattern="^\d+$"
+		required
+		bind:value={schoolnumber}
+	/>
 
-    <label>
-        <span>Benutzername</span>
-    </label>
+	<label>
+		<span>Benutzername</span>
+	</label>
 
-    <input type="text" class="col-span-2" bind:value={$settingsStore.credentials.username} />
+	<input type="text" class="col-span-2" required bind:value={username} />
 
-    <label>
-        <span>Passwort</span>
-    </label>
+	<label>
+		<span>Passwort</span>
+	</label>
 
-    <input type="text" class="col-span-2" bind:value={$settingsStore.credentials.password} />
+	<input type="text" class="col-span-2" required bind:value={password} />
+
+	<div class="col-span-3 mt-4 flex w-full justify-center">
+		<button type="submit" class="rounded-lg bg-primary px-4 py-2">Speichern</button>
+	</div>
 </form>
 
-<div class="w-full flex justify-center">
-    <a href="/" class="py-2 px-4 rounded-lg bg-primary">Speichern</a>
-</div>
-
 <style>
-    input {
-        @apply bg-secondary-900 rounded-md p-1 disabled:bg-secondary-950 disabled:text-secondary-400;
-    }
+	input {
+		@apply rounded-md bg-secondary-900 p-1 disabled:bg-secondary-950 disabled:text-secondary-400;
+	}
 </style>
