@@ -18,7 +18,7 @@
 		<p class="text-xs text-secondary-600">Kein Plan verfügbar</p>
 	{/if}
 
-	<PlanNavigation>
+	<PlanNavigation on:next on:previous>
 		<a href={$page.url.pathname}>
 			<h2 class="text-xl font-bold">
 				<span class=" text-primary">

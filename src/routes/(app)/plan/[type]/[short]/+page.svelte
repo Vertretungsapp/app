@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { PlanType, planTypeToTranslatedString } from '$lib/api/planTypes';
+	import { planTypeToTranslatedString } from '$lib/api/planTypes';
 	import Icon from '$lib/components/common/Icon.svelte';
 	import PlanHeaderControls from '$lib/components/plan/PlanHeaderControls.svelte';
 	import PlanInformation from '$lib/components/plan/PlanInformation.svelte';
@@ -14,47 +13,56 @@
 
 	export let data: PageData;
 
-	const type = ($page.data.type || 'schoolClass') as PlanType;
-	const short = $page.data.short as string;
-
 	const ignoreDates = $planStore.holidays.map((h) => new Date(h).toDateString());
 
 	function addDays(days: number): Date {
+		const currentDate = data.substitutionPlan?.date || $planStore.currentDate;
+
 		if (days > 0) {
-			return nextDate($planStore.currentDate, ignoreDates);
+			return nextDate(currentDate, ignoreDates);
 		} else {
-			return previousDate($planStore.currentDate, ignoreDates);
+			return previousDate(currentDate, ignoreDates);
 		}
 	}
 
-	function handleSwipe(e: CustomEvent) {
-		console.log(e);
+	function loadLink(link: string) {
+		$planStore.isRefreshing = true;
+		goto(link);
+	}
 
+	function previous() {
+		loadLink(getHrefLink(addDays(-1), data.short, data.type));
+	}
+
+	function next() {
+		loadLink(getHrefLink(addDays(1), data.short, data.type));
+	}
+
+	function handleSwipe(e: CustomEvent) {
 		if (e.detail.direction === 'right') {
-			goto(getHrefLink(addDays(-1), short, type));
+			previous();
 		} else if (e.detail.direction === 'left') {
-			goto(getHrefLink(addDays(1), short, type));
+			next();
 		}
 	}
 </script>
 
-<!-- ignore error that on:swipe is not available, this is a bug with the library and Svelte 4 -->
 <div
 	class="flex h-full max-h-full flex-col"
 	use:swipe={{ timeframe: 300, minSwipeDistance: 60, touchAction: 'pan-y' }}
 	on:swipe={handleSwipe}
 >
-	{#key $page.url}
-		<PlanHeaderControls />
-	{/key}
+	<PlanHeaderControls />
 
 	<h1 class="text-center">
 		{planTypeToTranslatedString(data.type)} <span class="text-primary">{data.short}</span>
 	</h1>
 
-	{#key $page.url}
-		<PlanInformation plan={data.substitutionPlan || undefined} />
-	{/key}
+	<PlanInformation
+		plan={data.substitutionPlan || undefined}
+		on:next={next}
+		on:previous={previous}
+	/>
 
 	{#if data.plan && data.substitutionPlan}
 		<PlanLessonDisplay
