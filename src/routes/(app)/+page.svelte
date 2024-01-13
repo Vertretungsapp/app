@@ -36,13 +36,12 @@
 
 <p>{greeting}</p>
 
-
 <div class="py-4"></div>
 
 {#if data.infos.length > 0}
 	<h3>Informationen</h3>
 	{#each data.infos as info}
-		<div class="bg-secondary-950 rounded-lg p-4 mb-2">
+		<div class="mb-2 rounded-lg bg-secondary-950 p-4">
 			<p class="text-xs font-bold">{info.date.toLocaleDateString()}</p>
 			<p>{info.info}</p>
 		</div>
@@ -52,7 +51,6 @@
 {/if}
 
 <!-- This is just prototyping for design -->
-
 
 <h3 class="flex justify-between">
 	Deine nächste Stunde

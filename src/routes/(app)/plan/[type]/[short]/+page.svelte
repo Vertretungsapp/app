@@ -25,7 +25,7 @@
 			return previousDate(currentDate, ignoreDates);
 		}
 	}
-	
+
 	function previous() {
 		goto(getHrefLink(addDays(-1), data.short, data.type));
 	}
@@ -54,7 +54,7 @@
 >
 	<PlanHeaderControls />
 
-		<h1 class="text-center">
+	<h1 class="text-center">
 		{planTypeToTranslatedString(data.type)} <span class="text-primary">{data.short}</span>
 	</h1>
 

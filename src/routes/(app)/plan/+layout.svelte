@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayoutData } from './$types';
 	import { planStore } from '$lib/stores/planStore';
-    import { page } from '$app/stores';
+	import { page } from '$app/stores';
 
 	export let data: LayoutData;
 
@@ -12,13 +12,13 @@
 				holidays: data.substitutionPlan.holidays,
 				isRefreshing: $planStore.isRefreshing
 			};
-		} else if(data.error) {
-            $planStore = {
-                currentDate: new Date(data.date || Date.now()),
-                holidays: $planStore.holidays,
-                isRefreshing: $planStore.isRefreshing
-            };
-        }
+		} else if (data.error) {
+			$planStore = {
+				currentDate: new Date(data.date || Date.now()),
+				holidays: $planStore.holidays,
+				isRefreshing: $planStore.isRefreshing
+			};
+		}
 	}
 </script>
 
