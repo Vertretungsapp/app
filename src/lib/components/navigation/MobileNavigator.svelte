@@ -8,7 +8,7 @@
 </script>
 
 <nav class="w-full bg-background">
-	<ul class="flex w-full items-center justify-between p-2">
+	<ul class="flex w-full items-center justify-between p-2 pb-3">
 		<MobileNavigatorItem href="/" icon={faHome} text="Home" id={0} />
 		<MobileNavigatorItem href="/plan/schoolClass" icon={faPeopleGroup} text="Klassen" id={1} />
 		<MobileNavigatorItem href="/plan/room" icon={faDoorOpen} text="Räume" id={2} />
