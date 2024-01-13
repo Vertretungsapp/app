@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MobileNavigator from '$lib/components/navigation/MobileNavigator.svelte';
-	import '../app.css';
+	import '../../app.css';
 	import '@fontsource/inter/latin.css';
 	import '@fontsource/poppins/latin.css';
 </script>
