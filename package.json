@@ -54,7 +54,7 @@
 		"@capacitor/ios": "^5.0.5",
 		"@fontsource/inter": "^5.0.2",
 		"@fortawesome/fontawesome-svg-core": "^6.4.0",
-		"@fortawesome/free-brands-svg-icons": "^6.4.0",
+		"@fortawesome/free-brands-svg-icons": "^6.5.1",
 		"@fortawesome/free-regular-svg-icons": "^6.4.0",
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"@types/xml2js": "^0.4.11",
