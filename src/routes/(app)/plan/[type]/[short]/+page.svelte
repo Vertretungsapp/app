@@ -43,7 +43,6 @@
 	}
 
 	onMount(() => {
-		console.log('mounted');
 		$planStore.isRefreshing = false;
 	});
 </script>
