@@ -2,21 +2,17 @@ NEXT TIME:
 
 - implement filter
 
-bonus:
-
-- implement login
-
 ## V1.0.0
 
 - [ ] Implement Cache cleanup
 - [ ] Implement Plan filter
 - [x] Implement Plan refresh
 - [ ] Implement favorites
-- [ ] Implement settings
-  - [ ] Implement credentials
+- [x] Implement settings
+  - [x] Implement credentials
   - [ ] Implement theming (?)
 - [ ] Implement general info on home screen
-- [ ] make PWA
+- [x] make PWA
   - [ ] Implement offline mode
 - [ ] Implement search
 
