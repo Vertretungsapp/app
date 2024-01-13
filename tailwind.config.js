@@ -20,7 +20,7 @@ export default {
 				accent: '#5b8dcc'
 			},
 			theme: false,
-			shades: ['secondary', 'accent']
+			shades: ['secondary']
 		})
 	]
 };

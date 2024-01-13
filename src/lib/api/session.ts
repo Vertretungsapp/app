@@ -1,3 +1,4 @@
+import { settingsStore } from '$lib/stores/settingsStore';
 import type { Credentials } from 'indiware-api';
 import { fetchPlan } from './clientHelpers';
 
@@ -10,15 +11,15 @@ export async function login(
 		customFetch: fetch
 	});
 
-	localStorage.setItem('credentials', JSON.stringify(credentials));
+	settingsStore.set({ credentials });
 }
 
 export function logout(): void {
-	localStorage.removeItem('credentials');
+	settingsStore.set({ credentials: null });
 }
 
 export function getCredentials(): Credentials | null {
-	const credentials = localStorage.getItem('credentials');
-	if (!credentials) return null;
-	return JSON.parse(credentials);
+	const settings = localStorage.getItem('settings');
+	if (!settings) return null;
+	return JSON.parse(settings).credentials;
 }

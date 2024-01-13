@@ -1,17 +1,9 @@
 import { goto } from '$app/navigation';
 import { fetchPlan } from '$lib/api/clientHelpers';
-import { login } from '$lib/api/session';
 import { planStore } from '$lib/stores/planStore';
 import type { LayoutLoad } from './$types';
 
-export const ssr = false;
 export const load: LayoutLoad = async ({ fetch, url }) => {
-	await login({
-		schoolnumber: '10000000',
-		password: 'password',
-		username: 'schueler'
-	});
-
 	const date = url.searchParams.get('date');
 	const forceReload = url.searchParams.get('forceReload');
 

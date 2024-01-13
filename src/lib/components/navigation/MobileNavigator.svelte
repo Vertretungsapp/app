@@ -13,6 +13,6 @@
 		<MobileNavigatorItem href="/plan/schoolClass" icon={faPeopleGroup} text="Klassen" id={1} />
 		<MobileNavigatorItem href="/plan/room" icon={faDoorOpen} text="Räume" id={2} />
 		<MobileNavigatorItem href="/plan/teacher" icon={faUser} text="Lehrer" id={3} />
-		<MobileNavigatorItem href="#" icon={faGear} text="Optionen" id={4} />
+		<MobileNavigatorItem href="/settings" icon={faGear} text="Optionen" id={4} />
 	</ul>
 </nav>
