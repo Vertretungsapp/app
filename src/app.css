@@ -36,4 +36,8 @@
 		@apply text-xl;
 		@apply font-semibold;
 	}
+
+	input {
+		@apply rounded-md bg-secondary-900 p-1 disabled:bg-secondary-950 disabled:text-secondary-400;
+	}
 }

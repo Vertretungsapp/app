@@ -13,7 +13,7 @@
 	}
 
 	function save(e: Event) {
-        e.preventDefault();
+		e.preventDefault();
 
 		$settingsStore.credentials = {
 			schoolnumber,
@@ -32,13 +32,13 @@
 </p>
 
 <form class="grid grid-cols-3 items-center gap-y-2 py-8" on:submit={save}>
-	<label>
+	<label for="server">
 		<span>Server</span>
 	</label>
 
-	<input type="text" class="col-span-2" value="stundenplan24.de" disabled />
+	<input type="text" class="col-span-2" value="stundenplan24.de" name="server" disabled />
 
-	<label>
+	<label for="schoolnumber">
 		<span>Schulnummer</span>
 	</label>
 
@@ -47,29 +47,24 @@
 		class="col-span-2"
 		maxlength="8"
 		pattern="^\d+$"
+		name="schoolnumber"
 		required
 		bind:value={schoolnumber}
 	/>
 
-	<label>
+	<label for="username">
 		<span>Benutzername</span>
 	</label>
 
-	<input type="text" class="col-span-2" required bind:value={username} />
+	<input type="text" class="col-span-2" name="username" required bind:value={username} />
 
-	<label>
+	<label for="password">
 		<span>Passwort</span>
 	</label>
 
-	<input type="text" class="col-span-2" required bind:value={password} />
+	<input type="text" class="col-span-2" name="password" required bind:value={password} />
 
 	<div class="col-span-3 mt-4 flex w-full justify-center">
 		<button type="submit" class="rounded-lg bg-primary px-4 py-2">Speichern</button>
 	</div>
 </form>
-
-<style>
-	input {
-		@apply rounded-md bg-secondary-900 p-1 disabled:bg-secondary-950 disabled:text-secondary-400;
-	}
-</style>
