@@ -1,11 +1,22 @@
 import { build, files, prerendered, version } from '$service-worker';
-import { precacheAndRoute } from 'workbox-precaching';
+import { setDefaultHandler } from 'workbox-routing';
+import { StaleWhileRevalidate } from 'workbox-strategies';
 
-const precache = [...build, ...files, ...prerendered].map((file) => ({
-	url: file,
-	revision: version
-}));
+const CACHE = `cache-${version}`;
 
-console.log('precache', precache);
+const precache = [...build, ...files, ...prerendered];
 
-precacheAndRoute(precache);
+setDefaultHandler(
+	new StaleWhileRevalidate({
+		cacheName: CACHE,
+		matchOptions: {
+			ignoreSearch: true
+		}
+	})
+);
+
+self.addEventListener('install', (event) => {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(precache)));
+});
