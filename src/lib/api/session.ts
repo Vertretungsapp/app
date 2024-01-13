@@ -19,6 +19,7 @@ export function logout(): void {
 }
 
 export function getCredentials(): Credentials | null {
+	if (typeof localStorage === 'undefined') return null;
 	const settings = localStorage.getItem('settings');
 	if (!settings) return null;
 	return JSON.parse(settings).credentials;
