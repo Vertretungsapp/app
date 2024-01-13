@@ -5,15 +5,9 @@
 	import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons/faCircleArrowLeft';
 	import { faRefresh } from '@fortawesome/free-solid-svg-icons/faRefresh';
 	import { planStore } from '$lib/stores/planStore';
-	import { goto } from '$app/navigation';
 
 	const forceReloadUrl = new URL($page.url);
 	forceReloadUrl.searchParams.set('forceReload', 'true');
-
-	function forceReload() {
-		$planStore.isRefreshing = true;
-		goto(forceReloadUrl.toString())
-	}
 </script>
 
 <div class="flex w-full items-center justify-between">
@@ -22,12 +16,12 @@
 	</a>
 
 	<div>
-		<button on:click={forceReload}>
+		<a href={forceReloadUrl.toString()}>
 			<Icon
 				icon={faRefresh}
 				scale={1.7}
 				class={twMerge($planStore.isRefreshing ? 'animate-spin' : 'rotate-0')}
 			/>
-		</button>
+		</a>
 	</div>
 </div>

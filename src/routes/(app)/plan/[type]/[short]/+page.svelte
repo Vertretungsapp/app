@@ -10,6 +10,7 @@
 	import { getHrefLink, nextDate, previousDate } from '$lib/common/planHelper';
 	import { planStore } from '$lib/stores/planStore';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	export let data: PageData;
 
@@ -24,18 +25,13 @@
 			return previousDate(currentDate, ignoreDates);
 		}
 	}
-
-	function loadLink(link: string) {
-		$planStore.isRefreshing = true;
-		goto(link);
-	}
-
+	
 	function previous() {
-		loadLink(getHrefLink(addDays(-1), data.short, data.type));
+		goto(getHrefLink(addDays(-1), data.short, data.type));
 	}
 
 	function next() {
-		loadLink(getHrefLink(addDays(1), data.short, data.type));
+		goto(getHrefLink(addDays(1), data.short, data.type));
 	}
 
 	function handleSwipe(e: CustomEvent) {
@@ -45,6 +41,11 @@
 			next();
 		}
 	}
+
+	onMount(() => {
+		console.log('mounted');
+		$planStore.isRefreshing = false;
+	});
 </script>
 
 <div
@@ -54,7 +55,7 @@
 >
 	<PlanHeaderControls />
 
-	<h1 class="text-center">
+		<h1 class="text-center">
 		{planTypeToTranslatedString(data.type)} <span class="text-primary">{data.short}</span>
 	</h1>
 

@@ -1,5 +1,6 @@
 import { fetchPlan } from '$lib/api/clientHelpers';
 import { getCredentials } from '$lib/api/session';
+import { planStore } from '$lib/stores/planStore';
 import { error } from '@sveltejs/kit';
 import type { LayoutLoad } from './$types';
 
@@ -9,6 +10,11 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 
 	const date = url.searchParams.get('date');
 	const forceReload = url.searchParams.get('forceReload');
+
+	planStore.update((store) => ({
+		...store,
+		isRefreshing: true
+	}));
 
 	try {
 		const substitutionPlan = await fetchPlan({
