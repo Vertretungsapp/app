@@ -16,8 +16,8 @@ bonus:
   - [ ] Implement credentials
   - [ ] Implement theming (?)
 - [ ] Implement general info on home screen
-- [ ] make PWA
-  - [ ] Implement offline mode
+- [x] make PWA
+  - [x] Implement offline mode
 - [ ] Implement search
 
 ## Bug fixes

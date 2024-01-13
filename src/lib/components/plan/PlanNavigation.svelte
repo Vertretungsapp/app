@@ -21,16 +21,14 @@
 	}
 </script>
 
-{#key $page.url}
-	<div class="flex w-full items-center justify-between py-2">
-		<a href={getHrefLink(addDays(-1), short, type)}>
-			<Icon icon={faCircleChevronLeft} scale={1.5} />
-		</a>
+<div class="flex w-full items-center justify-between py-2">
+	<a href={getHrefLink(addDays(-1), short, type)}>
+		<Icon icon={faCircleChevronLeft} scale={1.5} />
+	</a>
 
-		<slot />
+	<slot />
 
-		<a href={getHrefLink(addDays(1), short, type)}>
-			<Icon icon={faCircleChevronRight} scale={1.5} />
-		</a>
-	</div>
-{/key}
+	<a href={getHrefLink(addDays(1), short, type)}>
+		<Icon icon={faCircleChevronRight} scale={1.5} />
+	</a>
+</div>
