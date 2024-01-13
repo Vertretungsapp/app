@@ -11,7 +11,7 @@ NEXT TIME:
 - [x] Implement settings
   - [x] Implement credentials
   - [ ] Implement theming (?)
-- [ ] Implement general info on home screen
+- [x] Implement general info on home screen
 - [x] make PWA
   - [ ] Implement offline mode
 - [ ] Implement search

@@ -7,6 +7,9 @@
 	import { faPlus } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
 	import { navigationStore } from '$lib/stores/navigationStore';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	const time = new Date();
 	let greeting = 'Guten Nachmittag ☀️';
@@ -33,9 +36,23 @@
 
 <p>{greeting}</p>
 
-<!-- This is just prototyping for design -->
 
 <div class="py-4"></div>
+
+{#if data.infos.length > 0}
+	<h3>Informationen</h3>
+	{#each data.infos as info}
+		<div class="bg-secondary-950 rounded-lg p-4 mb-2">
+			<p class="text-xs font-bold">{info.date.toLocaleDateString()}</p>
+			<p>{info.info}</p>
+		</div>
+	{/each}
+
+	<div class="py-4"></div>
+{/if}
+
+<!-- This is just prototyping for design -->
+
 
 <h3 class="flex justify-between">
 	Deine nächste Stunde

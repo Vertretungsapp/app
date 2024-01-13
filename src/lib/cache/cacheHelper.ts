@@ -39,3 +39,19 @@ export function getAllTeachers(): string[] {
 	});
 	return teachers;
 }
+
+export function getAllInfos(): Array<{ info: string; date: Date }> {
+	const credentials = getCredentials();
+	if (!credentials) throw new Error('Not logged in');
+	const plans = getPlans(credentials.schoolnumber);
+	const infos: Array<{ info: string; date: Date }> = [];
+	plans.forEach((plan) => {
+		if (plan.info) {
+			plan.info.forEach((info) => {
+				infos.push({ info, date: new Date(plan.date) });
+			});
+		}
+	});
+	infos.sort((a, b) => a.date.getTime() - b.date.getTime());
+	return infos.filter((info) => info.date.getTime() >= Date.now());
+}
