@@ -4,6 +4,7 @@
 - [x] Implement Plan filter
   - [x] Implement on/off
   - [x] Implement filter for rooms and teachers, not only school classes
+  - [ ] bulk edit
 - [x] Implement Plan refresh
 - [ ] Implement favorites
 - [x] Implement settings
