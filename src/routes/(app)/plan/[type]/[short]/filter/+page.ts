@@ -8,7 +8,7 @@ import type { PageLoad } from './$types';
 export const load: PageLoad = async ({ parent }) => {
 	const { credentials, type, plan, short } = await parent();
 
-	if (!plan) error(404, 'Plan not found');
+	if (!plan && type == PlanType.SCHOOL_CLASS) error(404, 'Plan not found');
 
 	let filter = getFilter(credentials.schoolnumber, short);
 	if (!filter) filter = createFilter(credentials.schoolnumber, short, type);

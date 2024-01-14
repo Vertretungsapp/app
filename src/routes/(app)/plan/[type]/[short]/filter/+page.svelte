@@ -30,11 +30,10 @@
 		</div>
 	</div>
 
-	{#if data.plan}
-		<ul class="grid max-h-full grid-cols-2 gap-4 overflow-y-auto">
-			{#each data.timetable as lesson}
-				<FilterItem {lesson} filter={data.filter} credentials={data.credentials} />
-			{/each}
-		</ul>
-	{/if}
+
+	<ul class="grid max-h-full grid-cols-2 gap-4 overflow-y-auto">
+		{#each data.timetable as lesson}
+			<FilterItem {lesson} filter={data.filter} credentials={data.credentials} />
+		{/each}
+	</ul>
 </div>
