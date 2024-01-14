@@ -1,48 +1,35 @@
-import { getCredentials } from '$lib/api/session';
+import { PlanType, PlanTypePlural } from '$lib/api/planTypes';
+import type { Credentials, Lesson, PlannedLesson } from 'indiware-api';
 import { getPlans } from './cache';
 
-export function getAllClasses(): string[] {
-	const credentials = getCredentials();
-	if (!credentials) throw new Error('Not logged in');
+function getAllEntities(credentials: Credentials, type: PlanTypePlural): string[] {
 	const plans = getPlans(credentials.schoolnumber);
-	const classes: string[] = [];
+	const entities: string[] = [];
+
 	plans.forEach((plan) => {
-		plan.schoolClasses.forEach((schoolClass) => {
-			if (!classes.includes(schoolClass.name)) classes.push(schoolClass.name);
+		const items = plan[type];
+
+		items.forEach((item) => {
+			if (!entities.includes(item.name)) entities.push(item.name);
 		});
 	});
-	return classes;
+
+	return entities;
 }
 
-export function getAllRooms(): string[] {
-	const credentials = getCredentials();
-	if (!credentials) throw new Error('Not logged in');
-	const plans = getPlans(credentials.schoolnumber);
-	const rooms: string[] = [];
-	plans.forEach((plan) => {
-		plan.rooms.forEach((room) => {
-			if (!rooms.includes(room.name)) rooms.push(room.name);
-		});
-	});
-	return rooms;
+export function getAllClasses(credentials: Credentials): string[] {
+	return getAllEntities(credentials, PlanTypePlural.SCHOOL_CLASS);
 }
 
-export function getAllTeachers(): string[] {
-	const credentials = getCredentials();
-	if (!credentials) throw new Error('Not logged in');
-	const plans = getPlans(credentials.schoolnumber);
-	const teachers: string[] = [];
-	plans.forEach((plan) => {
-		plan.teachers.forEach((teacher) => {
-			if (!teachers.includes(teacher.name)) teachers.push(teacher.name);
-		});
-	});
-	return teachers;
+export function getAllRooms(credentials: Credentials): string[] {
+	return getAllEntities(credentials, PlanTypePlural.ROOM);
 }
 
-export function getAllInfos(): Array<{ info: string; date: Date }> {
-	const credentials = getCredentials();
-	if (!credentials) throw new Error('Not logged in');
+export function getAllTeachers(credentials: Credentials): string[] {
+	return getAllEntities(credentials, PlanTypePlural.TEACHER);
+}
+
+export function getAllInfos(credentials: Credentials): Array<{ info: string; date: Date }> {
 	const plans = getPlans(credentials.schoolnumber);
 	const infos: Array<{ info: string; date: Date }> = [];
 	plans.forEach((plan) => {
@@ -54,4 +41,47 @@ export function getAllInfos(): Array<{ info: string; date: Date }> {
 	});
 	infos.sort((a, b) => a.date.getTime() - b.date.getTime());
 	return infos.filter((info) => info.date.getTime() >= Date.now());
+}
+
+function isLessonTimetableValid(lesson: PlannedLesson): boolean {
+	return [
+		lesson.subject.value && lesson.subject.value.replaceAll(' ', '').length > 0,
+		lesson.subject.value != '---'
+	].every((condition) => condition === true);
+}
+
+function generateTimetable(credentials: Credentials, type: PlanType, name: string): Lesson[] {
+	const plans = getPlans(credentials.schoolnumber);
+	const lessons: Lesson[] = [];
+
+	plans.forEach((plan) => {
+		const entities = type === 'room' ? plan.rooms : plan.teachers;
+
+		entities.forEach((entity) => {
+			if (entity.name === name) {
+				entity.plannedLessons.forEach((lesson) => {
+					if (!isLessonTimetableValid(lesson)) return;
+					if (lessons.find((l) => l.id === lesson.id)) return;
+
+					lessons.push({
+						id: lesson.id,
+						group: null,
+						name: `${lesson.subject.value!} (${lesson.schoolClass})`,
+						subject: lesson.subject.value!,
+						teacher: 0
+					});
+				});
+			}
+		});
+	});
+
+	return lessons;
+}
+
+export function generateRoomTimetable(credentials: Credentials, room: string): Lesson[] {
+	return generateTimetable(credentials, PlanType.ROOM, room);
+}
+
+export function generateTeacherTimetable(credentials: Credentials, teacher: string): Lesson[] {
+	return generateTimetable(credentials, PlanType.TEACHER, teacher);
 }

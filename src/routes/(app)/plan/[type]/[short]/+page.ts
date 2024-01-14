@@ -1,28 +1,13 @@
-import { pluralizePlanType } from '$lib/api/planTypes';
-import { hexadecimalToString } from '$lib/common/stringToHexadecimal';
-import type { Room, SchoolClass, Teacher } from 'indiware-api';
+import { createFilter, getFilter } from '$lib/filter/filter';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ params, parent }) => {
-	const { substitutionPlan, type } = await parent();
+export const load: PageLoad = async ({ parent }) => {
+	const { credentials, short, type } = await parent();
 
-	const short = hexadecimalToString(params.short);
-
-	if (!substitutionPlan) {
-		return {
-			planNotFound: true,
-			short
-		};
-	}
-
-	const plan = substitutionPlan[pluralizePlanType(type)].find((p) => p.name === short) as
-		| SchoolClass
-		| Teacher
-		| Room
-		| undefined;
+	let filter = getFilter(credentials.schoolnumber, short);
+	if (!filter) filter = createFilter(credentials.schoolnumber, short, type);
 
 	return {
-		plan,
-		short
+		filter
 	};
 };

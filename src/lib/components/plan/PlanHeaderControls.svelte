@@ -2,20 +2,23 @@
 	import { page } from '$app/stores';
 	import { twMerge } from 'tailwind-merge';
 	import Icon from '../common/Icon.svelte';
-	import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons/faCircleArrowLeft';
 	import { faRefresh } from '@fortawesome/free-solid-svg-icons/faRefresh';
+	import { faFilter } from '@fortawesome/free-solid-svg-icons/faFilter';
 	import { planStore } from '$lib/stores/planStore';
+	import BackButton from '$lib/components/common/BackButton.svelte';
 
 	const forceReloadUrl = new URL($page.url);
 	forceReloadUrl.searchParams.set('forceReload', 'true');
 </script>
 
 <div class="flex w-full items-center justify-between">
-	<a href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'))}>
-		<Icon icon={faCircleArrowLeft} scale={1.7} />
-	</a>
+	<BackButton />
 
-	<div>
+	<div class="flex gap-2">
+		<a href={$page.url.pathname + "/filter"}>
+			<Icon icon={faFilter} scale={1.7} />
+		</a>
+
 		<a href={forceReloadUrl.toString()}>
 			<Icon
 				icon={faRefresh}

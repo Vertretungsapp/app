@@ -68,6 +68,7 @@
 		<PlanLessonDisplay
 			lessons={data.plan.plannedLessons.sort((a, b) => a.order - b.order)}
 			type={data.type}
+			filter={data.filter}
 		/>
 	{:else}
 		<p class="flex items-center justify-center gap-2 font-bold text-secondary-600">
