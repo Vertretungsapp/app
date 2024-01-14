@@ -11,7 +11,7 @@
 	export let filter: Filter;
 
 	const filteredLessons = lessons.filter(
-		(lesson) => !filter.ignoredLessons.includes(lesson.id.toString())
+		(lesson) => !filter.ignoredLessons.includes((lesson.id || 0).toString())
 	);
 </script>
 
