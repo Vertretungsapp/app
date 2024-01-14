@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue)](LICENSE)
 [![Releases](https://img.shields.io/github/v/release/Vertretungsapp/app?display_name=tag)](https://github.com/Vertretungsapp/app/releases/latest)
 
-![Logo Vertretungsapp](https://github.com/Vertretungsapp/app/blob/master/static/logo/logo.png)
+![Logo Vertretungsapp](./static/android-chrome-192x192.png)
 
 Deine Vertretungsplanapp für Indiware!
 Indiware ist eine Stundenplanungssoftware, welche primär an Sächsischen Gymnasien zum Einsatz kommt.
@@ -28,10 +28,12 @@ Diese App ersetzt somit die offizielle App VpMobil24.
 
 ## Screenshots
 
-<img src="./screenshots/homescreen_wip.png" height="350">
-<img src="./screenshots/class_view.png" height="350">
-<img src="./screenshots/teacher_view.png" height="350">
-<img src="./screenshots/login.png" height="350">
+<div style="display: flex; gap: 1rem;">
+    <img src="./screenshots/homescreen_wip.png" height="350">
+    <img src="./screenshots/class_view.png" height="350">
+    <img src="./screenshots/teacher_view.png" height="350">
+    <img src="./screenshots/login.png" height="350">
+</div>
 
 ## Open Source ❤️
 
