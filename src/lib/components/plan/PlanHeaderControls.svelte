@@ -9,14 +9,24 @@
 
 	const forceReloadUrl = new URL($page.url);
 	forceReloadUrl.searchParams.set('forceReload', 'true');
+
+	export let filterActive = false;
 </script>
 
 <div class="flex w-full items-center justify-between">
 	<BackButton />
 
 	<div class="flex gap-2">
-		<a href={$page.url.pathname + "/filter"}>
+		<a class="relative" href={$page.url.pathname + '/filter'}>
 			<Icon icon={faFilter} scale={1.7} />
+			{#if filterActive}
+				<span class="absolute -right-1 -top-1 flex h-3 w-3">
+					<span
+						class="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 motion-safe:animate-ping"
+					></span>
+					<span class="relative inline-flex h-3 w-3 rounded-full bg-primary"></span>
+				</span>
+			{/if}
 		</a>
 
 		<a href={forceReloadUrl.toString()}>

@@ -20,3 +20,10 @@ export function isLessonIgnored(credentials: Credentials, name: string, lessonId
 	if (!filter) return false;
 	return filter.ignoredLessons.includes(lessonId.toString());
 }
+
+export function setActive(credentials: Credentials, name: string, active: boolean): void {
+	const filter = getFilter(credentials.schoolnumber, name);
+	if (!filter) return;
+	filter.active = active;
+	updateFilter(filter);
+}

@@ -5,6 +5,7 @@ export type Filter = {
 	name: string;
 	ignoredLessons: string[];
 	type: PlanType;
+	active: boolean;
 };
 
 export function createFilter(schoolnumber: string, name: string, type: PlanType): Filter {
@@ -12,7 +13,8 @@ export function createFilter(schoolnumber: string, name: string, type: PlanType)
 		schoolnumber,
 		name,
 		ignoredLessons: [],
-		type
+		type,
+		active: false
 	} as Filter;
 
 	localStorage.setItem(`filter.${schoolnumber}.${name}`, JSON.stringify(filter));
@@ -27,8 +29,6 @@ export function getFilter(schoolnumber: string, name: string): Filter | null {
 }
 
 export function updateFilter(filter: Filter): void {
-	console.log(filter.name, filter.ignoredLessons);
-
 	localStorage.setItem(`filter.${filter.schoolnumber}.${filter.name}`, JSON.stringify(filter));
 }
 

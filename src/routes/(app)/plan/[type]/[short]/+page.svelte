@@ -52,7 +52,7 @@
 	use:swipe={{ timeframe: 300, minSwipeDistance: 60, touchAction: 'pan-y' }}
 	on:swipe={handleSwipe}
 >
-	<PlanHeaderControls />
+	<PlanHeaderControls filterActive={data.filter.active} />
 
 	<h1 class="text-center">
 		{planTypeToTranslatedString(data.type)} <span class="text-primary">{data.short}</span>
