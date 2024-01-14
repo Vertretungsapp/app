@@ -45,6 +45,7 @@ export function getAllInfos(credentials: Credentials): Array<{ info: string; dat
 
 function isLessonTimetableValid(lesson: PlannedLesson): boolean {
 	return [
+		lesson.id != null && lesson.id != undefined,
 		lesson.subject.value && lesson.subject.value.replaceAll(' ', '').length > 0,
 		lesson.subject.value != '---'
 	].every((condition) => condition === true);
