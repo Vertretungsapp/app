@@ -1,11 +1,9 @@
-NEXT TIME:
-
-- implement filter
-
 ## V1.0.0
 
 - [ ] Implement Cache cleanup
-- [ ] Implement Plan filter
+- [x] Implement Plan filter
+  - [x] Implement on/off
+  - [x] Implement filter for rooms and teachers, not only school classes
 - [x] Implement Plan refresh
 - [ ] Implement favorites
 - [x] Implement settings
