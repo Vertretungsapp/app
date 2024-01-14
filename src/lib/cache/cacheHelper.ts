@@ -68,7 +68,7 @@ function generateTimetable(credentials: Credentials, type: PlanType, name: strin
 						group: null,
 						name: `${lesson.subject.value!} (${lesson.schoolClass})`,
 						subject: lesson.subject.value!,
-						teacher: 0
+						teacher: null
 					});
 				});
 			}

@@ -13,26 +13,28 @@
 	}
 </script>
 
-<div class="mb-2 flex w-full justify-between">
-	<BackButton />
+<div class="flex h-full flex-col">
+	<div class="mb-2 flex w-full justify-between">
+		<BackButton />
 
-	<div class="flex gap-1 items-center justify-end">
-		<label for="active" class="mr-2">Filter aktiv:</label>
+		<div class="flex items-center justify-end gap-1">
+			<label for="active" class="mr-2">Filter aktiv:</label>
 
-		<input
-			id="active"
-			type="checkbox"
-			bind:checked={active}
-			on:change={toggleActive}
-			class="h-5 w-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500"
-		/>
+			<input
+				id="active"
+				type="checkbox"
+				bind:checked={active}
+				on:change={toggleActive}
+				class="h-5 w-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500"
+			/>
+		</div>
 	</div>
-</div>
 
-{#if data.plan}
-	<ul>
-		{#each data.timetable as lesson}
-			<FilterItem {lesson} filter={data.filter} credentials={data.credentials} />
-		{/each}
-	</ul>
-{/if}
+	{#if data.plan}
+		<ul class="grid max-h-full grid-cols-2 gap-4 overflow-y-auto">
+			{#each data.timetable as lesson}
+				<FilterItem {lesson} filter={data.filter} credentials={data.credentials} />
+			{/each}
+		</ul>
+	{/if}
+</div>
