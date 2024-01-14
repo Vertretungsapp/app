@@ -4,6 +4,7 @@
 	import type { PlanType } from '$lib/api/planTypes';
 	import type { Filter } from '$lib/filter/filter';
 	import { faWarning } from '@fortawesome/free-solid-svg-icons/faWarning';
+	import { faBan } from '@fortawesome/free-solid-svg-icons/faBan';
 	import Icon from '$lib/components/common/Icon.svelte';
 
 	export let lessons: PlannedLesson[] = [];
@@ -28,6 +29,13 @@
 			<PlanLessonItem {lesson} {type} />
 		{/each}
 	{:else}
+		{#if lessons.length === 0}
+			<div class="flex w-full justify-center gap-3 text-secondary-600">
+				<Icon icon={faBan} scale={1.5} />
+				<p class="text-center font-semibold">Keine Stunden an diesem Tag</p>
+			</div>
+		{/if}
+
 		{#each lessons as lesson}
 			<PlanLessonItem {lesson} {type} />
 		{/each}
