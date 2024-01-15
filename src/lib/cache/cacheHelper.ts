@@ -40,7 +40,7 @@ export function getAllInfos(credentials: Credentials): Array<{ info: string; dat
 		}
 	});
 	infos.sort((a, b) => a.date.getTime() - b.date.getTime());
-	return infos.filter((info) => info.date.getTime() >= Date.now());
+	return infos.filter((info) => info.date.getTime() >= new Date().setHours(0, 0, 0, 0));
 }
 
 function isLessonTimetableValid(lesson: PlannedLesson): boolean {
