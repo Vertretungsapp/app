@@ -1,6 +1,7 @@
 import { addPlan, getPlan } from '$lib/cache/cache';
 import { format } from 'date-fns';
 import type { Credentials, ISubstitutionPlan } from 'indiware-api';
+import toast from 'svelte-french-toast';
 import { getCredentials } from './session';
 
 export interface FetchPlanOptions {
@@ -19,7 +20,10 @@ export async function fetchPlan({
 	const fetch = customFetch || window.fetch;
 	const credentials = customCredentials || getCredentials();
 
-	if (!credentials) throw new Error('Not logged in');
+	if (!credentials) {
+		toast.error('Bitte melde dich zunächst in den Einstellungen an.');
+		throw new Error('Not logged in');
+	}
 
 	if (!noCache) {
 		const cachedPlan = getPlan(credentials.schoolnumber, date);
@@ -36,9 +40,19 @@ export async function fetchPlan({
 		headers: {
 			Authorization: getAuthorizationHeader(credentials)
 		}
+	}).catch((err) => {
+		// DEBUG, TODO: Remove
+		toast.error(err.message);
+		throw err;
 	});
 
-	if (!plan.ok) throw new Error('Could not fetch plan');
+	if (!plan.ok) {
+		// DEBUG, TODO: Remove
+		toast.error(`${plan.status} ${plan.statusText} ${await plan.text()}`, {
+			duration: 10000
+		});
+		throw new Error('Could not fetch plan');
+	}
 
 	const planJson = (await plan.json()) as ISubstitutionPlan;
 	addPlan(credentials.schoolnumber, planJson);
