@@ -89,6 +89,8 @@ export function addPlan(schoolnumber: string, plan: ISubstitutionPlan): void {
 	);
 	cache[schoolnumber].push(plan);
 	setCache(cache);
+	// TODO: Make this configurable
+	removeStale(14);
 }
 
 /**
