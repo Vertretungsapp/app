@@ -6223,10 +6223,10 @@ svelte@^4.0.0:
     magic-string "^0.30.0"
     periscopic "^3.1.0"
 
-tailwindcss-themer@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/tailwindcss-themer/-/tailwindcss-themer-3.1.0.tgz#4440d62d7edc54f8f0aaef3404bb71844fa556d6"
-  integrity sha512-IfgxpCxWm5rRK3Q7aTvVyhQ/7tyyn8EJl5tFak5tS+/n8oXT7OGfv8praYepR7+IsM92waAuBDZng1HgnstrYA==
+tailwindcss-themer@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-themer/-/tailwindcss-themer-4.0.0.tgz#8034e8111861c20116fad0f3b8602351881402f0"
+  integrity sha512-kngKDW+z36JtjvaNziX0aesO95r8f5+3FFdANVFDt1uzNHZsL6XLla1YDK6EBAYFqPichoPDbO4lrrTyB+UAbA==
   dependencies:
     color "^4.1.0"
     just-unique "^4.2.0"
