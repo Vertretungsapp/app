@@ -40,12 +40,14 @@
 
 {#if data.infos.length > 0}
 	<h3>Informationen</h3>
-	{#each data.infos as info}
-		<div class="mb-2 rounded-lg bg-secondary-950 p-4">
-			<p class="text-xs font-bold">{info.date.toLocaleDateString()}</p>
-			<p>{info.info}</p>
-		</div>
-	{/each}
+	<div class="overflow-y-auto max-h-[40%]">
+		{#each data.infos as info}
+			<div class="mb-2 rounded-lg bg-secondary-950 p-4">
+				<p class="text-xs font-bold">{info.date.toLocaleDateString()}</p>
+				<p>{info.info}</p>
+			</div>
+		{/each}
+	</div>
 
 	<div class="py-4"></div>
 {/if}
@@ -107,7 +109,7 @@
 	</a>
 </div>
 
-<div class="absolute bottom-0 left-0 flex w-full justify-center">
+<div class="sticky bottom-0 left-0 flex w-full justify-center mt-2">
 	<a class="rounded-full bg-primary p-3" href="/">
 		<Icon icon={faMagnifyingGlass} scale={1} />
 	</a>
