@@ -21,7 +21,9 @@
 			password
 		};
 
-		goto('/');
+		goto('/', {
+			invalidateAll: true
+		});
 	}
 </script>
 
