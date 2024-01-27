@@ -23,6 +23,11 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 			noCache: forceReload === 'true'
 		});
 
+		planStore.update((store) => ({
+			...store,
+			isRefreshing: false
+		}));
+
 		if (!substitutionPlan) throw new Error('Could not fetch plan');
 
 		return {
@@ -30,6 +35,11 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 			date
 		};
 	} catch (error) {
+		planStore.update((store) => ({
+			...store,
+			isRefreshing: false
+		}));
+
 		return {
 			error: true,
 			date

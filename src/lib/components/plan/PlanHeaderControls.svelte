@@ -6,9 +6,16 @@
 	import { faFilter } from '@fortawesome/free-solid-svg-icons/faFilter';
 	import { planStore } from '$lib/stores/planStore';
 	import BackButton from '$lib/components/common/BackButton.svelte';
+	import { goto } from '$app/navigation';
 
 	const forceReloadUrl = new URL($page.url);
 	forceReloadUrl.searchParams.set('forceReload', 'true');
+
+	function refreshPage() {
+		goto(forceReloadUrl.toString(), {
+			invalidateAll: true,
+		});
+	}
 
 	export let filterActive = false;
 </script>
@@ -29,12 +36,12 @@
 			{/if}
 		</a>
 
-		<a href={forceReloadUrl.toString()}>
+		<button on:click={refreshPage}>
 			<Icon
 				icon={faRefresh}
 				scale={1.7}
 				class={twMerge($planStore.isRefreshing ? 'animate-spin' : 'rotate-0')}
 			/>
-		</a>
+		</button>
 	</div>
 </div>

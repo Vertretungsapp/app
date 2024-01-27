@@ -41,10 +41,6 @@
 			next();
 		}
 	}
-
-	onMount(() => {
-		$planStore.isRefreshing = false;
-	});
 </script>
 
 <div
