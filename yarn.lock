@@ -6173,10 +6173,10 @@ svelte-eslint-parser@^0.32.0:
     postcss "^8.4.23"
     postcss-scss "^4.0.6"
 
-svelte-fa@^3.0.3:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/svelte-fa/-/svelte-fa-3.0.4.tgz#22543b801950fe4a9a801ba8d4769a53d80c0782"
-  integrity sha512-y04vEuAoV1wwVDItSCzPW7lzT6v1bj/y1p+W1V+NtIMpQ+8hj8MBkx7JFD7JHSnalPU1QiI8BVfguqheEA3nPg==
+svelte-fa@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/svelte-fa/-/svelte-fa-4.0.2.tgz#f73aab661bf1758d726f06db321f0ffb8e2f40d6"
+  integrity sha512-lza8Jfii6jcpMQB73mBStONxaLfZsUS+rKJ/hH6WxsHUd+g68+oHIL9yQTk4a0uY9HQk78T/CPvQnED0msqJfg==
 
 svelte-gestures@^1.5.2:
   version "1.5.2"
