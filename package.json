@@ -42,7 +42,7 @@
 		"tslib": "^2.6.0",
 		"typescript": "^5.1.6",
 		"vite": "^4.3.9",
-		"vite-plugin-mkcert": "^1.15.0",
+		"vite-plugin-mkcert": "^1.17.3",
 		"workbox-routing": "^7.0.0",
 		"workbox-strategies": "^7.0.0"
 	},
