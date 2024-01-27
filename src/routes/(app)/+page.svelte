@@ -3,11 +3,13 @@
 	import PlanLessonItem from '$lib/components/plan/PlanLessonItem.svelte';
 	import { PlanType } from '$lib/api/planTypes';
 	import Icon from '$lib/components/common/Icon.svelte';
-	import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-	import { faPlus } from '@fortawesome/free-solid-svg-icons';
+	import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
 	import { onMount } from 'svelte';
 	import { navigationStore } from '$lib/stores/navigationStore';
 	import type { PageData } from './$types';
+	import { getHrefLink } from '$lib/common/planHelper';
+	import { dndzone } from 'svelte-dnd-action';
+	import FavoritesDisplay from '$lib/components/favorites/FavoritesDisplay.svelte';
 
 	export let data: PageData;
 
@@ -40,7 +42,7 @@
 
 {#if data.infos.length > 0}
 	<h3>Informationen</h3>
-	<div class="overflow-y-auto max-h-[40%]">
+	<div class="max-h-[40%] overflow-y-auto">
 		{#each data.infos as info}
 			<div class="mb-2 rounded-lg bg-secondary-950 p-4">
 				<p class="text-xs font-bold">{info.date.toLocaleDateString()}</p>
@@ -86,30 +88,16 @@
 <div class="py-4"></div>
 
 <h3>Deine Favoriten</h3>
+<FavoritesDisplay favorites={data.favorites} />
 
-<div class="grid grid-cols-3 gap-2">
-	<a class="flex items-center justify-center rounded-lg bg-secondary-800 p-4 text-center" href="/">
-		10a
-	</a>
+{#if data.favorites.favs.length === 0}
+	<p class="col-span-3 text-sm text-secondary-600">
+		Du hast noch keine Favoriten. Um ein Plan zu favorisieren, klicke einfach auf das Stern-Symbol
+		im Plan.
+	</p>
+{/if}
 
-	<a class="flex items-center justify-center rounded-lg bg-secondary-800 p-4 text-center" href="/">
-		JG11
-	</a>
-
-	<a class="flex items-center justify-center rounded-lg bg-secondary-800 p-4 text-center" href="/">
-		Sca
-	</a>
-
-	<a class="flex items-center justify-center rounded-lg bg-secondary-800 p-4 text-center" href="/">
-		Aula
-	</a>
-
-	<a class="flex items-center justify-center rounded-lg bg-secondary-950 p-4 text-center" href="/">
-		<Icon icon={faPlus} scale={1.5} />
-	</a>
-</div>
-
-<div class="sticky bottom-0 left-0 flex w-full justify-center mt-2">
+<div class="fixed bottom-20 left-0 flex w-full justify-center">
 	<a class="rounded-full bg-primary p-3" href="/">
 		<Icon icon={faMagnifyingGlass} scale={1} />
 	</a>

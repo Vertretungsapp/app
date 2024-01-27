@@ -1,13 +1,13 @@
 export enum PlanType {
 	SCHOOL_CLASS = 'schoolClass',
-	TEACHER = 'teacher',
-	ROOM = 'room'
+	ROOM = 'room',
+	TEACHER = 'teacher'
 }
 
 export enum PlanTypePlural {
 	SCHOOL_CLASS = 'schoolClasses',
-	TEACHER = 'teachers',
-	ROOM = 'rooms'
+	ROOM = 'rooms',
+	TEACHER = 'teachers'
 }
 
 /**

@@ -10,7 +10,6 @@
 	import { getHrefLink, nextDate, previousDate } from '$lib/common/planHelper';
 	import { planStore } from '$lib/stores/planStore';
 	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
 
 	export let data: PageData;
 
@@ -27,11 +26,11 @@
 	}
 
 	function previous() {
-		goto(getHrefLink(addDays(-1), data.short, data.type));
+		goto(getHrefLink(data.short, data.type, addDays(-1)));
 	}
 
 	function next() {
-		goto(getHrefLink(addDays(1), data.short, data.type));
+		goto(getHrefLink(data.short, data.type, addDays(1)));
 	}
 
 	function handleSwipe(e: CustomEvent) {
@@ -48,7 +47,7 @@
 	use:swipe={{ timeframe: 300, minSwipeDistance: 60, touchAction: 'pan-y' }}
 	on:swipe={handleSwipe}
 >
-	<PlanHeaderControls filterActive={data.filter.active} />
+	<PlanHeaderControls filterActive={data.filter.active} isFavorite={data.isFavorite} />
 
 	<h1 class="text-center">
 		{planTypeToTranslatedString(data.type)} <span class="text-primary">{data.short}</span>

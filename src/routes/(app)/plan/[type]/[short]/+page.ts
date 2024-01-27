@@ -1,3 +1,4 @@
+import { getFavorite } from '$lib/favorites/favorites';
 import { createFilter, getFilter } from '$lib/filter/filter';
 import type { PageLoad } from './$types';
 
@@ -8,6 +9,7 @@ export const load: PageLoad = async ({ parent }) => {
 	if (!filter) filter = createFilter(credentials.schoolnumber, short, type);
 
 	return {
-		filter
+		filter,
+		isFavorite: getFavorite(credentials.schoolnumber, short, type) !== null
 	};
 };

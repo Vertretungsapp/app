@@ -23,8 +23,10 @@ export function formatDate(date: Date): string {
 	return format(date, 'yyyy-MM-dd');
 }
 
-export function getHrefLink(date: Date, short: string, type: PlanType): string {
-	return `/plan/${type}/${stringToHexadecimal(short)}?date=${formatDate(date)}`;
+export function getHrefLink(short: string, type: PlanType, date?: Date): string {
+	return `/plan/${type}/${stringToHexadecimal(short)}`.concat(
+		date ? `?date=${formatDate(date)}` : ''
+	);
 }
 
 export function addDays(days: number, date: Date, holidays: string[]): Date {

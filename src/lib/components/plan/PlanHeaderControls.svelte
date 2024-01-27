@@ -7,23 +7,41 @@
 	import { planStore } from '$lib/stores/planStore';
 	import BackButton from '$lib/components/common/BackButton.svelte';
 	import { goto } from '$app/navigation';
+	import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons/faStar';
+	import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
+	import { addFavorite, deleteFavorite } from '$lib/favorites/favorites';
 
 	const forceReloadUrl = new URL($page.url);
 	forceReloadUrl.searchParams.set('forceReload', 'true');
 
+	export let filterActive = false;
+	export let isFavorite = false;
+
 	function refreshPage() {
 		goto(forceReloadUrl.toString(), {
-			invalidateAll: true,
+			invalidateAll: true
 		});
 	}
 
-	export let filterActive = false;
+	function toggleFavorite() {
+		if (!isFavorite) {
+			addFavorite($page.data.credentials.schoolnumber, $page.data.short, $page.data.type);
+			isFavorite = true;
+		} else {
+			deleteFavorite($page.data.credentials.schoolnumber, $page.data.short, $page.data.type);
+			isFavorite = false;
+		}
+	}
 </script>
 
 <div class="flex w-full items-center justify-between">
 	<BackButton />
 
 	<div class="flex gap-2">
+		<button on:click={toggleFavorite}>
+			<Icon icon={isFavorite ? faStar : faStarRegular} scale={1.7} />
+		</button>
+
 		<a class="relative" href={$page.url.pathname + '/filter'}>
 			<Icon icon={faFilter} scale={1.7} />
 			{#if filterActive}

@@ -5,17 +5,17 @@
 
 	function clrCache() {
 		clearCache();
-		toast.success("Cache geleert", {
-			duration: 2000,
+		toast.success('Cache geleert', {
+			duration: 2000
 		});
 	}
 </script>
 
 <div class="flex w-full justify-end"></div>
 
-<div class="flex justify-between mb-4">
+<div class="mb-4 flex justify-between">
 	<h1>Einstellungen</h1>
 	<CredentialsLink />
 </div>
 
-<button class="bg-secondary-900 p-2 rounded-lg" on:click={clrCache}>Clear Cache</button>
+<button class="rounded-lg bg-secondary-900 p-2" on:click={clrCache}>Clear Cache</button>
