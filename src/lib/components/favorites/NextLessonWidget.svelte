@@ -25,7 +25,7 @@
     } 
 </script>
 
-<h3 class="flex justify-between">
+<h3 class="flex justify-between items-end">
 	Deine nächsten Stunden
 
 	<select class="bg-background text-primary p-0" on:change={selectEventHandler}>
