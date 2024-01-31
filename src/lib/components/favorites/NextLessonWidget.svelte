@@ -28,7 +28,7 @@
 <h3 class="flex justify-between">
 	Deine nächsten Stunden
 
-	<select class="bg-background text-primary" on:change={selectEventHandler}>
+	<select class="bg-background text-primary p-0" on:change={selectEventHandler}>
 		{#each favorites.favs as fav}
 			<option value={fav.name} selected={primary?.name === fav.name}>{fav.name}</option>
 		{/each}
