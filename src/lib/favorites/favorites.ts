@@ -84,8 +84,13 @@ export function deleteFavorite(schoolnumber: string, name: string, type: PlanTyp
 	const favIndex = favorites.favs.findIndex((fav) => fav.name === name && fav.type === type);
 	if (favIndex === -1) return;
 
+	const fav = favorites.favs[favIndex];
 	favorites.favs.splice(favIndex, 1);
 	updateFavorites(favorites);
+
+	if (getPrimary()?.name == fav?.name) {
+		deletePrimary();
+	}
 }
 
 /**
@@ -134,4 +139,32 @@ export function reorderFavorite(
 	favorites.favs.forEach((fav, index) => (fav.order = index));
 
 	updateFavorites(favorites);
+}
+
+/**
+ * Sets the primary favorite
+ * @param {Favorite} favorite - The favorite object.
+ */
+export function setPrimary(favorite: Favorite) {
+	localStorage.setItem(
+		'favorites.primary',
+		JSON.stringify({ name: favorite.name, type: favorite.type })
+	);
+}
+
+/**
+ * Gets the primary favorite
+ * @returns {Favorite | null} The favorite object or null if not found.
+ */
+export function getPrimary(): Favorite | null {
+	const primary = localStorage.getItem('favorites.primary');
+	if (!primary) return null;
+	return JSON.parse(primary) as Favorite;
+}
+
+/**
+ * Deletes the primary favorite
+ */
+export function deletePrimary() {
+	localStorage.removeItem('favorites.primary');
 }

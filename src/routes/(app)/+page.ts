@@ -1,5 +1,5 @@
 import { getAllInfos } from '$lib/cache/cacheHelper';
-import { getFavorites } from '$lib/favorites/favorites';
+import { getFavorites, getPrimary } from '$lib/favorites/favorites';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ parent }) => {
@@ -7,6 +7,7 @@ export const load: PageLoad = async ({ parent }) => {
 
 	return {
 		infos: getAllInfos(credentials),
-		favorites: getFavorites(credentials.schoolnumber)
+		favorites: getFavorites(credentials.schoolnumber),
+		primaryFavorite: getPrimary()
 	};
 };

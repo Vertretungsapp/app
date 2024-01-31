@@ -1,4 +1,5 @@
 import { PlanType, PlanTypePlural } from '$lib/api/planTypes';
+import { getFilter } from '$lib/filter/filter';
 import type { Credentials, Lesson, PlannedLesson } from 'indiware-api';
 import { getPlans } from './cache';
 
@@ -85,4 +86,46 @@ export function generateRoomTimetable(credentials: Credentials, room: string): L
 
 export function generateTeacherTimetable(credentials: Credentials, teacher: string): Lesson[] {
 	return generateTimetable(credentials, PlanType.TEACHER, teacher);
+}
+
+export function getNextLessons(
+	credentials: Credentials,
+	name: string,
+	type: PlanType
+): PlannedLesson[] {
+	const plans = getPlans(credentials.schoolnumber);
+	const now = new Date();
+	const filter = getFilter(credentials.schoolnumber, name);
+	const plan = plans.find((plan) => new Date(plan.date).toDateString() == now.toDateString());
+	if (!plan) return [];
+	let plannedLessons: PlannedLesson[] = [];
+	switch (type) {
+		case PlanType.ROOM:
+			plannedLessons = plan.rooms.find((room) => room.name === name)?.plannedLessons ?? [];
+			break;
+		case PlanType.TEACHER:
+			plannedLessons = plan.teachers.find((teacher) => teacher.name === name)?.plannedLessons ?? [];
+			break;
+		case PlanType.SCHOOL_CLASS:
+			plannedLessons =
+				plan.schoolClasses.find((schoolClass) => schoolClass.name === name)?.plannedLessons ?? [];
+			break;
+		default:
+			return [];
+	}
+
+	return plannedLessons
+		.filter((lesson) => {
+			const startTime = new Date(lesson.startTime);
+
+			if (filter && filter.active) {
+				if (filter.ignoredLessons.includes(lesson.id.toString())) return false;
+			}
+
+			return (
+				startTime.getHours() >= now.getHours() &&
+				(startTime.getHours() == now.getHours() ? startTime.getMinutes() >= now.getMinutes() : true)
+			);
+		})
+		.sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime());
 }

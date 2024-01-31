@@ -3,9 +3,9 @@
 	import type { Favorite } from '$lib/favorites/favorites';
 	import { dndzone } from 'svelte-dnd-action';
 	import { updateFavorites, type Favorites } from '$lib/favorites/favorites';
-    import { flip } from 'svelte/animate';
+	import { flip } from 'svelte/animate';
 
-    const flipDurationMs = 300;
+	const flipDurationMs = 300;
 
 	export let favorites: Favorites;
 	let items: Favorite[] = favorites.favs;
@@ -34,7 +34,7 @@
 >
 	{#each items as fav (fav.id)}
 		<a
-            animate:flip={{duration: flipDurationMs}}
+			animate:flip={{ duration: flipDurationMs }}
 			class="flex items-center justify-center rounded-lg bg-secondary-800 p-4 text-center"
 			href={getHrefLink(fav.name, fav.type)}
 		>
@@ -42,3 +42,10 @@
 		</a>
 	{/each}
 </div>
+
+{#if items.length === 0}
+	<p class="col-span-3 text-sm text-secondary-600">
+		Du hast noch keine Favoriten. Um ein Plan zu favorisieren, klicke einfach auf das Stern-Symbol
+		im Plan.
+	</p>
+{/if}
