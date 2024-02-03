@@ -50,7 +50,7 @@
 		"@fortawesome/free-regular-svg-icons": "^6.5.1",
 		"@fortawesome/free-solid-svg-icons": "^6.5.1",
 		"date-fns": "^3.1.0",
-		"indiware-api": "^1.1.6",
+		"indiware-api": "^1.1.7",
 		"svelte-awesome": "^3.3.0",
 		"svelte-french-toast": "^1.2.0",
 		"svelte-gestures": "^1.5.2",
