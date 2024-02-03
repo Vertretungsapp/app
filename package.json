@@ -58,7 +58,7 @@
 		"@fortawesome/free-regular-svg-icons": "^6.4.0",
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"@types/xml2js": "^0.4.11",
-		"@types/xml2json": "^0.11.4",
+		"@types/xml2json": "^0.11.6",
 		"buffer": "^6.0.3",
 		"date-fns": "^2.30.0",
 		"events": "^3.3.0",
