@@ -123,10 +123,10 @@
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/ios@^5.0.5":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-5.0.5.tgz#799c6eb3bf5988ff1e394a28d7f5caa8435460da"
-  integrity sha512-U72TPbKN1HlUqEGCOPsCBp6j93Qu1TazWUuA8Q1yfcGDfSOE0zMDNl3eU7XO5OyzpV7z9lf8NJdehimezVl7sA==
+"@capacitor/ios@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-5.1.1.tgz#1f6c7761620fc3b354d895a6235bebee40856b9c"
+  integrity sha512-Vk76qa1TDckcPNcUgEIgNdgFo4SqTDBNYqKaYVDMOgkZxg4aKe6PzZaqw1e9T3e4NKFSrDHnCDanA5UFB9tQ3w==
 
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
