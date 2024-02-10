@@ -50,7 +50,7 @@
 	<PlanHeaderControls filterActive={data.filter.active} isFavorite={data.isFavorite} />
 
 	<h1 class="text-center">
-		{planTypeToTranslatedString(data.type)} <span class="text-primary">{data.short}</span>
+		{planTypeToTranslatedString(data.type)} <span class="text-primary-500">{data.short}</span>
 	</h1>
 
 	<PlanInformation
@@ -66,7 +66,7 @@
 			filter={data.filter}
 		/>
 	{:else}
-		<p class="flex items-center justify-center gap-2 font-bold text-secondary-600">
+		<p class="flex items-center justify-center gap-2 font-bold text-disabled">
 			<Icon icon={faFaceFrown} />Kein Plan verfügbar
 		</p>
 	{/if}

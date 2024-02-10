@@ -4,7 +4,7 @@
 </script>
 
 <a
-	class="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary-900 p-2"
+	class="flex h-8 w-8 items-center justify-center rounded-lg bg-clickable p-2"
 	href="/settings/credentials"
 >
 	<Icon icon={faKey} scale={1.1} />

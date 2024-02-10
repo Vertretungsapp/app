@@ -13,8 +13,8 @@
 <a
 	class={twMerge(
 		// TODO: add touch effect (active:bg-secondary-900)
-		'flex flex-wrap items-center justify-center rounded-full p-2 text-xs transition-colors duration-75 ease-out ',
-		$navigationStore.activeId === id && 'text-primary'
+		'flex flex-wrap items-center justify-center rounded-full p-2 text-xs transition-colors duration-75 ease-out',
+		$navigationStore.activeId === id && 'text-primary-500'
 	)}
 	{href}
 	on:click={() => ($navigationStore.activeId = id)}

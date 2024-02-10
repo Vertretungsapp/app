@@ -7,6 +7,7 @@
 	import type { PageData } from './$types';
 	import FavoritesDisplay from '$lib/components/favorites/FavoritesDisplay.svelte';
 	import NextLessonWidget from '$lib/components/favorites/NextLessonWidget.svelte';
+	import { setPrimaryColor } from '$lib/theming/primaryColor';
 
 	export let data: PageData;
 
@@ -29,7 +30,7 @@
 </script>
 
 <div class="flex justify-between">
-	<h1 class="text-center">Vertretungsapp<span class="text-primary">.</span></h1>
+	<h1 class="text-center">Vertretungsapp<span class="text-primary-500">.</span></h1>
 	<CredentialsLink />
 </div>
 
@@ -41,7 +42,7 @@
 	<h3>Informationen</h3>
 	<div class="max-h-[40%] overflow-y-auto">
 		{#each data.infos as info}
-			<div class="mb-2 rounded-lg bg-secondary-950 p-4">
+			<div class="mb-2 rounded-lg bg-display p-4">
 				<p class="text-xs font-bold">{info.date.toLocaleDateString()}</p>
 				<p>{info.info}</p>
 			</div>
@@ -51,8 +52,6 @@
 	<div class="py-4"></div>
 {/if}
 
-<!-- This is just prototyping for design -->
-
 <NextLessonWidget primary={data.primaryFavorite} favorites={data.favorites} />
 
 <div class="py-4"></div>
@@ -61,7 +60,7 @@
 <FavoritesDisplay favorites={data.favorites} />
 
 <div class="fixed bottom-20 left-0 flex w-full justify-center">
-	<a class="rounded-full bg-primary p-3" href="/">
+	<a class="rounded-full bg-clickable p-3" href="/">
 		<Icon icon={faMagnifyingGlass} scale={1} />
 	</a>
 </div>

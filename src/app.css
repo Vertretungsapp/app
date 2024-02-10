@@ -3,11 +3,23 @@
 @tailwind utilities;
 
 @layer base {
+	.bg-display {
+		@apply bg-primary-950;
+	}
+
+	.bg-clickable {
+		@apply bg-primary-800;
+	}
+
+	.text-disabled {
+		@apply text-gray-600;
+	}
+
 	* {
 		touch-action: pan-x pan-y;
 	}
 
-	html {
+	body {
 		@apply bg-background;
 		@apply font-medium text-text;
 		@apply overflow-hidden;
@@ -38,6 +50,6 @@
 	}
 
 	input {
-		@apply rounded-md bg-secondary-900 p-1 disabled:bg-secondary-950 disabled:text-secondary-400;
+		@apply rounded-md bg-display p-1 disabled:opacity-50 disabled:text-disabled;
 	}
 }

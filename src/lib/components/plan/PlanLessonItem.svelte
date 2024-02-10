@@ -35,7 +35,7 @@
 
 <div>
 	<div class="flex w-full text-lg font-bold">
-		<div class={twMerge('bg-secondary-800 p-2', lesson.info ? 'rounded-tl-lg' : 'rounded-l-lg')}>
+		<div class={twMerge('bg-clickable p-2', lesson.info ? 'rounded-tl-lg' : 'rounded-l-lg')}>
 			<h2 class={twMerge('w-10 text-center text-4xl', changed && 'animate-pulse text-red-600')}>
 				{lesson.order}
 			</h2>
@@ -43,7 +43,7 @@
 
 		<div
 			class={twMerge(
-				'w-full bg-secondary-950 px-2 py-1',
+				'w-full bg-display px-2 py-1',
 				lesson.info ? 'rounded-tr-lg' : 'rounded-r-lg'
 			)}
 		>
@@ -66,7 +66,7 @@
 	</div>
 
 	{#if lesson.info}
-		<div class="rounded-b-lg bg-secondary-950 p-2 text-sm">
+		<div class="rounded-b-lg bg-display p-2 text-sm">
 			<p>{lesson.info}</p>
 		</div>
 	{/if}

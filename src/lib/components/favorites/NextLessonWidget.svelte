@@ -11,24 +11,24 @@
 	export let primary: Favorite | undefined | null = undefined;
 	export let favorites: Favorites;
 
-	let lessons: PlannedLesson[] = []
+	let lessons: PlannedLesson[] = [];
 
-    $: if(primary) {
-        lessons = primary
-		? getNextLessons($page.data.credentials, primary.name, primary.type)
-		: [];
-    }
+	$: if (primary) {
+		lessons = primary
+			? getNextLessons($page.data.credentials, primary.name, primary.type)
+			: [];
+	}
 
-    function selectEventHandler(e: any) {
-        primary = favorites.favs.find((fav) => fav.name === e.target.value);
-        if(primary) setPrimary(primary);
-    } 
+	function selectEventHandler(e: any) {
+		primary = favorites.favs.find((fav) => fav.name === e.target.value);
+		if (primary) setPrimary(primary);
+	}
 </script>
 
 <h3 class="flex justify-between items-center">
 	Deine nächsten Stunden
 
-	<select class="bg-background text-primary p-0" on:change={selectEventHandler}>
+	<select class="bg-background text-primary-500 p-0" on:change={selectEventHandler}>
 		{#each favorites.favs as fav}
 			<option value={fav.name} selected={primary?.name === fav.name}>{fav.name}</option>
 		{/each}
@@ -45,11 +45,11 @@
 			{#if lessons.length !== 0}
 				{#each lessons as lesson}
 					{#key lesson.id}
-                        <PlanLessonItem type={primary.type} {lesson} />
-                    {/key}
+						<PlanLessonItem type={primary.type} {lesson} />
+					{/key}
 				{/each}
 			{:else}
-				<div class="flex items-center gap-2 text-secondary-600">
+				<div class="flex items-center gap-2 text-disabled">
 					<span>Du hast heute keine weiteren Stunden mehr!</span>
 					<Icon icon={faFaceSurprise} />
 				</div>
@@ -57,7 +57,7 @@
 		</div>
 	</a>
 {:else}
-	<p class="text-secondary-600">
+	<p class="text-disabled">
 		Du hast noch keinen Favoriten ausgewählt, nutze dazu die drei blauen Fragezeichen.
 	</p>
 {/if}

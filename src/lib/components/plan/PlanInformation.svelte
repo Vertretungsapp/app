@@ -11,21 +11,21 @@
 
 <div class="flex w-full flex-col items-center justify-center gap-4 pb-2">
 	{#if plan}
-		<p class="text-xs text-secondary-600">
+		<p class="text-xs text-disabled">
 			Letzte Aktualisierung: {new Date(plan.lastUpdated).toLocaleString()}
 		</p>
 	{:else}
-		<p class="text-xs text-secondary-600">Kein Plan verfügbar</p>
+		<p class="text-xs text-disabled">Kein Plan verfügbar</p>
 	{/if}
 
 	<PlanNavigation on:next on:previous>
 		<a href={$page.url.pathname}>
 			<h2 class="text-xl font-bold">
-				<span class=" text-primary">
+				<span class="text-primary-500">
 					{format($planStore.currentDate, 'EEEE', {
 						locale: de
 					})}</span
-				>,
+				>
 				<span>{format($planStore.currentDate, 'dd.MM.yyyy')}</span>
 			</h2>
 		</a>

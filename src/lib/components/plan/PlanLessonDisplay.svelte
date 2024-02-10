@@ -19,7 +19,7 @@
 <div class="flex flex-col gap-2 overflow-y-auto">
 	{#if filter.active}
 		{#if filteredLessons.length === 0}
-			<div class="flex w-full justify-center gap-3 text-secondary-600">
+			<div class="flex w-full justify-center gap-3 text-disabled">
 				<Icon icon={faWarning} scale={1.5} />
 				<p class="text-center font-semibold">Es wurden alle Stunden gefiltert</p>
 			</div>
@@ -30,7 +30,7 @@
 		{/each}
 	{:else}
 		{#if lessons.length === 0}
-			<div class="flex w-full justify-center gap-3 text-secondary-600">
+			<div class="flex w-full justify-center gap-3 text-disabled">
 				<Icon icon={faBan} scale={1.5} />
 				<p class="text-center font-semibold">Keine Stunden an diesem Tag</p>
 			</div>

@@ -35,7 +35,7 @@
 	{#each items as fav (fav.id)}
 		<a
 			animate:flip={{ duration: flipDurationMs }}
-			class="flex items-center justify-center rounded-lg bg-secondary-800 p-4 text-center"
+			class="flex items-center justify-center rounded-lg bg-clickable p-4 text-center"
 			href={getHrefLink(fav.name, fav.type)}
 		>
 			{fav.name}
@@ -44,7 +44,7 @@
 </div>
 
 {#if items.length === 0}
-	<p class="col-span-3 text-sm text-secondary-600">
+	<p class="col-span-3 text-sm text-disabled">
 		Du hast noch keine Favoriten. Um ein Plan zu favorisieren, klicke einfach auf das Stern-Symbol
 		im Plan.
 	</p>

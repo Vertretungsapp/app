@@ -10,17 +10,16 @@ export default {
 			}
 		}
 	},
+	darkMode: 'class',
 	plugins: [
 		realtimeColors({
 			colors: {
 				text: '#f2ece8',
-				background: '#080709',
-				primary: '#0549d1',
-				secondary: '#595959',
-				accent: '#5b8dcc'
-			},
-			theme: false,
-			shades: ['secondary']
+				background: '#040404',
+				primary: '#2456df',
+				secondary: '#000',
+				accent: '#000'
+			}
 		})
 	]
 };

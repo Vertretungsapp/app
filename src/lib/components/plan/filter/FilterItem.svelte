@@ -22,12 +22,12 @@
 
 <button
 	class={twMerge(
-		'flex flex-col items-center justify-center rounded-lg border border-secondary-950 bg-secondary-950 p-2 leading-tight transition-colors duration-75',
-		checked && 'border-primary'
+		'flex flex-col items-center justify-center rounded-lg bg-display p-2 leading-tight transition-colors duration-75',
+		checked && 'bg-clickable'
 	)}
 	on:click={handleClick}
 >
 	<span class="font-semibold">{lesson.name}</span>
 	{#if lesson.teacher}<span class="text-sm">{lesson.teacher}</span>{/if}
-	<span class="text-xs text-secondary-600">{lesson.id}</span>
+	<span class="text-xs text-disabled">{lesson.id}</span>
 </button>

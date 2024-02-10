@@ -17,12 +17,12 @@
 
 <div class="flex w-full items-center justify-between py-2">
 	<button on:click={previous}>
-		<Icon icon={faCircleChevronLeft} scale={1.5} />
+		<Icon icon={faCircleChevronLeft} scale={1.7} />
 	</button>
 
 	<slot />
 
 	<button on:click={next}>
-		<Icon icon={faCircleChevronRight} scale={1.5} />
+		<Icon icon={faCircleChevronRight} scale={1.7} />
 	</button>
 </div>
