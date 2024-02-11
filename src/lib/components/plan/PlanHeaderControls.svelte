@@ -45,11 +45,11 @@
 		<a class="relative" href={$page.url.pathname + '/filter'}>
 			<Icon icon={faFilter} scale={1.7} />
 			{#if filterActive}
-				<span class="absolute -right-1 -top-1 flex h-3 w-3">
+				<span class="absolute -right-1 -top-1 flex h-2.5 w-2.5">
 					<span
-						class="bg-primary absolute inline-flex h-full w-full rounded-full opacity-75 motion-safe:animate-ping"
+						class="bg-primary-500 absolute inline-flex h-full w-full rounded-full opacity-75 motion-safe:animate-ping"
 					></span>
-					<span class="bg-primary relative inline-flex h-3 w-3 rounded-full"></span>
+					<span class="bg-primary-500 relative inline-flex h-2.5 w-2.5 rounded-full"></span>
 				</span>
 			{/if}
 		</a>
