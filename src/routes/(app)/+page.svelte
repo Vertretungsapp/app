@@ -60,7 +60,7 @@
 <FavoritesDisplay favorites={data.favorites} />
 
 <div class="fixed bottom-20 left-0 flex w-full justify-center">
-	<a class="rounded-full bg-clickable p-3" href="/">
+	<a class="rounded-full bg-clickable p-3" href="/search">
 		<Icon icon={faMagnifyingGlass} scale={1} />
 	</a>
 </div>

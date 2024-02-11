@@ -1,7 +1,28 @@
 import { PlanType, PlanTypePlural } from '$lib/api/planTypes';
 import { getFilter } from '$lib/filter/filter';
-import type { Credentials, Lesson, PlannedLesson } from 'indiware-api';
+import type { Credentials, Lesson, PlannedLesson, Room, SchoolClass, Teacher } from 'indiware-api';
 import { getPlans } from './cache';
+
+export function getAll(credentials: Credentials): Array<SchoolClass | Teacher | Room> {
+	const plans = getPlans(credentials.schoolnumber);
+	const entities: Array<SchoolClass | Teacher | Room> = [];
+
+	plans.forEach((plan) => {
+		plan.schoolClasses.forEach((schoolClass) => {
+			if (!entities.find((entity) => entity.name === schoolClass.name)) entities.push(schoolClass);
+		});
+
+		plan.teachers.forEach((teacher) => {
+			if (!entities.find((entity) => entity.name === teacher.name)) entities.push(teacher);
+		});
+
+		plan.rooms.forEach((room) => {
+			if (!entities.find((entity) => entity.name === room.name)) entities.push(room);
+		});
+	});
+
+	return entities;
+}
 
 function getAllEntities(credentials: Credentials, type: PlanTypePlural): string[] {
 	const plans = getPlans(credentials.schoolnumber);

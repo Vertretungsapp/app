@@ -1,4 +1,4 @@
-import type { PlanType } from '$lib/api/planTypes';
+import { PlanType } from '$lib/api/planTypes';
 import { addBusinessDays, format } from 'date-fns';
 import { stringToHexadecimal } from './stringToHexadecimal';
 
