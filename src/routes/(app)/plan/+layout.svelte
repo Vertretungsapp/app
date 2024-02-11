@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { LayoutData } from './$types';
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	import { planStore } from '$lib/stores/planStore';
 	import { page } from '$app/stores';
 

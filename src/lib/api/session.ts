@@ -11,11 +11,17 @@ export async function login(
 		customFetch: fetch
 	});
 
-	settingsStore.set({ credentials });
+	settingsStore.update((settings) => ({
+		...settings,
+		credentials
+	}));
 }
 
 export function logout(): void {
-	settingsStore.set({ credentials: null });
+	settingsStore.update((settings) => ({
+		...settings,
+		credentials: null
+	}));
 }
 
 export function getCredentials(): Credentials | null {

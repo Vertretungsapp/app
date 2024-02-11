@@ -17,8 +17,9 @@
 		lessons = primary ? getNextLessons($page.data.credentials, primary.name, primary.type) : [];
 	}
 
-	function selectEventHandler(e: any) {
-		primary = favorites.favs.find((fav) => fav.name === e.target.value);
+	function selectEventHandler(e: Event) {
+		const target = e.target as HTMLSelectElement;
+		primary = favorites.favs.find((fav) => fav.name === target.value);
 		if (primary) setPrimary(primary);
 	}
 </script>

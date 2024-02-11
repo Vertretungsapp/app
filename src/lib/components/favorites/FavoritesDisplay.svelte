@@ -10,11 +10,11 @@
 	export let favorites: Favorites;
 	let items: Favorite[] = favorites.favs;
 
-	function handleDndConsider(e: any) {
+	function handleDndConsider(e: CustomEvent) {
 		items = e.detail.items;
 	}
 
-	function handleDndFinalize(e: any) {
+	function handleDndFinalize(e: CustomEvent) {
 		items = e.detail.items;
 
 		let newFavs: Favorite[] = [];
