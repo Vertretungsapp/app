@@ -11,8 +11,6 @@
 			...JSON.parse(localStorage.getItem("settings") || "{}") as SettingsStore,
 		}))
 
-		setPrimaryColor($settingsStore.primaryColor)
-
 		settingsStore.subscribe((value) => {
 			localStorage.setItem('settings', JSON.stringify(value));
 		});
@@ -26,6 +24,7 @@
 			} else if (!value.darkMode && htmlElement.classList.contains("dark")) {
 				htmlElement.classList.remove("dark")
 			}
+			setPrimaryColor(value.primaryColor, value.darkMode)
 		})
 	});
 </script>
