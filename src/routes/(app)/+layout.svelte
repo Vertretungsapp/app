@@ -24,6 +24,7 @@
 			} else if (!value.darkMode && htmlElement.classList.contains("dark")) {
 				htmlElement.classList.remove("dark")
 			}
+
 			setPrimaryColor(value.primaryColor, value.darkMode)
 		})
 	});

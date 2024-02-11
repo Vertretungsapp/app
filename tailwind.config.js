@@ -16,7 +16,7 @@ export default {
 			colors: {
 				text: '#f2ece8',
 				background: '#040404',
-				primary: '#2456df',
+				primary: 'dynamic()',
 				secondary: '#000',
 				accent: '#000'
 			}

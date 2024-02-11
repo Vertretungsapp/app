@@ -2,7 +2,7 @@
 	export let checked = false;
 </script>
 
-<input class="w-4" type="checkbox" bind:checked />
+<input class="scale-125" type="checkbox" bind:checked />
 <span class="col-span-4">
 	<slot />
 </span>

@@ -2,10 +2,11 @@
 	import { clearCache } from '$lib/cache/cache';
 	import CredentialsLink from '$lib/components/settings/CredentialsLink.svelte';
 	import toast from 'svelte-french-toast';
-	import { settingsStore } from '$lib/stores/settingsStore';
+	import { PRIMARY_COLOR, settingsStore } from '$lib/stores/settingsStore';
 	import SettingsCheckbox from '$lib/components/settings/SettingsCheckbox.svelte';
 	import SettingsSection from '$lib/components/settings/SettingsSection.svelte';
 	import ColorPicker from 'svelte-awesome-color-picker';
+	import SettingsButton from '$lib/components/settings/SettingsButton.svelte';
 
 	function clrCache() {
 		clearCache();
@@ -32,6 +33,8 @@
 		<span class="col-span-4">Primärfarbe</span>
 
 		<SettingsCheckbox bind:checked={$settingsStore.darkMode}>Dark Mode</SettingsCheckbox>
+
+		<SettingsButton onClick={() => $settingsStore.primaryColor = PRIMARY_COLOR}>Standardfarbe</SettingsButton>
 	</SettingsSection>
 
 	<SettingsSection>
@@ -39,7 +42,7 @@
 			Entwickleroptionen
 		</svelte:fragment>
 
-		<button class="rounded-lg bg-clickable p-1 col-span-5" on:click={clrCache}>Clear Cache</button>
+		<SettingsButton onClick={clrCache}>Clear Cache</SettingsButton>
 	</SettingsSection>
 </div>
 
