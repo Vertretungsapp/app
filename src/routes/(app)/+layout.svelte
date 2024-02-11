@@ -8,8 +8,8 @@
 	onMount(() => {
 		settingsStore.update((value) => ({
 			...value,
-			...JSON.parse(localStorage.getItem("settings") || "{}") as SettingsStore,
-		}))
+			...(JSON.parse(localStorage.getItem('settings') || '{}') as SettingsStore)
+		}));
 
 		settingsStore.subscribe((value) => {
 			localStorage.setItem('settings', JSON.stringify(value));
@@ -17,16 +17,16 @@
 
 		// Dark Mode & Primary Color
 		settingsStore.subscribe((value) => {
-			const htmlElement = document.querySelector("html")
-			if(!htmlElement) return
-			if(value.darkMode && !htmlElement.classList.contains("dark")) {
-				htmlElement.classList.add("dark")
-			} else if (!value.darkMode && htmlElement.classList.contains("dark")) {
-				htmlElement.classList.remove("dark")
+			const htmlElement = document.querySelector('html');
+			if (!htmlElement) return;
+			if (value.darkMode && !htmlElement.classList.contains('dark')) {
+				htmlElement.classList.add('dark');
+			} else if (!value.darkMode && htmlElement.classList.contains('dark')) {
+				htmlElement.classList.remove('dark');
 			}
 
-			setPrimaryColor(value.primaryColor, value.darkMode)
-		})
+			setPrimaryColor(value.primaryColor, value.darkMode);
+		});
 	});
 </script>
 

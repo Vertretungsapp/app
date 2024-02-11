@@ -25,25 +25,21 @@
 
 <div class="space-y-8">
 	<SettingsSection>
-		<svelte:fragment slot="title">
-			Darstellung
-		</svelte:fragment>
+		<svelte:fragment slot="title">Darstellung</svelte:fragment>
 
-		<ColorPicker bind:hex={$settingsStore.primaryColor}  label="" />
+		<ColorPicker bind:hex={$settingsStore.primaryColor} label="" />
 		<span class="col-span-4">Primärfarbe</span>
 
 		<SettingsCheckbox bind:checked={$settingsStore.darkMode}>Dark Mode</SettingsCheckbox>
 
-		<SettingsButton onClick={() => $settingsStore.primaryColor = PRIMARY_COLOR}>Standardfarbe</SettingsButton>
+		<SettingsButton onClick={() => ($settingsStore.primaryColor = PRIMARY_COLOR)}
+			>Standardfarbe</SettingsButton
+		>
 	</SettingsSection>
 
 	<SettingsSection>
-		<svelte:fragment slot="title">
-			Entwickleroptionen
-		</svelte:fragment>
+		<svelte:fragment slot="title">Entwickleroptionen</svelte:fragment>
 
 		<SettingsButton onClick={clrCache}>Clear Cache</SettingsButton>
 	</SettingsSection>
 </div>
-
-

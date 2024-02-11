@@ -28,7 +28,7 @@
 </script>
 
 <h1>Zugangsdaten</h1>
-<p class="text-xs text-disabled mt-1">
+<p class="text-disabled mt-1 text-xs">
 	Die Zugangsdaten werden von der Schule mitgeteilt. Sie entsprechen derer, welcher auch in der
 	normalen VpMobil App benötigt werden.
 </p>
@@ -67,6 +67,6 @@
 	<input type="text" class="col-span-2" name="password" required bind:value={password} />
 
 	<div class="col-span-3 mt-4 flex w-full justify-center">
-		<button type="submit" class="rounded-lg bg-clickable px-4 py-2">Speichern</button>
+		<button type="submit" class="bg-clickable rounded-lg px-4 py-2">Speichern</button>
 	</div>
 </form>

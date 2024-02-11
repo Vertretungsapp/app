@@ -50,6 +50,6 @@
 	}
 
 	input {
-		@apply rounded-md bg-display p-1 disabled:opacity-50 disabled:text-disabled;
+		@apply bg-display disabled:text-disabled rounded-md p-1 disabled:opacity-50;
 	}
 }

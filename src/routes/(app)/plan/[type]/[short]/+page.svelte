@@ -66,7 +66,7 @@
 			filter={data.filter}
 		/>
 	{:else}
-		<p class="flex items-center justify-center gap-2 font-bold text-disabled">
+		<p class="text-disabled flex items-center justify-center gap-2 font-bold">
 			<Icon icon={faFaceFrown} />Kein Plan verfügbar
 		</p>
 	{/if}

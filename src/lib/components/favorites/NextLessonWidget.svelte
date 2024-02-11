@@ -14,9 +14,7 @@
 	let lessons: PlannedLesson[] = [];
 
 	$: if (primary) {
-		lessons = primary
-			? getNextLessons($page.data.credentials, primary.name, primary.type)
-			: [];
+		lessons = primary ? getNextLessons($page.data.credentials, primary.name, primary.type) : [];
 	}
 
 	function selectEventHandler(e: any) {
@@ -25,10 +23,10 @@
 	}
 </script>
 
-<h3 class="flex justify-between items-center">
+<h3 class="flex items-center justify-between">
 	Deine nächsten Stunden
 
-	<select class="bg-background text-primary-500 p-0" on:change={selectEventHandler}>
+	<select class="bg-background p-0 text-primary-500" on:change={selectEventHandler}>
 		{#each favorites.favs as fav}
 			<option value={fav.name} selected={primary?.name === fav.name}>{fav.name}</option>
 		{/each}
@@ -49,7 +47,7 @@
 					{/key}
 				{/each}
 			{:else}
-				<div class="flex items-center gap-2 text-sm text-disabled">
+				<div class="text-disabled flex items-center gap-2 text-sm">
 					<span>Du hast heute keine weiteren Stunden mehr!</span>
 					<Icon icon={faFaceSurprise} />
 				</div>

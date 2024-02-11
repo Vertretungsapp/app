@@ -42,10 +42,7 @@
 		</div>
 
 		<div
-			class={twMerge(
-				'w-full bg-display px-2 py-1',
-				lesson.info ? 'rounded-tr-lg' : 'rounded-r-lg'
-			)}
+			class={twMerge('bg-display w-full px-2 py-1', lesson.info ? 'rounded-tr-lg' : 'rounded-r-lg')}
 		>
 			<div class="flex h-full w-full items-center justify-between">
 				<div class="flex h-full flex-col justify-center">
@@ -66,7 +63,7 @@
 	</div>
 
 	{#if lesson.info}
-		<div class="rounded-b-lg bg-display p-2 text-sm">
+		<div class="bg-display rounded-b-lg p-2 text-sm">
 			<p>{lesson.info}</p>
 		</div>
 	{/if}

@@ -3,7 +3,7 @@
 		<slot name="title" />
 	</h2>
 
-	<div class="w-full grid grid-cols-10 gap-1 items-center">
+	<div class="grid w-full grid-cols-10 items-center gap-1">
 		<slot />
 	</div>
 </section>

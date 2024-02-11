@@ -9,20 +9,20 @@
 <div class="grid grid-cols-3 gap-2">
 	{#each data.names as name}
 		<a
-			class="flex items-center justify-center rounded-lg bg-clickable p-4 text-center"
+			class="bg-clickable flex items-center justify-center rounded-lg p-4 text-center"
 			href={`/plan/${data.type}/${stringToHexadecimal(name)}`}>{name}</a
 		>
 	{/each}
 
 	{#if data.error}
-		<p class="col-span-3 text-center text-disabled">
+		<p class="text-disabled col-span-3 text-center">
 			Es konnte kein Plan abgerufen werden, bitte überprüfe deine Zugangsdaten!
 		</p>
 	{/if}
 </div>
 
 {#if data.type === PlanType.TEACHER || data.type === PlanType.ROOM}
-	<p class="mt-4 text-center text-sm leading-tight text-disabled">
+	<p class="text-disabled mt-4 text-center text-sm leading-tight">
 		Hinweis: Die Daten werden anhand der gespeicherten Pläne erstellt, und können daher
 		unvollständig sein.
 	</p>

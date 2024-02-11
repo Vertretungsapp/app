@@ -4,6 +4,6 @@
 	export let onClick: MouseEventHandler<HTMLButtonElement>;
 </script>
 
-<button class="rounded-lg bg-clickable p-1 col-span-5" on:click={onClick}>
+<button class="bg-clickable col-span-5 rounded-lg p-1" on:click={onClick}>
 	<slot />
 </button>

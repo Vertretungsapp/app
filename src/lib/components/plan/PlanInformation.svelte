@@ -11,11 +11,11 @@
 
 <div class="flex w-full flex-col items-center justify-center gap-4 pb-2">
 	{#if plan}
-		<p class="text-xs text-disabled">
+		<p class="text-disabled text-xs">
 			Letzte Aktualisierung: {new Date(plan.lastUpdated).toLocaleString()}
 		</p>
 	{:else}
-		<p class="text-xs text-disabled">Kein Plan verfügbar</p>
+		<p class="text-disabled text-xs">Kein Plan verfügbar</p>
 	{/if}
 
 	<PlanNavigation on:next on:previous>
