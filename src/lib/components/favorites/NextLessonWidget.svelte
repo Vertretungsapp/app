@@ -49,7 +49,7 @@
 					{/key}
 				{/each}
 			{:else}
-				<div class="flex items-center gap-2 text-disabled">
+				<div class="flex items-center gap-2 text-sm text-disabled">
 					<span>Du hast heute keine weiteren Stunden mehr!</span>
 					<Icon icon={faFaceSurprise} />
 				</div>
@@ -57,7 +57,7 @@
 		</div>
 	</a>
 {:else}
-	<p class="text-disabled">
+	<p class="text-disabled text-sm">
 		Du hast noch keinen Favoriten ausgewählt, nutze dazu die drei blauen Fragezeichen.
 	</p>
 {/if}
