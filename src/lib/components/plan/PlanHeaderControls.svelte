@@ -47,9 +47,9 @@
 			{#if filterActive}
 				<span class="absolute -right-1 -top-1 flex h-2.5 w-2.5">
 					<span
-						class="bg-primary-500 absolute inline-flex h-full w-full rounded-full opacity-75 motion-safe:animate-ping"
+						class="absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75 motion-safe:animate-ping"
 					></span>
-					<span class="bg-primary-500 relative inline-flex h-2.5 w-2.5 rounded-full"></span>
+					<span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary-500"></span>
 				</span>
 			{/if}
 		</a>

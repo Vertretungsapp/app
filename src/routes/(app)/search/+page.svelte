@@ -31,7 +31,6 @@
 				getPlanTypePriority(parsePlanType(a.type)) - getPlanTypePriority(parsePlanType(b.type))
 		);
 	}
-
 </script>
 
 <div class="flex h-full flex-col">
@@ -43,22 +42,20 @@
 		</button>
 	</div>
 
-	<ul class="mt-4 grid grid-cols-2 gap-2 max-h-full overflow-y-auto">
-		<li class="col-span-2 text-disabled sticky top-0 bg-background py-1">Klassen</li>
-		{#each items.filter((i) => i.type === "schoolClass") as item}
+	<ul class="mt-4 grid max-h-full grid-cols-2 gap-2 overflow-y-auto">
+		<li class="text-disabled sticky top-0 col-span-2 bg-background py-1">Klassen</li>
+		{#each items.filter((i) => i.type === 'schoolClass') as item}
 			<SearchItem {item} />
 		{/each}
 
-		<li class="col-span-2 text-disabled sticky top-0 bg-background py-1">Räume</li>
-		{#each items.filter((i) => i.type === "room") as item}
+		<li class="text-disabled sticky top-0 col-span-2 bg-background py-1">Räume</li>
+		{#each items.filter((i) => i.type === 'room') as item}
 			<SearchItem {item} />
 		{/each}
 
-		<li class="col-span-2 text-disabled sticky top-0 bg-background py-1">Lehrer</li>
-		{#each items.filter((i) => i.type === "teacher") as item}
+		<li class="text-disabled sticky top-0 col-span-2 bg-background py-1">Lehrer</li>
+		{#each items.filter((i) => i.type === 'teacher') as item}
 			<SearchItem {item} />
 		{/each}
 	</ul>
 </div>
-
-
