@@ -50,3 +50,12 @@ export function pluralizePlanType(type: PlanType): PlanTypePlural {
 			return PlanTypePlural.ROOM;
 	}
 }
+
+/**
+ * Parses a PlanType from a string.
+ * @param type The string to parse.
+ * @returns The parsed PlanType.
+ */
+export function parsePlanType(type: string): PlanType {
+	return type as PlanType;
+}

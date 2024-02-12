@@ -1,13 +1,14 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { getHrefLink } from '$lib/common/planHelper';
-	import { PlanType } from '$lib/api/planTypes';
+	import { parsePlanType, PlanType } from '$lib/api/planTypes';
 	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
 	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons/faDoorOpen';
 	import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 	import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
 	import Icon from '$lib/components/common/Icon.svelte';
 	import { faX } from '@fortawesome/free-solid-svg-icons';
+	import SearchItem from '$lib/components/search/SearchItem.svelte';
 
 	export let data: PageData;
 
@@ -35,25 +36,6 @@
 		);
 	}
 
-	function parsePlanType(type: string): PlanType {
-		return type as PlanType;
-	}
-
-	function getIcon(type: PlanType) {
-		switch (type) {
-			case PlanType.SCHOOL_CLASS:
-				return faPeopleGroup;
-
-			case PlanType.ROOM:
-				return faDoorOpen;
-
-			case PlanType.TEACHER:
-				return faUser;
-
-			default:
-				return faQuestion;
-		}
-	}
 </script>
 
 <div class="relative flex items-center">
@@ -64,13 +46,18 @@
 </div>
 
 <ul class="mt-4 grid grid-cols-2 gap-2">
-	{#each items as item}
-		<a
-			class="bg-clickable flex w-full gap-2 rounded-lg p-2"
-			href={getHrefLink(item.name, parsePlanType(item.type))}
-		>
-			<Icon icon={getIcon(parsePlanType(item.type))} scale={1.5} />
-			<span>{item.name}</span>
-		</a>
+	<li class="col-span-2 text-disabled">Klassen</li>
+	{#each items.filter((i) => i.type === "schoolClass") as item}
+		<SearchItem {item} />
+	{/each}
+
+	<li class="col-span-2 text-disabled">Räume</li>
+	{#each items.filter((i) => i.type === "room") as item}
+		<SearchItem {item} />
+	{/each}
+
+	<li class="col-span-2 text-disabled">Lehrer</li>
+	{#each items.filter((i) => i.type === "teacher") as item}
+		<SearchItem {item} />
 	{/each}
 </ul>
