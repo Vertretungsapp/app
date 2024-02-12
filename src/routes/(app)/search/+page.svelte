@@ -1,11 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { getHrefLink } from '$lib/common/planHelper';
 	import { parsePlanType, PlanType } from '$lib/api/planTypes';
-	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
-	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons/faDoorOpen';
-	import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
-	import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
 	import Icon from '$lib/components/common/Icon.svelte';
 	import { faX } from '@fortawesome/free-solid-svg-icons';
 	import SearchItem from '$lib/components/search/SearchItem.svelte';
