@@ -6,6 +6,5 @@
 	export let scale = 1.7;
 </script>
 
-<a href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'))}>
-	<Icon icon={faCircleArrowLeft} {scale} />
-</a>
+<Icon icon={faCircleArrowLeft} href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/')) || "/"} {scale} />
+

@@ -4,6 +4,7 @@
 	import Icon from '$lib/components/common/Icon.svelte';
 	import { faX } from '@fortawesome/free-solid-svg-icons';
 	import SearchItem from '$lib/components/search/SearchItem.svelte';
+	import BackButton from '$lib/components/common/BackButton.svelte';
 
 	export let data: PageData;
 
@@ -33,26 +34,31 @@
 
 </script>
 
-<div class="relative flex items-center">
-	<input class="h-full w-full" type="text" placeholder="Suche" bind:value={search} />
-	<button class="absolute right-2" on:click={() => (search = '')}>
-		<Icon icon={faX} class="text-disabled" />
-	</button>
+<div class="flex h-full flex-col">
+	<div class="relative flex items-center gap-2">
+		<BackButton />
+		<input class="h-full w-full" type="text" placeholder="Suche" bind:value={search} />
+		<button class="absolute right-2" on:click={() => (search = '')}>
+			<Icon icon={faX} class="text-disabled" />
+		</button>
+	</div>
+
+	<ul class="mt-4 grid grid-cols-2 gap-2 max-h-full overflow-y-auto">
+		<li class="col-span-2 text-disabled sticky top-0 bg-background py-1">Klassen</li>
+		{#each items.filter((i) => i.type === "schoolClass") as item}
+			<SearchItem {item} />
+		{/each}
+
+		<li class="col-span-2 text-disabled sticky top-0 bg-background py-1">Räume</li>
+		{#each items.filter((i) => i.type === "room") as item}
+			<SearchItem {item} />
+		{/each}
+
+		<li class="col-span-2 text-disabled sticky top-0 bg-background py-1">Lehrer</li>
+		{#each items.filter((i) => i.type === "teacher") as item}
+			<SearchItem {item} />
+		{/each}
+	</ul>
 </div>
 
-<ul class="mt-4 grid grid-cols-2 gap-2">
-	<li class="col-span-2 text-disabled">Klassen</li>
-	{#each items.filter((i) => i.type === "schoolClass") as item}
-		<SearchItem {item} />
-	{/each}
 
-	<li class="col-span-2 text-disabled">Räume</li>
-	{#each items.filter((i) => i.type === "room") as item}
-		<SearchItem {item} />
-	{/each}
-
-	<li class="col-span-2 text-disabled">Lehrer</li>
-	{#each items.filter((i) => i.type === "teacher") as item}
-		<SearchItem {item} />
-	{/each}
-</ul>
