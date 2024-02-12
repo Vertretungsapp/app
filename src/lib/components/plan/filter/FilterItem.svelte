@@ -8,15 +8,16 @@
 	export let lesson: Lesson;
 	export let filter: Filter;
 
-	let checked = !filter.ignoredLessons.includes(lesson.id.toString());
+	export let checked = !filter.ignoredLessons.includes(lesson.id.toString());
+
+	$: if (!checked) {
+		ignoreLesson(credentials, filter.name, lesson.id);
+	} else {
+		unignoreLesson(credentials, filter.name, lesson.id);
+	}
 
 	function handleClick() {
 		checked = !checked;
-		if (!checked) {
-			ignoreLesson(credentials, filter.name, lesson.id);
-		} else {
-			unignoreLesson(credentials, filter.name, lesson.id);
-		}
 	}
 </script>
 

@@ -32,7 +32,7 @@
 
 		<SettingsCheckbox bind:checked={$settingsStore.darkMode}>Dark Mode</SettingsCheckbox>
 
-		<SettingsButton onClick={() => ($settingsStore.primaryColor = PRIMARY_COLOR)}
+		<SettingsButton on:click={() => ($settingsStore.primaryColor = PRIMARY_COLOR)}
 			>Standardfarbe</SettingsButton
 		>
 	</SettingsSection>
@@ -40,6 +40,6 @@
 	<SettingsSection>
 		<svelte:fragment slot="title">Entwickleroptionen</svelte:fragment>
 
-		<SettingsButton onClick={clrCache}>Clear Cache</SettingsButton>
+		<SettingsButton on:click={clrCache}>Clear Cache</SettingsButton>
 	</SettingsSection>
 </div>
