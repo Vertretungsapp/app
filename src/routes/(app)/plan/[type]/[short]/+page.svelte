@@ -6,10 +6,10 @@
 	import PlanLessonDisplay from '$lib/components/plan/PlanLessonDisplay.svelte';
 	import type { PageData } from './$types';
 	import { swipe } from 'svelte-gestures';
-	import { faFaceFrown } from '@fortawesome/free-solid-svg-icons/faFaceFrown';
 	import { getHrefLink, nextDate, previousDate } from '$lib/common/planHelper';
 	import { planStore } from '$lib/stores/planStore';
 	import { goto } from '$app/navigation';
+	import XCircle from "lucide-svelte/icons/x-circle";
 
 	export let data: PageData;
 
@@ -67,7 +67,7 @@
 		/>
 	{:else}
 		<p class="text-disabled flex items-center justify-center gap-2 font-bold">
-			<Icon icon={faFaceFrown} />Kein Plan verfügbar
+			<Icon icon={XCircle} /> Kein Plan verfügbar
 		</p>
 	{/if}
 </div>

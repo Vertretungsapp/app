@@ -3,9 +3,9 @@
 	import PlanLessonItem from './PlanLessonItem.svelte';
 	import type { PlanType } from '$lib/api/planTypes';
 	import type { Filter } from '$lib/filter/filter';
-	import { faWarning } from '@fortawesome/free-solid-svg-icons/faWarning';
-	import { faBan } from '@fortawesome/free-solid-svg-icons/faBan';
 	import Icon from '$lib/components/common/Icon.svelte';
+	import AlertTriangle from 'lucide-svelte/icons/alert-triangle';
+	import XCircle from 'lucide-svelte/icons/x-circle';
 
 	export let lessons: PlannedLesson[] = [];
 	export let type: PlanType;
@@ -20,7 +20,7 @@
 	{#if filter.active}
 		{#if filteredLessons.length === 0}
 			<div class="text-disabled flex w-full justify-center gap-3">
-				<Icon icon={faWarning} scale={1.5} />
+				<Icon icon={AlertTriangle} scale={1.5} />
 				<p class="text-center font-semibold">Es wurden alle Stunden gefiltert</p>
 			</div>
 		{/if}
@@ -31,7 +31,7 @@
 	{:else}
 		{#if lessons.length === 0}
 			<div class="text-disabled flex w-full justify-center gap-3">
-				<Icon icon={faBan} scale={1.5} />
+				<Icon icon={XCircle} scale={1.5} />
 				<p class="text-center font-semibold">Keine Stunden an diesem Tag</p>
 			</div>
 		{/if}

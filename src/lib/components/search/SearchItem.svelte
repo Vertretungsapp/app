@@ -5,24 +5,24 @@
 	import type { Room } from 'indiware-api';
 	import type { Teacher } from 'indiware-api';
 	import { parsePlanType, PlanType } from '$lib/api/planTypes';
-	import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
-	import { faDoorOpen } from '@fortawesome/free-solid-svg-icons/faDoorOpen';
-	import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
-	import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
+	import Users from 'lucide-svelte/icons/users';
+	import DoorOpen from 'lucide-svelte/icons/door-open';
+	import User from 'lucide-svelte/icons/user';
+	import HelpCircle from 'lucide-svelte/icons/help-circle';
 
 	function getIcon(type: PlanType) {
 		switch (type) {
 			case PlanType.SCHOOL_CLASS:
-				return faPeopleGroup;
+				return Users;
 
 			case PlanType.ROOM:
-				return faDoorOpen;
+				return DoorOpen;
 
 			case PlanType.TEACHER:
-				return faUser;
+				return User;
 
 			default:
-				return faQuestion;
+				return HelpCircle;
 		}
 	}
 

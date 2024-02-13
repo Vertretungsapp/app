@@ -3,10 +3,10 @@
 	import FilterItem from '$lib/components/plan/filter/FilterItem.svelte';
 	import BackButton from '$lib/components/common/BackButton.svelte';
 	import { setActive } from '$lib/filter/filterHelper';
-	import { faCheckCircle } from '@fortawesome/free-regular-svg-icons/faCheckCircle';
-	import { faCircle } from '@fortawesome/free-regular-svg-icons/faCircle';
-	import { faShuffle } from '@fortawesome/free-solid-svg-icons/faShuffle';
 	import FilterQuickButton from '$lib/components/plan/filter/FilterQuickButton.svelte';
+	import CheckCircle from 'lucide-svelte/icons/check-circle';
+	import Circle from 'lucide-svelte/icons/circle';
+	import Shuffle from 'lucide-svelte/icons/shuffle';
 
 	export let data: PageData;
 
@@ -57,11 +57,11 @@
 	</div>
 
 	<div class="grid grid-cols-3 gap-2 py-3">
-		<FilterQuickButton icon={faCheckCircle} on:click={allActive}>Alle</FilterQuickButton>
+		<FilterQuickButton icon={CheckCircle} on:click={allActive}>Alle</FilterQuickButton>
 
-		<FilterQuickButton icon={faCircle} on:click={allInactive}>Nichts</FilterQuickButton>
+		<FilterQuickButton icon={Circle} on:click={allInactive}>Nichts</FilterQuickButton>
 
-		<FilterQuickButton icon={faShuffle} on:click={allInvert}>Umkehren</FilterQuickButton>
+		<FilterQuickButton icon={Shuffle} on:click={allInvert}>Umkehren</FilterQuickButton>
 	</div>
 
 	<ul class="grid max-h-full grid-cols-2 gap-4 overflow-y-auto">

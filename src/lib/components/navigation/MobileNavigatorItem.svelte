@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
-	import Icon from '../common/Icon.svelte';
 	import { twMerge } from 'tailwind-merge';
 	import { navigationStore } from '$lib/stores/navigationStore';
+	import type { Icon } from 'lucide-svelte';
+	import type { ComponentType } from 'svelte';
 
-	export let icon: IconDefinition;
+	export let icon: ComponentType<Icon>;
 	export let href: string;
 	export let text: string;
 	export let id: number;
@@ -19,6 +19,6 @@
 	{href}
 	on:click={() => ($navigationStore.activeId = id)}
 >
-	<Icon {icon} label={text} scale={1.5} square />
+	<svelte:component this={icon} />
 	<span class="w-full text-center text-text">{text}</span>
 </a>

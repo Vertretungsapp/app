@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
-	import Icon from 'svelte-awesome';
+	import type { Icon } from 'lucide-svelte';
 	import { twMerge } from 'tailwind-merge';
+	import type { ComponentType } from 'svelte';
 
-	export let icon: IconDefinition;
+	export let icon: ComponentType<Icon>;
 
 	export let scale: number = 1;
 	export let flip: 'horizontal' | 'vertical' | undefined = undefined;
-	export let label: string | undefined = undefined;
+	export let fill: boolean = false;
 
 	export let href: string | undefined = undefined;
 
@@ -23,5 +23,7 @@
 	{href}
 	class={twMerge(anchorClass, 'flex items-center justify-center', square && 'aspect-square')}
 >
-	<Icon data={icon} {scale} {flip} {label} class={twMerge(iconClass)} />
+	<svelte:component this={icon} size={14 * scale} fill={fill ? "rgba(var(--text))" : "transparent"} class={twMerge(iconClass, flip === "horizontal" && "-scale-x-100",
+		flip === "vertical" && "-scale-y-100"
+	)} />
 </a>

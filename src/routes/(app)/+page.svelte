@@ -1,12 +1,12 @@
 <script lang="ts">
 	import CredentialsLink from '$lib/components/settings/CredentialsLink.svelte';
 	import Icon from '$lib/components/common/Icon.svelte';
-	import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
 	import { onMount } from 'svelte';
 	import { navigationStore } from '$lib/stores/navigationStore';
 	import type { PageData } from './$types';
 	import FavoritesDisplay from '$lib/components/favorites/FavoritesDisplay.svelte';
 	import NextLessonWidget from '$lib/components/favorites/NextLessonWidget.svelte';
+	import Search from 'lucide-svelte/icons/search';
 
 	export let data: PageData;
 
@@ -59,7 +59,5 @@
 <FavoritesDisplay favorites={data.favorites} />
 
 <div class="fixed bottom-20 left-0 flex w-full justify-center">
-	<a class="bg-clickable rounded-full p-3" href="/search">
-		<Icon icon={faMagnifyingGlass} scale={1} />
-	</a>
+	<Icon anchorClass="bg-clickable rounded-full p-2.5" icon={Search} href="/search" scale={1.1} />
 </div>

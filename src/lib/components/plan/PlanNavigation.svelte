@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Icon from '../common/Icon.svelte';
-	import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons/faCircleChevronLeft';
-	import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons/faCircleChevronRight';
 	import { createEventDispatcher } from 'svelte';
+	import ChevronLeftCircle from 'lucide-svelte/icons/chevron-left-circle';
+	import ChevronRightCircle from 'lucide-svelte/icons/chevron-right-circle';
 
 	const dispatch = createEventDispatcher();
 
@@ -17,12 +17,12 @@
 
 <div class="flex w-full items-center justify-between py-2">
 	<button on:click={previous}>
-		<Icon icon={faCircleChevronLeft} scale={1.7} />
+		<Icon icon={ChevronLeftCircle} scale={2} />
 	</button>
 
 	<slot />
 
 	<button on:click={next}>
-		<Icon icon={faCircleChevronRight} scale={1.7} />
+		<Icon icon={ChevronRightCircle} scale={2} />
 	</button>
 </div>

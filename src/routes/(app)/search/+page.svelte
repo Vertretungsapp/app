@@ -2,9 +2,9 @@
 	import type { PageData } from './$types';
 	import { parsePlanType, PlanType } from '$lib/api/planTypes';
 	import Icon from '$lib/components/common/Icon.svelte';
-	import { faX } from '@fortawesome/free-solid-svg-icons';
 	import SearchItem from '$lib/components/search/SearchItem.svelte';
 	import BackButton from '$lib/components/common/BackButton.svelte';
+	import { X } from 'lucide-svelte';
 
 	export let data: PageData;
 
@@ -38,7 +38,7 @@
 		<BackButton />
 		<input class="h-full w-full" type="text" placeholder="Suche" bind:value={search} />
 		<button class="absolute right-2" on:click={() => (search = '')}>
-			<Icon icon={faX} class="text-disabled" />
+			<Icon icon={X} class="text-disabled" />
 		</button>
 	</div>
 

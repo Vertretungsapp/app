@@ -2,14 +2,13 @@
 	import { page } from '$app/stores';
 	import { twMerge } from 'tailwind-merge';
 	import Icon from '../common/Icon.svelte';
-	import { faRefresh } from '@fortawesome/free-solid-svg-icons/faRefresh';
-	import { faFilter } from '@fortawesome/free-solid-svg-icons/faFilter';
 	import { planStore } from '$lib/stores/planStore';
 	import BackButton from '$lib/components/common/BackButton.svelte';
 	import { goto } from '$app/navigation';
-	import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons/faStar';
-	import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 	import { addFavorite, deleteFavorite } from '$lib/favorites/favorites';
+	import Filter from 'lucide-svelte/icons/filter';
+	import RefreshCcw from 'lucide-svelte/icons/refresh-ccw';
+	import Star from 'lucide-svelte/icons/star';
 
 	const forceReloadUrl = new URL($page.url);
 	forceReloadUrl.searchParams.set('forceReload', 'true');
@@ -39,11 +38,11 @@
 
 	<div class="flex gap-2">
 		<button on:click={toggleFavorite}>
-			<Icon icon={isFavorite ? faStar : faStarRegular} scale={1.7} />
+			<Icon icon={Star} scale={2} fill={isFavorite} />
 		</button>
 
 		<a class="relative" href={$page.url.pathname + '/filter'}>
-			<Icon icon={faFilter} scale={1.7} />
+			<Icon icon={Filter} scale={2} />
 			{#if filterActive}
 				<span class="absolute -right-1 -top-1 flex h-2.5 w-2.5">
 					<span
@@ -56,8 +55,8 @@
 
 		<button on:click={refreshPage}>
 			<Icon
-				icon={faRefresh}
-				scale={1.7}
+				icon={RefreshCcw}
+				scale={2}
 				class={twMerge($planStore.isRefreshing ? 'animate-spin' : 'rotate-0')}
 			/>
 		</button>

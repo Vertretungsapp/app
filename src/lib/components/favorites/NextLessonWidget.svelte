@@ -6,7 +6,7 @@
 	import { page } from '$app/stores';
 	import { getHrefLink } from '$lib/common/planHelper';
 	import Icon from '../common/Icon.svelte';
-	import { faFaceSurprise } from '@fortawesome/free-solid-svg-icons/faFaceSurprise';
+	import PartyPopper from 'lucide-svelte/icons/party-popper';
 
 	export let primary: Favorite | undefined | null = undefined;
 	export let favorites: Favorites;
@@ -50,7 +50,7 @@
 			{:else}
 				<div class="text-disabled flex items-center gap-2 text-sm">
 					<span>Du hast heute keine weiteren Stunden mehr!</span>
-					<Icon icon={faFaceSurprise} />
+					<Icon icon={PartyPopper} />
 				</div>
 			{/if}
 		</div>
