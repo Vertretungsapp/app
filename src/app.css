@@ -52,4 +52,13 @@
 	input {
 		@apply bg-display disabled:text-disabled rounded-md p-1 disabled:opacity-50;
 	}
+
+	/* Prevent link previews and text marking, see issue #170 */
+	a {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
 }
