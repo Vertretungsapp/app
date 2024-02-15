@@ -1,4 +1,4 @@
-import { PlanType, PlanTypePlural } from '$lib/api/planTypes';
+import { PlanType, PlanTypePlural, pluralizePlanType } from '$lib/api/planTypes';
 import { getFilter } from '$lib/filter/filter';
 import type { Credentials, Lesson, PlannedLesson, Room, SchoolClass, Teacher } from 'indiware-api';
 import { getPlans } from './cache';
@@ -18,6 +18,28 @@ export function getAll(credentials: Credentials): Array<SchoolClass | Teacher | 
 
 		plan.rooms.forEach((room) => {
 			if (!entities.find((entity) => entity.name === room.name)) entities.push(room);
+		});
+	});
+
+	return entities;
+}
+
+export function getAllMappedDate(
+	credentials: Credentials,
+	type: PlanType
+): Map<Date, (SchoolClass | Room | Teacher)[]> {
+	const plans = getPlans(credentials.schoolnumber);
+
+	const entities: Map<Date, (SchoolClass | Room | Teacher)[]> = new Map();
+
+	plans.forEach((plan) => {
+		const items = plan[pluralizePlanType(type)];
+		const date = new Date(new Date(plan.date).toDateString());
+		items.forEach((item) => {
+			if (!entities.has(date)) {
+				entities.set(date, []);
+			}
+			entities.get(date)?.push(item);
 		});
 	});
 

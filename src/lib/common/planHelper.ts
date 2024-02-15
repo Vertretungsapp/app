@@ -36,3 +36,51 @@ export function addDays(days: number, date: Date, holidays: string[]): Date {
 		return previousDate(date, holidays);
 	}
 }
+
+/**
+ * Compares two dates and returns whether the first date is less than the second date.
+ * This ignores the date and only compares the time.
+ * @param a {Date} The first date.
+ * @param b {Date} The second date.
+ * @returns {boolean} Whether the first date is less than the second date.
+ */
+export function isTimeLessThan(a: Date, b: Date): boolean {
+	return (
+		a.getHours() < b.getHours() ||
+		(a.getHours() === b.getHours() && a.getMinutes() < b.getMinutes())
+	);
+}
+
+/**
+ * Compares two dates and returns whether the first date is greater than the second date.
+ * This ignores the date and only compares the time.
+ * @param a {Date} The first date.
+ * @param b {Date} The second date.
+ * @returns {boolean} Whether the first date is greater than the second date.
+ */
+export function isTimeGreaterThan(a: Date, b: Date): boolean {
+	return (
+		a.getHours() > b.getHours() ||
+		(a.getHours() === b.getHours() && a.getMinutes() > b.getMinutes())
+	);
+}
+
+/**
+ * Compares two dates and returns whether the first date is less than or equal to the second date.
+ * @param a {Date} The first date.
+ * @param b {Date} The second date.
+ * @returns {boolean} Whether the first date is less than or equal to the second date.
+ */
+export function isTimeLessOrEqualThan(a: Date, b: Date): boolean {
+	return isTimeLessThan(a, b) || a.toTimeString() === b.toTimeString();
+}
+
+/**
+ * Compares two dates and returns whether the first date is greater than or equal to the second date.
+ * @param a {Date} The first date.
+ * @param b {Date} The second date.
+ * @returns {boolean} Whether the first date is greater than or equal to the second date.
+ */
+export function isTimeGreaterOrEqualThan(a: Date, b: Date): boolean {
+	return isTimeGreaterThan(a, b) || a.toTimeString() === b.toTimeString();
+}
