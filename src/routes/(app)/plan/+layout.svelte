@@ -11,13 +11,15 @@
 			$planStore = {
 				currentDate: data.substitutionPlan.date,
 				holidays: data.substitutionPlan.holidays,
-				isRefreshing: $planStore.isRefreshing
+				isRefreshing: $planStore.isRefreshing,
+				plan: data.substitutionPlan
 			};
 		} else if (data.error) {
 			$planStore = {
 				currentDate: new Date(data.date || Date.now()),
 				holidays: $planStore.holidays,
-				isRefreshing: $planStore.isRefreshing
+				isRefreshing: $planStore.isRefreshing,
+				plan: $planStore.plan
 			};
 		}
 	}
