@@ -62,13 +62,16 @@ export const load: PageLoad = async ({ url, parent }) => {
 
 	const roomsMappedDate = getAllMappedDate(credentials, PlanType.ROOM) as Map<Date, Room[]>;
 
-	if (!params.start) return { rooms: [] };
+	if (!params.start) return { rooms: [], planEmpty: false };
 
 	const map = getAllLessonsBetweenTime(roomsMappedDate, params);
 	const array = Array.from(map, ([room, lessons]) => ({
 		room: room.name,
 		lessons
 	}));
+
+	// This prevents that all rooms are shown as free, if the plan is empty
+	if (array.length === 0) return { rooms: [], planEmpty: true };
 
 	// Since not every room is present in every plan, we also need to inject all other rooms of the school
 	// Which may are not present in the plan, but therefore definitely free
@@ -84,24 +87,13 @@ export const load: PageLoad = async ({ url, parent }) => {
 	return {
 		rooms: array.filter(({ lessons }) => {
 			if (params.end) return lessons.length === 0;
-			console.log(
-				lessons.find((lesson) => {
-					console.log(
-						new Date(lesson.startTime),
-						new Date(params.start!),
-						isTimeLessOrEqualThan(new Date(lesson.startTime), new Date(params.start!))
-					);
-					return (
-						isTimeLessOrEqualThan(new Date(lesson.startTime), new Date(params.start!)) &&
-						isTimeLessOrEqualThan(new Date(params.start!), new Date(lesson.endTime))
-					);
-				})
-			);
+			// Fix for edge case when start time is inside a lesson
 			return !lessons.find(
 				(lesson) =>
 					isTimeLessOrEqualThan(new Date(lesson.startTime), new Date(params.start!)) &&
 					isTimeLessOrEqualThan(new Date(params.start!), new Date(lesson.endTime))
 			);
-		})
+		}),
+		planEmpty: false
 	};
 };

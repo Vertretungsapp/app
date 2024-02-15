@@ -92,5 +92,9 @@
 		{#each data.rooms as {room, lessons}}
 			<FreeRoomItem {room} {lessons} {startTime} />
 		{/each}
+
+		{#if data.planEmpty}
+			<p class="text-center text-disabled">Es wurde kein Plan für das Datum gefunden.</p>
+		{/if}
 	</div>
 </div>
