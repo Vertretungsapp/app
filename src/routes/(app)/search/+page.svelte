@@ -43,7 +43,8 @@
 	</div>
 
 	<div class="relative flex items-center gap-2 mt-2">
-		<input class="h-full w-full p-2" type="text" placeholder="Suche" bind:value={search} />
+		<!-- eslint-disable-next-line svelte/valid-compile -->
+		<input class="h-full w-full p-2" type="text" placeholder="Suche" autofocus bind:value={search} />
 		<button class="absolute right-2" on:click={() => (search = '')}>
 			<Icon icon={faX} class="text-disabled" />
 		</button>
