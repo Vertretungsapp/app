@@ -72,14 +72,14 @@
 	<form on:submit={onSubmit} class="grid grid-cols-2 gap-2 items-center mt-4">
 		<div class="col-span-2 flex flex-col">
 			<label for="date">Datum</label>
-			<input id="date" type="date" required bind:value={dateValue}>
+			<input id="date" type="date" class="w-full" required bind:value={dateValue}>
 		</div>
 
 		<label for="startTime">Uhrzeit ab</label>
-		<input id="startTime" type="time" required bind:value={startValue}>
+		<input id="startTime" type="time" class="w-full" required bind:value={startValue}>
 
 		<label for="endTime">Uhrzeit bis (optional)</label>
-		<input id="endTime" type="time" bind:value={endValue}>
+		<input id="endTime" type="time" class="w-full" bind:value={endValue}>
 
 		<button type="submit" class="col-span-2 flex gap-2 items-center justify-center bg-clickable rounded-lg p-1">
 			<Icon icon={faSearch} />
@@ -93,4 +93,3 @@
 		{/each}
 	</div>
 </div>
-
