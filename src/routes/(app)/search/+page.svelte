@@ -43,12 +43,7 @@
 	</div>
 
 	<div class="relative mt-2 flex items-center gap-2">
-		<input
-			class="h-full w-full p-2"
-			type="text"
-			placeholder="Suche"
-			bind:value={search}
-		/>
+		<input class="h-full w-full p-2" type="text" placeholder="Suche" bind:value={search} />
 		<button class="absolute right-2" on:click={() => (search = '')}>
 			<Icon icon={faX} class="text-disabled" />
 		</button>

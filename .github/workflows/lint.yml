@@ -2,6 +2,8 @@ on:
   push:
   pull_request:
 
+name: Check, Lint and Test-Build Code
+
 jobs:
   build:
     name: Try Build
@@ -21,8 +23,8 @@ jobs:
       - name: Build Svelte app
         run: npm run build
 
-#      - name: Test Svelte app
-#        run: npm run test
+  #      - name: Test Svelte app
+  #        run: npm run test
 
   eslint:
     name: Svelte Check & ESLint
