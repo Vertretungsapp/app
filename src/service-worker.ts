@@ -56,13 +56,13 @@ sw.addEventListener('fetch', (event) => {
 		const cache = await caches.open(CACHE);
 
 		// `build`/`files` can always be served from the cache
-		if (ASSETS.includes(url.pathname)) {
-			const response = await cache.match(url.pathname);
-
-			if (response) {
-				return response;
-			}
-		}
+		// if (ASSETS.includes(url.pathname)) {
+		// 	const response = await cache.match(url.pathname);
+		//
+		// 	if (response) {
+		// 		return response;
+		// 	}
+		// }
 
 		// for everything else, try the network first, but
 		// fall back to the cache if we're offline
