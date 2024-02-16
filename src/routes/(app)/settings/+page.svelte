@@ -7,6 +7,8 @@
 	import SettingsSection from '$lib/components/settings/SettingsSection.svelte';
 	import ColorPicker from 'svelte-awesome-color-picker';
 	import SettingsButton from '$lib/components/settings/SettingsButton.svelte';
+	import Icon from '$lib/components/common/Icon.svelte';
+	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
 
 	function clrCache() {
 		clearCache();
@@ -20,7 +22,15 @@
 
 <div class="mb-4 flex justify-between">
 	<h1>Einstellungen</h1>
-	<CredentialsLink />
+	<div class="flex gap-2">
+		<a
+			class="bg-clickable flex h-8 w-8 items-center justify-center rounded-lg p-2"
+			href="/settings/info"
+		>
+			<Icon icon={faInfoCircle} scale={1.1} />
+		</a>
+		<CredentialsLink />
+	</div>
 </div>
 
 <div class="space-y-8">
@@ -32,9 +42,9 @@
 
 		<SettingsCheckbox bind:checked={$settingsStore.darkMode}>Dark Mode</SettingsCheckbox>
 
-		<SettingsButton on:click={() => ($settingsStore.primaryColor = PRIMARY_COLOR)}
-			>Standardfarbe</SettingsButton
-		>
+		<SettingsButton on:click={() => ($settingsStore.primaryColor = PRIMARY_COLOR)}>
+			Standardfarbe
+		</SettingsButton>
 	</SettingsSection>
 
 	<SettingsSection>

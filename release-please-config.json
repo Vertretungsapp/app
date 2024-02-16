@@ -1,5 +1,12 @@
 {
 	"release-type": "node",
+	"extra-files": [
+		{
+			"type": "json",
+			"path": "static/info.json",
+			"jsonpath": "$.version"
+		}
+	],
 
 	"draft-pull-request": true,
 	"pull-request-title-pattern": "chore: release ${version}",

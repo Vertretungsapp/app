@@ -60,6 +60,13 @@ jobs:
           name: web-artifacts
           path: build/
 
+      - name: Write info.json
+        run: |
+          sudo apt-get install -y jq
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+          jq --arg sha "$COMMIT_SHA" '.commit_sha = $sha' build/info.json > temp.json && mv temp.json build/info.json
+          jq --arg date "$(date -Iseconds)" '.build_date = $date' build/info.json > temp.json && mv temp.json build/info.json
+
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
