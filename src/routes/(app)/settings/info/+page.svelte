@@ -19,14 +19,14 @@
 	<p>Date: {format(new Date(data.build_date), 'dd.MM.yyyy HH:mm')}</p>
 </section>
 
-<section class="mt-4 flex gap-3 items-center justify-center">
+<section class="mt-4 flex items-center justify-center gap-3">
 	<SocialLink href="https://www.vertretungsapp.de" icon={faGlobe} />
 	<SocialLink href="https://www.vertretungsapp.de/discord" icon={faDiscord} />
 	<SocialLink href="https://www.vertretungsapp.de/github" icon={faGithub} />
 	<SocialLink href="mailto:support@vertretugsapp.de" icon={faEnvelope} />
 </section>
 
-<section class="mt-8 text-disabled text-xs">
+<section class="text-disabled mt-8 text-xs">
 	<h3>Debug Information</h3>
 	<p>User-Agent: {window.navigator.userAgent}</p>
 	<p>System time: {new Date()}</p>
