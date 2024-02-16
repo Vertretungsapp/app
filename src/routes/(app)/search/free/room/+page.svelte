@@ -63,38 +63,53 @@
 	}
 </script>
 
-<div class="flex flex-col h-full">
-	<div class="flex gap-2 items-center">
+<div class="flex h-full flex-col">
+	<div class="flex items-center gap-2">
 		<BackButton href="/search" />
 		<h1>Freien Raum finden</h1>
 	</div>
 
-	<form on:submit={onSubmit} class="grid grid-cols-2 gap-2 items-center mt-4">
+	<form on:submit={onSubmit} class="mt-4 grid grid-cols-2 items-center gap-2">
 		<div class="col-span-2 flex flex-col">
 			<label for="date">Datum</label>
 			<!--	  "appearance-none min-h-8" is a webkit workaround, thanks apple		-->
-			<input id="date" type="date" class="w-full  appearance-none min-h-8" required bind:value={dateValue}>
+			<input
+				id="date"
+				type="date"
+				class="min-h-8 w-full appearance-none"
+				required
+				bind:value={dateValue}
+			/>
 		</div>
 
 		<label for="startTime">Uhrzeit ab</label>
-		<input id="startTime" type="time" class="w-full appearance-none min-h-8" required bind:value={startValue}>
+		<input
+			id="startTime"
+			type="time"
+			class="min-h-8 w-full appearance-none"
+			required
+			bind:value={startValue}
+		/>
 
 		<label for="endTime">Uhrzeit bis (optional)</label>
-		<input id="endTime" type="time" class="w-full  appearance-none min-h-8" bind:value={endValue}>
+		<input id="endTime" type="time" class="min-h-8 w-full appearance-none" bind:value={endValue} />
 
-		<button type="submit" class="col-span-2 flex gap-2 items-center justify-center bg-clickable rounded-lg p-1">
+		<button
+			type="submit"
+			class="bg-clickable col-span-2 flex items-center justify-center gap-2 rounded-lg p-1"
+		>
 			<Icon icon={faSearch} />
 			Suchen
 		</button>
 	</form>
 
-	<div class="flex flex-col gap-2 max-h-full overflow-y-auto mt-4">
-		{#each data.rooms as {room, lessons}}
+	<div class="mt-4 flex max-h-full flex-col gap-2 overflow-y-auto">
+		{#each data.rooms as { room, lessons }}
 			<FreeRoomItem {room} {lessons} {startTime} />
 		{/each}
 
 		{#if data.planEmpty}
-			<p class="text-center text-disabled">Es wurde kein Plan für das Datum gefunden.</p>
+			<p class="text-disabled text-center">Es wurde kein Plan für das Datum gefunden.</p>
 		{/if}
 	</div>
 </div>
