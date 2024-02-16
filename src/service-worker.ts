@@ -50,9 +50,9 @@ sw.addEventListener('fetch', (event) => {
 	if (event.request.method !== 'GET') return;
 
 	async function respond() {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		const url = new URL(event.request.url);
+		// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// // @ts-ignore
+		// const url = new URL(event.request.url);
 		const cache = await caches.open(CACHE);
 
 		// `build`/`files` can always be served from the cache
