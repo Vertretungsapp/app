@@ -43,6 +43,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@capacitor/android": "^5.7.0",
+		"@capacitor/cli": "^5.7.0",
+		"@capacitor/core": "^5.7.0",
+		"@capacitor/ios": "^5.7.0",
 		"@fontsource/inter": "^5.0.16",
 		"@fontsource/poppins": "^5.0.8",
 		"@fortawesome/fontawesome-common-types": "^6.5.1",
