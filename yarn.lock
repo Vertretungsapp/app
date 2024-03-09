@@ -277,10 +277,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.56.0.tgz#ef20350fec605a7f7035a01764731b2de0f3782b"
   integrity sha512-gMsVel9D7f2HLkBma9VbtzZRehRogVRfbr++f06nL2vnCGCNlzOD+/MUov/F4p8myyAHspEhVobgjpX64q5m6A==
 
-"@fontsource/inter@^5.0.2":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-5.0.3.tgz#30a1c0b974e29d72eddaec0c45655597ffa0bf80"
-  integrity sha512-JJvh5xht71F6e0E5r2+Ffu8g+CYAxMvnGJm9ZMg5IIjy8UwxLp+8C99TgPJupdEyBpEJv0wuMG2Rd183z/bV8g==
+"@fontsource/inter@^5.0.17":
+  version "5.0.17"
+  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-5.0.17.tgz#43fb1bc6bcfbfbfc3a9d19a59a4a7ab99fc1c645"
+  integrity sha512-2meBGx1kt7u5LwzGc5Sz5rka6ZDrydg6nT3x6Wkt310vHXUchIywrO8pooWMzZdHYcyFY/cv4lEpJZgMD94bCg==
 
 "@fortawesome/fontawesome-common-types@6.4.0":
   version "6.4.0"
