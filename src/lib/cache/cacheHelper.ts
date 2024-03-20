@@ -1,7 +1,6 @@
 import { PlanType, PlanTypePlural, pluralizePlanType } from '$lib/api/planTypes';
 import { getFilter } from '$lib/filter/filter';
 import type { Credentials, Lesson, PlannedLesson, Room, SchoolClass, Teacher } from 'indiware-api';
-import toast from 'svelte-french-toast';
 import { getPlans } from './cache';
 
 export function getAll(credentials: Credentials): Array<SchoolClass | Teacher | Room> {
@@ -137,16 +136,11 @@ export function getNextLessons(
 	name: string,
 	type: PlanType
 ): PlannedLesson[] {
-	toast('Step 1');
 	const plans = getPlans(credentials.schoolnumber);
-	toast('Step 2');
 	const now = new Date();
 	const filter = getFilter(credentials.schoolnumber, name);
-	toast('Step 3 - ' + plans ? plans.length.toString() : 'No plans');
 	const plan = plans.find((plan) => new Date(plan.date).toDateString() == now.toDateString());
-	toast('Step 4');
 	if (!plan) return [];
-	toast('Step 5');
 	let plannedLessons: PlannedLesson[] = [];
 
 	let entity;
@@ -164,21 +158,15 @@ export function getNextLessons(
 			return [];
 	}
 
-	toast(entity ? 'Entity found' : 'No entity found');
-
 	plannedLessons = entity && entity.plannedLessons ? entity.plannedLessons : [];
 
 	return plannedLessons
 		.filter((lesson) => {
 			const startTime = new Date(lesson.startTime);
 
-			toast("Step 6")
-
 			if (filter && filter.active) {
 				if (lesson.id && filter.ignoredLessons.includes(lesson.id.toString())) return false;
 			}
-
-			toast("Step 7")
 
 			return (
 				startTime.getHours() >= now.getHours() &&
