@@ -55,7 +55,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.5.1",
 		"color-util-nodejs": "^1.0.2",
 		"date-fns": "^3.3.1",
-		"indiware-api": "^1.2.0",
+		"indiware-api": "^1.2.1",
 		"svelte-awesome": "^3.3.1",
 		"svelte-french-toast": "^1.2.0",
 		"svelte-gestures": "^1.5.2",

@@ -90,7 +90,7 @@ export function getAllInfos(credentials: Credentials): Array<{ info: string; dat
 
 function isLessonTimetableValid(lesson: PlannedLesson): boolean {
 	return [
-		lesson.id != null && lesson.id != undefined,
+		lesson.id != null,
 		lesson.subject.value && lesson.subject.value.replaceAll(' ', '').length > 0,
 		lesson.subject.value != '---'
 	].every((condition) => condition === true);
@@ -110,7 +110,7 @@ function generateTimetable(credentials: Credentials, type: PlanType, name: strin
 					if (lessons.find((l) => l.id === lesson.id)) return;
 
 					lessons.push({
-						id: lesson.id,
+						id: lesson.id!, // Lesson.id is not null, due to the check in isLessonTimetableValid
 						group: null,
 						name: `${lesson.subject.value!} (${lesson.schoolClass})`,
 						subject: lesson.subject.value!,
@@ -172,9 +172,13 @@ export function getNextLessons(
 		.filter((lesson) => {
 			const startTime = new Date(lesson.startTime);
 
+			toast("Step 6")
+
 			if (filter && filter.active) {
-				if (filter.ignoredLessons.includes(lesson.id.toString())) return false;
+				if (lesson.id && filter.ignoredLessons.includes(lesson.id.toString())) return false;
 			}
+
+			toast("Step 7")
 
 			return (
 				startTime.getHours() >= now.getHours() &&
