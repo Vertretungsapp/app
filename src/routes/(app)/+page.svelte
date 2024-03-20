@@ -28,15 +28,15 @@
 	onMount(() => {
 		$navigationStore.activeId = 0;
 
-		toast("Start Debug")
+		toast('Start Debug');
 
 		try {
-			if(data.primaryFavorite) {
-				getNextLessons(data.credentials, data.primaryFavorite.name, data.primaryFavorite.type)
+			if (data.primaryFavorite) {
+				getNextLessons(data.credentials, data.primaryFavorite.name, data.primaryFavorite.type);
 				// toast(JSON.stringify(lessons))
 			}
 		} catch (e) {
-			toast.error(JSON.stringify(e))
+			toast.error(JSON.stringify(e));
 		}
 	});
 </script>

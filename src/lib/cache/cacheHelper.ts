@@ -1,8 +1,8 @@
 import { PlanType, PlanTypePlural, pluralizePlanType } from '$lib/api/planTypes';
 import { getFilter } from '$lib/filter/filter';
 import type { Credentials, Lesson, PlannedLesson, Room, SchoolClass, Teacher } from 'indiware-api';
-import { getPlans } from './cache';
 import toast from 'svelte-french-toast';
+import { getPlans } from './cache';
 
 export function getAll(credentials: Credentials): Array<SchoolClass | Teacher | Room> {
 	const plans = getPlans(credentials.schoolnumber);
@@ -137,32 +137,35 @@ export function getNextLessons(
 	name: string,
 	type: PlanType
 ): PlannedLesson[] {
-	toast("Step 1")
+	toast('Step 1');
 	const plans = getPlans(credentials.schoolnumber);
-	toast("Step 2")
+	toast('Step 2');
 	const now = new Date();
 	const filter = getFilter(credentials.schoolnumber, name);
-	toast("Step 3 - " + plans ? plans.length.toString() : "No plans")
+	toast('Step 3 - ' + plans ? plans.length.toString() : 'No plans');
 	const plan = plans.find((plan) => new Date(plan.date).toDateString() == now.toDateString());
-	toast("Step 4")
+	toast('Step 4');
 	if (!plan) return [];
-	toast("Step 5")
-	toast(JSON.stringify(plan))
+	toast('Step 5');
+	toast(JSON.stringify(plan));
 	let plannedLessons: PlannedLesson[] = [];
+
+	let entity;
 	switch (type) {
 		case PlanType.ROOM:
-			plannedLessons = plan.rooms.find((room) => room.name === name)?.plannedLessons ?? [];
+			entity = plan.rooms.find((room) => room.name === name);
 			break;
 		case PlanType.TEACHER:
-			plannedLessons = plan.teachers.find((teacher) => teacher.name === name)?.plannedLessons ?? [];
+			entity = plan.teachers.find((teacher) => teacher.name === name);
 			break;
 		case PlanType.SCHOOL_CLASS:
-			plannedLessons =
-				plan.schoolClasses.find((schoolClass) => schoolClass.name === name)?.plannedLessons ?? [];
+			entity = plan.schoolClasses.find((schoolClass) => schoolClass.name === name);
 			break;
 		default:
 			return [];
 	}
+
+	plannedLessons = entity && entity.plannedLessons ? entity.plannedLessons : [];
 
 	return plannedLessons
 		.filter((lesson) => {
