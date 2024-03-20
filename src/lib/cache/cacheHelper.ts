@@ -147,7 +147,6 @@ export function getNextLessons(
 	toast('Step 4');
 	if (!plan) return [];
 	toast('Step 5');
-	toast(JSON.stringify(plan));
 	let plannedLessons: PlannedLesson[] = [];
 
 	let entity;
@@ -164,6 +163,8 @@ export function getNextLessons(
 		default:
 			return [];
 	}
+
+	toast(entity ? 'Entity found' : 'No entity found');
 
 	plannedLessons = entity && entity.plannedLessons ? entity.plannedLessons : [];
 
