@@ -7,8 +7,6 @@
 	import type { PageData } from './$types';
 	import FavoritesDisplay from '$lib/components/favorites/FavoritesDisplay.svelte';
 	import NextLessonWidget from '$lib/components/favorites/NextLessonWidget.svelte';
-	import toast from 'svelte-french-toast';
-	import { getNextLessons } from '$lib/cache/cacheHelper';
 
 	export let data: PageData;
 
@@ -27,18 +25,6 @@
 
 	onMount(() => {
 		$navigationStore.activeId = 0;
-
-		toast(JSON.stringify(data.favorites))
-		toast(JSON.stringify(data.primaryFavorite))
-
-		try {
-			if(data.primaryFavorite) {
-				const lessons = getNextLessons(data.credentials, data.primaryFavorite.name, data.primaryFavorite.type)
-				toast(JSON.stringify(lessons))
-			}
-		} catch (e) {
-			toast.error(JSON.stringify(e))
-		}
 	});
 </script>
 

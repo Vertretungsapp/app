@@ -2,6 +2,7 @@ import { PlanType, PlanTypePlural, pluralizePlanType } from '$lib/api/planTypes'
 import { getFilter } from '$lib/filter/filter';
 import type { Credentials, Lesson, PlannedLesson, Room, SchoolClass, Teacher } from 'indiware-api';
 import { getPlans } from './cache';
+import toast from 'svelte-french-toast';
 
 export function getAll(credentials: Credentials): Array<SchoolClass | Teacher | Room> {
 	const plans = getPlans(credentials.schoolnumber);
@@ -136,11 +137,17 @@ export function getNextLessons(
 	name: string,
 	type: PlanType
 ): PlannedLesson[] {
+	toast("Step 1")
 	const plans = getPlans(credentials.schoolnumber);
+	toast("Step 2")
 	const now = new Date();
 	const filter = getFilter(credentials.schoolnumber, name);
+	toast("Step 3 - " + !!plans)
 	const plan = plans.find((plan) => new Date(plan.date).toDateString() == now.toDateString());
+	toast("Step 4")
 	if (!plan) return [];
+	toast("Step 5")
+	toast(JSON.stringify(plan))
 	let plannedLessons: PlannedLesson[] = [];
 	switch (type) {
 		case PlanType.ROOM:
