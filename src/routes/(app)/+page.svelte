@@ -28,6 +28,8 @@
 	onMount(() => {
 		$navigationStore.activeId = 0;
 
+		toast("Start Debug")
+
 		try {
 			if(data.primaryFavorite) {
 				const lessons = getNextLessons(data.credentials, data.primaryFavorite.name, data.primaryFavorite.type)
