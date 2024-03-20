@@ -51,7 +51,7 @@
 	<div class="py-4"></div>
 {/if}
 
-<!--<NextLessonWidget primary={data.primaryFavorite} favorites={data.favorites} />-->
+<NextLessonWidget primary={data.primaryFavorite} favorites={data.favorites} />
 
 <div class="py-4"></div>
 
