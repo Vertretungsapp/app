@@ -142,7 +142,7 @@ export function getNextLessons(
 	toast("Step 2")
 	const now = new Date();
 	const filter = getFilter(credentials.schoolnumber, name);
-	toast("Step 3 - " + !!plans)
+	toast("Step 3 - " + plans ? plans.length.toString() : "No plans")
 	const plan = plans.find((plan) => new Date(plan.date).toDateString() == now.toDateString());
 	toast("Step 4")
 	if (!plan) return [];

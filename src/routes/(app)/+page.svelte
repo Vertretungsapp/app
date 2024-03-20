@@ -32,8 +32,8 @@
 
 		try {
 			if(data.primaryFavorite) {
-				const lessons = getNextLessons(data.credentials, data.primaryFavorite.name, data.primaryFavorite.type)
-				toast(JSON.stringify(lessons))
+				getNextLessons(data.credentials, data.primaryFavorite.name, data.primaryFavorite.type)
+				// toast(JSON.stringify(lessons))
 			}
 		} catch (e) {
 			toast.error(JSON.stringify(e))
