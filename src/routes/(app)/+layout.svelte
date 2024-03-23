@@ -4,6 +4,8 @@
 	import { type SettingsStore, settingsStore } from '$lib/stores/settingsStore';
 	import { onMount } from 'svelte';
 	import { setPrimaryColor } from '$lib/theming/primaryColor';
+	import PageLoadingBar from '$lib/components/common/PageLoadingBar.svelte';
+	import { navigating } from '$app/stores';
 
 	onMount(() => {
 		settingsStore.update((value) => ({
@@ -31,5 +33,9 @@
 </script>
 
 <Toaster />
+
+{#if $navigating}
+	<PageLoadingBar />
+{/if}
 
 <slot />
