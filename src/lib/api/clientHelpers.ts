@@ -41,16 +41,22 @@ export async function fetchPlan({
 			Authorization: getAuthorizationHeader(credentials)
 		}
 	}).catch((err) => {
-		// DEBUG, TODO: Remove
-		toast.error(err.message);
 		throw err;
 	});
 
 	if (!plan.ok) {
-		// DEBUG, TODO: Remove
-		toast.error(`${plan.status} ${plan.statusText} ${await plan.text()}`, {
-			duration: 10000
-		});
+		switch (plan.status) {
+			case 401:
+				toast.error('Die Zugangsdaten scheinen nicht mehr zu stimmen!');
+				break;
+			case 404:
+				toast.error('Kein Vertretungsplan für diesen Tag gefunden.');
+				break;
+			default:
+				toast.error('Ein unbekannter Fehler ist aufgetreten');
+				break;
+		}
+
 		throw new Error('Could not fetch plan');
 	}
 

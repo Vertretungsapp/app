@@ -35,9 +35,12 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 				plan = store.plan;
 			});
 
+			// This is a workaround for TypeScript not being able to infer the type of plan
+			plan = plan as ISubstitutionPlan | null;
+
 			return {
 				error: true,
-				date,
+				date: plan?.date || new Date(),
 				substitutionPlan: plan
 			};
 		})
