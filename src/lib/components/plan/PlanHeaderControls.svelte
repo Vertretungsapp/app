@@ -12,7 +12,6 @@
 	import { addFavorite, deleteFavorite } from '$lib/favorites/favorites';
 	import { formatDate } from '$lib/common/planHelper';
 
-
 	export let filterActive = false;
 	export let isFavorite = false;
 

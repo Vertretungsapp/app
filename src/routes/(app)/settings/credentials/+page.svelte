@@ -26,26 +26,28 @@
 				username,
 				password
 			})
-		}).then((res) => {
-			if (res.ok) {
-				$settingsStore.credentials = {
-					schoolnumber,
-					username,
-					password
-				};
+		})
+			.then((res) => {
+				if (res.ok) {
+					$settingsStore.credentials = {
+						schoolnumber,
+						username,
+						password
+					};
 
-				goto('/', {
-					invalidateAll: true
-				}).then(() => {
-					toast.success('Zugangsdaten gespeichert');
-				});
-			} else {
-				toast.error('Die Zugangsdaten konnten nicht verifiziert werden');
-			}
-		}).catch((err) => {
-			console.error(err);
-			toast.error('Die Zugangsdaten konnten nicht verifiziert werden (Unbekannter Fehler)');
-		});
+					goto('/', {
+						invalidateAll: true
+					}).then(() => {
+						toast.success('Zugangsdaten gespeichert');
+					});
+				} else {
+					toast.error('Die Zugangsdaten konnten nicht verifiziert werden');
+				}
+			})
+			.catch((err) => {
+				console.error(err);
+				toast.error('Die Zugangsdaten konnten nicht verifiziert werden (Unbekannter Fehler)');
+			});
 	}
 </script>
 
