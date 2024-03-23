@@ -8,5 +8,11 @@ updates:
   - package-ecosystem: 'npm' # See documentation for possible values
     directory: '/' # Location of package manifests
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
       day: 'saturday'
+    commit-message:
+      prefix: 'deps'
+    groups:
+      fortawesome:
+        patterns:
+          - '@fortawesome/*'

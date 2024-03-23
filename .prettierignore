@@ -17,3 +17,5 @@ yarn.lock
 android
 ios
 /.idea
+
+CHANGELOG.md
