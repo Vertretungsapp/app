@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { settingsStore } from '$lib/stores/settingsStore';
+	import toast from 'svelte-french-toast';
 
 	let schoolnumber = '';
 	let username = '';
@@ -15,14 +16,35 @@
 	function save(e: Event) {
 		e.preventDefault();
 
-		$settingsStore.credentials = {
-			schoolnumber,
-			username,
-			password
-		};
+		fetch('/api/credentials/verify', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				schoolnumber,
+				username,
+				password
+			})
+		}).then((res) => {
+			if (res.ok) {
+				$settingsStore.credentials = {
+					schoolnumber,
+					username,
+					password
+				};
 
-		goto('/', {
-			invalidateAll: true
+				goto('/', {
+					invalidateAll: true
+				}).then(() => {
+					toast.success('Zugangsdaten gespeichert');
+				});
+			} else {
+				toast.error('Die Zugangsdaten konnten nicht verifiziert werden');
+			}
+		}).catch((err) => {
+			console.error(err);
+			toast.error('Die Zugangsdaten konnten nicht verifiziert werden (Unbekannter Fehler)');
 		});
 	}
 </script>
@@ -47,6 +69,7 @@
 	<input
 		type="text"
 		class="col-span-2"
+		minlength="8"
 		maxlength="8"
 		pattern="^\d+$"
 		name="schoolnumber"

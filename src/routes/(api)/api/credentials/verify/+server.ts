@@ -2,7 +2,7 @@ import { verifyCredentials } from '$lib/server/api/credentials';
 import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request }) => {
 	const { schoolnumber, username, password } = await request.json();
 	if (!schoolnumber || !username || !password) error(400, 'Bad Request');
 
