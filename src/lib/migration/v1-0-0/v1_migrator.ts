@@ -1,12 +1,13 @@
 import { PlanType } from '$lib/api/planTypes';
 import { login } from '$lib/api/session';
 import { getPlanTypeByName } from '$lib/cache/cacheHelper';
+import { addFavorite } from '$lib/favorites/favorites';
 import type { Filter } from '$lib/filter/filter';
 import { updateVersion, type Migrator } from '$lib/migration/migrator';
 import toast from 'svelte-french-toast';
 
 export class V1Migrator implements Migrator {
-	version = 1;
+	version = 2;
 	async runMigration(): Promise<boolean> {
 		updateVersion(this);
 
@@ -24,7 +25,7 @@ export class V1Migrator implements Migrator {
 				});
 		}
 
-		// Step 2: Migrate filters
+		// Step 2 & 3: Migrate filters & favorites
 		Object.keys({ ...localStorage }).forEach((key) => {
 			if (key.startsWith('filter.')) {
 				const data = localStorage.getItem(key);
@@ -33,7 +34,17 @@ export class V1Migrator implements Migrator {
 				if (filter.name) return; // This filter is already migrated
 				migrateFilter(key, filter);
 			}
+
+			if (key.startsWith('fav.')) {
+				const data = localStorage.getItem(key);
+				if (!data) return;
+				const favorite = JSON.parse(data);
+				migrateFavorite(key, favorite);
+			}
 		});
+
+		// Step 4: Delete cache (migration is not fully possible due to missing information)
+		localStorage.removeItem('cache');
 
 		return true;
 	}
@@ -66,4 +77,12 @@ function migrateFilter(key: string, filter: any) {
 	}
 
 	localStorage.setItem(key, JSON.stringify(newFilter));
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function migrateFavorite(key: string, favorite: any) {
+	const type = getPlanTypeByName(favorite.schoolnumber, favorite.short);
+	if (!type) return console.log(`Could not find type for favorite ${key}, removing it.`);
+	addFavorite(favorite.schoolnumber, favorite.short, type);
+	return localStorage.removeItem(key);
 }
