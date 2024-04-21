@@ -11,10 +11,20 @@ export async function login(
 		customFetch: fetch
 	});
 
-	settingsStore.update((settings) => ({
-		...settings,
-		credentials
-	}));
+	settingsStore.update((settings) => {
+		localStorage.setItem(
+			'settings',
+			JSON.stringify({
+				...settings,
+				credentials
+			})
+		);
+
+		return {
+			...settings,
+			credentials
+		};
+	});
 }
 
 export function logout(): void {

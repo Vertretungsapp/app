@@ -61,6 +61,24 @@ function getAllEntities(credentials: Credentials, type: PlanTypePlural): string[
 	return entities;
 }
 
+/**
+ * Get the type of entity by its name, returns -1 if the plan is not found
+ * @param schoolnumber
+ * @param name
+ */
+export function getPlanTypeByName(schoolnumber: string, name: string): PlanType | null {
+	const plans = getPlans(schoolnumber);
+
+	for (const plan of plans) {
+		if (plan.schoolClasses.find((schoolClass) => schoolClass.name === name))
+			return PlanType.SCHOOL_CLASS;
+		if (plan.teachers.find((teacher) => teacher.name === name)) return PlanType.TEACHER;
+		if (plan.rooms.find((room) => room.name === name)) return PlanType.ROOM;
+	}
+
+	return null;
+}
+
 export function getAllClasses(credentials: Credentials): string[] {
 	return getAllEntities(credentials, PlanTypePlural.SCHOOL_CLASS);
 }
