@@ -1,0 +1,20 @@
+{
+	"name": "Vertretungsapp.",
+	"short_name": "Vertretungsapp.",
+	"start_url": "/",
+	"display": "fullscreen",
+	"background_color": "#080709",
+	"theme_color": "#0549d1",
+	"icons": [
+		{
+			"sizes": "192x192",
+			"src": "android-chrome-192x192.png",
+			"type": "image/png"
+		},
+		{
+			"sizes": "512x512",
+			"src": "android-chrome-512x512.png",
+			"type": "image/png"
+		}
+	]
+}

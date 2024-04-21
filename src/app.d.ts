@@ -1,20 +1,14 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
+
+/// <reference types="svelte-gestures" />
 declare global {
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}
-
-		interface Platform {
-			env: {
-				COUNTER: DurableObjectNamespace;
-			};
-			context: {
-				waitUntil(promise: Promise<never>): void;
-			};
-			caches: CacheStorage & { default: Cache };
-		}
+		// interface PageState {}
+		// interface Platform {}
 	}
 }
 
