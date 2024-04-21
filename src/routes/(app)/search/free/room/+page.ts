@@ -53,6 +53,18 @@ function getTimeFromParam(string: string | null): number | string | null {
 	return +string;
 }
 
+/**
+ * Returns the start time of the first lesson in the given array
+ * @param lessons The lessons to search in
+ */
+function getStartTimeOfFirstLesson(lessons: PlannedLesson[]): Date {
+	if (lessons.length === 0) return new Date();
+	return lessons.reduce((prev, curr) => {
+		const start = new Date(curr.startTime);
+		return isTimeLessThan(start, prev) ? start : prev;
+	}, new Date(lessons[0].startTime));
+}
+
 export const load: PageLoad = async ({ url, parent }) => {
 	const { credentials } = await parent();
 	const params: Params = {
@@ -85,15 +97,22 @@ export const load: PageLoad = async ({ url, parent }) => {
 	});
 
 	return {
-		rooms: array.filter(({ lessons }) => {
-			if (params.end) return lessons.length === 0;
-			// Fix for edge case when start time is inside a lesson
-			return !lessons.find(
-				(lesson) =>
-					isTimeLessOrEqualThan(new Date(lesson.startTime), new Date(params.start!)) &&
-					isTimeLessOrEqualThan(new Date(params.start!), new Date(lesson.endTime))
-			);
-		}),
+		rooms: array
+			.filter(({ lessons }) => {
+				if (params.end) return lessons.length === 0;
+				// Fix for edge case when start time is inside a lesson
+				return !lessons.find(
+					(lesson) =>
+						isTimeLessOrEqualThan(new Date(lesson.startTime), new Date(params.start!)) &&
+						isTimeLessOrEqualThan(new Date(params.start!), new Date(lesson.endTime))
+				);
+			})
+			// Sort the rooms so that the room with the most free time is at the top
+			.sort(
+				(a, b) =>
+					getStartTimeOfFirstLesson(b.lessons).getTime() -
+					getStartTimeOfFirstLesson(a.lessons).getTime()
+			),
 		planEmpty: false
 	};
 };
