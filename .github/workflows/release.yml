@@ -70,7 +70,7 @@ jobs:
           name: web-artifacts
           path: build/
 
-      - name: [DEBUG] List files
+      - name: DEBUG List files
         run: |
           - ls -la .
           - ls -la build
