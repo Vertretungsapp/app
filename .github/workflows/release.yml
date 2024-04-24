@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Generate build number
-        run: echo "SENTRY_RELEASE=$(npx @sentry/cli releases propose-version)" >> $GITHUB_ENV
+        run: echo "SENTRY_RELEASE=${{ github.sha }}" >> $GITHUB_ENV
 
       - name: Write info.json
         run: |
@@ -39,7 +39,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: web-artifacts
-          path: build/
+          path: |
+            build/
+            .netlify/
 
   # upload-artifacts:
   #   name: Upload Artifacts to Release
@@ -68,7 +70,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: web-artifacts
-          path: build/
+          path: |
+            build/
+            .netlify/
 
       - name: DEBUG List files
         run: ls -la .
