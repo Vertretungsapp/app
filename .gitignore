@@ -12,3 +12,5 @@ vite.config.ts.timestamp-*
 /.idea
 .netlify
 dev-dist/
+# Sentry Config File
+.sentryclirc

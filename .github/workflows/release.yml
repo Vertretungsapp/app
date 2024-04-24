@@ -21,11 +21,14 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Generate build number
+        run: echo "SENTRY_RELEASE=$(npx @sentry/cli releases propose-version)" >> $GITHUB_ENV
+
       - name: Write info.json
         run: |
           sudo apt-get install -y jq
           COMMIT_SHA=$(git rev-parse --short HEAD)
-          jq --arg sha "$COMMIT_SHA" '.commit_sha = $sha' build/info.json > temp.json && mv temp.json build/info.json
+          jq --arg sha "$SENTRY_RELEASE" '.sha = $sha' build/info.json > temp.json && mv temp.json build/info.json
           jq --arg date "$(date -Iseconds)" '.build_date = $date' build/info.json > temp.json && mv temp.json build/info.json
           jq --arg version "${{ github.event.release.tag_name }}" '.version = $version' build/info.json > temp.json && mv temp.json build/info.json
 
@@ -58,7 +61,6 @@ jobs:
 
   deploy-netlify:
     name: Deploy to Netlify
-    if: github.event.release.prerelease == false
     needs: build-web
     runs-on: ubuntu-latest
     steps:
@@ -68,11 +70,38 @@ jobs:
           name: web-artifacts
           path: build/
 
-      - name: Deploy to Netlify
+      - name: Deploy as Staging
         uses: nwtgck/actions-netlify@v3
+        if: github.event.release.prerelease == true
+        with:
+          publish-dir: 'build/'
+          production-deploy: false
+          deploy-message: 'Deployed ${{ github.event.release.tag_name }} from GitHub Release (commit ${{ github.sha }})'
+          alias: ${{ github.sha }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Deploy to Staging
+        uses: nwtgck/actions-netlify@v3
+        if: github.event.release.prerelease == true
+        with:
+          publish-dir: 'build/'
+          production-deploy: false
+          deploy-message: 'Deployed ${{ github.event.release.tag_name }} from GitHub Release to Staging channel (commit ${{ github.sha }})'
+          alias: "staging"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          
+      - name: Deploy as Production
+        uses: nwtgck/actions-netlify@v3
+        if: github.event.release.prerelease == false
         with:
           publish-dir: 'build/'
           production-deploy: true
+          deploy-message: '(Production) Deployed ${{ github.event.release.tag_name }} from GitHub Release (commit ${{ github.sha }})'
+          alias: ${{ github.sha }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
