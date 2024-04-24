@@ -28,9 +28,9 @@ jobs:
         run: |
           sudo apt-get install -y jq
           COMMIT_SHA=$(git rev-parse --short HEAD)
-          jq --arg sha "$SENTRY_RELEASE" '.sha = $sha' static/info.json > temp.json && mv temp.json build/info.json
-          jq --arg date "$(date -Iseconds)" '.build_date = $date' static/info.json > temp.json && mv temp.json build/info.json
-          jq --arg version "${{ github.event.release.tag_name }}" '.version = $version' static/info.json > temp.json && mv temp.json build/info.json
+          jq --arg sha "$SENTRY_RELEASE" '.sha = $sha' static/info.json > temp.json && mv temp.json static/info.json
+          jq --arg date "$(date -Iseconds)" '.build_date = $date' static/info.json > temp.json && mv temp.json static/info.json
+          jq --arg version "${{ github.event.release.tag_name }}" '.version = $version' static/info.json > temp.json && mv temp.json static/info.json
 
       - name: Build Svelte app
         run: npm run build
