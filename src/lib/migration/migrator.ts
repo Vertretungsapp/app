@@ -21,7 +21,7 @@ export function updateVersion(migrator: Migrator) {
  * @returns void
  */
 export async function runMigrations() {
-	if(Object.keys({...localStorage}).length === 0) {
+	if (Object.keys({ ...localStorage }).length === 0) {
 		localStorage.setItem('version', getLatestDataVersion().toString());
 	}
 

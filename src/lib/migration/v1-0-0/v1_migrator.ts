@@ -7,7 +7,7 @@ import { updateVersion, type Migrator } from '$lib/migration/migrator';
 import toast from 'svelte-french-toast';
 
 export class V1Migrator implements Migrator {
-	name = "Migration auf Version 1.0.0";
+	name = 'Migration auf Version 1.0.0';
 	version = 2;
 	async runMigration(): Promise<boolean> {
 		updateVersion(this);

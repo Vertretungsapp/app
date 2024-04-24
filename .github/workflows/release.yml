@@ -89,7 +89,7 @@ jobs:
           publish-dir: 'build/'
           production-deploy: false
           deploy-message: 'Deployed ${{ github.event.release.tag_name }} from GitHub Release to Staging channel (commit ${{ github.sha }})'
-          alias: "staging"
+          alias: 'staging'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
