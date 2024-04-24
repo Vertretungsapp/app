@@ -70,6 +70,13 @@ jobs:
           name: web-artifacts
           path: build/
 
+      - name: [DEBUG] List files
+        run: |
+          - ls -la .
+          - ls -la build
+          - ls -la netlify
+          - ls -la .netlify
+
       - name: Deploy as Staging
         uses: nwtgck/actions-netlify@v3
         if: github.event.release.prerelease == true
