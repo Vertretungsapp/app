@@ -75,6 +75,7 @@ jobs:
         if: github.event.release.prerelease == true
         with:
           publish-dir: 'build/'
+            function-dir: '.netlify/functions-internal/'
           production-deploy: false
           deploy-message: 'Deployed ${{ github.event.release.tag_name }} from GitHub Release (commit ${{ github.sha }})'
           alias: ${{ github.sha }}
@@ -87,6 +88,7 @@ jobs:
         if: github.event.release.prerelease == true
         with:
           publish-dir: 'build/'
+          function-dir: '.netlify/functions-internal/'
           production-deploy: false
           deploy-message: 'Deployed ${{ github.event.release.tag_name }} from GitHub Release to Staging channel (commit ${{ github.sha }})'
           alias: 'staging'
@@ -99,6 +101,7 @@ jobs:
         if: github.event.release.prerelease == false
         with:
           publish-dir: 'build/'
+          function-dir: '.netlify/functions-internal/'
           production-deploy: true
           deploy-message: '(Production) Deployed ${{ github.event.release.tag_name }} from GitHub Release (commit ${{ github.sha }})'
           alias: ${{ github.sha }}
