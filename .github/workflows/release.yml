@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: yarn install
+        run: npm ci
 
       - name: Generate build number
         run: echo "SENTRY_RELEASE=$(npx @sentry/cli releases propose-version)" >> $GITHUB_ENV
@@ -33,7 +33,7 @@ jobs:
           jq --arg version "${{ github.event.release.tag_name }}" '.version = $version' build/info.json > temp.json && mv temp.json build/info.json
 
       - name: Build Svelte app
-        run: yarn build
+        run: npm run build
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -93,7 +93,7 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          
+
       - name: Deploy as Production
         uses: nwtgck/actions-netlify@v3
         if: github.event.release.prerelease == false
