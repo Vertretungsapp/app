@@ -11,21 +11,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install dependencies
         run: yarn install
+
+      - name: Write info.json
+        run: |
+          sudo apt-get install -y jq
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+          jq --arg sha "$COMMIT_SHA" '.commit_sha = $sha' build/info.json > temp.json && mv temp.json build/info.json
+          jq --arg date "$(date -Iseconds)" '.build_date = $date' build/info.json > temp.json && mv temp.json build/info.json
+          jq --arg version "${{ github.event.release.tag_name }}" '.version = $version' build/info.json > temp.json && mv temp.json build/info.json
 
       - name: Build Svelte app
         run: yarn build
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: web-artifacts
           path: build/
@@ -55,20 +63,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: web-artifacts
           path: build/
 
-      - name: Write info.json
-        run: |
-          sudo apt-get install -y jq
-          COMMIT_SHA=$(git rev-parse --short HEAD)
-          jq --arg sha "$COMMIT_SHA" '.commit_sha = $sha' build/info.json > temp.json && mv temp.json build/info.json
-          jq --arg date "$(date -Iseconds)" '.build_date = $date' build/info.json > temp.json && mv temp.json build/info.json
-
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v2.0
+        uses: nwtgck/actions-netlify@v3
         with:
           publish-dir: 'build/'
           production-deploy: true
