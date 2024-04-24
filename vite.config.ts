@@ -8,6 +8,7 @@ export default defineConfig({
 			sourceMapsUploadOptions: {
 				org: 'vertretungsapp',
 				project: 'app',
+				authToken: process.env.SENTRY_AUTH_TOKEN,
 				setCommits: {
 					auto: true
 				}
