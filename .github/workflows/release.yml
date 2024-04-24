@@ -75,7 +75,7 @@ jobs:
         if: github.event.release.prerelease == true
         with:
           publish-dir: 'build/'
-            function-dir: '.netlify/functions-internal/'
+          function-dir: '.netlify/functions-internal/'
           production-deploy: false
           deploy-message: 'Deployed ${{ github.event.release.tag_name }} from GitHub Release (commit ${{ github.sha }})'
           alias: ${{ github.sha }}
