@@ -74,18 +74,6 @@ jobs:
             build/
             .netlify/
 
-      - name: DEBUG List files
-        run: ls -la .
-
-      - name: DEBUG List files
-        run: ls -la build
-
-      - name: DEBUG List files
-        run: ls -la netlify
-
-      - name: DEBUG List files
-        run: ls -la .netlify
-
       - name: Deploy as Staging
         uses: nwtgck/actions-netlify@v3
         if: github.event.release.prerelease == true
