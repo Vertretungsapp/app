@@ -59,8 +59,8 @@ jobs:
   #       env:
   #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy-netlify:
-    name: Deploy to Netlify
+  deploy-vercel:
+    name: Deploy to Vercel
     needs: build-web
     runs-on: ubuntu-latest
     steps:
@@ -70,41 +70,17 @@ jobs:
           name: web-artifacts
           path: build/
 
-      - name: Deploy as Staging
-        uses: nwtgck/actions-netlify@v3
-        if: github.event.release.prerelease == true
+      - name: Deploy to Vercel (Staging)
+        uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
-          publish-dir: 'build/'
-          functions-dir: 'build/'
-          production-deploy: false
-          deploy-message: 'Deployed ${{ github.event.release.tag_name }} from GitHub Release (commit ${{ github.sha }})'
-          alias: ${{ github.sha }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      - name: Deploy to Staging
-        uses: nwtgck/actions-netlify@v3
-        if: github.event.release.prerelease == true
-        with:
-          publish-dir: 'build/'
-          functions-dir: 'build/'
-          production-deploy: false
-          deploy-message: 'Deployed ${{ github.event.release.tag_name }} from GitHub Release to Staging channel (commit ${{ github.sha }})'
-          alias: 'staging'
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      - name: Deploy as Production
-        uses: nwtgck/actions-netlify@v3
-        if: github.event.release.prerelease == false
-        with:
-          publish-dir: 'build/'
-          functions-dir: 'build/'
-          production-deploy: true
-          deploy-message: '(Production) Deployed ${{ github.event.release.tag_name }} from GitHub Release (commit ${{ github.sha }})'
-          alias: ${{ github.sha }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          GITHUB_TOKEN: ${{ secrets.RELEASEPLEASE_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          PRODUCTION: ${{ !github.event.release.prerelease }}
+          ALIAS_DOMAIN: |
+            staging-vertretungsapp.vercel.app
+            {SHA}.staging-vertretungsapp.vercel.app
+            staging.vertretungsapp.de
+            ${{ !github.event.release.prerelease }}:
+              app.vertretungsapp.de
