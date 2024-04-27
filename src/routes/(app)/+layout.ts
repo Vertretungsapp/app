@@ -10,6 +10,6 @@ export const prerender = 'auto';
 export const load: LayoutLoad = async ({ url }) => {
 	await runMigrations();
 	const credentials = getCredentials();
-	if (!credentials && url.pathname != '/settings/credentials') goto('/settings/credentials');
+	if (!credentials && url.pathname != '/settings/credentials') await goto('/settings/credentials');
 	return { credentials } as { credentials: Credentials };
 };

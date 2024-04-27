@@ -1,9 +1,14 @@
 import { getAllInfos } from '$lib/cache/cacheHelper';
 import { getFavorites, getPrimary } from '$lib/favorites/favorites';
 import type { PageLoad } from './$types';
+import { goto } from '$app/navigation';
 
 export const load: PageLoad = async ({ parent }) => {
 	const { credentials } = await parent();
+
+	if(!credentials) {
+		return goto("/settings/credentials")
+	}
 
 	return {
 		infos: getAllInfos(credentials),
