@@ -17,6 +17,68 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.0.0](https://github.com/Vertretungsapp/app/compare/v0.3.2...v1.0.0) (2024-04-27)
+
+
+### 📕 Features
+
+* added sentry for error monitoring ([212f597](https://github.com/Vertretungsapp/app/commit/212f597748f1938409d471dc9387fcc1e8e83af9))
+* made sentry disableable ([e4023cc](https://github.com/Vertretungsapp/app/commit/e4023cc8958ad7c2cb5f1e8e5586bec188904c7d))
+* **migration:** favorites now getting migrated to v1 ([d38c56f](https://github.com/Vertretungsapp/app/commit/d38c56f3d8ce0af5f8cd5ec4858782cd6b124d20))
+
+
+### 🪲 Bug fixes
+
+* info page used wrong field for build date ([9ad39ec](https://github.com/Vertretungsapp/app/commit/9ad39ec1e051b556aeab81dd0f2804f8908d2117))
+* **migration:** cache now gets deleted on migration to v1 ([d38c56f](https://github.com/Vertretungsapp/app/commit/d38c56f3d8ce0af5f8cd5ec4858782cd6b124d20))
+* **migration:** migration was started falsely on inital startup ([07aaca0](https://github.com/Vertretungsapp/app/commit/07aaca01e274c7e097b53f9f6b9b964f87a53da9))
+* **migration:** name now gets displayed right ([07aaca0](https://github.com/Vertretungsapp/app/commit/07aaca01e274c7e097b53f9f6b9b964f87a53da9))
+
+
+### ⚙️ Dependencies
+
+* bump @typescript-eslint/eslint-plugin from 6.21.0 to 7.0.0 ([#203](https://github.com/Vertretungsapp/app/issues/203)) ([6638eda](https://github.com/Vertretungsapp/app/commit/6638eda531614c12ac4e05a73d8f9be560d7e0dd))
+* bump the fortawesome group with 4 updates ([#204](https://github.com/Vertretungsapp/app/issues/204)) ([a0840a9](https://github.com/Vertretungsapp/app/commit/a0840a98e89784c0a977ee71c11a380a7dddb2c6))
+* bump vite from 5.1.1 to 5.1.7 ([#202](https://github.com/Vertretungsapp/app/issues/202)) ([e5c7530](https://github.com/Vertretungsapp/app/commit/e5c7530bd4cde4bed0da0ae5a42e4adf4e483e81))
+* bump vite from 5.1.1 to 5.2.10 ([#205](https://github.com/Vertretungsapp/app/issues/205)) ([87886ec](https://github.com/Vertretungsapp/app/commit/87886ec9d7e0f203d123c9958c9703cc6964d25c))
+
+
+### 🔧 Other changes
+
+* **deps-dev:** bump eslint from 8.43.0 to 8.56.0 ([#134](https://github.com/Vertretungsapp/app/issues/134)) ([e1fe377](https://github.com/Vertretungsapp/app/commit/e1fe377c1b1ed6d280758a65f9bdc604eb05578f))
+* **deps-dev:** bump postcss from 8.4.24 to 8.4.32 ([#131](https://github.com/Vertretungsapp/app/issues/131)) ([eeface3](https://github.com/Vertretungsapp/app/commit/eeface3e59f9855460d6000e7ef19d03a21076fb))
+* **deps-dev:** bump prettier-plugin-organize-imports ([#130](https://github.com/Vertretungsapp/app/issues/130)) ([03f9a54](https://github.com/Vertretungsapp/app/commit/03f9a546b6efc371e730f76a4ad6215e024c096a))
+* **deps-dev:** bump svelte from 4.0.0 to 4.2.15 ([#199](https://github.com/Vertretungsapp/app/issues/199)) ([a509303](https://github.com/Vertretungsapp/app/commit/a509303541e991215bc35f23b3de683825c4b922))
+* **deps-dev:** bump tailwindcss from 3.3.2 to 3.4.0 ([#135](https://github.com/Vertretungsapp/app/issues/135)) ([21889bf](https://github.com/Vertretungsapp/app/commit/21889bf479077302e98f91122a0ac31fb476ffd8))
+* **deps:** bump @capacitor/cli from 5.0.5 to 6.0.0 ([#198](https://github.com/Vertretungsapp/app/issues/198)) ([a582af8](https://github.com/Vertretungsapp/app/commit/a582af86c30a550b3be0a293bb94e0f24c735165))
+* **deps:** bump @capacitor/core from 5.1.1 to 5.7.5 ([#200](https://github.com/Vertretungsapp/app/issues/200)) ([f37b4ab](https://github.com/Vertretungsapp/app/commit/f37b4ab2a2c3f2ccce5f95dc42dea1d72ffdd8be))
+* **deps:** bump axios from 1.4.0 to 1.6.2 ([#126](https://github.com/Vertretungsapp/app/issues/126)) ([601ce52](https://github.com/Vertretungsapp/app/commit/601ce52d0de61cdccf2ad2d956e8415647d35cce))
+* **deps:** bump tar from 6.1.15 to 6.2.1 ([#196](https://github.com/Vertretungsapp/app/issues/196)) ([1f73a22](https://github.com/Vertretungsapp/app/commit/1f73a2265eb4f833dd271acf421d2a30002a86e3))
+* format CHANGELOG.md ([b12a013](https://github.com/Vertretungsapp/app/commit/b12a0131289e892ae4abc4b4c117411fb42ef667))
+* format code ([db45fa3](https://github.com/Vertretungsapp/app/commit/db45fa3b6c648422b6ac50f1b9e3de8e4555e1e7))
+* format files ([f357c8f](https://github.com/Vertretungsapp/app/commit/f357c8f70724bfc4dd02565a0058f744aa5e5b51))
+* format files ([3dbba03](https://github.com/Vertretungsapp/app/commit/3dbba030c21335535a922d8bf7ec1f5a6da5ae84))
+* format files ([04d4d14](https://github.com/Vertretungsapp/app/commit/04d4d14afc6265d6556b3ba55b12338f33fe9902))
+* removed unused error page ([d9c9dfe](https://github.com/Vertretungsapp/app/commit/d9c9dfe50ca4217161d9c6342ebe25b64c5208b8))
+* update TODO ([87036de](https://github.com/Vertretungsapp/app/commit/87036de9ab4f92550505e558a648473b63f3fefa))
+* update version ([b6a9de3](https://github.com/Vertretungsapp/app/commit/b6a9de34279919f6c14f08f6fc576fce2017397d))
+
+
+### 🚀 CI/CD changes
+
+* added auto-release (rebase to production branch to trigger vercel) ([5c209da](https://github.com/Vertretungsapp/app/commit/5c209da2e9e30f1a60c15afeb7689e1265995d2b))
+* added debug ([e28bdda](https://github.com/Vertretungsapp/app/commit/e28bdda2aa2173125dfb408d28b6c691a8e069bb))
+* added missing functions to netlify release pipeline ([a95e3b8](https://github.com/Vertretungsapp/app/commit/a95e3b8674b177215f5b0c74452f90439359cb87))
+* changed yarn to npm ([462a09c](https://github.com/Vertretungsapp/app/commit/462a09c1a99a1ef98061a8826b5d79834eb342e7))
+* fix yaml syntax ([098ffe9](https://github.com/Vertretungsapp/app/commit/098ffe92fa235ddea385e68e1c520e1dc8b2fe68))
+* **fix:** further fixes in the release pipeline ([c1b3058](https://github.com/Vertretungsapp/app/commit/c1b3058c80ec5b645f8c5d19caf0dc7921cefcb8))
+* **fix:** release pipeline tried to write to the wrong info.json ([8a83f21](https://github.com/Vertretungsapp/app/commit/8a83f219b3807608c30ea42c9a852be1ae17138a))
+* more fixes to release pipeline ([3902db1](https://github.com/Vertretungsapp/app/commit/3902db164c5b579224bd3c8dd9ded6bedaa6c527))
+* remove test build due to problems with Sentry ([41e6462](https://github.com/Vertretungsapp/app/commit/41e6462ef840dcfb50d3c5b00b0aeee0b2f983da))
+* switched to vercel's CI ([4c1a24c](https://github.com/Vertretungsapp/app/commit/4c1a24cba82d356e923388d95cea005311ef19e9))
+* update version of gh actions ([c9de889](https://github.com/Vertretungsapp/app/commit/c9de88942d425f428ee20e866636b69f14370d47))
+* updated github action release pipeline ([3501ee8](https://github.com/Vertretungsapp/app/commit/3501ee81be041c449808a893aacdac6dea360dee))
+
 ### [0.3.1](https://github.com/Vertretungsapp/app/compare/v0.3.1-beta.0...v0.3.1) (2023-06-19)
 
 ### [0.3.1-beta.0](https://github.com/Vertretungsapp/app/compare/v0.3.0...v0.3.1-beta.0) (2023-06-19)
