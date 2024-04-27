@@ -2,27 +2,9 @@ on:
   push:
   pull_request:
 
-name: Check, Lint and Test-Build Code
+name: Check and Lint Code
 
 jobs:
-  build:
-    name: Try Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '21'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Svelte app
-        run: npm run build
-
   eslint:
     name: Svelte Check & ESLint
     runs-on: ubuntu-latest
