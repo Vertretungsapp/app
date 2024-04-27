@@ -1,19 +1,19 @@
 ## V1.0.0
 
-- [X] Implement Cache cleanup
+- [x] Implement Cache cleanup
 - [x] Implement Plan filter
   - [x] Implement on/off
   - [x] Implement filter for rooms and teachers, not only school classes
-  - [X] bulk edit
+  - [x] bulk edit
 - [x] Implement Plan refresh
-- [X] Implement favorites
+- [x] Implement favorites
 - [x] Implement settings
   - [x] Implement credentials
-  - [X] Implement theming (?)
+  - [x] Implement theming (?)
 - [x] Implement general info on home screen
 - [x] make PWA
-  - [X] Implement offline mode
-- [X] Implement search
+  - [x] Implement offline mode
+- [x] Implement search
 
 ## Bug fixes
 
@@ -24,4 +24,4 @@
 # V1.1.0
 
 - [ ] Implement desktop mode
-- [X] Implement find free room (currently or specific time)
+- [x] Implement find free room (currently or specific time)
