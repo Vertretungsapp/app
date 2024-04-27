@@ -4,6 +4,6 @@
 </script>
 
 <input class="scale-125" type="checkbox" bind:checked />
-<span class={fullWidth ? "col-span-9" : "col-span-4"}>
+<span class={fullWidth ? 'col-span-9' : 'col-span-4'}>
 	<slot />
 </span>
