@@ -1,5 +1,5 @@
-import fs from 'fs';
 import { execSync } from 'child_process';
+import fs from 'fs';
 
 // Get version from package.json
 const packageJson = JSON.parse(fs.readFileSync('package.json'));
