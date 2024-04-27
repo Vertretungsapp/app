@@ -16,7 +16,7 @@
 	<h2>Vertretungsapp<span class="text-primary-500">.</span></h2>
 	<p>Version: {data.version}</p>
 	<p>Build-Nummer: {data.sha}</p>
-	<p>Date: {format(new Date(data.build_date), 'dd.MM.yyyy HH:mm')}</p>
+	<p>Date: {format(new Date(data.date), 'dd.MM.yyyy HH:mm')}</p>
 </section>
 
 <section class="mt-4 flex items-center justify-center gap-3">
