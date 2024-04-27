@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
 
       - name: Rebase changes
-        run: git rebase origin/main
+        run: git rebase origin/master
 
       - name: Push changes
         run: git push origin production
