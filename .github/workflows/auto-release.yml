@@ -1,0 +1,24 @@
+on:
+  release:
+    types:
+      - published
+
+name: Release new version
+
+jobs:
+  rebase-production:
+    name: Rebase and push changes
+    runs-on: ubuntu-latest
+    if: github.event.release.prerelease == false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: production
+          fetch-depth: 0
+
+      - name: Rebase changes
+        run: git rebase origin/main
+
+      - name: Push changes
+        run: git push origin production
