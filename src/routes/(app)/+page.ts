@@ -7,7 +7,7 @@ export const load: PageLoad = async ({ parent }) => {
 	const { credentials } = await parent();
 
 	if (!credentials) {
-		return goto('/settings/credentials');
+		await goto('/settings/credentials');
 	}
 
 	return {
