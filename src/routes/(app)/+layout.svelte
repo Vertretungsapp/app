@@ -15,6 +15,11 @@
 
 		settingsStore.subscribe((value) => {
 			localStorage.setItem('settings', JSON.stringify(value));
+			if(value.errorMonitoring) {
+				localStorage.removeItem('ERROR_REPORTING')
+			} else {
+				localStorage.setItem('ERROR_REPORTING', 'false')
+			}
 		});
 
 		// Dark Mode & Primary Color

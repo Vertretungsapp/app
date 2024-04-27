@@ -48,6 +48,14 @@
 	</SettingsSection>
 
 	<SettingsSection>
+		<svelte:fragment slot="title">Datenschutzeinstellungen</svelte:fragment>
+
+		<SettingsCheckbox bind:checked={$settingsStore.errorMonitoring} fullWidth>
+			Anonyme Fehlerberichte zur Analyse und Verbesserung der App an Sentry senden (Neustart erforderlich)
+		</SettingsCheckbox>
+	</SettingsSection>
+
+	<SettingsSection>
 		<svelte:fragment slot="title">Entwickleroptionen</svelte:fragment>
 
 		<SettingsButton on:click={clrCache}>Clear Cache</SettingsButton>

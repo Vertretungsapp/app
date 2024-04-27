@@ -9,10 +9,12 @@ export interface SettingsStore {
 	credentials: Credentials | null;
 	darkMode: boolean;
 	primaryColor: string;
+	errorMonitoring?: boolean;
 }
 
 export const settingsStore = writable<SettingsStore>({
 	credentials: null,
 	darkMode: isDarkPreferred(),
-	primaryColor: PRIMARY_COLOR
+	primaryColor: PRIMARY_COLOR,
+	errorMonitoring: true
 });
