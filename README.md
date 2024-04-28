@@ -1,8 +1,11 @@
 # 📱 Vertretungsapp.
 
-[![Release Pipeline](https://github.com/Vertretungsapp/app/actions/workflows/release.yml/badge.svg)](https://github.com/Vertretungsapp/app/actions/workflows/release.yml)
-[![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue)](LICENSE)
-[![Releases](https://img.shields.io/github/v/release/Vertretungsapp/app?display_name=tag)](https://github.com/Vertretungsapp/app/releases/latest)
+[![Release Pipeline](https://img.shields.io/github/deployments/Vertretungsapp/app/production?logo=vercel&label=Deployment%20Status)](https://app.vertretungsapp.de/)
+[![License](https://img.shields.io/github/license/Vertretungsapp/app?logo=github&label=License)](LICENSE)
+[![Releases](https://img.shields.io/github/v/release/Vertretungsapp/app?logo=github&label=Version)](https://github.com/Vertretungsapp/app/releases/latest)
+[![Last update](https://img.shields.io/github/release-date/Vertretungsapp/app?logo=github&label=Last%20updated)](https://github.com/Vertretungsapp/app/releases/latest)
+
+
 
 ![Logo Vertretungsapp](./static/android-chrome-192x192.png)
 
