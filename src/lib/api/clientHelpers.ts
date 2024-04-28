@@ -50,7 +50,7 @@ export async function fetchPlan({
 				toast.error('Die Zugangsdaten scheinen nicht mehr zu stimmen!');
 				break;
 			case 404:
-				toast.error('Kein Vertretungsplan für diesen Tag gefunden.');
+				toast.error(`Kein Vertretungsplan für diesen Tag (${date ? format(new Date(date), "dd.MM") : "N/A"}) gefunden.`);
 				break;
 			default:
 				toast.error('Ein unbekannter Fehler ist aufgetreten');
