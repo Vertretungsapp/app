@@ -44,7 +44,7 @@ export class V1Migrator implements Migrator {
 		});
 
 		// Step 4: Delete cache (migration is not fully possible due to missing information)
-		if(localStorage.getItem("version") !== "2") localStorage.removeItem('cache');
+		if (localStorage.getItem('version') !== '2') localStorage.removeItem('cache');
 
 		return true;
 	}

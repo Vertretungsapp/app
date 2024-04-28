@@ -5,8 +5,6 @@
 [![Releases](https://img.shields.io/github/v/release/Vertretungsapp/app?logo=github&label=Version)](https://github.com/Vertretungsapp/app/releases/latest)
 [![Last update](https://img.shields.io/github/release-date/Vertretungsapp/app?logo=github&label=Last%20updated)](https://github.com/Vertretungsapp/app/releases/latest)
 
-
-
 ![Logo Vertretungsapp](./static/android-chrome-192x192.png)
 
 Deine Vertretungsplanapp für Indiware!

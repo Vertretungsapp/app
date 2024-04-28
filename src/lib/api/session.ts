@@ -1,7 +1,7 @@
 import { settingsStore } from '$lib/stores/settingsStore';
+import * as Sentry from '@sentry/sveltekit';
 import type { Credentials } from 'indiware-api';
 import { fetchPlan } from './clientHelpers';
-import * as Sentry from "@sentry/sveltekit"
 
 export async function login(
 	credentials: Credentials,
@@ -21,7 +21,7 @@ export async function login(
 			})
 		);
 
-		if(Sentry.isInitialized()) Sentry.setTag("schoolnumber", credentials.schoolnumber)
+		if (Sentry.isInitialized()) Sentry.setTag('schoolnumber', credentials.schoolnumber);
 
 		return {
 			...settings,

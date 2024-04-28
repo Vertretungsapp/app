@@ -1,6 +1,6 @@
+import { getCredentials } from '$lib/api/session';
 import * as Sentry from '@sentry/sveltekit';
 import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
-import { getCredentials } from '$lib/api/session';
 
 const cred = getCredentials();
 
