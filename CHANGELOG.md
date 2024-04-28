@@ -17,6 +17,22 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.0.2](https://github.com/Vertretungsapp/app/compare/v1.0.1...v1.0.2) (2024-04-28)
+
+
+### 🪲 Bug fixes
+
+* v1-0-0 migrator now doesn't stop when credentials aren't valid ([ae5c5c4](https://github.com/Vertretungsapp/app/commit/ae5c5c4b81cdc8f92160f2ff089b19940f8e4726))
+
+
+### 🔧 Other changes
+
+* added schoolnumber & username to sentry reports ([9c848f8](https://github.com/Vertretungsapp/app/commit/9c848f8db891516a191be2807bff7a8420508617))
+* added username to sentry reports ([1963cc8](https://github.com/Vertretungsapp/app/commit/1963cc84e4a0757feb8a0210ba7224580d55bcf5))
+* format files ([9ae068d](https://github.com/Vertretungsapp/app/commit/9ae068deb0b9a19dfecc8c34ce9b4c3a11a7b8a2))
+* removed debug console.log ([7ab128c](https://github.com/Vertretungsapp/app/commit/7ab128c38ea41f26b82d5acf800d33b51a5794a7))
+* update readme.md ([c30bed6](https://github.com/Vertretungsapp/app/commit/c30bed6b8b386f8e83d800163057506166c94b96))
+
 ## [1.0.1](https://github.com/Vertretungsapp/app/compare/v1.0.0...v1.0.1) (2024-04-28)
 
 
