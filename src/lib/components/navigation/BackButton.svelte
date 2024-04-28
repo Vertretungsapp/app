@@ -10,8 +10,5 @@
 </script>
 
 <button on:click={goBack}>
-	<Icon
-		icon={faCircleArrowLeft}
-		{scale}
-	/>
+	<Icon icon={faCircleArrowLeft} {scale} />
 </button>
