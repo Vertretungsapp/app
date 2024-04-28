@@ -10,6 +10,7 @@ export class V1Migrator implements Migrator {
 	name = 'Migration auf Version 1.0.0';
 	version = 3;
 	async runMigration(): Promise<boolean> {
+		const oldVersion = localStorage.getItem('version');
 		updateVersion(this);
 
 		// Step 1: Migrate credentials
@@ -44,7 +45,7 @@ export class V1Migrator implements Migrator {
 		});
 
 		// Step 4: Delete cache (migration is not fully possible due to missing information)
-		if (localStorage.getItem('version') !== '2') localStorage.removeItem('cache');
+		if (oldVersion !== '2') localStorage.removeItem('cache');
 
 		return true;
 	}
