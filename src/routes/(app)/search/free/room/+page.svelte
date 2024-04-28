@@ -65,7 +65,7 @@
 
 <div class="flex h-full flex-col">
 	<div class="flex items-center gap-2">
-		<BackButton href="/search" />
+		<BackButton />
 		<h1>Freien Raum finden</h1>
 	</div>
 
