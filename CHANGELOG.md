@@ -17,6 +17,29 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.0.1](https://github.com/Vertretungsapp/app/compare/v1.0.0...v1.0.1) (2024-04-28)
+
+
+### 🔄 Changes
+
+* plan not found error now displays the requested date ([64eccc9](https://github.com/Vertretungsapp/app/commit/64eccc90022cd11c23ac8a69aa5b78c95ca1769f))
+
+
+### 🪲 Bug fixes
+
+* **UX:** BackButton now performs a history.back() action ([#212](https://github.com/Vertretungsapp/app/issues/212)) ([233659c](https://github.com/Vertretungsapp/app/commit/233659cd284c17acb8b6f84c6de5ec6a6eecf2fd))
+
+
+### 🔧 Other changes
+
+* format file ([c790338](https://github.com/Vertretungsapp/app/commit/c7903382aa1ce798ef2a9094f88ccc2e3219f9f8))
+* format files ([2a7e1df](https://github.com/Vertretungsapp/app/commit/2a7e1df451c8201b6b9c3ac5480133171423e898))
+
+
+### 🚀 CI/CD changes
+
+* **auto-release:** fixed wrong rebase upstream branch name ([535ae05](https://github.com/Vertretungsapp/app/commit/535ae05b6af99bde380f99154a85c5876f97f551))
+
 ## [1.0.0](https://github.com/Vertretungsapp/app/compare/v0.3.2...v1.0.0) (2024-04-27)
 
 
