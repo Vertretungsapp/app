@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
-	import BackButton from '$lib/components/common/BackButton.svelte';
+	import BackButton from '$lib/components/navigation/BackButton.svelte';
 	import { onMount } from 'svelte';
 	import { format } from 'date-fns';
 	import Icon from '$lib/components/common/Icon.svelte';

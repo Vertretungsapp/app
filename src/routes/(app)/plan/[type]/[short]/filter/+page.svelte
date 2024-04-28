@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import FilterItem from '$lib/components/plan/filter/FilterItem.svelte';
-	import BackButton from '$lib/components/common/BackButton.svelte';
+	import BackButton from '$lib/components/navigation/BackButton.svelte';
 	import { setActive } from '$lib/filter/filterHelper';
 	import { faCheckCircle } from '@fortawesome/free-regular-svg-icons/faCheckCircle';
 	import { faCircle } from '@fortawesome/free-regular-svg-icons/faCircle';

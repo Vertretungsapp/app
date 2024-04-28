@@ -4,7 +4,7 @@
 	import Icon from '$lib/components/common/Icon.svelte';
 	import { faX } from '@fortawesome/free-solid-svg-icons';
 	import SearchItem from '$lib/components/search/SearchItem.svelte';
-	import BackButton from '$lib/components/common/BackButton.svelte';
+	import BackButton from '$lib/components/navigation/BackButton.svelte';
 
 	export let data: PageData;
 

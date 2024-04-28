@@ -5,7 +5,7 @@
 	import { faRefresh } from '@fortawesome/free-solid-svg-icons/faRefresh';
 	import { faFilter } from '@fortawesome/free-solid-svg-icons/faFilter';
 	import { planStore } from '$lib/stores/planStore';
-	import BackButton from '$lib/components/common/BackButton.svelte';
+	import BackButton from '$lib/components/navigation/BackButton.svelte';
 	import { goto } from '$app/navigation';
 	import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons/faStar';
 	import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
