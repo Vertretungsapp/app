@@ -8,7 +8,7 @@ import toast from 'svelte-french-toast';
 
 export class V1Migrator implements Migrator {
 	name = 'Migration auf Version 1.0.0';
-	version = 2;
+	version = 3;
 	async runMigration(): Promise<boolean> {
 		updateVersion(this);
 
@@ -19,7 +19,6 @@ export class V1Migrator implements Migrator {
 			await login(creds)
 				.catch(() => {
 					toast.error('Fehler beim Migrieren der Anmeldeinformationen. Sind sie noch gültig?');
-					throw new Error('Migration to v1.0.0 failed - credentials migration failed');
 				})
 				.finally(() => {
 					localStorage.removeItem('credentials');
@@ -45,7 +44,7 @@ export class V1Migrator implements Migrator {
 		});
 
 		// Step 4: Delete cache (migration is not fully possible due to missing information)
-		localStorage.removeItem('cache');
+		if(localStorage.getItem("version") !== "2") localStorage.removeItem('cache');
 
 		return true;
 	}
