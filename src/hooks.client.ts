@@ -4,8 +4,6 @@ import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
 
 const cred = getCredentials();
 
-console.log(cred);
-
 if (localStorage.getItem('ERROR_REPORTING') !== 'false') {
 	Sentry.init({
 		dsn: 'https://8c74c96ad05b7ddd90c0113acf220257@o4507126149873664.ingest.de.sentry.io/4507126151905360',
