@@ -29,7 +29,8 @@
 		}
 
 		goto(forceReloadUrl.toString(), {
-			invalidateAll: true
+			invalidateAll: true,
+			replaceState: true
 		});
 	}
 
