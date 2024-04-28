@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
-	import BackButton from '$lib/components/common/BackButton.svelte';
+	import BackButton from '$lib/components/navigation/BackButton.svelte';
 	import { onMount } from 'svelte';
 	import { format } from 'date-fns';
 	import Icon from '$lib/components/common/Icon.svelte';
@@ -65,7 +65,7 @@
 
 <div class="flex h-full flex-col">
 	<div class="flex items-center gap-2">
-		<BackButton href="/search" />
+		<BackButton />
 		<h1>Freien Raum finden</h1>
 	</div>
 

@@ -19,7 +19,7 @@
 	{/if}
 
 	<PlanNavigation on:next on:previous>
-		<a href={$page.url.pathname}>
+		<a href={$page.url.pathname} data-sveltekit-replacestate>
 			<h2 class="text-xl font-bold">
 				<span class="text-primary-500">
 					{format($planStore.currentDate, 'EEEE', {

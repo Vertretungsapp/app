@@ -26,11 +26,11 @@
 	}
 
 	function previous() {
-		goto(getHrefLink(data.short, data.type, addDays(-1)));
+		goto(getHrefLink(data.short, data.type, addDays(-1)), { replaceState: true });
 	}
 
 	function next() {
-		goto(getHrefLink(data.short, data.type, addDays(1)));
+		goto(getHrefLink(data.short, data.type, addDays(1)), { replaceState: true });
 	}
 
 	function handleSwipe(e: CustomEvent) {
