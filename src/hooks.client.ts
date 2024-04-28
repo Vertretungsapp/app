@@ -1,5 +1,10 @@
 import * as Sentry from '@sentry/sveltekit';
 import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
+import { getCredentials } from '$lib/api/session';
+
+const cred = getCredentials();
+
+console.log(cred);
 
 if (localStorage.getItem('ERROR_REPORTING') !== 'false') {
 	Sentry.init({
@@ -13,6 +18,13 @@ if (localStorage.getItem('ERROR_REPORTING') !== 'false') {
 		// If the entire session is not sampled, use the below sample rate to sample
 		// sessions when an error occurs.
 		replaysOnErrorSampleRate: 1.0,
+
+		initialScope: {
+			tags: {
+				schoolnumber: cred ? cred.schoolnumber : 'unknown',
+				username: cred ? cred.username : 'unknown'
+			}
+		},
 
 		// If you don't want to use Session Replay, just remove the line below:
 		integrations: [replayIntegration()]
