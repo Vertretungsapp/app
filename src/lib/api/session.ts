@@ -21,7 +21,10 @@ export async function login(
 			})
 		);
 
-		if (Sentry.isInitialized()) Sentry.setTag('schoolnumber', credentials.schoolnumber);
+		if (Sentry.isInitialized()) {
+			Sentry.setTag('schoolnumber', credentials.schoolnumber);
+			Sentry.setTag('username', credentials.username);
+		}
 
 		return {
 			...settings,
