@@ -1,7 +1,7 @@
+import { goto } from '$app/navigation';
+import { getCredentials } from '$lib/api/session';
 import * as Sentry from '@sentry/sveltekit';
 import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
-import { getCredentials } from '$lib/api/session';
-import { goto } from '$app/navigation';
 
 if (localStorage.getItem('ERROR_REPORTING') !== 'false') {
 	Sentry.init({
@@ -21,8 +21,8 @@ if (localStorage.getItem('ERROR_REPORTING') !== 'false') {
 	});
 }
 
-if(!getCredentials() && location.pathname !== '/settings/credentials') {
-	await goto('/settings/credentials', { invalidateAll: true });
+if (!getCredentials() && location.pathname !== '/settings/credentials') {
+	goto('/settings/credentials', { invalidateAll: true });
 }
 
 // If you have a custom error handler, pass it to `handleErrorWithSentry`
