@@ -2,7 +2,7 @@
 	import { clearCache } from '$lib/cache/cache';
 	import CredentialsLink from '$lib/components/settings/CredentialsLink.svelte';
 	import toast from 'svelte-french-toast';
-	import { PRIMARY_COLOR, settingsStore } from '$lib/stores/settingsStore';
+	import { settingsStore } from '$lib/stores/settingsStore';
 	import SettingsCheckbox from '$lib/components/settings/SettingsCheckbox.svelte';
 	import SettingsSection from '$lib/components/settings/SettingsSection.svelte';
 	import ColorPicker from 'svelte-awesome-color-picker';
