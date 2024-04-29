@@ -9,6 +9,7 @@
 	import SettingsButton from '$lib/components/settings/SettingsButton.svelte';
 	import Icon from '$lib/components/common/Icon.svelte';
 	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
+	import SettingsThemingDefaultColorSelector from '$lib/components/settings/SettingsThemingDefaultColorSelector.svelte';
 
 	function clrCache() {
 		clearCache();
@@ -37,14 +38,19 @@
 	<SettingsSection>
 		<svelte:fragment slot="title">Darstellung</svelte:fragment>
 
-		<ColorPicker bind:hex={$settingsStore.primaryColor} label="" />
-		<span class="col-span-4">Primärfarbe</span>
+		<div class="bg-display col-span-5 flex items-center gap-2 rounded-lg dark:bg-transparent">
+			<ColorPicker bind:hex={$settingsStore.primaryColor} label="" />
+			<span class="col-span-4">Farbe</span>
+		</div>
 
 		<SettingsCheckbox bind:checked={$settingsStore.darkMode}>Dark Mode</SettingsCheckbox>
 
-		<SettingsButton on:click={() => ($settingsStore.primaryColor = PRIMARY_COLOR)}>
-			Standardfarbe
-		</SettingsButton>
+		<div
+			class="bg-display col-span-full flex flex-col justify-between gap-1 rounded-lg p-2 dark:bg-transparent"
+		>
+			<span>Standardfarben</span>
+			<SettingsThemingDefaultColorSelector />
+		</div>
 	</SettingsSection>
 
 	<SettingsSection>
