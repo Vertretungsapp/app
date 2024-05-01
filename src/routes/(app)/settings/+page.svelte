@@ -27,11 +27,15 @@
 		const reader = new FileReader();
 		reader.onload = () => {
 			try {
-				const settings = JSON.parse(reader.result as string);
-				settingsStore.set(settings);
-				toast.success('Einstellungen importiert', {
+				const parsed = JSON.parse(reader.result as string);
+				localStorage.clear();
+				for (const key in parsed) {
+					localStorage.setItem(key, parsed[key]);
+				}
+				toast.success('Einstellungen importiert, starte neu...', {
 					duration: 2000
 				});
+				setTimeout(() => location.reload(), 1000);
 			} catch (e) {
 				toast.error('Fehler beim Importieren der Einstellungen', {
 					duration: 2000
@@ -44,10 +48,10 @@
 	onMount(() => {
 		// Get the file contents
 		// let txtFile = `vertretungsapp-settings_${new Date().toISOString().replace(/:/g, '-')}.json`;
-		let str = JSON.stringify($settingsStore);
+		const str = JSON.stringify({ ...localStorage });
 
 		// Save the file contents as a DataURI
-		let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(str);
+		const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(str);
 
 		// Write it as the href for the link
 		const link = document.getElementById('export_settings_json') as HTMLAnchorElement;
