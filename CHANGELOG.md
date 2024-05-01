@@ -17,6 +17,19 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.1.0](https://github.com/Vertretungsapp/app/compare/v1.0.4...v1.1.0) (2024-05-01)
+
+
+### 📕 Features
+
+* added abillity to import and export all settings ([#219](https://github.com/Vertretungsapp/app/issues/219)) ([b205ed2](https://github.com/Vertretungsapp/app/commit/b205ed2dfbc943aa45596fa95a9c89444ed31f24))
+* added buttons with predefined colours in the theming settings ([#218](https://github.com/Vertretungsapp/app/issues/218)) ([6dbe5b6](https://github.com/Vertretungsapp/app/commit/6dbe5b67e2c91a0714279a384d30f826d179bc41))
+
+
+### 🪲 Bug fixes
+
+* **logo:** fixed wrong colours in logo images ([215782c](https://github.com/Vertretungsapp/app/commit/215782c0ced7279931f590109ea31df89fd6a032))
+
 ## [1.0.4](https://github.com/Vertretungsapp/app/compare/v1.0.3...v1.0.4) (2024-04-28)
 
 
