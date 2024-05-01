@@ -5,8 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"dev:host": "vite dev --host",
-		"build": "node scripts/generate-info-json.js && vite build",
-		"build:pwa-assets": "node scripts/generate-pwa-assets.js",
+		"build": "node scripts/generate-info-json.js && node scripts/generate-pwa-assets.js && vite build",
 		"preview": "vite preview",
 		"preview:host": "vite preview --host",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
