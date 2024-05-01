@@ -3,7 +3,7 @@
 	"short_name": "Vertretungsapp.",
 	"start_url": "/",
 	"display": "fullscreen",
-	"background_color": "#080709",
+	"background_color": "#040404",
 	"theme_color": "#0549d1",
 	"icons": [
 		{
