@@ -2,7 +2,7 @@
 	import { clearCache } from '$lib/cache/cache';
 	import CredentialsLink from '$lib/components/settings/CredentialsLink.svelte';
 	import toast from 'svelte-french-toast';
-	import { PRIMARY_COLOR, settingsStore } from '$lib/stores/settingsStore';
+	import { settingsStore } from '$lib/stores/settingsStore';
 	import SettingsCheckbox from '$lib/components/settings/SettingsCheckbox.svelte';
 	import SettingsSection from '$lib/components/settings/SettingsSection.svelte';
 	import ColorPicker from 'svelte-awesome-color-picker';
@@ -12,6 +12,7 @@
 	import { faFileImport } from '@fortawesome/free-solid-svg-icons/faFileImport';
 	import { faFileExport } from '@fortawesome/free-solid-svg-icons/faFileExport';
 	import { onMount } from 'svelte';
+	import SettingsThemingDefaultColorSelector from '$lib/components/settings/SettingsThemingDefaultColorSelector.svelte';
 
 	function clrCache() {
 		clearCache();
@@ -81,14 +82,19 @@
 	<SettingsSection>
 		<svelte:fragment slot="title">Darstellung</svelte:fragment>
 
-		<ColorPicker bind:hex={$settingsStore.primaryColor} label="" />
-		<span class="col-span-4">Primärfarbe</span>
+		<div class="bg-display col-span-5 flex items-center gap-2 rounded-lg dark:bg-transparent">
+			<ColorPicker bind:hex={$settingsStore.primaryColor} label="" />
+			<span class="col-span-4">Farbe</span>
+		</div>
 
 		<SettingsCheckbox bind:checked={$settingsStore.darkMode}>Dark Mode</SettingsCheckbox>
 
-		<SettingsButton on:click={() => ($settingsStore.primaryColor = PRIMARY_COLOR)}>
-			Standardfarbe
-		</SettingsButton>
+		<div
+			class="bg-display col-span-full flex flex-col justify-between gap-1 rounded-lg p-2 dark:bg-transparent"
+		>
+			<span>Standardfarben</span>
+			<SettingsThemingDefaultColorSelector />
+		</div>
 	</SettingsSection>
 
 	<SettingsSection>
