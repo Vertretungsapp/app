@@ -115,7 +115,13 @@
 			<Icon icon={faFileImport} scale={1.1} />
 			Importieren
 		</label>
-		<input id="import_settings_json" type="file" class="hidden" accept="application/json" on:input={importSettings} />
+		<input
+			id="import_settings_json"
+			type="file"
+			class="hidden"
+			accept="application/json"
+			on:input={importSettings}
+		/>
 	</SettingsSection>
 
 	<SettingsSection>
