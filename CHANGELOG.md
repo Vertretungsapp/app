@@ -17,6 +17,13 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.1.1](https://github.com/Vertretungsapp/app/compare/v1.1.0...v1.1.1) (2024-05-05)
+
+
+### 🪲 Bug fixes
+
+* **hotfix:** v1 migrator didn't worked properly ([7bbcfdf](https://github.com/Vertretungsapp/app/commit/7bbcfdf5db7eb86b2ce0627afeeeb5e143fc08c7))
+
 ## [1.1.0](https://github.com/Vertretungsapp/app/compare/v1.0.4...v1.1.0) (2024-05-01)
 
 
