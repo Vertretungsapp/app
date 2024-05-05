@@ -66,3 +66,19 @@ export async function fetchPlan({
 	addPlan(credentials.schoolnumber, planJson);
 	return planJson;
 }
+
+export async function checkCredentials(credentials: Credentials) {
+	return fetch('/api/credentials/verify', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			schoolnumber: credentials.schoolnumber,
+			username: credentials.username,
+			password: credentials.password
+		})
+	})
+		.then((res) => res.ok)
+		.catch(() => false);
+}

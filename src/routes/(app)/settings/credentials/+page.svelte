@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { settingsStore } from '$lib/stores/settingsStore';
 	import toast from 'svelte-french-toast';
+	import { checkCredentials } from '$lib/api/clientHelpers';
 
 	let schoolnumber = '';
 	let username = '';
@@ -13,41 +14,28 @@
 		password = $settingsStore.credentials.password;
 	}
 
-	function save(e: Event) {
+	async function save(e: Event) {
 		e.preventDefault();
 
-		fetch('/api/credentials/verify', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				schoolnumber,
-				username,
-				password
-			})
-		})
-			.then((res) => {
-				if (res.ok) {
-					$settingsStore.credentials = {
-						schoolnumber,
-						username,
-						password
-					};
+		const isValid = await checkCredentials({
+			schoolnumber,
+			username,
+			password
+		});
 
-					goto('/', {
-						invalidateAll: true
-					}).then(() => {
-						toast.success('Zugangsdaten gespeichert');
-					});
-				} else {
-					toast.error('Die Zugangsdaten konnten nicht verifiziert werden');
-				}
-			})
-			.catch((err) => {
-				console.error(err);
-				toast.error('Die Zugangsdaten konnten nicht verifiziert werden (Unbekannter Fehler)');
-			});
+		if (!isValid) return toast.error('Die Zugangsdaten konnten nicht verifiziert werden');
+
+		$settingsStore.credentials = {
+			schoolnumber,
+			username,
+			password
+		};
+
+		goto('/', {
+			invalidateAll: true
+		}).then(() => {
+			toast.success('Zugangsdaten gespeichert');
+		});
 	}
 </script>
 
