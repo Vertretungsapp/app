@@ -1,7 +1,7 @@
+import { goto } from '$app/navigation';
 import { getCredentials } from '$lib/api/session';
 import { runMigrations } from '$lib/migration/migrator';
 import type { LayoutLoad } from './$types';
-import { goto } from '$app/navigation';
 
 export const ssr = false;
 export const prerender = 'auto';

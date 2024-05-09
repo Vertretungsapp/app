@@ -25,7 +25,7 @@
 		'flex flex-wrap items-center justify-center rounded-full p-2 text-xs transition-colors duration-75 ease-out',
 		$navigationStore.activeId === id && 'text-primary-500'
 	)}
-	href={!disabled ? href : "#"}
+	href={!disabled ? href : '#'}
 	on:click={onClick}
 >
 	<Icon {icon} label={text} scale={1.5} square />

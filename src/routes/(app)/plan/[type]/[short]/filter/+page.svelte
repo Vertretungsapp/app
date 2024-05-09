@@ -70,7 +70,7 @@
 			<FilterItem
 				{lesson}
 				filter={data.filter}
-				credentials={credentials}
+				{credentials}
 				bind:checked={filterItems[lesson.name + lesson.id]}
 			/>
 		{/each}
