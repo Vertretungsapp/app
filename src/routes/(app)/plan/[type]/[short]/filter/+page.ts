@@ -10,8 +10,8 @@ export const load: PageLoad = async ({ parent }) => {
 
 	if (!plan && type == PlanType.SCHOOL_CLASS) error(404, 'Plan not found');
 
-	let filter = getFilter(credentials.schoolnumber, short);
-	if (!filter) filter = createFilter(credentials.schoolnumber, short, type);
+	let filter = getFilter(credentials!.schoolnumber, short);
+	if (!filter) filter = createFilter(credentials!.schoolnumber, short, type);
 
 	switch (type) {
 		case PlanType.SCHOOL_CLASS:
@@ -22,13 +22,13 @@ export const load: PageLoad = async ({ parent }) => {
 
 		case PlanType.ROOM:
 			return {
-				timetable: generateRoomTimetable(credentials, filter.name),
+				timetable: generateRoomTimetable(credentials!, filter.name),
 				filter
 			};
 
 		case PlanType.TEACHER:
 			return {
-				timetable: generateTeacherTimetable(credentials, filter.name),
+				timetable: generateTeacherTimetable(credentials!, filter.name),
 				filter
 			};
 	}
