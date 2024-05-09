@@ -72,7 +72,7 @@ export const load: PageLoad = async ({ url, parent }) => {
 		end: getTimeFromParam(url.searchParams.get('end'))
 	};
 
-	const roomsMappedDate = getAllMappedDate(credentials, PlanType.ROOM) as Map<Date, Room[]>;
+	const roomsMappedDate = getAllMappedDate(credentials!, PlanType.ROOM) as Map<Date, Room[]>;
 
 	if (!params.start) return { rooms: [], planEmpty: false };
 
@@ -87,7 +87,7 @@ export const load: PageLoad = async ({ url, parent }) => {
 
 	// Since not every room is present in every plan, we also need to inject all other rooms of the school
 	// Which may are not present in the plan, but therefore definitely free
-	const allRooms = getAllRooms(credentials);
+	const allRooms = getAllRooms(credentials!);
 	allRooms.forEach((room) => {
 		if (array.find((r) => r.room === room)) return;
 		array.push({
