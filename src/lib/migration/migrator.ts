@@ -23,6 +23,7 @@ export function updateVersion(migrator: Migrator) {
 export async function runMigrations() {
 	if (Object.keys({ ...localStorage }).length === 0) {
 		localStorage.setItem('version', getLatestDataVersion().toString());
+		return;
 	}
 
 	const version = +(localStorage.getItem('version') || 0);
