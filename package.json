@@ -47,7 +47,7 @@
 		"@capacitor/core": "^5.7.5",
 		"@capacitor/ios": "^5.7.0",
 		"@fontsource/inter": "^5.0.18",
-		"@fontsource/poppins": "^5.0.8",
+		"@fontsource/poppins": "^5.0.14",
 		"@fortawesome/fontawesome-common-types": "^6.5.2",
 		"@fortawesome/free-brands-svg-icons": "^6.5.2",
 		"@fortawesome/free-regular-svg-icons": "^6.5.2",
