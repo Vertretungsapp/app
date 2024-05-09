@@ -9,7 +9,7 @@ export const load: PageLoad = async ({ parent }) => {
 
 	switch (type) {
 		case PlanType.SCHOOL_CLASS:
-			names.push(...getAllClasses(credentials));
+			names.push(...getAllClasses(credentials!));
 			names.sort((a, b) => {
 				const aNum = parseInt(a, 10);
 				const bNum = parseInt(b, 10);
@@ -23,12 +23,12 @@ export const load: PageLoad = async ({ parent }) => {
 			break;
 
 		case PlanType.ROOM:
-			names.push(...getAllRooms(credentials));
+			names.push(...getAllRooms(credentials!));
 			names.sort((a, b) => a.localeCompare(b));
 			break;
 
 		case PlanType.TEACHER:
-			names.push(...getAllTeachers(credentials));
+			names.push(...getAllTeachers(credentials!));
 			names.sort((a, b) => a.localeCompare(b));
 			break;
 	}

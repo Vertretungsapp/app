@@ -6,7 +6,7 @@ export const load: PageLoad = async ({ parent, url }) => {
 	const search = new URLSearchParams(url.search).get('q');
 
 	return {
-		items: getAll(credentials).map((entity) => ({
+		items: getAll(credentials!).map((entity) => ({
 			name: entity.name,
 			type: entity.type
 		})),

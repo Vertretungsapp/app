@@ -11,13 +11,14 @@
 	export let data: PageData;
 
 	let active = data.filter.active;
+	const credentials = data.credentials!;
 
 	// This contains the checked state of each filter item
 	// Yes, this is a bit hacky, but as long as it works...
 	const filterItems: Record<string, boolean> = {};
 
 	function toggleActive() {
-		setActive(data.credentials, data.filter.name, active);
+		setActive(credentials, data.filter.name, active);
 	}
 
 	function allActive() {
@@ -69,7 +70,7 @@
 			<FilterItem
 				{lesson}
 				filter={data.filter}
-				credentials={data.credentials}
+				{credentials}
 				bind:checked={filterItems[lesson.name + lesson.id]}
 			/>
 		{/each}

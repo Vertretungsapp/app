@@ -24,6 +24,8 @@ if (localStorage.getItem('ERROR_REPORTING') !== 'false') {
 			}
 		},
 
+		ignoreErrors: ['No credentials found'],
+
 		// If you don't want to use Session Replay, just remove the line below:
 		integrations: [replayIntegration()]
 	});
