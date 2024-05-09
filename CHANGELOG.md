@@ -17,6 +17,24 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.1.2](https://github.com/Vertretungsapp/app/compare/v1.1.1...v1.1.2) (2024-05-09)
+
+
+### 🪲 Bug fixes
+
+* improved credentials verification to prevent error flooding ([#229](https://github.com/Vertretungsapp/app/issues/229)) ([bd08fd1](https://github.com/Vertretungsapp/app/commit/bd08fd172f43aa9ecaaeaac8f82ec6a8c3daacdd))
+* Migrations should never trigger on first install ([#231](https://github.com/Vertretungsapp/app/issues/231)) ([f98658e](https://github.com/Vertretungsapp/app/commit/f98658e0aece2bd037a19a1c51a16f238f137ce6))
+
+
+### ⚙️ Dependencies
+
+* bump @fontsource/inter from 5.0.16 to 5.0.18 ([#224](https://github.com/Vertretungsapp/app/issues/224)) ([73db2f8](https://github.com/Vertretungsapp/app/commit/73db2f81c7451303eb77b685fcc6c566f97eeebc))
+* bump @fontsource/poppins from 5.0.8 to 5.0.14 ([#221](https://github.com/Vertretungsapp/app/issues/221)) ([1be8932](https://github.com/Vertretungsapp/app/commit/1be89329dc1609a40ebb89d6d310e0e39a356831))
+* bump @sveltejs/vite-plugin-svelte from 3.0.2 to 3.1.0 ([#222](https://github.com/Vertretungsapp/app/issues/222)) ([20fd632](https://github.com/Vertretungsapp/app/commit/20fd6326df4de192527aa60908b90669450081cd))
+* bump follow-redirects from 1.15.2 to 1.15.6 ([ef87e2e](https://github.com/Vertretungsapp/app/commit/ef87e2e689aa21a1b2c9b6a10eb5228d736ed486))
+* bump svelte-gestures from 1.5.2 to 4.0.0 ([#225](https://github.com/Vertretungsapp/app/issues/225)) ([d91ce2f](https://github.com/Vertretungsapp/app/commit/d91ce2f341787574ab8c86bf3405cf5e34f828a2))
+* bump typescript from 5.3.3 to 5.4.5 ([#223](https://github.com/Vertretungsapp/app/issues/223)) ([7b34d95](https://github.com/Vertretungsapp/app/commit/7b34d95aaaeaba9d13efa069212a7d588b00ff48))
+
 ## [1.1.1](https://github.com/Vertretungsapp/app/compare/v1.1.0...v1.1.1) (2024-05-05)
 
 
