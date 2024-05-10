@@ -1,6 +1,6 @@
 import { getCredentials } from '$lib/api/session';
 import * as Sentry from '@sentry/sveltekit';
-import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
+import { feedbackIntegration, handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
 
 const cred = getCredentials();
 
@@ -27,7 +27,15 @@ if (localStorage.getItem('ERROR_REPORTING') !== 'false') {
 		ignoreErrors: ['No credentials found'],
 
 		// If you don't want to use Session Replay, just remove the line below:
-		integrations: [replayIntegration()]
+		integrations: [
+			replayIntegration(),
+			feedbackIntegration({
+				colorScheme: 'system',
+				isEmailRequired: true,
+				autoInject: false,
+				showBranding: false
+			})
+		]
 	});
 }
 

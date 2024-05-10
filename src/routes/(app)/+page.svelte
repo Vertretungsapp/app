@@ -7,6 +7,7 @@
 	import type { PageData } from './$types';
 	import FavoritesDisplay from '$lib/components/favorites/FavoritesDisplay.svelte';
 	import NextLessonWidget from '$lib/components/favorites/NextLessonWidget.svelte';
+	import FeedbackButton from '$lib/components/common/FeedbackButton.svelte';
 
 	export let data: PageData;
 
@@ -30,7 +31,10 @@
 
 <div class="flex justify-between">
 	<h1 class="text-center">Vertretungsapp<span class="text-primary-500">.</span></h1>
-	<CredentialsLink />
+	<div class="flex gap-2">
+		<FeedbackButton />
+		<CredentialsLink />
+	</div>
 </div>
 
 <p>{greeting}</p>
