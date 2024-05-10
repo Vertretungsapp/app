@@ -6,9 +6,7 @@
 	import SettingsCheckbox from '$lib/components/settings/SettingsCheckbox.svelte';
 	import SettingsSection from '$lib/components/settings/SettingsSection.svelte';
 	import ColorPicker from 'svelte-awesome-color-picker';
-	import SettingsButton from '$lib/components/settings/SettingsButton.svelte';
 	import Icon from '$lib/components/common/Icon.svelte';
-	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
 	import { faFileImport } from '@fortawesome/free-solid-svg-icons/faFileImport';
 	import { faFileExport } from '@fortawesome/free-solid-svg-icons/faFileExport';
 	import { onMount } from 'svelte';

@@ -7,7 +7,6 @@
 	import type { PageData } from './$types';
 	import FavoritesDisplay from '$lib/components/favorites/FavoritesDisplay.svelte';
 	import NextLessonWidget from '$lib/components/favorites/NextLessonWidget.svelte';
-	import FeedbackButton from '$lib/components/common/FeedbackButton.svelte';
 
 	export let data: PageData;
 
