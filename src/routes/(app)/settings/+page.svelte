@@ -6,9 +6,7 @@
 	import SettingsCheckbox from '$lib/components/settings/SettingsCheckbox.svelte';
 	import SettingsSection from '$lib/components/settings/SettingsSection.svelte';
 	import ColorPicker from 'svelte-awesome-color-picker';
-	import SettingsButton from '$lib/components/settings/SettingsButton.svelte';
 	import Icon from '$lib/components/common/Icon.svelte';
-	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle';
 	import { faFileImport } from '@fortawesome/free-solid-svg-icons/faFileImport';
 	import { faFileExport } from '@fortawesome/free-solid-svg-icons/faFileExport';
 	import { onMount } from 'svelte';
@@ -20,6 +18,7 @@
 	import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
 	import SocialLink from '$lib/components/settings/info/SocialLink.svelte';
 	import type { PageData } from './$types';
+	import FeedbackButton from '$lib/components/common/FeedbackButton.svelte';
 
 	export let data: PageData;
 
@@ -77,6 +76,7 @@
 <div class="mb-4 flex justify-between">
 	<h1>Einstellungen</h1>
 	<div class="flex gap-2">
+		<FeedbackButton />
 		<CredentialsLink />
 	</div>
 </div>
