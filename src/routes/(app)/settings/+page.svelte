@@ -13,6 +13,15 @@
 	import { faFileExport } from '@fortawesome/free-solid-svg-icons/faFileExport';
 	import { onMount } from 'svelte';
 	import SettingsThemingDefaultColorSelector from '$lib/components/settings/SettingsThemingDefaultColorSelector.svelte';
+	import { format } from 'date-fns';
+	import { faGlobe } from '@fortawesome/free-solid-svg-icons/faGlobe';
+	import { faDiscord } from '@fortawesome/free-brands-svg-icons/faDiscord';
+	import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
+	import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
+	import SocialLink from '$lib/components/settings/info/SocialLink.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	function clrCache() {
 		clearCache();
@@ -68,12 +77,6 @@
 <div class="mb-4 flex justify-between">
 	<h1>Einstellungen</h1>
 	<div class="flex gap-2">
-		<a
-			class="bg-clickable flex h-8 w-8 items-center justify-center rounded-lg p-2"
-			href="/settings/info"
-		>
-			<Icon icon={faInfoCircle} scale={1.1} />
-		</a>
 		<CredentialsLink />
 	</div>
 </div>
@@ -133,10 +136,44 @@
 			on:input={importSettings}
 		/>
 	</SettingsSection>
-
-	<SettingsSection>
-		<svelte:fragment slot="title">Entwickleroptionen</svelte:fragment>
-
-		<SettingsButton on:click={clrCache}>Clear Cache</SettingsButton>
-	</SettingsSection>
 </div>
+
+<section class="mt-8 text-center">
+	<h2>Vertretungsapp<span class="text-primary-500">.</span></h2>
+	<p>Version: {data.version}</p>
+	<p>Build-Nummer: {data.sha}</p>
+	<p>Date: {format(new Date(data.date), 'dd.MM.yyyy HH:mm')}</p>
+</section>
+
+<section class="mt-4 flex items-center justify-center gap-3">
+	<SocialLink href="https://www.vertretungsapp.de" icon={faGlobe} />
+	<SocialLink href="https://www.vertretungsapp.de/discord" icon={faDiscord} />
+	<SocialLink href="https://www.vertretungsapp.de/github" icon={faGithub} />
+	<SocialLink href="mailto:support@vertretungsapp.de" icon={faEnvelope} />
+</section>
+
+<section class="text-disabled mt-4 flex w-full justify-center gap-2 text-xs font-bold">
+	<a href="https://www.vertretungsapp.de/imprint" target="_blank">Impressum</a>
+	<a href="https://www.vertretungsapp.de/privacy" target="_blank">Datenschutzerklärung</a>
+</section>
+
+<section class="text-disabled mt-8 text-xs">
+	<h3>Debug Information</h3>
+	<div class="font-mono">
+		<p>User-Agent: {window.navigator.userAgent}</p>
+		<p>System time: {new Date()}</p>
+		<p>Locale: {window.navigator.language}</p>
+		<p>Service Workers:</p>
+		<ul class="list-disc pl-4">
+			{#each data.serviceWorkers as worker}
+				<li>{worker.scope} - {worker.active}</li>
+			{/each}
+		</ul>
+	</div>
+</section>
+
+<section class="">
+	<h3 class="text-disabled">Entwickleroptionen</h3>
+
+	<button class="bg-clickable w-1/2 rounded-lg p-1" on:click={clrCache}> Clear Cache </button>
+</section>
