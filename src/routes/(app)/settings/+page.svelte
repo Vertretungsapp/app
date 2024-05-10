@@ -20,6 +20,7 @@
 	import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
 	import SocialLink from '$lib/components/settings/info/SocialLink.svelte';
 	import type { PageData } from './$types';
+	import FeedbackButton from '$lib/components/common/FeedbackButton.svelte';
 
 	export let data: PageData;
 
@@ -77,6 +78,7 @@
 <div class="mb-4 flex justify-between">
 	<h1>Einstellungen</h1>
 	<div class="flex gap-2">
+		<FeedbackButton />
 		<CredentialsLink />
 	</div>
 </div>

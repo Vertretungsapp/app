@@ -32,7 +32,6 @@
 <div class="flex justify-between">
 	<h1 class="text-center">Vertretungsapp<span class="text-primary-500">.</span></h1>
 	<div class="flex gap-2">
-		<FeedbackButton />
 		<CredentialsLink />
 	</div>
 </div>
