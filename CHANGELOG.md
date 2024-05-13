@@ -17,6 +17,23 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.2.0](https://github.com/Vertretungsapp/app/compare/v1.1.2...v1.2.0) (2024-05-13)
+
+
+### 📕 Features
+
+* added feedback button using Sentry integration ([#233](https://github.com/Vertretungsapp/app/issues/233)) ([cd8020b](https://github.com/Vertretungsapp/app/commit/cd8020bc3906d11e402dd732bebd564048dc8700))
+
+
+### 🔄 Changes
+
+* redesigned and migrated settings and info page ([1b2dd59](https://github.com/Vertretungsapp/app/commit/1b2dd59d95ff5babc23c4b395b03c16b88165b36))
+
+
+### 🪲 Bug fixes
+
+* info couldn't load if navigator.serviceWorker is undefined ([#236](https://github.com/Vertretungsapp/app/issues/236)) ([2447072](https://github.com/Vertretungsapp/app/commit/24470721b9c4a540b5002b35e9e4e6e8c257d0b1))
+
 ## [1.1.2](https://github.com/Vertretungsapp/app/compare/v1.1.1...v1.1.2) (2024-05-09)
 
 
