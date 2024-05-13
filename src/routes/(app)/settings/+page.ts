@@ -1,13 +1,28 @@
+import { browser } from '$app/environment';
 import type { PageLoad } from './$types';
+
+type ServiceWorker = {
+	scope: string;
+	active: string | null;
+};
 
 export const load: PageLoad = async ({ fetch }) => {
 	const response = await fetch('/info.json');
-	const serviceWorkers = await navigator.serviceWorker.getRegistrations();
+	const serviceWorkers: ServiceWorker[] = [];
+
+	if (browser && 'serviceWorker' in navigator) {
+		await navigator.serviceWorker.getRegistrations().then((registrations) => {
+			for (const registration of registrations) {
+				serviceWorkers.push({
+					scope: registration.scope,
+					active: registration.active?.state || null
+				});
+			}
+		});
+	}
+
 	return {
-		serviceWorkers: serviceWorkers.map((sw) => ({
-			scope: sw.scope,
-			active: sw.active?.state
-		})),
+		serviceWorkers,
 		...(await response.json())
 	};
 };
