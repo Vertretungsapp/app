@@ -3,6 +3,8 @@
 	import { settingsStore } from '$lib/stores/settingsStore';
 	import toast from 'svelte-french-toast';
 	import { checkCredentials } from '$lib/api/clientHelpers';
+	import { faLifeRing } from '@fortawesome/free-regular-svg-icons/faLifeRing';
+	import Icon from '$lib/components/common/Icon.svelte';
 
 	let schoolnumber = '';
 	let username = '';
@@ -81,5 +83,12 @@
 
 	<div class="col-span-3 mt-4 flex w-full justify-center">
 		<button type="submit" class="bg-clickable rounded-lg px-4 py-2">Speichern</button>
+	</div>
+
+	<div class="text-sm text-disabled w-full md:flex gap-2 justify-center items-center col-span-3 text-center mt-8">
+		<Icon icon={faLifeRing} />
+		<div>
+			Bei Problemen oder Fragen zur Anmeldung kontaktiere doch den Support unter <a href="mailto:support@vertretungsapp.de" class="text-primary-700">support@vertretungsapp.de</a>
+		</div>
 	</div>
 </form>
