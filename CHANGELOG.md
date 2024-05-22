@@ -17,6 +17,14 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.2.1](https://github.com/Vertretungsapp/app/compare/v1.2.0...v1.2.1) (2024-05-22)
+
+
+### 🔧 Other changes
+
+* added support email to login screen ([72a64fe](https://github.com/Vertretungsapp/app/commit/72a64fec713468d6440b1b9f641d30ceea3ea260))
+* format files ([64d812c](https://github.com/Vertretungsapp/app/commit/64d812cd683aa8206d7c961640222c7feee5745e))
+
 ## [1.2.0](https://github.com/Vertretungsapp/app/compare/v1.1.2...v1.2.0) (2024-05-13)
 
 
