@@ -85,10 +85,15 @@
 		<button type="submit" class="bg-clickable rounded-lg px-4 py-2">Speichern</button>
 	</div>
 
-	<div class="text-sm text-disabled w-full md:flex gap-2 justify-center items-center col-span-3 text-center mt-8">
+	<div
+		class="text-disabled col-span-3 mt-8 w-full items-center justify-center gap-2 text-center text-sm md:flex"
+	>
 		<Icon icon={faLifeRing} />
 		<div>
-			Bei Problemen oder Fragen zur Anmeldung kontaktiere doch den Support unter <a href="mailto:support@vertretungsapp.de" class="text-primary-700">support@vertretungsapp.de</a>
+			Bei Problemen oder Fragen zur Anmeldung kontaktiere doch den Support unter <a
+				href="mailto:support@vertretungsapp.de"
+				class="text-primary-700">support@vertretungsapp.de</a
+			>
 		</div>
 	</div>
 </form>
