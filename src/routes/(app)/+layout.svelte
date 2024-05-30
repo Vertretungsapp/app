@@ -5,7 +5,12 @@
 	import { onMount } from 'svelte';
 	import { setPrimaryColor } from '$lib/theming/primaryColor';
 	import PageLoadingBar from '$lib/components/common/PageLoadingBar.svelte';
-	import { navigating } from '$app/stores';
+	import { navigating, page } from '$app/stores';
+	import { fly, fade } from 'svelte/transition';
+	import type { LayoutData } from './$types';
+	import { cubicIn, cubicOut } from 'svelte/easing';
+
+	export let data: LayoutData;
 
 	onMount(() => {
 		settingsStore.update((value) => ({
@@ -43,4 +48,8 @@
 	<PageLoadingBar />
 {/if}
 
-<slot />
+{#key $page.url.pathname}
+	<div class="h-full" in:fly={{ easing: cubicOut, x: 10, duration: 200 }}>
+		<slot />
+	</div>
+{/key}
