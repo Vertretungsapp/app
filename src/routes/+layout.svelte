@@ -5,7 +5,7 @@
 	import '@fontsource/poppins/latin.css';
 </script>
 
-<div class="flex h-screen max-h-screen w-full flex-col justify-between">
+<div class="flex h-dvh max-h-screen w-full flex-col justify-between">
 	<main class="relative grow overflow-auto px-4 pt-8">
 		<slot />
 	</main>
