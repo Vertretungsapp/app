@@ -7,7 +7,7 @@
 	import PageLoadingBar from '$lib/components/common/PageLoadingBar.svelte';
 	import { navigating, page } from '$app/stores';
 	import { fly } from 'svelte/transition';
-	import {  cubicOut } from 'svelte/easing';
+	import { cubicOut } from 'svelte/easing';
 
 	onMount(() => {
 		settingsStore.update((value) => ({
