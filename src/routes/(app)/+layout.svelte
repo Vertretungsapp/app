@@ -46,7 +46,7 @@
 {/if}
 
 {#key $page.url.pathname}
-	<div class="h-full" in:fly={{ easing: cubicOut, x: 10, duration: 200 }}>
+	<div class="h-full" id="main-frame" in:fly={{ easing: cubicOut, x: 10, duration: 200 }}>
 		<slot />
 	</div>
 {/key}

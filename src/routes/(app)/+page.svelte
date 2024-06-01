@@ -7,6 +7,7 @@
 	import type { PageData } from './$types';
 	import FavoritesDisplay from '$lib/components/favorites/FavoritesDisplay.svelte';
 	import NextLessonWidget from '$lib/components/favorites/NextLessonWidget.svelte';
+	import { twMerge } from 'tailwind-merge';
 
 	export let data: PageData;
 
@@ -23,8 +24,19 @@
 		greeting = 'Schlaf gut 🌕';
 	}
 
+	let searchButtonSticky = false;
+
 	onMount(() => {
 		$navigationStore.activeId = 0;
+
+		const mainFrame = document.getElementById('main-frame');
+		if (!mainFrame) return;
+		const mustSticky = () => mainFrame.clientHeight < mainFrame.scrollHeight;
+
+		searchButtonSticky = mustSticky();
+		window.onresize = () => {
+			searchButtonSticky = mustSticky();
+		};
 	});
 </script>
 
@@ -60,8 +72,13 @@
 <h3>Deine Favoriten</h3>
 <FavoritesDisplay favorites={data.favorites} />
 
-<div class="absolute bottom-2 left-0 flex w-full justify-center">
-	<a class="bg-clickable rounded-full p-3" href="/search">
+<div
+	class={twMerge(
+		'bottom-2 left-0 flex w-full justify-center',
+		searchButtonSticky ? 'sticky' : 'absolute'
+	)}
+>
+	<a class="bg-clickable rounded-full border-4 border-background p-3" href="/search">
 		<Icon icon={faMagnifyingGlass} scale={1} />
 	</a>
 </div>
