@@ -6,11 +6,8 @@
 	import { setPrimaryColor } from '$lib/theming/primaryColor';
 	import PageLoadingBar from '$lib/components/common/PageLoadingBar.svelte';
 	import { navigating, page } from '$app/stores';
-	import { fly, fade } from 'svelte/transition';
-	import type { LayoutData } from './$types';
-	import { cubicIn, cubicOut } from 'svelte/easing';
-
-	export let data: LayoutData;
+	import { fly } from 'svelte/transition';
+	import {  cubicOut } from 'svelte/easing';
 
 	onMount(() => {
 		settingsStore.update((value) => ({

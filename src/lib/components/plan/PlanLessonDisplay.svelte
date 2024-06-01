@@ -7,7 +7,7 @@
 	import { faBan } from '@fortawesome/free-solid-svg-icons/faBan';
 	import Icon from '$lib/components/common/Icon.svelte';
 	import { fly } from 'svelte/transition';
-	import { cubicInOut, cubicOut } from 'svelte/easing';
+	import { cubicOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
 
 	export let lessons: PlannedLesson[] = [];
