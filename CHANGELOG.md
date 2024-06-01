@@ -17,6 +17,19 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.3.0](https://github.com/Vertretungsapp/app/compare/v1.2.1...v1.3.0) (2024-06-01)
+
+
+### 📕 Features
+
+* added animations on page transition and plan items ([#240](https://github.com/Vertretungsapp/app/issues/240)) ([a7cd80a](https://github.com/Vertretungsapp/app/commit/a7cd80adb5c9f32fa9736fbdf7c090602365917f))
+
+
+### 🪲 Bug fixes
+
+* search button was not always on the bottom & visible ([c9019cb](https://github.com/Vertretungsapp/app/commit/c9019cb5ef29a461bbef8e9a8691dec3be0b4351))
+* **style:** changed to dynamic height (navigation bar invisible on ipad) ([c5e16f0](https://github.com/Vertretungsapp/app/commit/c5e16f08efa152e402d210bec507072208e9ddd5))
+
 ## [1.2.1](https://github.com/Vertretungsapp/app/compare/v1.2.0...v1.2.1) (2024-05-22)
 
 
