@@ -17,6 +17,13 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.3.1](https://github.com/Vertretungsapp/app/compare/v1.3.0...v1.3.1) (2024-06-03)
+
+
+### 🪲 Bug fixes
+
+* items in next lesson view were splitted ([5bedfbe](https://github.com/Vertretungsapp/app/commit/5bedfbe82bb0239b8c4ead35159a1324d71b8f94))
+
 ## [1.3.0](https://github.com/Vertretungsapp/app/compare/v1.2.1...v1.3.0) (2024-06-01)
 
 
