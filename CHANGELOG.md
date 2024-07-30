@@ -17,6 +17,26 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.3.2](https://github.com/Vertretungsapp/app/compare/v1.3.1...v1.3.2) (2024-07-30)
+
+
+### 🪲 Bug fixes
+
+* prevent cache to be cleared, if all plans are older than 14 days ([#253](https://github.com/Vertretungsapp/app/issues/253)) ([bc83ae3](https://github.com/Vertretungsapp/app/commit/bc83ae3e90279c2847d50f517f27a7bcec6e5eb1))
+
+
+### ⚙️ Dependencies
+
+* bump @capacitor/android from 5.7.0 to 5.7.6 ([#248](https://github.com/Vertretungsapp/app/issues/248)) ([8f7f9a3](https://github.com/Vertretungsapp/app/commit/8f7f9a3055154916073a2608f88298ca4c532a92))
+* bump @capacitor/android from 5.7.6 to 5.7.7 ([#256](https://github.com/Vertretungsapp/app/issues/256)) ([62af645](https://github.com/Vertretungsapp/app/commit/62af6457cc7a493f9173e1087b9d6602a8a1ae12))
+* bump @capacitor/ios from 5.7.0 to 5.7.6 ([#249](https://github.com/Vertretungsapp/app/issues/249)) ([c2b768e](https://github.com/Vertretungsapp/app/commit/c2b768e709ec9f1de891dcab236f1a436d100162))
+* bump @capacitor/ios from 5.7.6 to 5.7.7 ([#255](https://github.com/Vertretungsapp/app/issues/255)) ([71da0fa](https://github.com/Vertretungsapp/app/commit/71da0fa1a4228710ed121bd8a8c88bf1a45ec1b1))
+* bump braces from 3.0.2 to 3.0.3 in the npm_and_yarn group ([#257](https://github.com/Vertretungsapp/app/issues/257)) ([786d88b](https://github.com/Vertretungsapp/app/commit/786d88b9974d593585d5c730b4fc42608eb51dbf))
+* bump fast-xml-parser from 4.3.4 to 4.4.1 in the npm_and_yarn group ([#252](https://github.com/Vertretungsapp/app/issues/252)) ([8cdf239](https://github.com/Vertretungsapp/app/commit/8cdf2399781d4e4a3da93b907e9f5840db6886d5))
+* bump prettier-plugin-tailwindcss from 0.5.11 to 0.6.5 ([#250](https://github.com/Vertretungsapp/app/issues/250)) ([c9f7667](https://github.com/Vertretungsapp/app/commit/c9f7667340168ce4284df758840bc271d6624ad8))
+* bump svelte-check from 3.6.4 to 3.8.4 ([#247](https://github.com/Vertretungsapp/app/issues/247)) ([6087b17](https://github.com/Vertretungsapp/app/commit/6087b170944c2969c691ea5264a643c1277b0c86))
+* bump tailwind-merge from 2.2.1 to 2.3.0 ([#243](https://github.com/Vertretungsapp/app/issues/243)) ([9f80bc9](https://github.com/Vertretungsapp/app/commit/9f80bc926b82a5b524d5ee8fa24fb5f64cd00fae))
+
 ## [1.3.1](https://github.com/Vertretungsapp/app/compare/v1.3.0...v1.3.1) (2024-06-03)
 
 
