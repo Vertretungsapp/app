@@ -41,14 +41,18 @@ export function removeStale(days: number, holidays: Date[] = []): void {
 	const startDate = now;
 
 	// Check if today is a holiday or weekend
-	const isHoliday = holidays.some(holiday => holiday.toDateString() === now.toDateString());
+	const isHoliday = holidays.some((holiday) => holiday.toDateString() === now.toDateString());
 	const isWeekend = now.getDay() === 0 || now.getDay() === 6;
 
 	if (isHoliday || isWeekend) {
 		// Find the most recent school day
 		do {
 			startDate.setDate(startDate.getDate() - 1);
-		} while (holidays.some(holiday => holiday.toDateString() === startDate.toDateString()) || startDate.getDay() === 0 || startDate.getDay() === 6);
+		} while (
+			holidays.some((holiday) => holiday.toDateString() === startDate.toDateString()) ||
+			startDate.getDay() === 0 ||
+			startDate.getDay() === 6
+		);
 	}
 
 	for (const schoolnumber in cache) {
