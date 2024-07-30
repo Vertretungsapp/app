@@ -17,6 +17,13 @@
 - bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
 - bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
+## [1.3.3](https://github.com/Vertretungsapp/app/compare/v1.3.2...v1.3.3) (2024-07-30)
+
+
+### ⚙️ Dependencies
+
+* bump indiware-api from 1.2.1 to 1.2.3 ([260ba57](https://github.com/Vertretungsapp/app/commit/260ba57e1ea1b35380d6f2229d9afdbdf3383e21))
+
 ## [1.3.2](https://github.com/Vertretungsapp/app/compare/v1.3.1...v1.3.2) (2024-07-30)
 
 
