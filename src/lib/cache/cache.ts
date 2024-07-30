@@ -32,15 +32,35 @@ export function clearCache(): void {
 /**
  * Removes all plans that are older than the given amount of days
  * @param {number} days The amount of days
+ * @param {Date[]} holidays The holidays to exclude, defaults to []
  * @returns {void}
  */
-export function removeStale(days: number): void {
+export function removeStale(days: number, holidays: Date[] = []): void {
 	const cache = getCache();
 	const now = new Date();
+	const startDate = now;
+
+	// Check if today is a holiday or weekend
+	const isHoliday = holidays.some((holiday) => holiday.toDateString() === now.toDateString());
+	const isWeekend = now.getDay() === 0 || now.getDay() === 6;
+
+	if (isHoliday || isWeekend) {
+		// Find the most recent school day
+		do {
+			startDate.setDate(startDate.getDate() - 1);
+		} while (
+			holidays.some((holiday) => holiday.toDateString() === startDate.toDateString()) ||
+			startDate.getDay() === 0 ||
+			startDate.getDay() === 6
+		);
+	}
+
 	for (const schoolnumber in cache) {
-		cache[schoolnumber] = cache[schoolnumber].filter((plan) => {
+		cache[schoolnumber] = cache[schoolnumber].filter((plan, index, array) => {
 			const date = new Date(plan.date);
-			return now.getTime() - date.getTime() < 1000 * 60 * 60 * 24 * days;
+			const isWithinRange = startDate.getTime() - date.getTime() < 1000 * 60 * 60 * 24 * days;
+			// Ensure at least one plan remains in the cache
+			return isWithinRange || array.length === 1;
 		});
 	}
 	setCache(cache);
