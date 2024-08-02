@@ -59,7 +59,7 @@
 
 	<div class="grid grid-cols-3 gap-2 py-3">
 		<FilterQuickButton icon={faShuffle} on:click={allInvert}>Umkehren</FilterQuickButton>
-		
+
 		<FilterQuickButton icon={faCheckCircle} on:click={allActive}>Alle</FilterQuickButton>
 
 		<FilterQuickButton icon={faCircle} on:click={allInactive}>Nichts</FilterQuickButton>
