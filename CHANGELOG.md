@@ -1,22 +1,3 @@
-### [0.3.2](https://github.com/Vertretungsapp/app/compare/v0.3.1...v0.3.2) (2023-07-08)
-
-### 🖌️ Styles
-
-- New Splash Screens ([#85](https://github.com/Vertretungsapp/app/issues/85)) ([0cb9e4f](https://github.com/Vertretungsapp/app/commit/0cb9e4ffb8f97db04b6aeeefeea296f676163b8c))
-
-### ⚙️ Dependencies
-
-- bump @capacitor/core from 5.0.5 to 5.1.1 ([#91](https://github.com/Vertretungsapp/app/issues/91)) ([d036365](https://github.com/Vertretungsapp/app/commit/d036365e2ddfe4b640d83d80745d1a0ea270999c))
-- bump @sveltejs/kit from 1.20.4 to 1.20.5 ([#80](https://github.com/Vertretungsapp/app/issues/80)) ([b792616](https://github.com/Vertretungsapp/app/commit/b792616257610b14bee9be66f61e4b55cbc92406))
-- bump @typescript-eslint/eslint-plugin ([#82](https://github.com/Vertretungsapp/app/issues/82)) ([e2c4703](https://github.com/Vertretungsapp/app/commit/e2c4703e0fba76fa1072093890a5f1ce84e95947))
-- bump @typescript-eslint/eslint-plugin ([#92](https://github.com/Vertretungsapp/app/issues/92)) ([68b86fa](https://github.com/Vertretungsapp/app/commit/68b86fae0d121584ed146c0e338655ac533b3b9d))
-- bump eslint-plugin-svelte from 2.30.0 to 2.31.1 ([#81](https://github.com/Vertretungsapp/app/issues/81)) ([887eb1b](https://github.com/Vertretungsapp/app/commit/887eb1b859cef8eaf223be28aad06260ecc67289))
-- bump eslint-plugin-svelte from 2.31.1 to 2.32.2 ([#89](https://github.com/Vertretungsapp/app/issues/89)) ([0ecf44c](https://github.com/Vertretungsapp/app/commit/0ecf44c48a9af5e30f24e1671831e3c7c0f0498e))
-- bump svelte from 3.59.1 to 4.0.0 ([#83](https://github.com/Vertretungsapp/app/issues/83)) ([06d1094](https://github.com/Vertretungsapp/app/commit/06d10949c886e73107d6863304ec5cbde16c0c10))
-- bump svelte-check from 3.4.3 to 3.4.4 ([#79](https://github.com/Vertretungsapp/app/issues/79)) ([59776a9](https://github.com/Vertretungsapp/app/commit/59776a965f21d2c7e1b460db1cd0ce91ddbc149a))
-- bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
-- bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
-
 ## [1.3.3](https://github.com/Vertretungsapp/app/compare/v1.3.2...v1.3.3) (2024-07-30)
 
 
@@ -241,6 +222,25 @@
 * switched to vercel's CI ([4c1a24c](https://github.com/Vertretungsapp/app/commit/4c1a24cba82d356e923388d95cea005311ef19e9))
 * update version of gh actions ([c9de889](https://github.com/Vertretungsapp/app/commit/c9de88942d425f428ee20e866636b69f14370d47))
 * updated github action release pipeline ([3501ee8](https://github.com/Vertretungsapp/app/commit/3501ee81be041c449808a893aacdac6dea360dee))
+
+### [0.3.2](https://github.com/Vertretungsapp/app/compare/v0.3.1...v0.3.2) (2023-07-08)
+
+### 🖌️ Styles
+
+- New Splash Screens ([#85](https://github.com/Vertretungsapp/app/issues/85)) ([0cb9e4f](https://github.com/Vertretungsapp/app/commit/0cb9e4ffb8f97db04b6aeeefeea296f676163b8c))
+
+### ⚙️ Dependencies
+
+- bump @capacitor/core from 5.0.5 to 5.1.1 ([#91](https://github.com/Vertretungsapp/app/issues/91)) ([d036365](https://github.com/Vertretungsapp/app/commit/d036365e2ddfe4b640d83d80745d1a0ea270999c))
+- bump @sveltejs/kit from 1.20.4 to 1.20.5 ([#80](https://github.com/Vertretungsapp/app/issues/80)) ([b792616](https://github.com/Vertretungsapp/app/commit/b792616257610b14bee9be66f61e4b55cbc92406))
+- bump @typescript-eslint/eslint-plugin ([#82](https://github.com/Vertretungsapp/app/issues/82)) ([e2c4703](https://github.com/Vertretungsapp/app/commit/e2c4703e0fba76fa1072093890a5f1ce84e95947))
+- bump @typescript-eslint/eslint-plugin ([#92](https://github.com/Vertretungsapp/app/issues/92)) ([68b86fa](https://github.com/Vertretungsapp/app/commit/68b86fae0d121584ed146c0e338655ac533b3b9d))
+- bump eslint-plugin-svelte from 2.30.0 to 2.31.1 ([#81](https://github.com/Vertretungsapp/app/issues/81)) ([887eb1b](https://github.com/Vertretungsapp/app/commit/887eb1b859cef8eaf223be28aad06260ecc67289))
+- bump eslint-plugin-svelte from 2.31.1 to 2.32.2 ([#89](https://github.com/Vertretungsapp/app/issues/89)) ([0ecf44c](https://github.com/Vertretungsapp/app/commit/0ecf44c48a9af5e30f24e1671831e3c7c0f0498e))
+- bump svelte from 3.59.1 to 4.0.0 ([#83](https://github.com/Vertretungsapp/app/issues/83)) ([06d1094](https://github.com/Vertretungsapp/app/commit/06d10949c886e73107d6863304ec5cbde16c0c10))
+- bump svelte-check from 3.4.3 to 3.4.4 ([#79](https://github.com/Vertretungsapp/app/issues/79)) ([59776a9](https://github.com/Vertretungsapp/app/commit/59776a965f21d2c7e1b460db1cd0ce91ddbc149a))
+- bump tslib from 2.5.3 to 2.6.0 ([#90](https://github.com/Vertretungsapp/app/issues/90)) ([b63edea](https://github.com/Vertretungsapp/app/commit/b63edeab2ec0c08349a4e1a62ed1580aa4674e5a))
+- bump typescript from 5.1.3 to 5.1.6 ([#86](https://github.com/Vertretungsapp/app/issues/86)) ([80856f6](https://github.com/Vertretungsapp/app/commit/80856f635862c0158a749edef3cdaa182e6584df))
 
 ### [0.3.1](https://github.com/Vertretungsapp/app/compare/v0.3.1-beta.0...v0.3.1) (2023-06-19)
 
