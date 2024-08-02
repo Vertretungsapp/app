@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { twMerge } from 'tailwind-merge';
 	import Icon from '../common/Icon.svelte';
@@ -24,6 +24,7 @@
 		// It also keeps the functionality to fetch the newest plan
 		try {
 			forceReloadUrl.searchParams.set('date', formatDate($page.data.date));
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch (e) {
 			// ignore
 		}
