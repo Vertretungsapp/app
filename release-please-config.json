@@ -11,21 +11,21 @@
 	"draft-pull-request": true,
 	"pull-request-title-pattern": "chore: release ${version}",
 	"pull-request-header": "📦 Release PR",
-	"pull-request-footer": "🤖 This Pull-Request was automatically generated. To release the version, please merge the Pull-Request.",
+	"pull-request-footer": "🤖 Dieser Pull-Request wurde automatisch generiert. Um die Version zu veröffentlichen, bitte den Pull-Request mergen.",
 
 	"include-component-in-tag": false,
 
 	"changelog-sections": [
 		{ "type": "feat", "section": "📕 Features" },
-		{ "type": "change", "section": "🔄 Changes" },
-		{ "type": "fix", "section": "🪲 Bug fixes" },
-		{ "type": "docs", "section": "📝 Documentation" },
-		{ "type": "style", "section": "🎨 Design changes" },
+		{ "type": "change", "section": "🔄 Änderungen" },
+		{ "type": "fix", "section": "🪲 Fehlerbehebungen" },
+		{ "type": "docs", "section": "📝 Dokumentation" },
+		{ "type": "style", "section": "🎨 Design-Änderungen" },
 		{ "type": "refactor", "section": "🔧 Code-Refactoring" },
-		{ "type": "deps", "section": "⚙️ Dependencies" },
-		{ "type": "chore", "section": "🔧 Other changes" },
-		{ "type": "test", "section": "🧪 Testing changes" },
-		{ "type": "ci", "section": "🚀 CI/CD changes" }
+		{ "type": "deps", "section": "⚙️ Abhängigkeiten" },
+		{ "type": "chore", "section": "🔧 Sonstige Änderungen" },
+		{ "type": "test", "section": "🧪 Test-Änderungen" },
+		{ "type": "ci", "section": "🚀 CI/CD-Änderungen" }
 	],
 	"packages": {
 		".": {}
