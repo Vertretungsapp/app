@@ -45,6 +45,7 @@
 					duration: 2000
 				});
 				setTimeout(() => location.reload(), 1000);
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			} catch (e) {
 				toast.error('Fehler beim Importieren der Einstellungen', {
 					duration: 2000
