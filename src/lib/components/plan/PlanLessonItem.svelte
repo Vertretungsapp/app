@@ -50,7 +50,7 @@
 						{slot1.value || ''}
 					</p>
 
-					<p class={twMerge('leading-tight', slot2.changed && 'text-red-600')}>
+					<p class={twMerge('leading-tight text-gray-500', slot2.changed && 'text-red-600')}>
 						{slot2.value || ''}
 					</p>
 				</div>
