@@ -44,7 +44,7 @@
 
 <div
 	class="flex h-full max-h-full flex-col"
-	use:swipe={{ timeframe: 300, minSwipeDistance: 60, touchAction: 'pan-y' }}
+	use:swipe={{ timeframe: 600, minSwipeDistance: 20, touchAction: 'pan-y' }}
 	on:swipe={handleSwipe}
 >
 	<PlanHeaderControls filterActive={data.filter.active} isFavorite={data.isFavorite} />
