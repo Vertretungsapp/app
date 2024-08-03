@@ -58,3 +58,7 @@
 <img src="docs/install/ios/5.png" width="300px" alt="Hinzufügen">
 
 ### 6. Die Vertretungsapp. wurde erfolgreich installiert und befindet sich auf deinem Home-Bildschirm 🎉
+
+---
+
+Credits: [annhilati](https://github.com/annhilati) (Android), [SachsenspieltCoding](https://github.com/SachsenspieltCoding/) (iOS)
