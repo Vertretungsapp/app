@@ -21,11 +21,11 @@
 		{ "type": "fix", "section": "🪲 Fehlerbehebungen" },
 		{ "type": "docs", "section": "📝 Dokumentation" },
 		{ "type": "style", "section": "🎨 Design-Änderungen" },
-		{ "type": "refactor", "section": "🔧 Code-Refactoring" },
-		{ "type": "deps", "section": "⚙️ Abhängigkeiten" },
 		{ "type": "chore", "section": "🔧 Sonstige Änderungen" },
+		{ "type": "refactor", "section": "🔧 Code-Refactoring" },
 		{ "type": "test", "section": "🧪 Test-Änderungen" },
-		{ "type": "ci", "section": "🚀 CI/CD-Änderungen" }
+		{ "type": "ci", "section": "🚀 CI/CD-Änderungen" },
+		{ "type": "deps", "section": "⚙️ Abhängigkeiten" }
 	],
 	"packages": {
 		".": {}
