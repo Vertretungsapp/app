@@ -5,6 +5,44 @@
 
 * bump indiware-api from 1.2.1 to 1.2.3 ([260ba57](https://github.com/Vertretungsapp/app/commit/260ba57e1ea1b35380d6f2229d9afdbdf3383e21))
 
+## [1.3.4](https://github.com/Vertretungsapp/app/compare/v1.3.3...v1.3.4) (2024-08-03)
+
+
+### 🔄 Änderungen
+
+* Reihenfolge der Filter-Schnellaktionen geändert ([#274](https://github.com/Vertretungsapp/app/issues/274)) ([e2f007e](https://github.com/Vertretungsapp/app/commit/e2f007ea01ebb9f952c83b2f5182158a6e487d0e))
+
+
+### 📝 Dokumentation
+
+* Installations-Anleitung hinzugefügt ([#275](https://github.com/Vertretungsapp/app/issues/275)) ([1499278](https://github.com/Vertretungsapp/app/commit/1499278fd277566498886dc32d4feeadba8470b5))
+
+
+### 🎨 Design-Änderungen
+
+* Bessere Lesbarkeit des Lehrerkürzels innerhalb einer Stunde ([#269](https://github.com/Vertretungsapp/app/issues/269)) ([d9e7b25](https://github.com/Vertretungsapp/app/commit/d9e7b25daa988ebb72caa6141e5b73467292d613))
+
+
+### 🔧 Sonstige Änderungen
+
+* Überflüssige Dateien entfernt ([5474262](https://github.com/Vertretungsapp/app/commit/54742622653abdf0f2a45950d632d9cd4946a9a8))
+* Übersetzung der Changelogs ins Deutsche ([#273](https://github.com/Vertretungsapp/app/issues/273)) ([868229c](https://github.com/Vertretungsapp/app/commit/868229cffcb7575f7a41db3707fd7e33285ee7b8))
+* Veränderte Reihenfolge der Abschnitte im Changelog ([4afc9f3](https://github.com/Vertretungsapp/app/commit/4afc9f37c7f6a95fd17e1d8875d1de9a81877785))
+
+
+### 🚀 CI/CD-Änderungen
+
+* **eslint-check:** Downgrade der Node-Version auf LTS im CI ([#270](https://github.com/Vertretungsapp/app/issues/270)) ([a99d14c](https://github.com/Vertretungsapp/app/commit/a99d14c1c46c78617836d91ae9db3d7e9158ec3b))
+
+
+### ⚙️ Abhängigkeiten
+
+* bump @sveltejs/kit from 2.5.0 to 2.5.20 ([#272](https://github.com/Vertretungsapp/app/issues/272)) ([a6146e8](https://github.com/Vertretungsapp/app/commit/a6146e806e6650c42b15bf1778a9398b09321fcf))
+* bump @typescript-eslint/eslint-plugin from 7.0.0 to 8.0.0 ([#266](https://github.com/Vertretungsapp/app/issues/266)) ([c418065](https://github.com/Vertretungsapp/app/commit/c41806582024e25bc8feafc7bd39604e4bcbb04f))
+* bump autoprefixer from 10.4.17 to 10.4.19 ([#264](https://github.com/Vertretungsapp/app/issues/264)) ([3dfb897](https://github.com/Vertretungsapp/app/commit/3dfb897b48315fe1c408b6a9dbd1470b9d5df591))
+* bump the fortawesome group with 4 updates ([#262](https://github.com/Vertretungsapp/app/issues/262)) ([f820894](https://github.com/Vertretungsapp/app/commit/f820894fb053f275bc8729d6ff6e55c68b20e7cc))
+* bump vite from 5.2.10 to 5.3.5 ([#263](https://github.com/Vertretungsapp/app/issues/263)) ([c11b86f](https://github.com/Vertretungsapp/app/commit/c11b86f1c6dcb7d2b3a95820d5cb1f4044cca140))
+
 ## [1.3.2](https://github.com/Vertretungsapp/app/compare/v1.3.1...v1.3.2) (2024-07-30)
 
 
