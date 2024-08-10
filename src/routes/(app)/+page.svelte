@@ -74,11 +74,14 @@
 
 <div
 	class={twMerge(
-		'bottom-2 left-0 flex w-full justify-center',
+		'pointer-events-none bottom-2 left-0 flex w-full justify-center',
 		searchButtonSticky ? 'sticky' : 'absolute'
 	)}
 >
-	<a class="bg-clickable rounded-full border-4 border-background p-3" href="/search">
+	<a
+		class="bg-clickable pointer-events-auto rounded-full border-4 border-background p-3"
+		href="/search"
+	>
 		<Icon icon={faMagnifyingGlass} scale={1} />
 	</a>
 </div>
