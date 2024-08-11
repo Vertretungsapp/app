@@ -27,7 +27,7 @@
 	});
 </script>
 
-<div class="flex flex-col gap-2 overflow-y-auto overflow-x-hidden">
+<div class="flex touch-pan-y flex-col gap-2 overflow-y-auto overflow-x-hidden">
 	{#if lessons.length === 0}
 		<div class="text-disabled flex w-full justify-center gap-3">
 			<Icon icon={filter.active ? faWarning : faBan} scale={1.5} />
