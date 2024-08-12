@@ -5,6 +5,14 @@
 
 * bump indiware-api from 1.2.1 to 1.2.3 ([260ba57](https://github.com/Vertretungsapp/app/commit/260ba57e1ea1b35380d6f2229d9afdbdf3383e21))
 
+## [1.3.5](https://github.com/Vertretungsapp/app/compare/v1.3.4...v1.3.5) (2024-08-11)
+
+
+### 🪲 Fehlerbehebungen
+
+* Such-Button auf der Startseite blockiert Favoriten nun nicht mehr ([#283](https://github.com/Vertretungsapp/app/issues/283)) ([abfa266](https://github.com/Vertretungsapp/app/commit/abfa266fa2758e18278d298e3491aa8cd250fa80))
+* Verbesserte Wisch-Gesten-Steuerung ([#277](https://github.com/Vertretungsapp/app/issues/277)) ([7148092](https://github.com/Vertretungsapp/app/commit/714809275a81a5d7901a442121fd05a00894de28))
+
 ## [1.3.4](https://github.com/Vertretungsapp/app/compare/v1.3.3...v1.3.4) (2024-08-03)
 
 
