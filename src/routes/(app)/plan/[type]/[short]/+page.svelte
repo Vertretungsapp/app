@@ -8,15 +8,25 @@
 	import { swipe } from 'svelte-gestures';
 	import { faFaceFrown } from '@fortawesome/free-solid-svg-icons/faFaceFrown';
 	import { getHrefLink, nextDate, previousDate } from '$lib/common/planHelper';
-	import { planStore } from '$lib/stores/planStore';
 	import { goto } from '$app/navigation';
+	import { planStore, usePlan } from '$lib/stores/planStore';
+	import type { PlannedLesson } from 'indiware-api';
 
 	export let data: PageData;
 
 	const ignoreDates = $planStore.holidays.map((h) => new Date(h).toDateString());
 
+	let plannedLessons: PlannedLesson[] = [];
+
+
+	$: if ($planStore.plan) {
+		plannedLessons = usePlan(data.type, data.short, $planStore.plan).plannedLessons;
+	}
+
+	console.log(plannedLessons);
+
 	function addDays(days: number): Date {
-		const currentDate = data.substitutionPlan?.date || $planStore.currentDate;
+		const currentDate = $planStore.date;
 
 		if (days > 0) {
 			return nextDate(currentDate, ignoreDates);
@@ -54,20 +64,22 @@
 	</h1>
 
 	<PlanInformation
-		plan={data.substitutionPlan || undefined}
 		on:next={next}
 		on:previous={previous}
 	/>
 
-	{#if data.plan && data.substitutionPlan}
-		<PlanLessonDisplay
-			lessons={data.plan.plannedLessons.sort((a, b) => a.order - b.order)}
-			type={data.type}
-			filter={data.filter}
-		/>
+	{#if $planStore.plan}
+		{#key plannedLessons}
+			<PlanLessonDisplay
+				lessons={plannedLessons.sort((a, b) => a.order - b.order)}
+				type={data.type}
+				filter={data.filter}
+			/>
+		{/key}
 	{:else}
 		<p class="text-disabled flex items-center justify-center gap-2 font-bold">
-			<Icon icon={faFaceFrown} />Kein Plan verfügbar
+			<Icon icon={faFaceFrown} />
+			Kein Plan verfügbar
 		</p>
 	{/if}
 </div>

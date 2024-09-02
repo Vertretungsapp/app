@@ -16,11 +16,18 @@
 
 	let visible = false;
 
-	if (filter.active) {
-		lessons = lessons.filter(
-			(lesson) => !filter.ignoredLessons.includes((lesson.id || 0).toString())
-		);
-	}
+	let displayedLessons: PlannedLesson[];
+	$: displayedLessons = lessons.filter(
+		(lesson) => !filter.active || !filter.ignoredLessons.includes((lesson.id || 0).toString())
+	);
+
+	// $: if (filter.active) {
+	// 	displayedLessons = lessons.filter(
+	// 		(lesson) => !filter.ignoredLessons.includes((lesson.id || 0).toString())
+	// 	);
+	// }
+
+	console.log(lessons);
 
 	onMount(() => {
 		visible = true;
@@ -28,7 +35,7 @@
 </script>
 
 <div class="flex touch-pan-y flex-col gap-2 overflow-y-auto overflow-x-hidden">
-	{#if lessons.length === 0}
+	{#if displayedLessons.length === 0}
 		<div class="text-disabled flex w-full justify-center gap-3">
 			<Icon icon={filter.active ? faWarning : faBan} scale={1.5} />
 			<p class="text-center font-semibold">
@@ -37,7 +44,7 @@
 		</div>
 	{/if}
 
-	{#each lessons as lesson, index}
+	{#each displayedLessons as lesson, index}
 		{#if visible}
 			<div transition:fly={{ x: 70, duration: 250, delay: index * 30, easing: cubicOut }}>
 				<PlanLessonItem {lesson} {type} />

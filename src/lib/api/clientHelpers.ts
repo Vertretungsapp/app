@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import type { Credentials, ISubstitutionPlan } from 'indiware-api';
 import toast from 'svelte-french-toast';
 import { getCredentials } from './session';
+import { type PlanStore, planStore } from '$lib/stores/planStore';
 
 export interface FetchPlanOptions {
 	date?: Date;
@@ -11,14 +12,35 @@ export interface FetchPlanOptions {
 	noCache?: boolean;
 }
 
+function setPlanStoreVal(data: Partial<PlanStore>) {
+	planStore.update((store) => {
+		return {
+			...store,
+			...data
+		};
+	});
+}
+
+function setPlanInStore(plan: ISubstitutionPlan) {
+	setPlanStoreVal({
+		date: plan.date,
+		lastUpdated: plan.lastUpdated,
+		holidays: plan.holidays,
+		plan: plan,
+		isRefreshing: false
+	})
+}
+
 export async function fetchPlan({
 	date,
 	customFetch,
 	customCredentials,
 	noCache
-}: FetchPlanOptions = {}): Promise<ISubstitutionPlan | null> {
+}: FetchPlanOptions = {}) {
 	const fetch = customFetch || window.fetch;
 	const credentials = customCredentials || getCredentials();
+
+	setPlanStoreVal({ error: undefined })
 
 	if (!credentials) {
 		toast.error('Bitte melde dich zunächst in den Einstellungen an.');
@@ -27,9 +49,14 @@ export async function fetchPlan({
 
 	if (!noCache) {
 		const cachedPlan = getPlan(credentials.schoolnumber, date);
-		if (cachedPlan) return cachedPlan;
+		if (cachedPlan) {
+			setPlanInStore(cachedPlan);
+			return;
+		}
 	}
 
+	setPlanStoreVal({ isRefreshing: true })
+	
 	function getAuthorizationHeader(credentials: Credentials) {
 		return `Basic ${btoa(
 			`${credentials.schoolnumber}:${credentials.username}:${credentials.password}`
@@ -41,6 +68,7 @@ export async function fetchPlan({
 			Authorization: getAuthorizationHeader(credentials)
 		}
 	}).catch((err) => {
+		setPlanStoreVal({ isRefreshing: false, error: err.message })
 		throw err;
 	});
 
@@ -58,13 +86,14 @@ export async function fetchPlan({
 				toast.error('Ein unbekannter Fehler ist aufgetreten');
 				break;
 		}
-
+		
+		setPlanStoreVal({ isRefreshing: false, error: "Unbekannter Fehler - Der Vertretungsplan konnte nicht geladen werden." })
 		throw new Error('Could not fetch plan');
 	}
 
 	const planJson = (await plan.json()) as ISubstitutionPlan;
 	addPlan(credentials.schoolnumber, planJson);
-	return planJson;
+	setPlanInStore(planJson)
 }
 
 export async function checkCredentials(credentials: Credentials) {

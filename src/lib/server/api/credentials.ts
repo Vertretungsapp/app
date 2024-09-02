@@ -12,7 +12,7 @@ export async function verifyCredentials(credentials: Credentials): Promise<boole
 	const api = createApiWrapper(credentials);
 
 	try {
-		const verify = await api.getNewestSubstitutionPlan();
+		const verify = await api.testConnection();
 		if (verify) {
 			log.debug(
 				`Credentials are valid, responding with \`true\`. Schoolnumber: ${credentials.schoolnumber}`

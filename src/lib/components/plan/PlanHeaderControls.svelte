@@ -11,28 +11,17 @@
 	import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 	import { addFavorite, deleteFavorite } from '$lib/favorites/favorites';
 	import { formatDate } from '$lib/common/planHelper';
+	import { fetchPlan } from '$lib/api/clientHelpers';
 
 	export let filterActive = false;
 	export let isFavorite = false;
 
-	function refreshPage() {
-		const forceReloadUrl = new URL($page.url);
-		forceReloadUrl.searchParams.set('forceReload', 'true');
-
-		// If a date is explicitly set, we want to keep it
-		// This is also related to issue #161
-		// It also keeps the functionality to fetch the newest plan
-		try {
-			forceReloadUrl.searchParams.set('date', formatDate($page.data.date));
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		} catch (e) {
-			// ignore
-		}
-
-		goto(forceReloadUrl.toString(), {
-			invalidateAll: true,
-			replaceState: true
-		});
+	async function refreshPage() {
+		await fetchPlan({
+			customFetch: fetch,
+			date: $planStore.date,
+			noCache: true
+		})
 	}
 
 	function toggleFavorite() {

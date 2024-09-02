@@ -1,28 +1,25 @@
-import { pluralizePlanType } from '$lib/api/planTypes';
 import { hexadecimalToString } from '$lib/common/stringToHexadecimal';
-import type { Room, SchoolClass, Teacher } from 'indiware-api';
 import type { LayoutLoad } from './$types';
+import { usePlan, useSubstitutionPlan } from '$lib/stores/planStore';
 
 export const load: LayoutLoad = async ({ params, parent }) => {
-	const { substitutionPlan, type } = await parent();
-
+	const { type } = await parent();
 	const short = hexadecimalToString(params.short);
 
+	const substitutionPlan = useSubstitutionPlan();
+
 	if (!substitutionPlan) {
-		return {
-			planNotFound: true,
-			short
-		};
+		throw new Error('ERROR: Substitution plan not found');
 	}
 
-	const plan = substitutionPlan[pluralizePlanType(type)].find((p) => p.name === short) as
-		| SchoolClass
-		| Teacher
-		| Room
-		| undefined;
+	const plan = usePlan(type, short, substitutionPlan)
+
+	if (!plan) {
+		throw new Error(`ERROR: Plan ${short} not found in substitution plan, type: ${type}, date: ${substitutionPlan.date}.`);
+	}
 
 	return {
-		plan,
-		short
+			short,
+			plan
 	};
 };
