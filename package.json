@@ -59,7 +59,7 @@
 		"indiware-api": "^1.2.3",
 		"svelte-awesome": "^3.3.1",
 		"svelte-french-toast": "^1.2.0",
-		"svelte-gestures": "^4.0.0",
+		"svelte-gestures": "^5.0.4",
 		"tailwindcss-custom-colors": "^1.0.7",
 		"tslog": "^4.9.2"
 	}
