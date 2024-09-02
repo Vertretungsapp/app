@@ -91,18 +91,16 @@ export function getAllTeachers(credentials: Credentials): string[] {
 	return getAllEntities(credentials, PlanTypePlural.TEACHER);
 }
 
-export function getAllInfos(credentials: Credentials): Array<{ info: string; date: Date }> {
+export function getAllInfos(credentials: Credentials): { infos: string[]; date: Date }[] {
 	const plans = getPlans(credentials.schoolnumber);
-	const infos: Array<{ info: string; date: Date }> = [];
+	const information: Array<{ infos: string[]; date: Date }> = [];
 	plans.forEach((plan) => {
 		if (plan.info) {
-			plan.info.forEach((info) => {
-				infos.push({ info, date: new Date(plan.date) });
-			});
+			information.push({ infos: plan.info, date: new Date(plan.date) });
 		}
 	});
-	infos.sort((a, b) => a.date.getTime() - b.date.getTime());
-	return infos.filter((info) => info.date.getTime() >= new Date().setHours(0, 0, 0, 0));
+	information.sort((a, b) => a.date.getTime() - b.date.getTime());
+	return information.filter((info) => info.date.getTime() >= new Date().setHours(0, 0, 0, 0));
 }
 
 function isLessonTimetableValid(lesson: PlannedLesson): boolean {

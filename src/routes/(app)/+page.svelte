@@ -49,25 +49,27 @@
 
 <p>{greeting}</p>
 
-<div class="py-4"></div>
+<div class="py-5"></div>
+
+
 
 {#if data.infos.length > 0}
 	<h3>Informationen</h3>
-	<div class="max-h-[40%] overflow-y-auto">
+	<div class="max-h-[25%] overflow-y-auto">
 		{#each data.infos as info}
 			<div class="bg-display mb-2 rounded-lg p-4">
-				<p class="text-xs font-bold">{info.date.toLocaleDateString()}</p>
-				<p>{info.info}</p>
+				<p class="text-sm font-bold">{info.date.toLocaleDateString()}</p>
+				<p class="">{@html info.infos.join("<br>")}</p>
 			</div>
 		{/each}
 	</div>
 
-	<div class="py-4"></div>
+	<div class="py-5"></div>
 {/if}
 
 <NextLessonWidget primary={data.primaryFavorite} favorites={data.favorites} />
 
-<div class="py-4"></div>
+<div class="py-5"></div>
 
 <h3>Deine Favoriten</h3>
 <FavoritesDisplay favorites={data.favorites} />
