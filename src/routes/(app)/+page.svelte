@@ -25,6 +25,8 @@
 	}
 
 	let searchButtonSticky = false;
+	
+	const infosAvailable = data.infos.find((info) => info.infos.length > 0);
 
 	onMount(() => {
 		$navigationStore.activeId = 0;
@@ -51,15 +53,17 @@
 
 <div class="py-5"></div>
 
-{#if data.infos.length > 0}
+{#if infosAvailable}
 	<h3>Informationen</h3>
 	<div class="max-h-[25%] overflow-y-auto">
 		{#each data.infos as info}
-			<div class="bg-display mb-2 rounded-lg p-4">
-				<p class="text-sm font-bold">{info.date.toLocaleDateString()}</p>
-				<!-- eslint-disable-next-line svelte/no-at-html-tags	-->
-				<p class="">{@html info.infos.join('<br>')}</p>
-			</div>
+			{#if info.infos.length > 0}
+				<div class="bg-display mb-2 rounded-lg p-4">
+					<p class="text-sm font-bold">{info.date.toLocaleDateString()}</p>
+					<!-- eslint-disable-next-line svelte/no-at-html-tags	-->
+					<p class="">{@html info.infos.join('<br>')}</p>
+				</div>
+			{/if}
 		{/each}
 	</div>
 
