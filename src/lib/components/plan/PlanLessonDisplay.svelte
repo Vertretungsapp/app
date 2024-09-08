@@ -16,7 +16,7 @@
 
 	let visible = false;
 
-	if (filter.active) {
+	$: if (filter.active) {
 		lessons = lessons.filter(
 			(lesson) => !filter.ignoredLessons.includes((lesson.id || 0).toString())
 		);
