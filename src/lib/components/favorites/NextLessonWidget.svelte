@@ -40,7 +40,7 @@
 
 {#if primary}
 	<a href={getHrefLink(primary.name, primary.type)}>
-		<div class="max-h-[20%] space-y-2 overflow-y-auto">
+		<div class="max-h-[30%] space-y-2 overflow-y-auto">
 			{#if lessons.length !== 0}
 				{#each lessons as lesson}
 					{#key lesson.id}
