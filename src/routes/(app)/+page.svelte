@@ -25,7 +25,7 @@
 	}
 
 	let searchButtonSticky = false;
-	
+
 	const infosAvailable = data.infos.find((info) => info.infos.length > 0);
 
 	onMount(() => {
