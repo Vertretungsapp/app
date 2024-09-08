@@ -5,6 +5,30 @@
 
 * bump indiware-api from 1.2.1 to 1.2.3 ([260ba57](https://github.com/Vertretungsapp/app/commit/260ba57e1ea1b35380d6f2229d9afdbdf3383e21))
 
+## [1.3.6](https://github.com/Vertretungsapp/app/compare/v1.3.5...v1.3.6) (2024-09-08)
+
+
+### 🪲 Fehlerbehebungen
+
+* Leere Infos wurden angezeigt ([e953294](https://github.com/Vertretungsapp/app/commit/e95329428e5dcc214313fd0f6724dd158034ad38))
+* Vertretungsplan wurde fehlerhaft angezeigt bei zweimaligem Aktualisieren ([#295](https://github.com/Vertretungsapp/app/issues/295)) ([1e6a9ae](https://github.com/Vertretungsapp/app/commit/1e6a9ae81a14a7b21ad812251e420e8d26108588))
+
+
+### 🔧 Sonstige Änderungen
+
+* format files ([ff51ac5](https://github.com/Vertretungsapp/app/commit/ff51ac57c74da503eebe0e5389546ccceb7d5e19))
+* Info-Blöcke werden pro Tag zusammengefasst ([#293](https://github.com/Vertretungsapp/app/issues/293)) ([76a1c4f](https://github.com/Vertretungsapp/app/commit/76a1c4fdcb86ccbe07e9f9662978ea77fad0e9c9))
+
+
+### ⚙️ Abhängigkeiten
+
+* bump @sveltejs/kit from 2.5.20 to 2.5.25 ([#288](https://github.com/Vertretungsapp/app/issues/288)) ([eaca272](https://github.com/Vertretungsapp/app/commit/eaca272f219e4551c313b8c467b962518338b4a2))
+* bump eslint-plugin-svelte from 2.35.1 to 2.43.0 ([#290](https://github.com/Vertretungsapp/app/issues/290)) ([492d644](https://github.com/Vertretungsapp/app/commit/492d6442c54ada599a94f0717e545f14d2831a3c))
+* bump micromatch from 4.0.5 to 4.0.8 in the npm_and_yarn group ([#292](https://github.com/Vertretungsapp/app/issues/292)) ([559f5f9](https://github.com/Vertretungsapp/app/commit/559f5f9ed6cac1465301570163bc5e9c57bd2f3e))
+* bump svelte-gestures from 4.0.0 to 5.0.4 ([#287](https://github.com/Vertretungsapp/app/issues/287)) ([9474c0d](https://github.com/Vertretungsapp/app/commit/9474c0d0dc3937b69b70666e045320fe900221f0))
+* bump the npm_and_yarn group with 2 updates ([#286](https://github.com/Vertretungsapp/app/issues/286)) ([912edbe](https://github.com/Vertretungsapp/app/commit/912edbeb9af8256bad66e7952f07f55d1be6a7bc))
+* bump typescript from 5.4.5 to 5.5.4 ([#289](https://github.com/Vertretungsapp/app/issues/289)) ([05995e9](https://github.com/Vertretungsapp/app/commit/05995e9848fba634a17a1992e16216c2fd15c7b1))
+
 ## [1.3.5](https://github.com/Vertretungsapp/app/compare/v1.3.4...v1.3.5) (2024-08-11)
 
 
