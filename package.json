@@ -14,7 +14,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/kit": "^2.5.25",
+		"@sveltejs/kit": "^2.13.0",
 		"@sveltejs/vite-plugin-svelte": "^3.1.2",
 		"@types/eslint": "8.56.2",
 		"@types/node": "^20.11.17",
@@ -52,7 +52,7 @@
 		"@fortawesome/free-brands-svg-icons": "^6.6.0",
 		"@fortawesome/free-regular-svg-icons": "^6.6.0",
 		"@fortawesome/free-solid-svg-icons": "^6.6.0",
-		"@sentry/sveltekit": "^7.112.2",
+		"@sentry/sveltekit": "^8.47.0",
 		"@sveltejs/adapter-vercel": "^5.3.0",
 		"color-util-nodejs": "^1.0.2",
 		"date-fns": "^3.3.1",
