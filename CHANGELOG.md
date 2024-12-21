@@ -5,6 +5,18 @@
 
 * bump indiware-api from 1.2.1 to 1.2.3 ([260ba57](https://github.com/Vertretungsapp/app/commit/260ba57e1ea1b35380d6f2229d9afdbdf3383e21))
 
+## [1.3.7](https://github.com/Vertretungsapp/app/compare/v1.3.6...v1.3.7) (2024-12-21)
+
+
+### ⚙️ Abhängigkeiten
+
+* bump @sveltejs/vite-plugin-svelte from 3.1.0 to 5.0.1 ([#306](https://github.com/Vertretungsapp/app/issues/306)) ([bf86009](https://github.com/Vertretungsapp/app/commit/bf860090a8fe72fe122f6a6b5d3522266a40c38f))
+* bump @typescript-eslint/eslint-plugin from 8.0.0 to 8.18.1 ([#311](https://github.com/Vertretungsapp/app/issues/311)) ([0fd973b](https://github.com/Vertretungsapp/app/commit/0fd973ba68098065a95c20783b2c3d430c22a084))
+* bump @typescript-eslint/parser from 8.0.0 to 8.18.1 ([#312](https://github.com/Vertretungsapp/app/issues/312)) ([aafe2ae](https://github.com/Vertretungsapp/app/commit/aafe2aee002e24d1bb27ddd5c168d33804cea13f))
+* bump the npm_and_yarn group across 1 directory with 6 updates ([#314](https://github.com/Vertretungsapp/app/issues/314)) ([db16c9b](https://github.com/Vertretungsapp/app/commit/db16c9b6047704873662cf85730be815ed0ecb49))
+* bump vite from 5.3.5 to 5.4.6 in the npm_and_yarn group ([#296](https://github.com/Vertretungsapp/app/issues/296)) ([7493f1c](https://github.com/Vertretungsapp/app/commit/7493f1cc0ee366d732b3ad1346652d23577c6e26))
+* remove obsolete capacitor dependencies ([c00e84d](https://github.com/Vertretungsapp/app/commit/c00e84d76dc41e7696439ef56adbf3e29d666024))
+
 ## [1.3.6](https://github.com/Vertretungsapp/app/compare/v1.3.5...v1.3.6) (2024-09-08)
 
 
