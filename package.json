@@ -51,7 +51,7 @@
 		"@sentry/sveltekit": "^8.47.0",
 		"@sveltejs/adapter-vercel": "^5.3.0",
 		"color-util-nodejs": "^1.0.2",
-		"date-fns": "^3.3.1",
+		"date-fns": "^4.1.0",
 		"indiware-api": "^1.2.3",
 		"svelte-awesome": "^3.3.1",
 		"svelte-french-toast": "^1.2.0",
